@@ -1,0 +1,64 @@
+/* Global Header Navigation */
+#site-switcher { z-index: 98; position: absolute; top: 0; left: 0; padding: 40px 0 0 40px; width: 100%;
+
+	@include media($mobile) { height: 78px; padding-top: 20px; }
+	@include media($big-mobile) { padding-left: 20px; }
+	@include media($small-mobile) { padding-left: 10px; }
+
+	.toggle { @include translate(0, 0, 0); @include backface-visibility(hidden); @include perspective(1000); @include transition-fix(all, $anim-dur, linear); position: absolute; top: 8%; right: 17px; text-decoration: none;
+		
+		@include media($tablet) { top: 0; right: 25px; padding: 20px 0 0 20px; }
+		@include media($mobile) { top: 12px; right: 15px; padding: 0 0 0 20px; }
+
+		#login-welcome { @include float(left); @include fonts-heavy;
+
+			@include media($sub-desktop){ display: none; }
+	
+			ul { @include collapse-spacing; list-style: none;
+
+				li { @include inline-block; color: rgb(204, 204, 204); font-size: 13px;
+
+					&:before { content: none; }
+
+					&.divider { padding: 0 6px; }
+				}
+			}
+		}
+		.menu-button { @include float(left); margin-top: 1px; margin-left: 4px; @fonts-heavy; cursor: pointer;
+
+			&:hover {
+
+				.menu-label { color: rgb(255, 255, 255); }
+				.fa-bars { color: rgb(255, 255, 255); }
+			}
+
+			.menu-label { color: rgb(204, 204, 204); @include fonts-heavy; font-size: 13px; text-transform: uppercase;
+		
+				@include media($mobile){ display: none; }
+			}
+			.fa-bars { vertical-align: middle; color: rgb(204, 204, 204); font-size: 1.3em; }
+		} 
+	}
+	.logo { @include inline-block; border: 0;
+
+		@include media($mobile) { width: 236px; height: 56px; }
+
+		img {
+
+			@include media($mobile) { width: 236px; }
+			@include media($big-mobile) { height: 56px; }
+			@include media($small-mobile) { height: 58px; }
+		}
+	}
+	ul.global-nav { @include transition-fix(all, $anim-dur, linear); position: relative; @include inline-block; list-style: none; padding-left:20px;
+
+		@include media($sub-desktop){ display: none; }
+
+		&.active { @include transition-fix(all, $anim-dur, linear); }
+
+		li { @include inline-block; @include fonts-med; padding: 0 23px; font-size: .75em; letter-spacing: .1em; text-align: left; text-transform: uppercase; border-left:1px solid #fff;
+
+			&:before { content: none; }
+		}
+	}
+}

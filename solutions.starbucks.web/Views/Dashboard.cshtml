@@ -1,0 +1,165 @@
+﻿@using solutions.starbucks.Model
+@using System.Web.Mvc.Html
+@using solutions.starbucks.web.Controllers
+@using solutions.starbucks.Model.Pocos
+@using solutions.starbucks.Model.Enums
+@using Umbraco.Web
+@model DashboardModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool isPartner = Model.isPartner;
+    //bool isDualAccount = Model.CustomerBrand.ToLower() == "dual" ? true : false;
+    int i = 0;
+    var queryId = "?";
+}
+
+<section id="content">
+    <section class="wrapper">
+        <div class="dashboard-content">
+            @if (Model.NumberOfAccounts > 1 || Model.isPartner)
+            {
+                <div class="customer-account-access dashboard-banner">
+                    <h2>
+                        @if (Convert.ToBoolean(TempData["IncorrectAccountNumber"]) || string.IsNullOrWhiteSpace(Model.CurrentAccount))
+                        {
+                            @String.Format("{0} Account Access", Model.isPartner ? "Customer" : "")
+                        }
+                        else
+                        {
+                            @Html.Raw(String.Format("Viewing Account: <span>{0}</span>", Model.CurrentAccount + " " + Model.CurrentAccountName))
+                        }
+                    </h2>
+                    @Html.Action("RenderAccountAccess", "AccountSurface", new { currentAccount = Model.CurrentAccount })
+                    <div class="clear"></div>
+                    @if (Convert.ToBoolean(TempData["IncorrectAccountNumber"]))
+                    {
+                        <p class="error"><i class="fa fa-exclamation-circle"></i> Account Number Not Found: Enter an active account number.</p>
+                            <img src="/img/dashboard/partner/banner-partner-register-480.jpg" class="img-small" />
+                    }
+                </div>
+            }
+            @foreach (var tile in Model.TileContents)
+            {
+                //get order history
+                if (tile.Title.ToLower().Contains("orderhistory"))
+                {
+                    <div class="dashboard-banner dashboard-banner-w@(tile.Width)h@(tile.Height) dashboard-order-history">
+                        <div class="page-title">Online Order History <span>(online orders only)</span></div>
+                        @if (Model.UserOrders != null)
+                        {
+                            if (Model.UserOrders.Count() != 0)
+                            {
+                                foreach (var orderRow in (IEnumerable<Orders>)Model.UserOrders.OrderByDescending(m => m.DateOrdered).Take(1))
+                                {
+                                    <div class="order-history-row @(i++ % 2 == 0 ? "even" : "odd")">
+                                        <div class="order-calendar text-center">
+                                            <div class="day">@orderRow.DateOrdered.ToString("MMM")</div>
+                                            <div class="month">@orderRow.DateOrdered.ToString("dd")</div>
+                                        </div>
+                                        <div class="order-details">
+                                            <h3>
+                                                @orderRow.DateOrdered.ToString("MMM dd, yyyy")
+                                            </h3>
+                                            <p class="order-info"><span>ORDERED BY:</span> @orderRow.CustomerName</p>
+                                            <p class="order-info"><span>SHIPPED TO:</span> @orderRow.OperationName</p>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="order-acct-info">
+                                            Acct. #@orderRow.AccountNumber
+                                            <a class="view-order" href="/order-history-details?orderId=@orderRow.OrderID">View order »</a>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="order-history-row empty">
+                                    You have no previous online orders.
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="order-history-row empty">
+                                You have no previous online orders.
+                            </div>
+                        }
+                        <div class="clear"></div>
+                        <div class="order-history-search">
+                            @if (Model.UserOrders.Count() != 0)
+                            {
+                                <a href="/order-history">VIEW ALL ONLINE ORDERS</a>
+                            }
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    if (tile.TileLink.Contains("?"))
+                    {
+                        queryId = "&";
+                    }
+                    <div class="dashboard-banner dashboard-banner-w@(tile.Width)h@(tile.Height)">
+                        <a href="@(tile.TileLink.Replace(" ", "_"))@(queryId)utm_campaign=@(tile.TrackCampaign.Replace(" ", "_"))&utm_medium=@(tile.TrackMedium.Replace(" ", "_"))&utm_source=@(tile.TrackSource.Replace(" ", "_"))&utm_content=@(tile.TrackContent.Replace(" ", "_"))@(tile.TileLinkHash.Replace(" ", "_"))"
+                           @(tile.TileLinkTarget != null && tile.TileLinkTarget.Length > 0 ? "target='" + tile.TileLinkTarget + "'" : string.Empty) >
+                            @tile.FeaturedBox
+                        </a>
+                    </div>
+                }
+
+            }
+
+            <div class="clear"></div>
+        </div>
+    </section>
+@*    @foreach (var tile in Model.DashboardTiles)
+    {
+        <h3>@tile.GetValue("featuredBox")</h3>
+    }*@
+
+</section>
+@section scripts {
+    <script src="/js/libs/select2.js"></script>
+    <script>
+    $(document).ready(function () {
+        $(".dashboard-acct-select").select2({
+            closeOnSelect: false
+        });
+
+        $(".select2-search input").attr("placeholder", "Search");
+    });
+    </script>
+
+    @if (bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableGoogleAnalyticsTracking"]))
+    {
+        var groupToTrack = "";
+        <script type="text/javascript">
+            @if (isPartner)
+            {
+                groupToTrack = "Partner";
+            }
+
+            @if (Model.CustomerBrand == BrandCode.SBUX)
+            {
+                groupToTrack = "Starbucks";
+            }
+            else if (Model.CustomerBrand == BrandCode.SBC)
+            {
+                groupToTrack = "SBC";
+            }
+            else
+            {
+                groupToTrack = "Dual";
+            }
+            $("a").on('click touch', function () {
+                SBS.TrackEvent('@(groupToTrack)_dashboard', 'Click', $(this).attr('href'));
+            });
+            @{
+            var member = Membership.GetUser();
+               
+            }
+            _kmq.push(['identify', '@(member.Email)']);
+        </script>
+    }
+}

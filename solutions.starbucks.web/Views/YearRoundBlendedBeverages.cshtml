@@ -1,0 +1,378 @@
+﻿@using solutions.starbucks.web.Controllers
+@using solutions.starbucks.Model
+@using solutions.starbucks.Model.Enums
+
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+    if (Request.Cookies["AccountAttributes"] != null)
+    {
+        ViewBag.IsSBX = (Request.Cookies["AccountAttributes"]["CustomerBrand"] == BrandCode.SBUX.Code);
+        ViewBag.IsSBC = (Request.Cookies["AccountAttributes"]["CustomerBrand"] == BrandCode.SBC.Code);
+        ViewBag.IsDUAL = (Request.Cookies["AccountAttributes"]["CustomerBrand"] == BrandCode.DUAL.Code);
+        ViewBag.IsFrap = Convert.ToBoolean(Request.Cookies["AccountAttributes"]["IsFrappuccino"]);
+        ViewBag.IsEspresso = Convert.ToBoolean(Request.Cookies["AccountAttributes"]["IsEspresso"]);
+        ViewBag.IsPartner = Convert.ToBoolean(Request.Cookies["AccountAttributes"]["IsPartner"]);
+    }
+    else
+    {
+        ViewBag.IsSBX = true;
+        ViewBag.IsSBC = false;
+        ViewBag.IsDUAL = false;
+        ViewBag.IsFrap = false;
+        ViewBag.IsEspresso = false;
+        ViewBag.IsPartner = false;
+    }
+}
+
+@{
+    var currentUrl = Request.RawUrl;
+    if (currentUrl.Contains("program"))
+    {
+    <script src="/js/libs/jquery-mobile/jquery.mobile.custom.js"></script>
+    <script src="/js/libs/joyride/jquery.joyride-2.1.js"></script>
+    <script src="/js/libs/select2.js"></script>
+    }
+}
+
+<!-- Header image: /img/background/year-round-header-fontana&trade;.jpg -->
+
+<section id="content">
+    <section class="wrapper"  style="background-image: url(/media/65009960/wps-summer-bg.jpg); background-size: cover; background-position: center top;">
+        <header class="blended-beverages-program-header">
+            <h1 class="dark">Fontana&trade; Blended Beverages</h1>
+            <p class="dark">Reinvigorate with all the flavors of Fontana&trade; Blended Beverages.</p>
+	    </header>
+
+        <div class="help-tile">
+            <div class="inner-wrapper">
+                <h3><span class="help-title">How do I order?</span> <a id="help-launcher" href="#">Learn How</a></h3>
+            </div>
+        </div>
+
+        <div class="program-content" style="background-image: url(/img/programs/year-round/blended_wide_desktop_bg.jpg); background-size: cover; background-position: center top;">
+
+            <div class="body-content" style="background: transparent;">
+
+                <article class="year-round-fontana">
+                    
+                    <section>
+                        
+                        <img class="year-round-fontana-logo" src="/img/logo_fontana.png" />
+                        <h2 id="joyride-program-detail" class="overview-title light">Learn more about popular blended beverages</h2>
+                        
+                            <ul>
+                                <li><a class="light" href="/resources/pdf/fontana_Product_Card_Final.pdf" target="_blank">Download Product Card &raquo;</a></li>
+                                <li><a class="light" href="/resources/training/blended" target="_blank">Explore Training &raquo;</a></li>
+                            </ul>    
+                    
+                    </section>
+
+                </article>
+
+            </div>
+
+            <div class="program-tiles year-round-program-tiles">
+            	<div id="blended-beverages-starter-kit" class="recipe-toggle program-banner col4">
+                    <div class="tile-content blended-beverages-starter-kit">
+                        <h2 class="tile-title text-left">Fontana&trade; Blended Beverage Starter Kit</h2>
+                        <p class="tile-desc">Add this starter kit for a refreshing combination of popular flavors. Includes ingredients for:</p>
+                        <ul class="tile-list">
+                            <li>Latte Blender</li>
+                            <li>Mocha Blender</li>
+                            <li>Mango Smoothie</li>
+                            <li>Strawberry Smoothie</li>
+                        </ul>
+                    </div>
+                    <div class="tile-elements">
+                        <a id="joyride-addbtn0" class="program-tile-btn recipe-btn green" href="#blended-beverages-starter-kit-section">Add to Menu</a>
+                    </div>
+                    <img src="/img/programs/year-round/fontana-starter-kit.jpg" class="img-large"/>
+                    <img src="/img/programs/year-round/fontana-blended-starter-kit-mobile.png" class="img-big"/>
+                    <img src="/img/programs/year-round/fontana-blended-starter-kit-small-mobile.png" class="img-small"/>
+                </div>
+                
+                <div id="supporting-blended-products" class="recipe-toggle program-banner col2">
+                    <div class="tile-content supporting-blended-products">
+                        <h2 class="tile-title light">Supporting Products</h2>
+                    </div>
+                    <div class="tile-elements">
+                        <a id="joyride-support-products" class="program-tile-btn content-btn" href="#supporting-blended-section">Add to Menu</a>
+                    </div>
+                    <img src="/img/programs/year-round/supporting-products-480.jpg" class="img-large"/>
+                    <img src="/img/programs/year-round/supporting-products-mobile.jpg" class="img-big"/> <!-- TODO: Original image file is only 700px wide -->
+                    <img src="/img/programs/year-round/supporting-products-mobile.jpg" class="img-small"/>
+                </div>
+                <div id="-smoothies" class="recipe-toggle program-banner col2">
+                    <div class="tile-content fontana-view-all">
+                        <h2 class="tile-title">View All Fontana&trade; Blended Beverage Program Products</h2>
+                    </div>
+                    <div class="tile-elements">
+                        <a id="joyride-all-products" class="program-tile-btn" href="/programs/blended-beverages/products">See Now</a>
+                    </div>
+                    <img src="/img/programs/year-round/fontana-view-all-480.jpg" class="img-large"/>
+                    <img src="/img/programs/year-round/fontana-view-all-767.jpg" class="img-big"/> 
+                    <img src="/img/programs/year-round/fontana-view-all-479.jpg" class="img-small"/>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        @using (Html.BeginUmbracoForm<ProgramOrderSurfaceController>("ProcessYearRoundToAllProductsPage", null, new { id = "programForm" }))
+        {
+            <div class="menu-wrapper">
+            
+            <a name="your-menu"></a>
+
+            <div class="your-menu">
+                <div class="menu-gray">
+                    <h3 class="programs-section-your-menu-title">Your Menu</h3>
+                    <p><a id="joyride-download-recipes" class="inline-link" href="/resources/pdf/blended_year-round_recipe_cards.pdf" data-role="none" target="_blank">Download all recipe cards &raquo;</a></p>
+                </div>                   
+
+                <div class="empty-menu">
+                    <p>
+                        Build your menu by adding recipes above.<br />
+                        Or skip this step and go <a class="inline-link" href="/programs/blended-beverages/products/" data-role="none">directly to individual products</a>.
+                    </p>
+                </div>
+
+                <div class="recipe-calc-wrapper">
+
+                    <section id="menu-blended-beverages-starter-kit" class="recipe-group recipe-group-0" data-group="blended-beverages-starter-kit">
+                    <a name="blended-beverages-starter-kit-section"></a>
+
+                        <h3 class="group-title">Blended Beverage Starter Kit</h3>
+
+                        <article id="recipe-blended-beverages-starter-kit" class="recipe blended-beverages-starter-kit" data-group="blended-beverages-starter-kit" data-name="blended-beverages-starter-kit">
+                            <div class="recipe-inner">
+                                <span id="joyride-remover0" class="remover year-round-program" data-group="blended-beverages-starter-kit"><span class="remover-text">Remove</span> <img class="menu-closer-icon" src="/img/svg/fallback/recipe-remover.png"></span>
+                                <div class="recipe-column img">
+                                    <div class="recipe-image classic-iced-coffee" data-name="classic-iced-coffee">
+                                        <img src="/img/programs/year-round/fontana_blended_starter_kit.jpg"  class="img-large" alt="fontana&trade; Blended Beverages Starter Kit" />
+                                        <img src="/img/programs/year-round/fontana_blended_starter_kit.jpg"  class="img-big" alt="fontana&trade; Blended Beverages Starter Kit" />
+                                        <img src="/img/programs/year-round/fontana_blended_starter_kit.jpg"  class="img-small" alt="fontana&trade; Blended Beverages Starter Kit" />
+                                    </div>
+                                </div>
+                                <div class="recipe-column details">
+                                    <div class="recipe-slider">
+                                        <p class="how-many">How many 16 oz. drinks do you expect to serve weekly?</p>
+                                        <div id="joyride-slider0" class="slider-wrapper">
+                                            <span class="slider-nil">0</span>
+                                            <span class="slider-max">1000</span>
+                                            <label class="range-label" for="slider-blended-beverages-starter-kit"></label>
+                                            <input class="recipe-qty" type="number" name="slider-blended-beverages-starter-kit" id="slider-blended-beverages-starter-kit" value="0" min="0" max="1000" step="50" />
+                                        </div>
+                                    </div>
+                                    <ul class="recipe-ingredient-list">
+                                        <li data-name="fontana-latte-beverage-base" class="recipe-ingredient">
+                                            <span class="prod-name" data-name="latte-" data-yield="128" data-recipe="latte-blender">Fontana&trade; Latte Beverage Base</span>
+                                            <span class="prod-qty">
+                                                <input id="joyride-slider-output0" class="qty-input" type="number" min="0" pattern="\d+" value="" name="sku-val" maxlength="2" data-role="none" readonly />    
+                                                <input class="qty-input-val" id="SKU-466217" name="SKU-466217" type="hidden" value="0" />
+                                                case(s)</span>
+                                        </li>
+                                        <li data-name="fontana-mocha-beverage-base" class="recipe-ingredient">
+                                            <span class="prod-name" data-name="fontana-classic-syrup" data-yield="128" data-recipe="mocha-blender">Fontana&trade; Mocha Beverage Base</span>
+                                            <span class="prod-qty">
+                                                <input id="joyride-slider-output1" class="qty-input" type="number" min="0" pattern="\d+" value="" name="sku-val" maxlength="2" data-role="none" readonly />    
+                                                <input class="qty-input-val" id="SKU-466219" name="SKU-466219" type="hidden" value="0" />
+                                                case(s)</span>
+                                        </li>
+                                        <li data-name="fontana-mango-beverage-base" class="recipe-ingredient">
+                                            <span class="prod-name" data-name="fontana-vanilla-syrup" data-yield="128" data-recipe="fontana-mango-smoothie">Fontana&trade; Mango Beverage Base</span>
+                                            <span class="prod-qty">
+                                                <input id="joyride-slider-output3" class="qty-input" type="number" min="0" pattern="\d+" value="" name="sku-val" maxlength="2" data-role="none" readonly />    
+                                                <input class="qty-input-val" id="SKU-189976" name="SKU-189976" type="hidden" value="0" />
+                                                case(s)</span>
+                                        </li>
+                                        <li data-name="fontana-strawberry-beverage-base" class="recipe-ingredient">
+                                            <span class="prod-name" data-name="fontana-caramel-syrup" data-yield="128" data-recipe="fontana-strawberry-smoothie">Fontana&trade; Strawberry Beverage Base</span>
+                                            <span class="prod-qty">
+                                                <input id="joyride-slider-output1" class="qty-input" type="number" min="0" pattern="\d+" value="" name="sku-val" maxlength="2" data-role="none" readonly />    
+                                                <input class="qty-input-val" id="SKU-11029589" name="SKU-11029589" type="hidden" value="0" />
+                                                case(s)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </article>
+
+                        <section class="module-expander blended-beverages-starter-kit">
+                            <div class="expander">Beverage Breakdown</div>
+                            <div class="collapser" data-role="none">
+                                <ul class="additional-recipes">
+                                    <li class="bundle-beverage-count" data-recipe="latte-blender">
+                                        <span class="recipe-quantity" data-ratio="25"></span>
+                                        <span class="recipe-title">Latte Blenders</span>
+                                    </li>
+                                    <li class="bundle-beverage-count" data-recipe="mocha-blender" >
+                                        <span class="recipe-quantity" data-ratio="25"></span>
+                                        <span class="recipe-title">Mocha Blenders</span>
+                                    </li>
+                                    <li class="bundle-beverage-count" data-recipe="fontana-mango-smoothie">
+                                        <span class="recipe-quantity" data-ratio="25"></span>
+                                        <span class="recipe-title">Fontana&trade; Mango Smoothies</span>
+                                    </li>
+                                    <li class="bundle-beverage-count" data-recipe="fontana-strawberry-smoothie">
+                                        <span class="recipe-quantity" data-ratio="25"></span>
+                                        <span class="recipe-title">Fontana&trade; Strawberry Smoothies</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <article id="marketing-blended-beverages-starter-kit" class="marketing blended-beverages-starter-kit" data-group="blended-beverages-starter-kit">
+                            <div class="marketing-inner">
+                                <div class="marketing-column img mkt-img-2">
+                                    <div class="marketing-image iced-coffee-starter-kit" data-name="iced-coffee-starter-kit">
+                                        <img src="/img/programs/year-round/fontana-blended-beverages-starter-kit-marketing.jpg"  class="img-large" alt="fontana&trade; Blended Beverages Starter Kit" />
+                                        <img src="/img/programs/year-round/fontana-blended-beverages-starter-kit-marketing.jpg"  class="img-big" alt="fontana&trade; Blended Beverages Starter Kit" />
+                                        <img src="/img/programs/year-round/fontana-blended-beverages-starter-kit-marketing.jpg"  class="img-small" alt="fontana&trade; Blended Beverages Starter Kit" />
+                                    </div>
+                                    <div class="title">
+                                        <span>Fontana&trade; Blended Beverages Marketing Materials</span>
+                                    </div>
+                                </div>
+                                <div id="joyride-marketing0" class="marketing-column details mkt-dtl-0">
+                                    <div class="title">
+                                        <span>Fontana&trade; Blended Beverages Marketing Materials</span>
+                                    </div>
+                                    <div>
+                                        <ul class="marketing-list">
+                                            <li>
+                                                <label for="Counter Card 8.5&quot; x 11&quot;_Blended_Starter_Kit">
+                                                    <span class="title prod-name">Counter Card 8.5&quot; x 11&quot;</span>
+                                                    <select id="MKT-SFS-007-WPS-CC1-00877" name="MKT-SFS-007-WPS-CC1-00877" data-role="none" class="mkt-select">
+                                                        <option value="0">0</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="Poster 22&quot; x 28&quot;_Blended_Starter_Kit">
+                                                    <span class="title prod-name">Poster 22&quot; x 28&quot;</span>
+                                                    <select id="MKT-SFS-007-WPS-PST-00876-28" name="MKT-SFS-007-WPS-PST-00876-28" data-role="none" class="mkt-select">
+                                                        <option value="0">0</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </select>
+                                                </label>
+                                                <p class="legal no-table-tent">Note: Poster foldable to 22" x 26"</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                                        
+                        </article>
+                                
+                    </section>
+
+                    <section id="menu-supporting-blended-products" class="content-band program-support-products recipe-group" data-group="supporting-blended-products">
+                    <a name="supporting-blended-section"></a>
+                        <div class="inner-wrapper">
+                            <h3 class="mb-40 group-title">Supporting Products</h3>
+                            <div class="products-inner">
+                                <span id="joyride-remover0" class="remover blended-program" data-group="supporting-blended-products"><span class="remover-text">Remove</span> <img class="menu-closer-icon" src="/img/svg/fallback/recipe-remover.png"></span>
+                                <div class="products-column img">
+                                    <div class="recipe-image supporting-iced-products" data-name="supporting-iced-products">
+                                        <img src="/img/programs/year-round/supporting-products.png" class="img-large" alt="classic-iced-coffee" />
+                                    </div>
+                                </div>
+                                <div class="products-column details">
+                                    @if (Request.Cookies["AccountAttributes"]["CustomerBrand"] != null)
+                                    {
+                                        if (ViewBag.IsSBC)
+                                        {
+                                            Html.RenderPartial("_yrBlendedProductsSBC");
+
+                                        }
+                                        else if (ViewBag.IsDual)
+                                        {
+                                             Html.RenderPartial("_yrBlendedProductsDual"); 
+                                        }
+                                        else if (ViewBag.IsSBX)
+                                        {
+                                             Html.RenderPartial("_yrBlendedProductsSBX"); 
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <h2 class="account-msg">Please select a specific account from your <a href="/dashboard">dashboard</a> to display the correct products.</h2>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                
+                </div>
+
+                <section class="program-continue">
+                    <div class="inner-wrapper">
+                        <input type="hidden" name="nextPage" value="/programs/blended-beverages/products" />
+                        <a class="program-next" id="progSubmit" href="/programs/blended-beverages/products"><span>Next</span></a>
+                    </div>
+                </section>
+
+                <div class="clear"></div>
+
+            </div>
+
+        </div>
+        }
+    </section>
+</section>
+
+@Html.Partial("~/Views/Partials/_YearRoundTour.cshtml")
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SBS.ProgramFunctionality();
+            $("#progSubmit, .progSubmit").bind('click touch', function() {
+                $("#programForm").submit();
+                return false;
+                
+            });
+        });
+    </script>
+    <script>
+        //ie8 checkbox
+
+        $(document).ready(function () {
+            $('.checkbox').unbind('click touch').bind('click touch', function () {
+
+                var aunt = $(this).parent().prev('input');
+
+                aunt.toggleClass('checked');
+
+            });
+
+            $(".mkt-select").select2({
+                minimumResultsForSearch: -1
+            });
+
+            $(".product-type-select").select2({
+                minimumResultsForSearch: -1,
+                dropdownCssClass: 'product-type-dropdown'
+            });
+
+            $('#explore-all-sugar-free-flavors .tile-elements h2').replaceWith('<h2>Explore all<br />Sugar-Free flavors</h2>');
+
+        });
+
+
+   </script>
+
+}
+                
+    </section>
+</section>

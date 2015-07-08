@@ -1,0 +1,70 @@
+/* Content Page Expanding Content Containers */
+.module-expander { padding: 40px 20px 20px 20px; text-align: center;
+
+	@include media($mobile) { padding: 20px 20px 50px 20px; }
+
+	h3 { font-size: 37px;
+
+		@include media($mobile) { font-size: 30px; line-height: 1.2em; }
+	}
+
+	p {
+
+		@include media($mobile) { margin: 20px auto 20px auto; }
+	}
+
+	.expander {
+		@include light-button; cursor: pointer;
+		position: relative; margin: 0 auto 20px auto; padding: 8px 14px 6px 14px; width: 260px;
+		background: #fff url(/img/expander-caret.png) no-repeat; background-position: 94% center;
+		font-size: .9em; text-align: left;
+		
+		&:hover { background: rgb(237,237,237) url(/img/expander-caret.png) no-repeat; background-position: 94% center; }	
+		&.active { background: #f6f6f6 url(/img/expander-caret-active.png) no-repeat; background-position: 94% center;
+
+			&:hover { background-image: url(/img/expander-caret-active.png) no-repeat; }
+		}
+		&.narrow { width: 220px; }
+
+		@include media($big-mobile){ @include blockcenter; margin-top: 20px; }
+	}
+	.collapser { @include blockcenter; display: none; padding-bottom: 40px; width: 600px; height: auto; overflow: hidden;
+		
+		@include media($sub-desktop) { height: auto; }
+		@include media($tablet) { padding-bottom: 20px; }
+		@include media($mobile) { margin-top: 20px; padding-bottom: 0; width: 100%; }
+
+		&.active { display: block; }
+
+		ul { @include collapse-spacing; list-style: none;
+
+			&.additional-recipes {
+
+				li { cursor: pointer; @include fonts-heavy; font-size: 20px; color: #999693;
+
+					@include media($mobile) { line-height: 24px; }
+
+					&:hover { color: #000; }
+					&.in-menu { display: none; }
+				}
+			}
+
+			li { padding: 12px 0; width: 100%; color: $big-link-gray; text-align: center;
+
+				&:before { content: none; }
+
+				@include media($mobile) { padding-top: 12px; font-size: .9em; }
+
+				h2 { font-size: 20px;
+
+					@include media($mobile) { width: 100%; }
+
+					a, a:visited { color: $big-link-gray;
+
+						&:hover { color: #000; }
+					}
+				}
+			}
+		}
+	}
+}

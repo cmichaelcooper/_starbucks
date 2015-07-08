@@ -1,0 +1,81 @@
+﻿@using solutions.starbucks.Model
+@using System.Web.Mvc.Html
+@using solutions.starbucks.web.Controllers
+@using solutions.starbucks.Model
+@using solutions.starbucks.Model.Pocos
+@using Umbraco.Web
+@model BagViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bag">
+    <section>
+        <div class="inner-container">
+            <div class="clear">
+                <h1>Thank You.</h1>
+                <p><strong>Your order number is: @(Model.Order.OrderNumber)</strong></p>
+                <p>If you have a question about your order status or wish to track your order, please contact Starbucks customer service at 1-800-344-1575, option 2. If you ordered marketing materials, they will be shipped to you separately. </p>
+                <a class="btn btn-white" href="/products">CONTINUE SHOPPING</a>
+            </div>
+
+            <div class="bag-contents">
+                <div class="h1">Order Summary</div>
+                @if (Model.SelectedCustomerSite != null)
+                {
+                    <div class="bag-shopping-for">
+                        <div class="x28">Shipping to: <strong>@(Model.SelectedCustomerSite.DisplayName)</strong></div>
+                    </div>
+                }
+                @for (int i = 0; i < Model.Order.OrderItems.Count; i++)
+                {
+                    OrderItems orderItem = Model.Order.OrderItems[i];
+                    <div class="row order-item">
+                        <div class="col col1">
+                            <img src="@(orderItem.ThumbImgURL)" />
+                        </div>
+                        @if (!orderItem.IsMarketing)
+                        {
+                            <div class="col col2">
+                                <h3><a class="dotted-link" href="@(orderItem.ProductURL)">@orderItem.Name »</a></h3>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col col2">
+                                <h3>@orderItem.DisplayName</h3>
+                            </div>
+                        }
+                        <div class="col col3">
+                            @if (!string.IsNullOrEmpty(orderItem.Size))
+                            {
+                                <div><strong>SIZE</strong> @(orderItem.Size)</div>
+                            }
+                            <div>
+                                <strong>SKU</strong>
+                                @(orderItem.SKUNumber)
+                                @Html.HiddenFor(x => x.Order.OrderItems[i].SKUNumber)
+                            </div>
+                            @if (!string.IsNullOrEmpty(orderItem.UOM))
+                            {
+                                <div><strong>PACK</strong> @(orderItem.UOM)</div>
+                            }
+                        </div>
+                        <div class="col col4">
+                            <strong>QTY</strong>
+                            <span>@(orderItem.Quantity)</span>
+                        </div>
+                    </div>
+                }
+                <div class="grouping purchase-order-no">
+                    <label><span class="field-label">Purchase Order Number</span></label>
+                    @(Model.Order.PurchaseOrderNumber)
+                </div>
+            </div>
+            <a class="btn btn-white" href="/products">CONTINUE SHOPPING</a>
+            <div class="clear"></div>
+        </div>
+    </section>
+</div>
+
+@Html.Partial("~/Views/Partials/_LoggedInFooter.cshtml")

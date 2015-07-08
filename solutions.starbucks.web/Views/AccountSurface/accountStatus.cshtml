@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using solutions.starbucks.Model
+@model CustomerAttributesViewModel
+@{
+    Layout = "Master.cshtml";
+}
+
+
+
+
+@foreach (var test in Model.Customer)
+{
+    <h2>@test.AccountId</h2>
+    <h2>@test.AccountName</h2>
+}

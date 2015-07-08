@@ -1,0 +1,47 @@
+#registration-required { background-color: #fff;
+
+	#site-wrapper {
+
+		#site-switcher { height: 150px; background-color: #000;
+
+			@include media($mobile) { height: 100px; }
+		}
+
+		#content { background-color: #fff;
+
+			.legal-topic { display: none; }
+
+			.legal-content { background: #fff;
+
+				.inner-wrapper {
+
+					.lockdown { @include clearfix; display: table; width: 70%; margin-top: 30px; margin-bottom: 50px;
+
+						@include media($sub-desktop) { width: 100%; }
+						@include media($mobile) { display: block; margin-top: 40px; margin-bottom: 20px; }
+						
+						> div { display: table-cell; width: 50%;
+
+							@include media($tablet) { float: left; width: 240px; }
+							@include media($mobile) { display: block; }
+							@include media($big-mobile) { float: left; }
+							@include media($small-mobile) { width: 100%; }
+						}
+						.btn-light { margin-left: 0;
+
+							@include media($mobile) { display: block; margin: 0 auto 20px auto; }
+							@include media($big-mobile) { width: 90%; }
+						}
+					}
+
+					.module-video-wrapper { @include clearfix; float: none; position: relative; width: 100%; height: 0; padding-bottom: 56.25%; margin: 0 auto;
+
+						iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+					}
+				}
+			}
+		}
+
+		.lead-bar { display: none; }
+	}
+}

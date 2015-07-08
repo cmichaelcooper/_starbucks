@@ -1,0 +1,18 @@
+#government-military #site-wrapper #content {
+
+	.textpage-title { width: 530px; }
+	.textpage-subtitle { white-space: nowrap; }
+
+	.body-content {
+
+		article {
+
+			section { background-image: url(../img/gnm-body.png); }
+		}
+	}
+	
+	h1 {
+
+		@include media($tablet){ width: 40%; }
+	}
+}

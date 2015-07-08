@@ -1,0 +1,279 @@
+#yearroundicedcoffee #site-wrapper #content .body-content article section,
+#yearroundblendedbeverages #site-wrapper #content .body-content article section,
+#yearroundfrappuccinoblendedbeverages #site-wrapper #content .body-content  article section,
+#yearroundtazotea #site-wrapper #content .body-content article section {
+
+
+	h2.overview-title { font-size: 46px;
+
+		@include media($mobile) { font-size: 28px; }
+	}
+
+	ul {padding: 0;}
+
+	ul li a { border-bottom: 1px dotted #000; font-size: 14px;
+
+		&.light { border-bottom: 1px dotted #fff; color: #fff; }
+	}
+
+
+
+}
+
+.year-round-program-tiles {
+	.tile-content { top: 44px; width: 420px; padding: 0 55px 0 55px;
+
+		@include media($mobile) { padding-left: 10px; padding-right: 10px; }
+	}
+	.tile-content p {line-height: 16px;}
+	.tile-content .tile-title {text-align: center;}
+	.tile-content .tile-title.text-left {text-align: left;}
+}
+
+.tile-content {
+
+	&.iced-coffee-starter-kit, &.fontana-blended-beverage-starter-kit { top: 100px; width: 440px;
+
+		@include media($big-mobile) { top: 50px; padding: 0 20px; }
+		@include media($small-mobile) { top: 20px; padding: 0 20px; }
+	}
+	&.supporting-iced-products, &.iced-coffee-view-all, &.frappuccino-coffee-kit { top: 50px;
+
+		@include media($small-mobile) { top: 20px; }
+	}
+}
+
+.remover {
+
+	&.year-round-program { top: -57px;
+
+		@include media($mobile) { top: 0; }
+	}
+}
+
+
+// All Products Page Styles
+
+#yearroundicedcoffeeproducts,
+#yearroundblendedbeveragesproducts,
+#yearroundfrappuccinoblendedbeveragesproducts,
+#yearroundtazoteaproducts {
+
+	#site-wrapper {
+
+		#content { padding-top: 168px; }
+	}
+}
+
+.supporting-product { display: none; }
+
+
+// Joyride tip top arrow nub placement
+
+#yearroundicedcoffee,
+#yearroundblendedbeverages,
+#yearroundfrappuccinoblendedbeverages,
+#yearroundtazotea {
+
+	.joyride-tip-guide {
+
+	    @include media($big-mobile) {
+	        width: 280px;
+	    }
+	    @include media($small-mobile) {
+	        width: 75%;
+	    }
+
+	    &[data-index="0"] {
+
+	        @include media($tablet){
+	            width: 310px;
+	        }
+	        @include media($big-mobile){
+	            left: auto; right: 20px;
+	        }
+	        @include media($small-mobile){
+	            left: auto; right: 20px;
+	        }
+	        
+	        .joyride-nub {
+
+	            @include media($big-mobile) {
+	                left: auto; right: 123px;
+	            }
+	            @include media($small-mobile) {
+	                right: 200px;
+	            }
+	        }
+	    }
+	    &[data-index="1"] {
+
+	        @include media($big-mobile) {
+	            left: auto;
+	            right: 20px;
+	        }
+	        @include media($small-mobile) {
+	            left: 40px;
+	        }
+	        
+	        .joyride-nub {
+
+	            @include media($big-mobile) {
+	                left: 115px;
+	            }
+	            @include media($small-mobile) {
+	                right: 100px;
+	                left: auto;
+	            }
+	        }
+	    }
+	    &[data-index="2"] {
+
+	        @include media($tablet){
+	            width: 310px;
+	        }
+	        @include media($big-mobile) {
+	            left: auto;
+	            right: 20px;
+	        }
+	        @include media($small-mobile) {
+	            left: 20px;
+	        }
+	        
+	        .joyride-nub {
+
+	            @include media($big-mobile) {
+	                left: 115px;
+	            }
+	            @include media($small-mobile) {
+	                right: 80px;
+	                left: auto;
+	            }
+	        }
+	    }
+	    &[data-index="3"] {
+
+	        @include media($tablet){
+	            width: 310px;
+	        }
+	        @include media($big-mobile) {
+	            left: auto;
+	            right: 20px;
+	        }
+	        @include media($small-mobile) {
+	            left: 30px;
+	        }
+	        
+	        .joyride-nub {
+
+	            @include media($big-mobile) {
+	                left: 115px;
+	            }
+	        }
+	    }
+	    &[data-index="4"] {
+
+	        @include media($desktop){
+	            margin-left: -20px;
+	        }
+	        @include media($tablet){
+	            width: 310px;
+	        }
+	        @include media($big-mobile) {
+	            left: 80px;
+	        }
+	        @include media($small-mobile) {
+	            left: 65px;
+	        }
+	        
+	        .joyride-nub {
+
+	            @include media($big-mobile) {
+	                left: 20px;
+	            }
+	            @include media($small-mobile) {
+	                right: 37px;
+	            }
+	        }
+	    }
+	    &[data-index="5"] {
+
+	        @include media($tablet){
+	            width: 310px;
+	        }
+	        @include media($big-mobile) {
+	            left: 160px;
+	        }
+	        @include media($small-mobile) {
+	            left: 20px;
+	        }
+	        
+	        .joyride-nub {
+
+	            @include media($big-mobile) {
+	                left: 20px;
+	            }
+	            @include media($small-mobile) {
+	                left: 20px;
+	            }
+	        }
+	    }
+	    &[data-index="6"] {
+
+	        @include media($tablet){
+	            width: 280px;
+	        }
+	        @include media($big-mobile) {
+	            left: 50%; margin-left: -140px;
+	        }
+	        @include media($small-mobile) {
+	            left: 20px;
+	        }
+	        
+	        .joyride-nub {
+
+	            @include media($big-mobile) {
+	                left: auto; right: 33%;
+	            }
+	            @include media($small-mobile) {
+	                left: 20px;
+	            }
+	        }
+	    }
+	    &[data-index="7"] {
+
+	        @include media($tablet){
+	            width: 430px;
+	        }
+	        @include media($big-mobile) {
+	            left: 50%; margin-left: -140px;
+	        }
+	        @include media($small-mobile) {
+	            left: 20px;
+	        }
+	        
+	        .joyride-nub {
+
+	            @include media($big-mobile) {
+	                left: 20px;
+	            }
+	            @include media($small-mobile) {
+	                left: 20px;
+	            }
+	        }
+	    }
+	    &[data-index="8"] {
+
+			@include media($tablet) { left: 20px; }
+	        @include media($big-mobile) { left: 117px; }
+	        
+	        .joyride-nub {
+
+	            @include media($big-mobile) {
+	                left: auto;
+	                right: 20px;
+	            }
+	        }
+	    }	       
+	}
+}

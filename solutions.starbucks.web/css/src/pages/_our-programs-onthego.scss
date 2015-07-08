@@ -1,0 +1,59 @@
+#on-the-go #site-wrapper #content {
+
+	.body-content {
+
+		article { background: #fff;
+
+			section { background-image: url(../img/otg-body.png); }
+		}
+	}
+	.support-content { background: #fff;
+
+		.otg-product-list {
+
+			li { background-image: none; background-color: transparent; }
+		}
+		
+		.signature { background: #e4e2de;
+
+			section { padding: 80px 400px 80px 20px; background: url(../img/otg-support.png) no-repeat; background-position: right center;
+
+				@include media($tablet) { padding: 60px 200px 80px 20px; width: 100%; background: url(../img/otg-support-mobile.png) no-repeat; background-position: 355px center; }
+				@include media($mobile) { padding-top: 20px; padding-right: 20px; padding-bottom: 85%; width: 100%; background: url(../img/otg-support-mobile.png) no-repeat; background-size: 100%; background-position: center bottom; }
+
+				&.ca-en, &.ca-fr { background-image: url(../img/otg-support-bil.jpg);
+
+					@include media($sub-desktop) { background-image: url(../img/otg-support-mobile-bil.jpg); }
+				}
+
+				h2 { margin-bottom: 20px; }
+				p { width: 70%;
+
+					@include media($tablet) { width: 50%; }
+					@include media($mobile) { width: 100%; }
+
+					a { color: rgb(34, 34, 34); @include fonts-heavy;
+
+						&:hover { color: $light-gray; @include fonts-heavy; }
+					}
+				}
+			}
+		}
+		.core {  background: rgb(255, 255, 255);
+
+			section { margin: 0 auto; padding: 40px 20px 20px 20px; width: 960px; color: #000;
+
+				@include media($sub-desktop) { width: 100%; }
+				@include media($tablet) { padding: 20px 20px 20px 250px; background-size: 270px; background-position: left 20px; }
+				@include media($mobile) { padding: 20px !important; background: none; }
+			}
+		}
+		.bottom-edger { height: 100px; background: rgb(246, 246, 246) url(../img/espresso-bottom-edger.png) no-repeat; background-size: 1000px; background-position: center bottom;
+
+			@include media($tablet){ height: 80px; background-size: 810px; }
+			@include media($mobile) { height: 60px; }
+			@include media($big-mobile){ background-size: 100%; }
+			@include media($small-mobile){ background-size: 480px; }
+		}
+	}
+}

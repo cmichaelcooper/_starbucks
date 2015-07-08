@@ -1,0 +1,28 @@
+.textpage #site-wrapper #content {
+
+	article.tazo { background: rgb(208,214,221);
+
+		section { padding: 210px 39px 60px 220px; height: 370px; background: url(../img/tazo-support-two-column.png) no-repeat; background-position: left center;
+
+			@include media($tablet) {
+				padding-top: 20px; padding-left: 20px; padding-bottom: 18%; height: 340px; background: url(../img/tazo-support-two-column-mobile.png) no-repeat; background-position: center bottom; background-size: 100%;
+			}
+			@include media($big-mobile) {
+				padding-top: 20px; padding-left: 20px; padding-bottom: 18%; height: 340px; background: url(../img/tazo-support-two-column-mobile.png) no-repeat; background-position: center bottom; background-size: 100%;
+			}
+			@include media($small-mobile) {
+				padding-top: 20px; padding-left: 20px; padding-bottom: 25%; height: 310px; background: url(../img/tazo-support-two-column-mobile.png) no-repeat; background-position: center bottom; background-size: 100%;
+			}
+
+			p { margin: .75em 0 .5em 0; line-height: 1.5em;
+
+				@include media ($tablet) {
+					width: 60%;
+				}
+				@include media ($big-mobile) {
+					width: 250px;
+				}
+			}
+		}
+	}
+}

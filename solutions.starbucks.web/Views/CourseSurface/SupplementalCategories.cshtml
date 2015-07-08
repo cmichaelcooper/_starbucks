@@ -1,0 +1,113 @@
+﻿@using solutions.starbucks.web.Classes
+@using solutions.starbucks.web.Controllers
+@using solutions.starbucks.Model.Training
+@model solutions.starbucks.Model.Training.SupplementalCategories
+@{
+    ViewBag.Title = "SupplementalCategories";
+    
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+
+    var j = 0;
+    
+}
+
+
+<section class="content-band training-modules">
+
+    <div class="grid-tabs">
+        <ul>
+            @for (int i = 0; i < Model.Categories.Count(); i += 1)
+            {
+                var category = @Model.Categories[i];
+                <li data-category="@category.Name.ToLower()" class="@(i == 0 ? "active" : string.Empty)">@category.Name</li>
+            }
+        </ul>
+
+    </div>
+    <div id="training-modules" class="catalog-grid inner-container">
+
+        <section>
+
+            @foreach (var category in Model.Categories)
+            {
+                    
+                foreach (Module module in Model.Modules.Where(m => m.CategoryNames.Contains(category.Name)))
+                {
+                    <div class="catalog-grid__item" data-category="@category.Name.ToLower()" style="display: block;">
+
+                        <div class="inner-wrapper">
+
+                            @if (module.Type == Module.Types.Pdf)
+                            {
+                                <a href="@module.Pdf.FileChooser" target="_blank">
+                                    <img src="/img/icon-pdf-download.png">
+                                </a>
+
+                            }
+                            else if (module.Type == Module.Types.Video)
+                            {
+                                <a href="#" data-reveal-id="videoModal_@j">
+                                    <img src="/img/icon-play-video.png">
+                                </a>
+                            }
+
+                            <div class="catalog-item__desc">
+
+                                <div class="catalog-item__title">
+                                    <h3>@module.Title</h3>
+                                </div>
+
+                                <div class="catalog-item__short-desc">
+                                    <p>@module.ShortDescription</p>
+                                </div>
+
+                            </div>
+
+                            <div class="catalog-item__buttons">
+                            @if (module.Type == Module.Types.Pdf)
+                            {
+                                    
+                                <a href="@module.Pdf.FileChooser" class="btn" target="_blank">Download Pdf</a>
+                                
+                                if( module.Pdf.SpanishFileChooser != null )
+                                {
+                                <a href="@module.Pdf.SpanishFileChooser" class="download-pdf-text" target="_blank">Descargar PDF en Español &raquo;</a>
+                                }
+
+                            }
+                            else if (module.Type == Module.Types.Video)
+                            {
+                                    
+                                <a href="#" class="btn desktop-video-link" data-reveal-id="videoModal_@j">Watch Video</a>
+                                <a href="http://player.vimeo.com/video/@(module.Video.VideoEmbed)" target="_blank" class="btn mobile-video-link">Watch Video</a>
+                                    
+                            }
+                            </div>
+                        </div>
+                    </div>
+                    if (module.Type == Module.Types.Video)
+                    {
+                    <div id="videoModal_@j" class="reveal-modal trainingVideoModal" data-reveal>
+                          <iframe src="//player.vimeo.com/video/@(module.Video.VideoEmbed)?api=1&player_id=video-player_@j" id="video-player_@j" width="960" height="540" frameborder="0" class="training-grid-video" ></iframe>
+                      <a class="close-reveal-modal">&#215;</a>
+                    </div>
+                    }
+                    j++;      
+                }
+              
+            }
+                
+            <div class="clear"></div>
+        </section>
+    </div>
+
+</section>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SBS.TrainingFunctionality();
+        });
+    </script>
+}

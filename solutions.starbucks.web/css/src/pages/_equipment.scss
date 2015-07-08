@@ -1,0 +1,230 @@
+#equipment {
+    background-color: #F4F4F4;
+
+    header {
+        background-image: url(../img/equipment-header.jpg);
+
+        @include media($tablet) {
+            background-image: url(../img/equipment-header-1100.jpg);
+        }
+
+        @include media($big_mobile) {
+            background-image: url(../img/equipment-header-767.jpg);
+        }
+
+        @include media($small-mobile) {
+            background-image: url(../img/equipment-header-479.jpg);
+        }
+    }
+
+    .body-content {
+        @include fonts-book;
+        background: url(../img/equipment/overview.jpg) no-repeat bottom center;
+        color: #FFF;
+        height: 520px;
+        overflow: hidden;
+
+        @include media($small-mobile) {
+            background: url(../img/equipment/overview-wood.jpg) repeat center bottom;
+            height: auto;
+        }
+
+        article {
+            display: block;
+            margin: 0 auto;
+            position: relative;
+            max-width: 960px;
+        }
+
+        section {
+            display: block;
+            padding: 0 10px 15px 41%;
+
+            @include media($small-mobile) {
+                padding: 20px 20px 40px;
+            }
+        }
+
+        h2 {
+            @include fonts-light;
+            font-size: 48px;
+            font-weight: normal;
+            line-height: 1em;
+            padding-top: 70px;
+
+            @include media($tablet-portrait) {
+                font-size: 2.5em;
+            }
+
+            @include media($mobile) {
+                font-size: 1.5em;
+            }
+
+            @include media($small-mobile) {
+                padding-top: 20px;
+            }
+        }
+
+        ul.reverse {
+            padding-left: 20px;
+
+            li {
+                background: url(../img/list-ndash-white.gif) no-repeat left 8px;
+                line-height: 1.2em;
+                margin-top: 10px;
+                padding-left: 14px;
+            }
+        }
+
+        .orange {
+            color: #CD7429;
+        }
+    }
+
+    .equipment-promo {
+        background: #CDDDDB;
+
+        section {
+            display: block;
+            margin: 0 auto;
+            padding: 25px 10px 25px 25px;
+            position: relative;
+            max-width: 1024px;
+
+            @include media($mobile) {
+                padding: 25px;
+            }
+
+            @include media($big-mobile) {
+                text-align: center;
+            }
+
+            h2 {
+                @include fonts-light;
+                font-size: 48px;
+                font-weight: normal;
+                line-height: 1em;
+                padding-top: 100px;
+
+                @include media($tablet-portrait) {
+                    font-size: 2.5em;
+                }
+
+                @include media($mobile) {
+                    font-size: 2em;
+                    padding-top: 0;
+                }
+            }
+
+            p {
+                @include media($big-mobile) {
+                    text-align: left;
+                }
+            }
+
+            img {
+                float: right;
+                margin-right: -10px;
+                max-width: 100%;
+
+                @include media($mobile) {
+                    float: none;
+                    display: block;
+                    max-height: 300px;
+                    margin: 0 auto 20px;
+                }
+            }
+
+            a {
+                @include fonts-med;
+                background: #FFF;
+                border-radius: 5px;
+                border: 1px solid #3F4042;
+                color: #3F4042;
+                font-size: 14px;
+                font-weight: normal;
+                letter-spacing: 1px;
+                margin: 1em auto 0;
+                padding: 7px 10px 6px;
+                text-align: center;
+                text-transform: uppercase;
+                -moz-transition: all 0.3875s linear 0s;
+                -webkit-transition: all 0.3875s linear 0s;
+                transition: all 0.3875s linear 0s;
+
+                @include media($small-mobile) {
+                    display: block;
+                    width: 220px;
+                }
+
+                &:hover {
+                    background-color: #ededed;
+                }
+            }
+        }
+    }
+
+    .support-content {
+        background: #FFF;
+    }
+
+    .product-v2 {
+        .dotted-link {
+            border-bottom-color: #3d3935;
+            color: #3d3935;
+            margin-top: 15px;
+        }
+    }
+
+    .desktop-video-link {
+        @include media($sub-desktop) {
+            display: none;
+        }
+    }
+
+    .mobile-video-link {
+        display: none;
+
+        @include media($sub-desktop) {
+            display: block;
+        }
+    }
+
+    .contact-your-rep {
+        @include fonts-med;
+        border-radius: 5px;
+        border: 1px solid #383635;
+        color: #383635;
+        font-size: 14px;
+        font-weight: normal;
+        letter-spacing: 1px;
+        padding: 10px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+
+.equipment-icons-sprite {
+    height: 134px !important;
+    width: 107px !important;
+}
+
+.equipment-icons-brewing {
+    background: url(../img/equipment-icons/brewing.png) no-repeat 0 0;
+}
+
+.equipment-icons-espresso {
+    background: url(../img/equipment-icons/espresso.png) no-repeat 0 0;
+}
+
+.equipment-icons-water {
+    background: url(../img/equipment-icons/water.png) no-repeat 0 0;
+}
+
+.equipment-icons-remanufactured {
+    background: url(../img/equipment-icons/remanufactured.png) no-repeat 0 0;
+}
+
+.equipment-icons-videos {
+    background: url(../img/equipment-icons/videos.png) no-repeat 0 0;
+}

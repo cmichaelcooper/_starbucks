@@ -1,0 +1,85 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "~/Views/Master.cshtml";
+}
+
+<section id="equipment">
+    <header class="abspos-header">
+        <h1 class="abspos-header__title light">EQUIPMENT</h1>
+        <p class="light">Explore your equipment options and find what’s right for your operation.</p>
+    </header>
+    <div class="catalog-back">
+        <a class="dotted-link alt" href="/equipment">« Back to Equipment</a>
+    </div>
+    <div class="filter-summary">
+        <div class="inner-container">
+            <div id="filter-summary">Water Filtration</div>
+        </div>
+    </div>
+    <div class="product-list-v2">
+        <div class="inner-container">
+            <section>
+                @*
+            <div class="product-v2">
+                <div>
+                    <img title="Water Filtration 101" src="/img/equipment/200/icon-pdf-download.jpg" alt="Water Filtration 101">
+                    <div class="product-list-desc">
+                        <h3>Water Filtration 101</h3>
+                        <p>The basics of water filtration.</p>
+                        <a href="/resources/pdf/Water_Filtration_101.pdf" class="btn" target="_blank">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-v2">
+                <div>
+                    <img title="How Often to Change Your Water Filter" src="/img/equipment/200/icon-pdf-download.jpg" alt="How Often to Change Your Water Filter">
+                    <div class="product-list-desc">
+                        <h3>How Often to Change Your Water Filter</h3>
+                        <p>A guide for how often to replace your water filter, based on product type.</p>
+                        <a href="/resources/pdf/1_A_WF_Freq_of_Change_v2.pdf" class="btn" target="_blank">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+                *@
+                <div class="product-v2">
+                    <div>
+                        <img title="Changing Cartridge Style Water Filters" src="/img/equipment/200/icon-pdf-download.jpg" alt="Changing Cartridge Style Water Filters">
+                        <div class="product-list-desc">
+                            <h3>Changing Cartridge Style Water Filters</h3>
+                            <p>Directions for how to remove old cartridges and install new cartridges.</p>
+                            <a href="/resources/pdf/QL%20-%203%20WF%20Card%20-%20Final.pdf" class="btn" target="_blank">Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-v2">
+                    <div>
+                        <img title="Changing Inline Filter with Quick Disconnects" src="/img/equipment/200/icon-pdf-download.jpg" alt="Changing Inline Filter with Quick Disconnects">
+                        <div class="product-list-desc">
+                            <h3>Changing Inline Filter with Quick Disconnects</h3>
+                            <p>Directions for how to remove old filters and install new filters.</p>
+                            <a href="/resources/pdf/WF%20InLine%20Card%20-%20Final.pdf" class="btn" target="_blank">Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-v2">
+                    <div>
+                        <img alt="" src="/img/icon-play-video.png" title="Water Filter Maintenance">
+                        <div class="product-list-desc">
+                            <h3>Water Filter Maintenance</h3>
+                            <p>How to keep your water filter running correctly. </p>
+                            <a data-reveal-id="videoModal_1" class="btn desktop-video-link" href="javascript: void(0);">Watch Video</a>
+                            <a class="btn mobile-video-link" href="http://player.vimeo.com/video/85292322">Watch Video</a>
+                        </div>
+                        <div data-reveal="" class="reveal-modal trainingVideoModal" id="videoModal_1">
+                            <iframe width="960" height="540" frameborder="0" class="training-grid-video" id="videoModal_1" src="//player.vimeo.com/video/85292322?api=1&amp;player_id=video-player_1"></iframe>
+                            <a class="close-reveal-modal">×</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    @Html.Partial("~/Views/Partials/_LoggedInFooter.cshtml")
+</section>
+
+@*<a href="#" class="dotted-link">Descargar PDF en Español &raquo;</a>*@

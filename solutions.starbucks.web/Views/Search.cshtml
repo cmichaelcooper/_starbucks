@@ -1,0 +1,50 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using Examine;
+@{
+    Layout = "Master.cshtml";
+    var query = Request.QueryString["q"];
+    var results = Umbraco.TypedSearch(query, true, null).Where("Visible");
+}
+
+<section id="content">
+    <section class="search-wrapper wrapper">
+        <div>
+            <div class="page-title">Search Results</div>
+            <div class="search-pov">
+                <div class="left">
+                @if (string.IsNullOrEmpty(query)) {
+                    <h4>Please enter a search query</h4>
+                }
+                else {                
+                    <h2>"@query.ToUpper()"</h2>
+                    <text>Displaying @results.Count() results</text>
+                }
+                </div>
+                <form method="get" action="/search" class="search-box">
+                    <input type="text" class="form-control" placeholder="SEARCH" value="" name="q" id="q" />
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            @if (results.Count() > 0) {
+                var i = 0;
+                foreach (var result in results) {
+                    <div class="search-row  @(i % 2 == 0 ? "even" : "odd")">
+                        <h3><a href="@result.Url">@result.Name</a></h3>
+                        @if (result.HasProperty("bodyText") && result.HasValue("bodyText")) {
+                            var bodyText = result.GetProperty("bodyText").Value.ToString();
+                            bodyText = library.StripHtml(bodyText);
+                            bodyText = library.TruncateString(bodyText, 100, "...");
+
+                            @bodyText
+                        }
+                        <a href="@result.UrlWithDomain()" class="view-details">Details &raquo;</a> 
+                    </div>
+                    i++;
+                }
+            }
+        </div>
+    </section>
+</section>
+
+
+            

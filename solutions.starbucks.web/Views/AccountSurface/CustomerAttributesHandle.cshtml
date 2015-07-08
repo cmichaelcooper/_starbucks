@@ -1,0 +1,15 @@
+﻿@using System.Web.Mvc.Html
+@using Umbraco.Web
+@using solutions.starbucks.web.Controllers
+@using solutions.starbucks.Model
+@model CustomerAttributesViewModel
+
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+
+@if (Model != null)
+{
+    <h2>@Model.AccountId</h2>
+}

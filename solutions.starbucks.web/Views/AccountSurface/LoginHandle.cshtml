@@ -1,0 +1,109 @@
+﻿@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@using Umbraco.Web
+@using solutions.starbucks.web.Controllers
+@using solutions.starbucks.Model
+@model LoginViewModel
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+
+
+
+<img class="modal-logo" src="/img/login-modal-logo.png" />
+
+<a class="close-reveal-modal">&#215;</a>
+
+<div id="success"></div>
+           
+
+  @foreach (ModelState modelState in ViewData.ModelState.Values)
+        {
+            var errors = modelState.Errors;
+
+            if (errors.Any())
+            {
+                <div class="error">
+                    <h4>Forgotten password?</h4>
+                    <p>
+                        <a href="/forgotten-password">Click here</a> to recover your password.
+                    </p>
+      
+                    <h4>Not registered?</h4>
+                    <p>
+                        <a href="/register">Click here</a> to register.
+                    </p>
+                </div>
+                <ul>
+                    @foreach (ModelError error in errors)
+                    {
+                        <li>
+                            @error.ErrorMessage
+                        </li>
+                    }
+                </ul>
+            }
+        }
+@*@if (Convert.ToBoolean(Session["VerifiedUser"]))
+{
+    
+}*@
+
+@using (Ajax.BeginForm("ProcessLogin", "AccountSurface", new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnFailure = "ShowError(error)",
+    OnSuccess = "ShowSuccess(data)"
+}, new { id = "loginForm" }))
+{
+   
+    <fieldset>
+       <div class="grouping">
+            @Html.AntiForgeryToken()
+            <label><span class="field-label">Email</span> @Html.ValidationMessageFor(model => model.EmailAddress, string.Empty, new { @class= "help-block" })</label>
+            @Html.TextBoxFor(model => model.EmailAddress, new { @class="text input", placeholder="Email Address", tabindex="1", type="email" })
+            <p class="small mT-4"><a href="/forgot-account">Forgot your email? &raquo;</a></p>
+        </div>
+        <div class="grouping">
+            <label><span class="field-label">Password</span> @Html.ValidationMessageFor(model => model.Password, string.Empty, new { @class= "help-block" })</label>
+            @Html.PasswordFor(model => model.Password, new { @class="text input", placeholder="Password", tabindex="2" })
+            <p class="small mT-4"><a href="/forgotten-password" data-reveal-id="forgotPassModal" class="close-current" data-reveal-ajax="true">Forgot your password? &raquo;</a></p>
+        </div>
+        <div id="error"></div>
+        @if (Convert.ToBoolean(TempData["VerifyUserCreds"]))
+        {
+             @Html.Action("RenderEmailVerification", "AccountSurface")   
+        }
+        <div class="buttons">
+            <div class="left">
+                <p class="small">
+                    <a href="/register/">Register Now &raquo;</a>
+                    <a href="http://starbucksfs.com/Leadform">Become a Customer &raquo;</a>
+                </p>
+            </div>
+            <div class="right">
+                @Html.Hidden("ReturnUrl", Request.Url )
+                @* TODO: determine why the ReturnUrl get variable is not populating *@
+                @if (!Request.Url.ToString().Contains("login"))
+                {
+                    
+                } 
+                else 
+                {
+                    @Html.Hidden("ReturnUrl", "/" )   
+                }
+                <input type ="submit" class="button" value="Sign In" id="submit" />
+                <span class="loading">
+                    @* <i class="fa fa-circle-o-notch fa-spin"></i> *@
+                    <img src="/img/form-icons/loading.gif" width="16" height="16" /> <span class="text">Loading...</span>
+                </span>
+                <div class="remembered">
+                    <input id="RememberMe" name="RememberMe" type="checkbox" value="true">
+                    <label for="RememberMe"><span id="custom-checkbox"></span> Stay Signed In</label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+}

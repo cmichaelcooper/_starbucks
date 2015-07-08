@@ -1,0 +1,13 @@
+@import "compass";
+@import "compass/reset";
+
+/* Sprites */
+$brandsIcons: sprite-map("brands-icons/*.png"); // def
+$channelIcons: sprite-map("channel-icons/*.png"); // def
+$platformsIcons: sprite-map("platforms-icons/*.png"); // def
+$formIcons: sprite-map("form-icons/*.png"); // def
+$programsIcons: sprite-map("programs-icons/*.png"); // def
+$productsIcons: sprite-map("products/icons/*.png"); // def
+
+@import "form-icons/*.png";
+@include all-form-icons-sprites;

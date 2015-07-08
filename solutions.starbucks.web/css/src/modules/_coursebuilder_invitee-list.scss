@@ -1,0 +1,218 @@
+.training-invites { background-color: #fff; }
+
+.trainee-invite-form { @include clearfix; display: block; padding: 10px;
+
+	.trainee-invite-group label { display: none; }
+	li { display: block; float: left; }
+	.trainee-invite-group { width: 25%;
+
+		&.submit { width: 50%;
+
+			.form-submit { @include training-invite-btn; float: right; background-color: #5c223f; color: #fff;
+
+				&:hover { background-color: #8E6681; }
+			}
+		}
+	}
+}
+
+.form-input { @include form-fundamental; width: 95%; }
+
+.training-invite-label { display: none; }
+
+.invite-form-errors { padding: 10px; }
+
+// .training-progress { background-color: #fff; }
+
+
+
+.training-invites-labels { @include clearfix; display: table; width: 100%; padding: 0 4px 4px 4px; background-color: #383735;
+
+	@include media($tablet-portrait) { @include clearfix; padding: 0 0 4px 0; }
+
+	> div { float: left; display: block; vertical-align: middle; margin: 0; padding: 0; color: #fff; @include fonts-heavy; font-size: 16.5px; }
+}
+.training-invites-labels-accordion-toggle { width: 40px;
+
+	@include media($tablet-portrait) { width: 50px; }
+}
+.training-invites-labels-name { width: 285px;
+
+	@include media($tablet-portrait) { width: 165px; }
+}
+.training-invites-labels-email { width: 275px;
+
+	@include media($tablet-portrait) { width: 210px; }
+}
+.training-invites-labels-access { width: 130px;
+
+	@include media($tablet-portrait) { width: 70px; }
+}
+.training-invites-labels-progress { width: 130px; }
+.training-invites-labels-buttons { width: 150px; }
+
+.training-invites-report { display: table; width: 100%; margin: 0; padding: 0; }
+
+.training-invites-report-record { @include clearfix;
+
+	&:nth-child(even) { background-color: #f2f2f2; }
+}
+.training-invites-report-record-wrapper { position: relative; display: table; width: 100%; padding: 10px;
+
+	& > div { display: table-cell; vertical-align: middle; margin: 0; padding: 0; }
+	.training-invite-delete { display: inline-block; width: 40px;
+
+		@include media($big-mobile) { @include clearfix; width: 10%; }
+	}
+}
+.training-invites-accordion-toggle { cursor: pointer; width: 40px; height: 40px;
+
+	@include media($big-mobile) { width: 10%; }
+
+	.training-drawer-open { width: 100%; height: 100%; background-image: url(../img/expander-caret.png); background-repeat: no-repeat; background-position: center center;
+
+		@include media($big-mobile) { background-position: left center; }
+	}
+	.training-drawer-close { width: 100%; height: 100%; background-image: url(../img/expander-caret-active.png); background-repeat: no-repeat; background-position: center center; }
+}
+.training-invites-name { width: 280px; @include fonts-light; font-size: 19px;
+
+	@include media($tablet-portrait) { width: 160px; font-size: 16px; }
+	@include media($big-mobile) { width: 80%; }
+}
+.training-invites-email { @include fonts-med; font-size: 16px;
+
+	@include media($tablet-portrait) { display: inline-block; overflow: hidden; width: 195px; font-size: 14px; }
+}
+.training-invites-access { width: 130px; @include fonts-light; font-size: 19px;
+
+	@include media($tablet-portrait) { width: 70px; font-size: 16px; }
+}
+.training-invites-progress-bar { width: 130px;
+
+	@include media($tablet-portrait) { width: 100px; }
+	@include media($mobile) { display: table; }
+}
+.training-mobile-title { display: table-cell;
+
+	&:before { cursor: pointer; display: block; width: 40px; height: 40px; background-image: url(../img/expander-caret.png); background-repeat: no-repeat; background-position: center center; }
+}
+.trainee-progress-bar { width: 96px; height: 15px; padding: 0; border: solid 1px #bcb7b8; border-radius: 7px; overflow: hidden;
+
+	@include media($mobile) { display: block; min-width: 160px; width: 100%; max-width: 400px; }
+
+	.trainee-progress-bar-fill { background-color: #6D953E; height: 100%; }
+}
+
+.trainee-delete { position: absolute; right: 0; top: 0; width: 468px; height: 100%; background-color: #cfcece;
+
+	@include media($mobile) { width: 100%; }
+
+	.trainee-delete-message { display: inline-block; margin-top: 18px; margin-left: 45px; @include fonts-light; font-size: 19px;
+
+		@include media($mobile) { margin-left: 20px; font-size: 16px; }
+	}
+	.trainee-delete-confirm { @include training-invite-btn; width: 100px; margin-left: 24px; margin-right: 6px; border-color: #dfdede; background-color: #5c223f; color: #fff;
+
+		@include media($mobile) { width: 70px; margin-left: 10px; font-size: 11px; }
+
+		&:hover { background-color: #8E6681; }
+	}
+	.trainee-delete-cancel { @include light-button; width: 100px; padding: 10px; font-size: 13px;
+
+		@include media($mobile) { width: 70px; font-size: 11px; }
+	}
+}
+
+.training-invites-resend { position: absolute; right: 0; top: 0; width: 468px; height: 100%; background-color: #cfcece;
+
+	@include media($mobile) { width: 100%; }
+
+	.invite-resend-message { display: inline-block; float: left; margin-top: 11px; margin-left: 31px; @include fonts-light; font-size: 19px;
+
+		@include media($mobile) { margin-top: 23px; margin-left: 20px; }
+	}
+}
+
+.training-invites-report-record-drawer { @include transition-fix(all, $anim-dur, linear); @include clearfix; display: table; width: 100%; border-top: 1px solid #a8a8a8;
+
+	.training-invite-detail { display: table; width: 100%; padding: 10px; border-bottom: 1px solid #e8e8e8;
+
+		.drawer-toggle { display: table-cell; vertical-align: middle; width: 40px; height: 20px;
+
+			.progress-drawer-open { width: 100%; height: 100%; background-image: url(../img/expander-caret.png); background-repeat: no-repeat; background-position: center center; }
+			.progress-drawer-close { width: 100%; height: 100%; background-image: url(../img/expander-caret-active.png); background-repeat: no-repeat; background-position: center center; }
+		}
+		.label { display: table-cell; vertical-align: baseline; width: 25%; max-width: 150px; padding: 15px 20px 15px 40px; @include fonts-heavy; font-size: 14px; text-transform: uppercase;
+
+			&.progress { padding-left: 0; }
+		}
+		.value { display: table-cell; vertical-align: baseline; max-width: 100%; font-size: 16px;
+
+			&.heavy { @include fonts-heavy; }
+		}
+	}
+}
+.training-invites-progress-report-drawer { @include transition-fix(all, $anim-dur, linear); overflow: hidden; /*max-height: 0;*/
+
+	&.expanded {
+
+		@include media($mobile) { max-height: 2000px; }
+	}
+}
+.training-progress-report { width: 100%; margin: 0; padding: 0; }
+.training-topic { display: block; width: 100%; padding: 20px 0; border-bottom: 1px solid #e8e8e8; }
+.training-report-header { display: block; width: 100%;
+
+	@include media($mobile) { display: block; width: 100%; padding-left: 50px; }
+
+	.topic-name {
+
+		@include media($mobile) { display: inline-block; float: left; color: #245557; @include fonts-heavy; font-size: 16px; }
+	}
+	.quiz-report-title {
+
+		@include media($mobile) { display: inline-block; float: none; font-size: 18px; }
+	}
+}
+.training-topic-name { display: inline-block; vertical-align: middle; width: 220px; padding-left: 40px; color: #245557; @include fonts-heavy; font-size: 19px;
+
+	@include media($mobile) { display: block; width: 100%; }
+}
+.training-topic-quiz-report { display: inline-block; vertical-align: middle;
+
+	@include media($mobile) { @include clearfix; display: block; width: 100%; }
+}
+.quiz-report-inner-wrapper { @include clearfix; width: 100%; }
+.quiz-results { float: left; margin-right: 10px; color: #3d3935; @include fonts-light; font-size: 19px;
+
+	@include media($mobile) { margin-left: 10px; font-size: 16px; }
+}
+.quiz-report-title { float: left; margin-right: 10px; color: #3d3935; @include fonts-light; font-size: 19px;
+
+	@include media($mobile) { margin-left: 50px; font-size: 16px; }
+}
+.training-topic-quiz-report-list { float: left; display: table; vertical-align: middle; margin: 0; padding: 0; }
+.training-topic-quiz-question { display: table-cell; vertical-align: middle; padding-right: 10px;
+
+	.question-number { display: inline-block; vertical-align: middle; color: #3d3935; @include fonts-heavy; font-size: 19px; }
+	> i { display: inline-block; vertical-align: middle; font-size: 18px; }
+}
+.training-invites-buttons { position: relative; width: 150px; text-align: right;
+
+	@include media($mobile) { width: 100%; padding: 15px 20px; }
+}
+.training-invites-reinvite { @include light-button; vertical-align: middle;
+
+	@include media($tablet-portrait) { font-size: 14px; }
+	@include media($mobile) { width: 100%; }
+}
+.training-invites-delete { display: inline-block; vertical-align: middle; width: 40px; height: 40px; border: none; background-color: transparent; background-image: url(../img/trainee-delete.png); background-repeat: no-repeat; background-position: center center;
+
+	&:hover { background-image: url(../img/trainee-delete-hover.png); }
+}
+
+
+.fa-thumbs-up { color: $training-green; }
+.fa-thumbs-down { color: $training-red; }
+.fa-circle-o { color: $light-gray; }

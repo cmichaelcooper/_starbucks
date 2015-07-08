@@ -1,0 +1,132 @@
+.training__header { background-image: url(../img/backgrounds/desktop/training-landing-header.jpg);
+
+	@include media($tablet) { background-image: url(../img/backgrounds/tablet/training-landing-header-tablet.jpg); }
+	@include media($big-mobile) { background-image: url(../img/backgrounds/mobile-landscape/sbs_training_mobile_header_landscape.jpg); }
+	@include media($small-mobile) { background-image: url(../img/backgrounds/mobile-portrait/sbs_training_mobile_header_portrait.jpg); }
+}
+
+.training-overview { background-color: #343434;
+
+	.inner-wrapper { height: 340px; padding: 50px 260px 0 0; background-image: url(../img/training-overview.png); background-repeat: no-repeat; background-position: right center;
+
+		@include media($tablet-landscape) { padding-left: 20px; padding-right: 310px; background-position: right 110px center; }
+		@include media($tablet-portrait) { padding-left: 20px; padding-right: 190px; background-position: right 20px center; }
+		@include media($mobile) { height: auto; padding: 20px 20px 200px 20px; background-position: center bottom -55px; }
+
+		.overview-title {
+
+			@include media($tablet-portrait) { letter-spacing: -.02em; }
+			@include media($mobile) { font-size: 24px; }
+
+			em { @include fonts-lightobl; }
+		}
+
+		p { padding-right: 100px;
+
+			@include media($mobile) { padding-right: 0; font-size: 14px; }
+		}
+	}
+}
+
+.overview__training { background-image: url(../img/backgrounds/course_builder_overview_background.jpg); background-repeat: no-repeat; background-position: center center;
+
+	@include media($tablet) { background-image: url(../img/backgrounds/course_builder_overview_background_tablet.jpg); background-position: left center; }
+	@include media($big-mobile) { height: 250px; background-image: url(../img/backgrounds/course_builder_overview_background_mobile_landscape.jpg); }
+	@include media($small-mobile) { background-image: url(../img/backgrounds/course_builder_overview_background_mobile_portrait.jpg); }
+
+	.inner-wrapper { height: 380px; padding-right: 610px;
+
+		@include media($tablet-portrait) { padding-right: 450px; }
+		@include media($mobile) { padding-right: 20px; }
+	}
+}
+
+.solutions-u-desc { background-color: #cfcdc0; background-image: url(../img/backgrounds/linen_fabric_tile_background.jpg); background-repeat: repeat;
+
+	.inner-wrapper { height: 400px; padding: 130px 100px 100px 60px; background-image: url(../img/backgrounds/training_solutions_u_icon_desktop.png); background-repeat: no-repeat; background-position: right center;
+
+		@include media($tablet-portrait) { padding-top: 110px; padding-right: 340px; background-position: right 120px center; }
+		@include media($mobile) { height: auto; padding: 30px 20px 20px 20px; background-image: none; }
+
+		.support-title {
+
+			@include media($mobile) { font-size: 23px; text-align: center; }
+		}
+
+		p { float: left; display: inline-block; width: 375px;
+
+			@include media($tablet-portrait) { float: none; }
+			@include media($mobile) { float: none; width: auto; text-align: center; }
+		}
+		img.mobile-show { display: none;
+
+			@include media($mobile) { display: block; margin: 0 auto; }
+		}
+		.btn { float: left; display: inline-block; margin: 16px 0 10px 10px;
+
+			@include media($tablet-portrait) { float: right; }
+			@include media($mobile) { display: block; float: none; width: 280px; margin: 20px auto; }
+		}
+	}
+}
+
+.foundations-desc {
+
+	@include media($small-mobile) { height: auto; }
+
+	.inner-wrapper { padding: 100px 260px 100px 320px; background-image: url(../img/training-landing-fundamentals-body.png); background-position: left center; background-repeat: no-repeat;
+
+        @include media($tablet){ padding-left: 340px; padding-right: 20px; }
+        @include media($mobile) { padding-top: 210px; padding-right: 20px; padding-bottom: 40px; padding-left: 20px; background-position: center top; background-size: 224px; }
+        @include media($big-mobile) { padding-top: 220px; }
+
+		.support-title {
+
+			@include media($mobile) { text-align: center; }
+		}
+
+		p {
+
+			@include media($mobile) { text-align: center; }
+		}
+		
+        .btn { float: right;
+
+			@include media($mobile) { display: block; float: none; width: 280px; margin: 0 auto; }
+        }
+	}
+}
+
+.modules-desc { background-color: #383735; }
+
+.quiz-wrapper { padding: 0 0 35px 0; background-color: #383635;
+
+	&.has-quiz { padding: 50px 0; background-image: url(../img/backgrounds/quiz-background.png); background-repeat: no-repeat; background-position: center center; }
+
+	.inner-wrapper, .inner-wrapper-1024 { padding: 10px 0;
+
+		.btn.quiz-submit, .btn.continue { float: right; @include light-button; padding-left: 40px; padding-right: 40px;
+
+			@include media($sub-desktop) { float: none; display: block; margin: 0 auto; }
+			@include media($mobile) { width: 280px; background-color: #fff; }
+		}
+		a.trainee-back { float: right; display: block; margin-top: 15px; margin-right: 20px; color: #f6f6f6; border-bottom: 1px dotted #fff; @include fonts-med; font-size: 14px;
+
+			@include media($tablet) { float: none; width: 188px; margin-left: auto; margin-right: auto; }
+			@include media($mobile) { float: none; width: 188px; margin: 20px auto 0 auto; }
+
+			&:hover { color: #fff; }
+		}
+	}
+}
+
+.quiz-question { display: block; width: 100%; }
+
+.training-complete { background-color: #CC7429;
+
+	.inner-wrapper { padding-left: 160px; background-image: url(../img/training-complete-icon.png); background-repeat: no-repeat; background-position: left bottom;
+
+		@include media($big-mobile) { height: 190px; padding-left: 180px; padding-top: 20px; background-position: left 20px bottom; }
+		@include media($small-mobile) { height: 310px; padding-left: 20px; background-position: center bottom; }
+	}
+}

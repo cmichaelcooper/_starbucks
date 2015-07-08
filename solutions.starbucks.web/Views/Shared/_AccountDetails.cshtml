@@ -1,0 +1,12 @@
+﻿@using solutions.starbucks.Model;
+
+@if (Request.Cookies["AccountAttributes"] != null)
+{
+    <div id="current-account-details" class="hide"
+         data-account-number="@(Request.Cookies["AccountAttributes"]["CurrentAccount"])"
+         data-brand="@(Request.Cookies["AccountAttributes"]["CustomerBrand"])"
+         data-is-partner="@(Request.Cookies["AccountAttributes"]["IsPartner"])"
+         data-is-espresso="@(Request.Cookies["AccountAttributes"]["IsEspresso"])"
+         data-is-frap="@(Request.Cookies["AccountAttributes"]["IsFrappuccino"])">
+    </div>
+}

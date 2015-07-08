@@ -1,0 +1,81 @@
+#seattles-best-coffee-digital-brewer #site-wrapper #content {
+
+	header {
+
+		h1 { width: 920px;
+
+			@include media($tablet) { width: 680px; }
+			@include media($mobile) { width: 90%; margin: 0 auto; }
+		}
+
+		p {
+
+			@include media($small-mobile) { width: 90%;	}
+		}
+	}
+
+	.body-content {
+
+		article { background: #fff;
+
+			section { padding: 240px 20px 70px 460px; background: url(../img/sbc-digiicup-body.png) no-repeat; background-position: 60px bottom;
+			
+				@include media($tablet) { background: url(../img/sbc-digiicup-body-tablet.png) no-repeat; background-position: 7% bottom; }
+				@include media($tablet-landscape) { padding: 150px 220px 80px 300px; }
+				@include media($tablet-portrait) { padding-top: 160px; padding-left: 280px; padding-bottom: 70px; }
+				@include media($big-mobile) { padding: 75px 20px 20px 130px; background: url(../img/sbc-digiicup-body-big-mobile.png) no-repeat; background-position: left center; }
+				@include media($small-mobile) { height: 520px; padding: 20px; background: url(../img/sbc-digiicup-body.png) no-repeat; background-size: 60%; background-position: center bottom; }
+
+				p {
+
+					@include media($desktop) { padding-right: 10px;	}
+				}
+			}
+		}
+	}
+	.support-content { background: #fff url(../img/backgrounds/sbc-digiicup-support-bg.jpg); background-repeat: no-repeat; background-position: center center;
+
+		@include media($tablet-portrait) { background-image: url(../img/backgrounds/sbc-digiicup-support-cup-tablet-portrait.jpg); background-position: center top; background-size: 100%;	}
+		@include media($mobile) { background-position: center bottom; background-size: 100%; }
+		@include media($big-mobile) { height: 550px; background-image: url(../img/backgrounds/sbc-digiicup-support-cup-tablet-portrait.jpg); }
+		@include media($small-mobile) { height: 480px; background-image: url(../img/backgrounds/sbc-digiicup-support-cup-small-mobile.jpg); }
+		
+		article {
+
+			section { height: 465px; padding: 80px 20px 80px 20px; color: #fff;
+
+				@include media($tablet) { padding: 60px 200px 80px 20px; width: 100%; }
+				@include media($tablet-landscape) { padding-top: 130px;	}
+				@include media($tablet-portrait) { height: 750px; padding: 60px 20px 20px; }
+				@include media($mobile) { padding-top: 20px; padding-right: 20px; width: 100%; }
+				@include media($big-mobile) { padding-bottom: 85%; }
+				@include media($small-mobile) {	height: 400px; }
+
+				h2 { margin-bottom: 20px; width: 400px;
+
+					@include media($tablet-landscape) {	width: 400px; }
+					@include media($tablet-portrait) { width: 55%; margin: 0 auto; text-align: center; }
+					@include media($mobile) { margin: 0 auto; text-align: center; }
+					@include media($small-mobile) {	width: 95%;	}
+				}
+				p { display: block; width: 510px;
+
+					@include media($tablet) { width: 65%; }
+					@include media($tablet-portrait) { width: 70%; margin: 20px auto 20px auto; text-align: center;	}
+					@include media($big-mobile) { width: 94%; text-align: center; letter-spacing: -.01em; }
+					@include media($small-mobile) { width: 100%; text-align: center; }
+
+					a { color: rgb(34, 34, 34); @include fonts-heavy;
+
+						&:hover { color: $light-gray; @include fonts-heavy; }
+					}
+				}
+				.btn { @include light-button; width: 220px; padding: 11px 10px 10px 10px;
+
+					@include media($tablet-portrait) { display: block; margin: 0 auto; }
+					@include media($mobile) { display: block; margin: 0 auto; }
+				}
+			}
+		}
+	}
+}

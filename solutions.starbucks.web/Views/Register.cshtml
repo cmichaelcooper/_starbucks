@@ -1,0 +1,81 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+
+    var manualPage = umbraco.library.RequestQueryString("page");
+    var newPage = Session["NextPage"] != null ? Session["NextPage"].ToString() : "";
+    var skipStep = umbraco.library.RequestQueryString("skip") != null ? umbraco.library.RequestQueryString("skip") : "0";
+
+    if (newPage == "" || newPage == null)
+    {
+        newPage = "begin";
+    }
+    //Primarily using this for back button navigation
+    if (manualPage == "three")
+    {
+        newPage = "pagethree";
+    } 
+
+    
+}
+
+<section id="content" class="body-nav-height">
+    <section class="register-content-wrapper">
+        <a class="close-button" href="/">×</a>
+        <div class="register-content">
+            <h1>Create Your Profile</h1>
+            @Html.Action("RenderRegistration", "RegisterSurface", new { page = newPage, skip = skipStep })
+        </div>
+    </section>
+</section>
+<div class="lead-bar footer-lead">
+    <a href="http://starbucksfs.com/Leadform">Become a Customer</a>
+    <img src="/img/sbs-footer.png" />
+</div>
+@section scripts {
+
+    @if (newPage == "begin")
+    {
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // SBS.RegisterFour();
+                $("#PhoneNumber, #MobilePhone").mask("(999) 999-9999");
+            });
+        </script>
+    }
+    @if (newPage == "pagethree" || newPage == "pagefour")
+    {
+       
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // SBS.RegisterFour();
+                SBS.PasswordStrength();
+            });
+        </script>
+        if (newPage == "pagefour")
+        {
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // SBS.RegisterFour();
+
+                $("#PhoneNumber, #MobilePhone").mask("(999) 999-9999");
+            });
+        </script>
+        }
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SBS.Register();
+            SBS.VideoModal();
+
+            $('.radius.button').on('click touch', function () {
+
+                _kmq.push(['record', 'Clicked Register Video Demo']);
+            });
+
+        });
+    </script>
+}

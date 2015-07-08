@@ -1,0 +1,302 @@
+/* Global Header Navigation */
+#site-switcher {
+    z-index: 98;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 40px 0 0 40px;
+    width: 100%;
+
+    @include media($mobile) {
+        height: 78px;
+    }
+
+    @include media($big-mobile) {
+        padding: 20px 0 0 20px;
+    }
+
+    @include media($small-mobile) {
+        padding: 20px 0 0 10px;
+    }
+
+    .toggle {
+        @include translate(0, 0, 0);
+        @include backface-visibility(hidden);
+        @include perspective(1000);
+        @include transition-fix(all, $anim-dur, linear);
+        position: absolute;
+        top: 8%;
+        right: 17px;
+        z-index: 2;
+        text-decoration: none;
+
+        @include media($tablet) {
+            top: 0;
+            right: 25px;
+            padding: 20px 0 0 20px;
+        }
+
+        @include media($mobile) {
+            top: 12px;
+            right: 15px;
+            padding: 0 0 0 20px;
+        }
+
+        #login-welcome {
+            @include float(left);
+            @include fonts-heavy;
+
+            ul {
+                @include collapse-spacing;
+                list-style: none;
+
+                li {
+                    position: relative;
+                    @include inline-block;
+                    color: rgb(204, 204, 204);
+                    font-size: 13px;
+
+                    &:before {
+                        content: none;
+                    }
+
+                    &.divider {
+                        padding: 0 6px;
+                    }
+
+                    &.mobile-hide {
+
+                        @include media($mobile) {
+                            display: none;
+                        }
+                    }
+
+                    #selectlocale {
+                        width: 33px;
+                        cursor: pointer;
+
+                        #currentflag {
+                            height: 15px;
+                            float: left;
+                            background-size: 100%;
+                        }
+
+                        .flag {
+                            display: block;
+                            width: 20px;
+                            height: 13px;
+                            margin-top: 1px;
+                            background: rgba(0, 0, 0, 0) url(/img/flag_sprites.png) no-repeat;
+                        }
+
+                        .us.flag {
+                            background-position: -0px 2px;
+                        }
+
+                        .ca.flag {
+                            background-position: -0px -15px;
+                        }
+                    }
+
+                    #countryselect {
+                        display: none;
+                        position: absolute;
+                        top: 17px;
+                        right: -13px;
+                        width: 230px;
+                        height: 70px;
+                        padding: 10px;
+                        background-color: #F7F7F7;
+                        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.2);
+                        box-shadow: -64px 64px 3px -61px rgba(100, 100, 100, 0.3), 64px 64px 3px -61px rgba(100, 100, 100, 0.3), -59px 51px 3px -56px rgba(100, 100, 100, 0.3), 59px 51px 3px -56px rgba(100, 100, 100, 0.3), -59px 33px 3px -56px rgba(100, 100, 100, 0.25), 59px 33px 3px -56px rgba(100, 100, 100, 0.25), -59px 15px 3px -56px rgba(100, 100, 100, 0.2), 59px 15px 3px -56px rgba(100, 100, 100, 0.2), -59px -3px 3px -56px rgba(100, 100, 100, 0.15), 59px -3px 3px -56px rgba(100, 100, 100, 0.15), -59px -21px 3px -56px rgba(100, 100, 100, 0.1), 59px -21px 3px -56px rgba(100, 100, 100, 0.1), -59px -38px 3px -56px rgba(100, 100, 100, 0.05), 59px -39px 3px -56px rgba(100, 100, 100, 0.05);
+                        overflow: hidden;
+                        z-index: 1;
+
+                        a {
+                            color: #222;
+                        }
+
+                        .country {
+                            display: block;
+                            clear: both;
+                            line-height: 2em;
+                            height: 2em;
+                            width: 96%;
+                            padding: 0 3px;
+                        }
+
+                        .country .languages {
+                            float: right;
+                            text-align: right;
+                        }
+
+                        .country .flag {
+                            margin: .4em .8em 0 .2em;
+                            background-size: 100%;
+                            height: 14px;
+                        }
+
+                        .ca.flag {
+                            background-position: -0px -15px;
+                        }
+                    }
+
+                    #countryselect .flag, #selectlocale .flag {
+                        display: block;
+                        width: 20px;
+                        height: 13px;
+                        margin-top: 1px;
+                        background: rgba(0, 0, 0, 0) url(/img/flag_sprites.png) no-repeat;
+                        // -moz-box-shadow: 0px 0px 2px 0px #fff; -webkit-box-shadow: 0px 0px 1px 0px #FFF; box-shadow: 0px 0px 1px 0px #FFF;
+                    }
+
+                    #countryselect .country .flag, #countryselect .country a.name {
+                        float: left;
+                    }                    
+
+                    .arrw {
+                        display: inline-block;
+                        background: rgba(0, 0, 0, 0) url(/img/ui_sprites.png) no-repeat -0px -2px;
+                        width: 7px;
+                        height: 6px;
+                        margin: 0 0 0 6px;
+                    }
+
+                    #header-bag {
+                        background: url(/img/icon-bag-gray.png) no-repeat left center;
+                        background-size: contain;
+                        padding-left: 20px;
+                        display: block;
+                        height: 17px;
+
+                        &.filled {
+                            background-image: url(/img/icon-bag-green.png);
+                        }
+
+                        @include media($mobile) {
+                            display: inline-block;
+                            padding-left: 16px;
+                            text-indent: -9999px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .menu-button {
+            margin-top: 1px;
+            @fonts-heavy;
+            cursor: pointer;
+
+            &:hover {
+
+                .menu-label {
+                    color: rgb(255, 255, 255);
+                }
+
+                .fa-bars {
+                    color: rgb(255, 255, 255);
+                }
+            }
+
+            .menu-label {
+                color: rgb(204, 204, 204);
+                @include fonts-heavy;
+                font-size: 13px;
+                text-transform: uppercase;
+
+                @include media($mobile) {
+                    display: none;
+                }
+            }
+
+            .fa-bars {
+                vertical-align: middle;
+                color: rgb(204, 204, 204);
+                font-size: 1.3em;
+            }
+        }
+    }
+
+    .logo {
+        @include inline-block;
+        border: 0;
+
+        @include media($mobile) {
+            width: 236px;
+        }
+
+        @include media($big-mobile) {
+            height: 56px;
+        }
+
+        @include media($small-mobile) {
+            height: 58px;
+        }
+
+        img {
+
+            @include media($mobile) {
+                width: 236px;
+            }
+
+            @include media($big-mobile) {
+                height: 56px;
+            }
+
+            @include media($small-mobile) {
+                height: 58px;
+            }
+        }
+    }
+
+    ul.global-nav {
+        z-index: 1;
+        @include transition-fix(all, $anim-dur, linear);
+        position: relative;
+        @include inline-block;
+        list-style: none;
+        padding-left: 20px;
+
+        @include media($sub-desktop) {
+            display: none;
+        }
+
+        &.active {
+            @include transition-fix(all, $anim-dur, linear);
+        }
+
+        &.hide {
+            display: none;
+        }
+
+        li {
+            @include inline-block;
+            @include fonts-med;
+            padding: 0 17px;
+            font-size: 14px;
+            letter-spacing: .1em;
+            text-align: left;
+            text-transform: uppercase;
+
+            &:before {
+                content: none;
+            }
+        }
+    }
+}
+
+#coursebuilder, #my-training, .fundamentals {
+
+    #site-wrapper {
+
+        #site-switcher {
+            position: relative;
+            height: 150px;
+
+            @include media($mobile) {
+                height: 100px;
+            }
+        }
+    }
+}

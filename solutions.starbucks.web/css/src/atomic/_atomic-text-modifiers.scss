@@ -1,0 +1,11 @@
+.bold {
+    @include fonts-heavy;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.upper {
+    text-transform: uppercase;
+}

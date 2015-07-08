@@ -1,0 +1,87 @@
+.textpage #site-wrapper #content {
+
+	article.fontana { background: #f7f7f7;
+
+		section { padding-top: 0; height: 370px; background: url(../img/fontana-chevron.png) no-repeat; background-position: top center; background-size: 100%;
+
+			> div { @include float(left);
+
+				&.fontana-left { padding-top: 100px; width: 60%;
+
+					@include media($tablet) {
+						padding-top: 60px;
+					}
+					@include media($big-mobile) {
+						padding-top: 110px;
+						padding-bottom: 20px;
+					}
+					@include media($small-mobile) {
+						padding-top: 80px;
+						padding-bottom: 20px;
+					}
+				}
+				&.fontana-right { margin-top: 17px; width: 40%;
+
+					@include media($tablet) {
+						margin-top: 0;
+					}
+				}
+			 }
+			
+			@include media($tablet) {
+				padding-top: 20px; padding-bottom: 40% !important; padding-right: 20px; height: 340px;
+			}
+			@include media($big-mobile) {
+				padding-bottom: 40% !important; padding-right: 20px; height: 310px;
+			}
+			@include media($small-mobile) {
+				padding-bottom: 40% !important; padding-right: 20px; height: 390px;
+			}
+
+			&.column-right {
+
+				@include media($small-mobile) {
+					height: 350px;
+				}
+			}
+
+			h2 { margin-top: 10px; font-size: 18px; }
+
+			p { margin: 8px 0; line-height: 1.5em;
+
+				@include media($tablet) {
+					width: 100%;
+				}
+				@include media($big-mobile) {
+					width: 100%;
+				}
+			}
+
+			.fontana-bottle { @include float(right);
+
+				@include media($tablet) {
+					height: 319px;
+				}
+				@include media($big-mobile) {
+					display: none;
+				}
+				@include media($small-mobile) {
+					display: none;
+				}
+			}
+
+			a { @include float(right); margin-right: 40px;
+
+				@include media($tablet) {
+					@include float(left);
+				}
+				@include media($big-mobile) {
+					@include float(left);
+				}
+				@include media($small-mobile) {
+					@include float(left);
+				}
+			}
+		}
+	}
+}

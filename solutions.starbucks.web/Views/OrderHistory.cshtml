@@ -1,0 +1,51 @@
+﻿@using solutions.starbucks.Model
+@using System.Web.Mvc.Html
+@using solutions.starbucks.web.Controllers
+@using solutions.starbucks.Model.Masters
+@using solutions.starbucks.Model.Pocos
+@using Umbraco.Web
+@model MasterDashboardModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 0;
+}
+
+<section id="content">
+    <section class="inner-container">
+        <div class="order-history">
+            <div class="clear order-history-title">
+                <h1>Online Order History</h1>
+                <a href="/dashboard" class="dotted-link">&laquo; Dashboard</a>
+            </div>
+            @if (Model.UserOrders != null && !String.IsNullOrEmpty(Model.UserOrders.ToString()))
+            {
+                foreach (var orderCol in (IEnumerable<Orders>)Model.UserOrders.OrderByDescending(m => m.DateOrdered))
+                {
+                    <div class="order-history-row alt @(i++ % 2 == 0 ? "even" : "odd")">
+                        <div class="order-calendar">
+                            <div class="day">@orderCol.DateOrdered.ToString("MMM")</div>
+                            <div class="month">@orderCol.DateOrdered.ToString("dd")</div>
+                        </div>
+                        <div class="order-details">
+                            <h3>@orderCol.DateOrdered.ToString("MMM dd, yyyy")</h3>
+                            <div class="order-line"><span>ORDERED BY:</span> @orderCol.CustomerName <br /> @orderCol.EmailAddress</div>
+                            <div class="order-line"><span>SHIPPED TO:</span> @orderCol.OperationName <br />@orderCol.ShipToAddress1 @orderCol.ShipToAddress2 <br /> @orderCol.ShipToCity, @orderCol.ShipToState @orderCol.ShipToPostalCode</div>
+                            <div class="order-line"><span>PHONE:</span> @orderCol.Telephone</div>
+                            <div class="clear"></div>
+                            <div class="order-acct">
+                                <a href="/dashboard">Acct. #@orderCol.AccountNumber </a>
+                                <a class="dotted-link" href="/order-history-details?orderId=@orderCol.OrderID">View order &raquo;</a>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                }
+            }
+            else
+            {
+                <h2> No online order history. </h2>
+            }
+            @*<a href="/dashboard" class="back-to-dashboard">&laquo; Back to Dashboard</a>*@
+        </div>
+    </section>
+</section>

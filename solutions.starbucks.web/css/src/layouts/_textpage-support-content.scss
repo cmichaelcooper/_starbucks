@@ -1,0 +1,109 @@
+.textpage #site-wrapper #content {
+
+    .support-content { background-color: rgb(255, 255, 255);
+
+        .content-add-on-wrapper { @include clearfix; width: 100%; }
+
+        article {
+
+            &.two-column { display: block; @include float(left); margin: 0; @include w-50;
+
+                @include media($mobile) { float: none; @include w-100; }
+
+                section { width: 480px; color: #000;
+
+                    @include media($sub-desktop) { width: 100%; }
+
+                    &.column-left { margin-right: 0; }
+                    &.column-right { margin-left: 0; }
+
+                    a { border-bottom: 1px dotted #000; color: #000; @include fonts-heavy; }
+                }
+            }
+
+            section { @include clearfix; @include blockcenter; padding: 60px 20px 60px 30px; width: 960px; height: auto;
+
+                @include media($sub-desktop) { width: 100%; }
+                @include media($mobile) { padding: 20px; }
+
+                &.circle-img { @include clearfix; padding: 100px 20px 100px 320px; background-position: left center; background-repeat: no-repeat;
+
+                    @include media($tablet){ padding-left: 340px; }
+                    @include media($mobile) { padding-top: 20px; padding-bottom: 220px; padding-left: 20px; background-position: center bottom; background-size: 220px; }
+                    @include media($big-mobile) { padding-bottom: 220px; }
+                }
+
+                &.circle-img-right { @include clearfix; padding: 100px 350px 100px 20px; background-position: right center; background-repeat: no-repeat;
+
+                    @include media($tablet){ padding-right: 340px; }
+                    @include media($mobile) { padding-top: 20px; padding-bottom: 220px; padding-right: 20px; background-position: center bottom; background-size: 220px; }
+                    @include media($big-mobile) { padding-bottom: 220px; }
+                }
+
+                .article-two-column { @include inline-block; vertical-align: top; width: 45%;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+
+                    @include media($mobile) { margin-top: 20px; margin-left: 0; width: 100%; }
+
+                    h3 { margin-top: 0; }
+                }
+
+                h2 { font-size: 37px; line-height: 1em;
+
+                    @include media($mobile) { font-size: 1.8em; line-height: 1.2em; }
+
+                    &.variant-1 { @include fonts-light; font-size: 48px; line-height: .9em;
+
+                        @include media($small-mobile) { font-size: 32px; }
+                    }
+                }
+
+                h2 + p { margin-top: 18px;
+
+                    @include media($tablet) { width: 100%; }
+                    @include media($mobile) { margin: 20px auto; }
+                }
+
+                h3 { margin-top: 30px; margin-bottom: 10px; }
+
+                ul { list-style: none; margin-top: 20px; padding-left: 20px;
+
+                    @include media($mobile) { margin-top: 0; }
+
+                    li { margin-top: 10px; line-height: 1.4em;
+
+                        &:first-child { margin-top: 0; }
+
+                        &.product {
+
+                            p { margin: 0; }
+                        }
+                    }
+                }
+            }
+        }
+
+        .support-list-two-columns { @include clearfix; width: 100%;
+
+            ul { @include float(left); @include w-50;
+
+                @include media($mobile){ @include w-100; }
+
+                li { display: block; margin: 0 0 16px 0;
+
+                    &:before { content: none; }
+
+                    &:nth-child(2n) {
+
+                        @include media($sub-desktop) { float: none; @include w-100; }
+                    }
+
+                    @include media($sub-desktop) { float: none; @include w-100; }
+                }
+            }
+        }
+    }
+}

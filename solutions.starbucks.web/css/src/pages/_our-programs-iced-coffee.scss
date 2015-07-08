@@ -1,0 +1,24 @@
+#iced-coffee #site-wrapper #content {
+
+	.body-content {
+
+		article { background-color: rgb(231,232,233);
+
+			section { padding-left: 380px; background: url(../img/backgrounds/iced-coffee-body-bg.jpg) no-repeat; background-position: right center;
+				
+				@include media($tablet) { padding-left: 340px; background-position: left center; }
+				@include media($big-mobile) { padding: 20px 20px 320px 20px; background-image: url(../img/programs/year-round/year-round-iced-big-mobile.jpg); background-position: bottom center; min-height: 320px; }
+				@include media($small-mobile) { padding: 20px 20px 220px 20px; background-image: url(../img/programs/year-round/year-round-iced-small-mobile.jpg); background-position: bottom center; min-height: 450px; }
+
+				img { margin-bottom: 30px; }
+			}
+		}
+	}
+	.support-content { background: #fff;
+
+		article {
+
+			section { background-image: url(../img/iced-coffee-support.png); }
+		}
+	}
+}

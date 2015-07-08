@@ -1,0 +1,105 @@
+.topics-selector { padding: 40px 0 10px 0; background-color: #383735;
+
+	@include media($mobile) { padding-top: 0; }
+
+	.inner-wrapper, .inner-wrapper-1024 { padding: 20px 0 0 0; }
+	.support-title + p { width: 750px;
+
+		@include media($mobile) { width: auto; }
+	}
+
+	.ts-content-shim {
+
+		@include media($sub-desktop) { padding: 0 20px; }
+	}
+
+	.training-progress {
+
+		&.desktop-tablet {
+
+			@include media($mobile) { display: none; }
+		}
+		&.mobile {
+
+			@include media($desktop) { display: none; }
+			@include media($tablet) { display: none; }
+		}
+	}
+
+	.training-invites { margin: 0;
+
+		.message { display: block; padding-top: 10px; padding-left: 10px; @include fonts-heavy; font-size: 13px; text-transform: uppercase;
+
+			&.error { color: $error; }
+			&.success { color: green; }
+		}
+		.training-invites-labels {
+
+			@include media($mobile) { display: none; }
+		}
+
+		.trainee-invite-form {
+
+			.trainee-invite-group {
+
+				@include media($mobile) { @include clearfix; display: block; width: 100%; }
+
+				&.name, &.email {
+
+					@include media($mobile) { margin-bottom: 10px; }
+				} 
+
+				input {
+
+					@include media($mobile) { float: none; display: block; width: 100%; max-width: 280px; margin: 0 auto; }
+				}
+			}
+		}
+	}
+}
+
+.title__coursebuilder-step { margin: 30px 0; color: #fff; @include fonts-heavy;
+
+	@include media($tablet) { padding-left: 20px; }
+	@include media($mobile) { cursor: pointer; width: 100%; margin: 0; padding: 20px 0 20px 20px; border-top: 1px solid #fff; background-image: url(../img/expander-caret-2.png); background-repeat: no-repeat; background-position: right 20px center; font-size: 16px; }
+}
+
+.title__coursebuilder-modules { margin: 30px 0; color: #fff; @include support-title;
+
+	@include media($tablet) { padding-left: 20px; }
+	@include media($mobile) { margin: 0; padding: 30px 20px; line-height: 1.2em; }
+}
+
+.accordion-trigger {}
+.accordion-expander {
+
+	@include media($mobile) { display: none; @include transition-fix(all, $anim-dur, linear); overflow: hidden; border-top: 1px solid #fff; /*max-height: 0;*/ }
+
+	&.expanded { 
+
+		@include media($mobile) { max-height: 2000px; }
+	}
+}
+
+
+
+.catalog-grid {  }
+.catalog-grid__item {
+
+    label[for="selectedSubjects[]"] { display: block; }
+    input {
+
+        &.topic-check { display: none;
+
+            &[type="checkbox"] + .inner-wrapper {  }
+            &[type="checkbox"] + .inner-wrapper .check-overlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+            &[type="checkbox"] + .inner-wrapper .custom-check { cursor: pointer; display: none; position: absolute; top: 50%; left: 50%; width: 100px; height: 100px; margin-top: -50px; margin-left: -50px; background-color: transparent; }
+            &[type="checkbox"]:checked + .inner-wrapper .check-overlay, &[type="checkbox"].checked + .inner-wrapper .check-overlay { z-index: 998; display: block; background-color: rgba(255,255,255,.75); }
+            &[type="checkbox"]:checked + .inner-wrapper .custom-check, &[type="checkbox"].checked + .inner-wrapper .custom-check { z-index: 999; display: block; background-image: url(../img/topic-check.png); background-repeat: no-repeat; background-position: center center;
+
+				&:hover { background-image: url(../img/topic-x.png); }
+            }
+            &[checked="checked"] + .inner-wrapper .custom-check { display: block; }
+        }
+    }
+}

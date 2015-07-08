@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>MA.Umbraco.DataTypes.RepeatableCustomContent.v2.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>MA.Umbraco.DataTypes.RepeatableCustomContent.v2.dll</orgName>
+    </file>
+    <file>
+      <guid>RepeatableCustomContent.config</guid>
+      <orgPath>/config</orgPath>
+      <orgName>RepeatableCustomContent.config</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>Repeatable Custom Content v2 Fixed</name>
+      <version>2.0</version>
+      <license url="http://www.opensource.org/licenses/gpl-3.0.html">GPLv3</license>
+      <url>http://umbraco.masoodafzal.com</url>
+      <requirements>
+        <major>3</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Masood Afzal</name>
+      <website>http://umbraco.masoodafzal.com</website>
+    </author>
+    <readme><![CDATA[A datatype which allows adding repeatable custom contents/child nodes. 
+]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes>
+    <DataType Name="Repeatable Custom Content Richtext Editor" Id="ffbd4d90-5248-41e2-9ff3-ae9db23ac2d9" Definition="e393f8df-ac5a-4cd6-84ce-de7b518c9736">
+      <PreValues>
+        <PreValue Id="471" Value="" />
+      </PreValues>
+    </DataType>
+    <DataType Name="Repeatable Custom Content v2" Id="a3f767bc-1953-480c-b4ed-1646eabd5a65" Definition="1c44ad14-b9de-4398-8d6f-f43185be7536">
+      <PreValues>
+        <PreValue Id="475" Value="0|test;test;-88;0;None;;1|email;email;-88;0;Email;;0" />
+      </PreValues>
+    </DataType>
+  </DataTypes>
+</umbPackage>

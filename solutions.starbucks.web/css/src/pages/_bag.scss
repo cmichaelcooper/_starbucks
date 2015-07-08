@@ -1,0 +1,261 @@
+#bag, #my-bag {
+    .bag {
+        background: #000 url(../img/coffee/pdp-header.jpg) no-repeat top center;
+        padding-top: 150px; 
+    }
+
+    section {
+        background: #F4F4F4;
+        display: block;
+        padding: 40px 0;
+		 
+        @include media($mobile) {
+            padding: 25px 0;
+        }
+    }
+
+    h1, .h1 {
+        @include fonts-light;
+        font-size: 2.5em;
+        line-height: 0.9em;
+        font-weight: normal;
+
+        @include media($mobile) {
+            font-size: 2em;
+            line-height: 1em;
+        }
+    }
+
+    .bag-shopping-for {
+        .x28 {
+            font-size: 28px;
+
+            @include media($tablet) {
+                font-size: 1.4em;
+                line-height: 1.2em;
+            }
+
+            @include media($mobile) {
+                font-size: 1.4em;
+                line-height: 1.2em;
+            }
+        }
+
+        strong {
+            @include media($small-mobile) {
+                display: block;
+            }
+        }
+    }
+
+    .bag-empty {
+        font-size: 32px;
+        margin: 60px 0;
+        text-align: center;
+
+        @include media($mobile) {
+            font-size: 18px;
+            margin: 30px 0;
+        }
+    }
+
+    .product-dropdown {
+        background: #FFF url(../img/expander-caret.png) no-repeat 95% center;
+        border: 1px solid #3f4042;
+        color: #3f4042;
+        display: inline-block;
+        margin: 0 0 0 20px;
+        min-width: 200px;
+        padding-left: 20px;
+        text-align: left;
+        width: 30%;
+
+        @include media($small-mobile) {
+            display: block;
+            margin: 10px 0 0;
+            width: 100%;
+        }
+    }
+
+    .purchase-order-no {
+        padding-left: 60%;
+
+        @include media($mobile) {
+            padding-left: 0;
+        }
+    }
+
+    .btn {
+        display: inline-block;
+        float: right;
+        height: 38px;
+        line-height: 21px;
+        margin-left: 20px;
+        padding-left: 25px;
+        padding-right: 25px;
+
+        @include media($small-mobile) {
+            display: block;
+            float: none;
+            margin: 15px 0 0;
+            padding-left: 0;
+            padding-right: 0;
+            width: 100%;
+        }
+    }
+}
+
+.bag-contents {
+    .h1 {
+        display: block;
+        border-bottom: 1px solid #3C3834;
+        padding-bottom: 5px;
+        margin-bottom: 26px;
+    }
+
+    background: #E7E8E7;
+    margin: 30px 0;
+    padding: 25px 25px 1px;
+
+    .row {
+        background: #FFF;
+        display: table;
+        padding: 40px 10px 20px;
+        position: relative;
+        margin: 25px 0;
+        width: 100%;
+
+        &:after {
+            clear: both;
+        }
+
+        img {
+            max-width: 100%;
+
+            @include media($mobile) {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        .col {
+            float: left;
+            padding-left: 15px;
+            padding-right: 15px;
+
+            &.col1 {
+                width: 16%;
+
+                @include media($mobile) {
+                    float: none;
+                    padding-bottom: 15px;
+                    width: 100%;
+                }
+            }
+
+            &.col2 {
+                width: 43%;
+                padding-bottom: 15px;
+
+                @include media($mobile) {
+                    float: none;
+                    width: 100%;
+                }
+
+                .dotted-link {
+                    @include fonts-heavy;
+                    border-bottom: 1px dotted #3D3935;
+                    color: #3D3935;
+                    display: inline-block;
+                    font-size: 18px;
+                    padding-bottom: 3px;
+                }
+            }
+
+            &.col3 {
+                border-left: 1px solid #979797;
+                width: 23%;
+
+                div {
+                    margin-bottom: 8px;
+
+                    strong {
+                        display: inline-block;
+                        min-width: 55px;
+                    }
+                }
+
+                @include media($mobile) {
+                    border: 0 none;
+                    float: none;
+                    padding-bottom: 0;
+                    width: 100%;
+                }
+            }
+
+            &.col4 {
+                float: right;
+                padding-bottom: 15px;
+                padding-top: 22px;
+                width: 15%;
+
+                strong {
+                    display: block;
+                    margin-bottom: 8px;
+                }
+
+                input {
+                    @include fonts-black;
+                    border-radius: 5px;
+                    border: 1px solid #979797;
+                    font-size: 28px;
+                    line-height: 32px;
+                    padding: 5px 10px 0;
+                    text-align: center;
+                    width: 55px;
+                }
+
+                span {
+                    @include fonts-black;
+                    font-size: 28px;
+                    line-height: 32px;
+                }
+
+                @include media($mobile) {
+                    float: none;
+                    padding-bottom: 0;
+                    width: 100%;
+                }
+            }
+        }
+
+        .tr-dotted-link {
+            border-bottom: 1px dotted #3d3935;
+            color: #3d3935;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+
+            &.delete-orderitem {
+                margin-right: 10px;
+
+                &:after {
+                    background: url(../img/filter-tag-close.png) no-repeat 0 0;
+                    background-size: 10px 10px;
+                    content: "";
+                    height: 10px;
+                    margin-left: 8px;
+                    position: absolute;
+                    right: -16px;
+                    top: 5px;
+                    width: 10px;
+                }
+            }
+        }
+
+        .line-seperator {
+            color: #E7E8E7;
+            padding: 0 8px;
+        }
+    }
+}

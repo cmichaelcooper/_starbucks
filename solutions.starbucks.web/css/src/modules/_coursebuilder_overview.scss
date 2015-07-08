@@ -1,0 +1,27 @@
+.header__training { background-color: #e7e7db; background-image: url(../img/backgrounds/linen_fabric_tile_background.jpg); background-repeat: repeat;
+
+	@include media($small-mobile) { height: 434px; }
+	
+	.inner-wrapper { padding: 70px 0 70px 200px; background-image: url(../img/backgrounds/solutions_u_icon_desktop.png); background-repeat: no-repeat; background-position: left center;
+
+		@include media($tablet) { padding-left: 240px; background-position: left 40px center; }
+		@include media($mobile) { padding-left: 0; }
+		@include media($big-mobile) { height: auto; padding-top: 170px; padding-bottom: 40px; background-position: top 50px center; }
+		@include media($small-mobile) { padding-top: 230px; background-position: top 110px center; }
+
+		.large-overview-title {
+
+			@include media($mobile) { width: 100%; font-size: 46px; text-align: center; }
+		}
+	}
+}
+
+.overview__training { background-color: #c46f1e;
+
+	@include media($small-mobile) { background-image: url(../img/backgrounds/mobile-portrait/training-coursebuilder-overview.jpg); }
+}
+
+.header__foundations { background-color: #e7e7db; background-image: url(../img/backgrounds/linen_fabric_tile_background.jpg); background-repeat: repeat;
+
+	@include media($small-mobile) { height: 434px; }
+}

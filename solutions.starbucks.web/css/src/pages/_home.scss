@@ -1,0 +1,167 @@
+#home {
+
+	&.menu-open {
+
+		@include media($tablet) { position: fixed;
+
+			#site-switcher { position: fixed; }
+			#site-navigation { padding-bottom: 80px; }
+			#content { position: fixed; overflow: hidden; }
+		}
+		@include media($big-mobile) { position: fixed;
+
+			#site-switcher { position: fixed; }
+			#site-navigation { padding-bottom: 80px; }
+			#content { position: fixed; overflow: hidden; }
+		}
+	}
+
+
+	#site-wrapper { width: 100%; height: 100%; min-height: 100%;
+
+	#content { min-height: 100%; height:100%; background: #000 url(../img/backgrounds/home-bg.jpg) no-repeat; background-size: cover; -ms-behavior: url(/backgroundsize.min.htc);
+
+			@include media($small-mobile) { background-image: url(../img/backgrounds/home-bg-mobile.jpg); background-repeat: no-repeat; background-size: cover; }
+
+
+			> section { padding-top: 150px;
+
+				@include media($big-mobile) {
+					padding-top: 100px;
+				}
+				@include media($small-mobile) {
+					padding-top: 100px;
+				}
+			}
+
+			#play-button { width: 31px;	height:31px;border:0;}
+
+			h1 { @include blockcenter; width: 900px; color: #fff; @include fonts-light; font-size: 2em; text-align: center;
+				-moz-osx-font-smoothing: grayscale;
+				@include media($tablet){
+					width: 80%; font-size: 1.5em;
+				}
+				@include media($mobile){
+					width: 80%; font-size: 1.2em; line-height: 1.6em;
+				}
+				@include media($small-mobile) { width: 70%; }
+
+				.home-vidplay {
+
+					@include media($mobile) { display: block; clear: both; margin: 15px auto; }
+				}
+			}
+
+			.home-buttons { text-align: center;
+
+				@include media($mobile) { margin-top: 0; }
+			}
+
+			a.modal { @include home-button; margin-top: 40px; padding: 14px 0 14px 0; width: 200px; @include fonts-med; font-size: .7em; text-align: center;
+
+				@include media($tablet){
+					margin: 50px auto; width: 272px;
+				}
+				@include media($big-mobile){
+					margin-top: 5%; width: 220px;
+				}
+				@include media($small-mobile){
+					width: 220px;
+				}
+
+				span { display: block; margin-top: 6px; font-size: 2em; letter-spacing: .1em; }
+
+				&.home-join { background-color: #5C223F;
+
+					@include media($big-mobile) { margin-top: 0; }
+					@include media($small-mobile) { margin-top: 5px; }
+
+					&:hover { background-color: #8e6681; }
+				}
+
+				&.home-sign-in { margin-left: 20px;
+
+					@include media($mobile) { margin-top: 15px; margin-left: 0; }
+					@include media($big-mobile) { margin-top: 0; margin-left: 20px; }
+				}
+			}
+			ul { margin: 50px auto; padding: 0; width: 960px; list-style: none;
+                
+
+                @include media($tablet){
+                    display: block; margin: 0 auto; width: 90%;
+                }
+                @include media($big-mobile){
+                    margin-top: 20px; width: 100%;
+                }
+                @include media($small-mobile){
+                    margin-top: 10px; width: 100%;
+                }
+
+                li{ position: relative; @include float(left); padding: 2%; width: 33.33%; color: #fff; text-align: center;
+
+                    &:before { content: none; }
+                    
+                    @include media($small-mobile){
+                        float: none; display: block; margin: 0 auto; padding: 14px 0 12px 0; width: 200px; border-top: 1px solid #fff;
+                    }
+
+                    &:first-child {
+
+                        @include media($small-mobile){
+                            border-top: 0;
+                        }
+                    }
+                    &:nth-child(2), &.middle { border-left: 1px solid #fff; border-right: 1px solid #fff;
+
+                        @include media($small-mobile) { border-left: 0; border-right: 0; }
+                    }
+                    &:last-child {
+
+                        @include media($small-mobile){
+                            border-left: 0; border-right: 0;
+                        }
+                    }
+
+                    h2 { @include fonts-light; font-size: 1.8em; text-align: center; text-transform: uppercase;
+                        
+                        @include media($tablet){
+                            font-size: 1.5em;
+                        }
+                        @include media($big-mobile){
+                            font-size: 1em;
+                        }
+                        @include media($small-mobile){
+                            font-size: 1.4em;
+                        }
+                    }
+                }
+            }
+			#background { z-index: -1; position: absolute; left: 0; top: 0; min-width: 100%; height: 100%; background: #000 url(../img/backgrounds/home-bg-cover.jpg) no-repeat; background-size: cover; -ms-behavior: url(/backgroundsize.min.htc);
+				-webkit-transition: margin-left $anim-dur;
+				-moz-transition: margin-left $anim-dur;
+				-o-transition: margin-left $anim-dur;
+				transition: margin-left $anim-dur;
+
+				@include media($tablet){
+					background-position: 50% 0%;
+				}
+				@include media($big-mobile){
+					background-size: 150%; background-position: 50% 0%;
+				}
+				@include media($small-mobile){
+					background-size: 370%; background-position: 50% 0%;
+				}
+
+				&.pushed-left { margin-left: -300px;
+					@include media($big-mobile) {
+						margin-left: -80%;
+					}
+					@include media($small-mobile) {
+						margin-left: -80%;
+					}
+				}
+			}
+		}
+	}
+}

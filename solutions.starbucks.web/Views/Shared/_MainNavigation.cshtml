@@ -1,0 +1,394 @@
+﻿@using solutions.starbucks.Model.Enums
+
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<IEnumerable<IPublishedContent>>
+
+@{
+    var pages = Model;
+    var currentPageID = UmbracoContext.Current.PageId ?? Umbraco.TypedContentAtRoot().First(x => x.DocumentTypeAlias == Umbraco.GetDictionaryValue("Home")).Id;
+    var currentPage = Umbraco.TypedContent(currentPageID);
+    var homeActive = "";
+    var memberEmail = "";
+
+    ViewBag.IsCanada = (Request.Url.Host.Split('.').Last().ToUpper() == "CA") || (Request.Url.Host.Split('.').Last().ToUpper() == "CC");
+    Uri uri = new Uri(Request.Url.AbsoluteUri.ToString());
+    string currentTLD = uri.GetLeftPart(UriPartial.Authority).Substring(uri.GetLeftPart(UriPartial.Authority).Length - 3);
+    string currentSLD = "";
+    string host = uri.Host;
+    if (host.Split('.').Length > 1)
+    {
+        int index = host.IndexOf(".");
+        currentSLD = host.Substring(0, index);
+    }
+    ViewBag.currentSLD = currentSLD;
+
+    if (Request.Cookies["AccountAttributes"] != null)
+    {
+        ViewBag.IsSBX = (Request.Cookies["AccountAttributes"]["CustomerBrand"] == BrandCode.SBUX.Code);
+        ViewBag.IsSBC = (Request.Cookies["AccountAttributes"]["CustomerBrand"] == BrandCode.SBC.Code);
+        ViewBag.IsDUAL = (Request.Cookies["AccountAttributes"]["CustomerBrand"] == BrandCode.DUAL.Code);
+        ViewBag.IsFrap = Convert.ToBoolean(Request.Cookies["AccountAttributes"]["IsFrappuccino"]);
+        ViewBag.IsEspresso = Convert.ToBoolean(Request.Cookies["AccountAttributes"]["IsEspresso"]);
+        ViewBag.IsPartner = Convert.ToBoolean(Request.Cookies["AccountAttributes"]["IsPartner"]);
+    }
+    else
+    {
+        ViewBag.IsSBX = true;
+        ViewBag.IsSBC = false;
+        ViewBag.IsDUAL = false;
+        ViewBag.IsFrap = false;
+        ViewBag.IsEspresso = false;
+        ViewBag.IsPartner = false;
+    }
+}
+<nav id="site-switcher">
+    <div class="">
+        <div class="toggle @(Context.Request.QueryString["token"] == null ? string.Empty : "hide")">
+            <div id="login-welcome">
+                <ul>
+                    @if (Umbraco.MemberIsLoggedOn())
+                    {
+                        var member = umbraco.cms.businesslogic.member.Member.GetCurrentMember();
+                        memberEmail = member.Email;
+                        <li class="mobile-hide">
+                            Welcome, @member.Text
+                        </li>
+                        <li class="divider mobile-hide">
+                            |
+                        </li>
+                        if (Roles.IsUserInRole(member.Email, "PartnerAdmin") || Roles.IsUserInRole("SuperPartnerAdmin"))
+                        {
+                            <li class="mobile-hide">
+                                <a href="/member-list">Admin</a>
+                            </li>
+                            <li class="divider mobile-hide">
+                                |
+                            </li>
+                        }
+                        <li class="mobile-hide">
+                            <a href="/profile/edit">My Profile</a>
+                        </li>
+                        <li class="divider mobile-hide">
+                            |
+                        </li>
+                        <li class="mobile-hide">
+                            @Html.ActionLink(Umbraco.GetDictionaryValue("SignOut"), "Logout", "AccountSurface")
+                        </li>
+                        <li class="divider mobile-hide">
+                            |
+                        </li>
+
+                    }
+                    else
+                    {
+                        
+
+                        if (!ViewBag.IsCanada)
+                        {
+                            <li class="mobile-hide">
+                                <div>
+                                    <a href="/sign-in" class="modal-new" data-reveal-id="myModalTwo" data-reveal-ajax="true">@Umbraco.GetDictionaryValue("SignIn")</a>
+                                </div>
+                            </li>
+                            <li class="divider mobile-hide">
+                                |
+                            </li>
+                        }
+                    }
+                    <li>
+                        <div id="selectlocale">
+                            @{
+                                Uri uriFlag = new Uri(Request.Url.AbsoluteUri.ToString());
+                                string currentTLDFlag = uriFlag.GetLeftPart(UriPartial.Authority).Substring(uriFlag.GetLeftPart(UriPartial.Authority).Length - 3);
+                                string currentSLDFlag = "";
+                                string hostFlag = new Uri(Request.Url.AbsoluteUri.ToString()).Host;
+                                if (hostFlag.Split('.').Length > 1)
+                                {
+                                    int index = hostFlag.IndexOf(".");
+                                    currentSLDFlag = hostFlag.Substring(0, index);
+                                }
+                                if (ViewBag.IsCanada)
+                                {
+                                    <span id="currentflag" class='ca flag' cmcurrcntry="CA" cmcurrlang="@ViewBag.CurrentSLD"></span><span class="arrw"></span>
+                                }
+                                else
+                                {
+                                    <span id="currentflag" class='us flag' cmcurrcntry="US" cmcurrlang="en"></span><span class="arrw"></span>
+                                }
+                            }
+
+
+                        </div>
+
+                        <div id="countryselect" class="mobile-hide">
+                            <div class="rounded country">
+                                <a class="us flag" title="United States" href="@System.Configuration.ConfigurationManager.AppSettings["SolutionsUrl"]"></a>
+                                <a class="name" title="United States" href="@System.Configuration.ConfigurationManager.AppSettings["SolutionsUrl"]">United States</a>
+                            </div>
+                            <div class="rounded country">
+                                <a class="ca flag" title="Canada" href="@System.Configuration.ConfigurationManager.AppSettings["SolutionsUrlCA"]" cmlangcode="en_CA"></a>
+                                <a class="name" title="Canada" href="@System.Configuration.ConfigurationManager.AppSettings["SolutionsUrlCA"]" cmlangcode="en_CA">Canada</a>
+
+                                <div class="languages">
+                                    <a class="" title="EN" href="@System.Configuration.ConfigurationManager.AppSettings["SolutionsUrlCA"]" cmlangcode="en_CA">EN</a><span>&nbsp;|&nbsp;</span>
+                                    <a class="" title="FR" href="@System.Configuration.ConfigurationManager.AppSettings["SolutionsUrlCAFrench"]" cmlangcode="fr_CA">FR</a>
+                                </div>
+                            </div>
+                            <br class="clear" />
+                        </div>
+                    </li>
+                    <li class="divider"> | </li>
+                    @if (Umbraco.MemberIsLoggedOn())
+                    {
+                        <li>
+                            <a class="@(Boolean.Parse(ViewData["ItemsExistInBag"].ToString()) ? "filled" : "")" href="/my-bag" id="header-bag">My Bag @*<span class="arrw"></span>*@</a>
+                        </li>
+                        <li class="divider mobile-hide"> | </li>
+                    }
+                    <li>
+                        <div class="menu-button nav-toggle">
+                            <span class="menu-label">menu</span>&nbsp;&nbsp;&nbsp;<i class="fa fa-bars"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <h1 class="logo">
+            <a href="/">
+                @if (ViewBag.IsCanada && ViewBag.CurrentSLD == "FR")
+                {
+                    <img src="/img/branded-solutions-logo-on-ca-fr.png" />
+                }
+                else
+                {
+                    <img src="/img/branded-solutions-logo-on.png" />
+                }
+            </a>
+        </h1>
+        <ul class="global-nav @(Context.Request.QueryString["token"] == null ? string.Empty : "hide")">
+            @if (!ViewBag.IsCanada) { 
+                if (User.Identity.IsAuthenticated)
+                {
+                    <li><a href="/@(Umbraco.GetDictionaryValue("page: products"))?kme=clicked%20navigation%20link%20from%20sbs&km_Link+Location=glob]alNavDesktop&kmi=@(memberEmail)" target="_self">@Umbraco.GetDictionaryValue("Products")</a></li>
+                    <li><a href="/@(Umbraco.GetDictionaryValue("page: resources"))?kme=clicked%20navigation%20link%20from%20sbs&km_Link+Location=globalNavDesktop&kmi=@(memberEmail)" target="_self">@Umbraco.GetDictionaryValue("Resources")</a></li>
+                    <li><a href="/@(Umbraco.GetDictionaryValue("page: programs"))?kme=clicked%20navigation%20link%20from%20sbs&km_Link+Location=globalNavDesktop&kmi=@(memberEmail)" target="_self">@Umbraco.GetDictionaryValue("Programs")</a></li>
+                }
+                else
+                {
+                    <li><a href="/@(Umbraco.GetDictionaryValue("page: our-brands"))?kme=clicked%20navigation%20link%20from%20sbs&km_Link+Location=glob]alNavDesktop&kmi=@(memberEmail)" target="_self">@Umbraco.GetDictionaryValue("OurBrands")</a></li>
+                    <li><a href="/@(Umbraco.GetDictionaryValue("page: your-business"))?kme=clicked%20navigation%20link%20from%20sbs&km_Link+Location=globalNavDesktop&kmi=@(memberEmail)" target="_self">@Umbraco.GetDictionaryValue("YourBusiness")</a></li>
+                    <li><a href="/@(Umbraco.GetDictionaryValue("page: our-platforms"))?kme=clicked%20navigation%20link%20from%20sbs&km_Link+Location=globalNavDesktop&kmi=@(memberEmail)" target="_self">@Umbraco.GetDictionaryValue("OurPlatforms")</a></li>
+                }
+            }
+        </ul>
+    </div>
+</nav>
+
+
+<nav id="site-navigation" class="body-nav-height">
+    <div class="menu-closer nav-toggle">
+        <img class="menu-closer-icon" src="/img/svg/fallback/menu-closer.png" />
+    </div>
+    <div id="login-welcome-mobile">
+        <ul>
+            @if (Umbraco.MemberIsLoggedOn())
+            {
+                var members = umbraco.cms.businesslogic.member.Member.GetCurrentMember();
+                var member = Membership.GetUser();
+
+
+                <li>
+                    Welcome, @members.Text
+                </li>
+                if (Roles.IsUserInRole(member.Email, "PartnerAdmin") || Roles.IsUserInRole("SuperPartnerAdmin"))
+                {
+                    <li>
+                        <a href="/member-list">Admin</a>
+                    </li>
+                }
+                <li>
+                    <a href="/profile/edit">My Profile</a>
+                </li>
+                <li>
+                    @Html.ActionLink(Umbraco.GetDictionaryValue("SignOut"), "Logout", "AccountSurface")
+                </li>
+
+            }
+            else
+            {
+                if (!ViewBag.IsCanada)
+                {
+                    <li><a href="/sign-in" id="nav-sign-in" class="modal-new" data-reveal-id="myModalTwo" data-reveal-ajax="true">@Umbraco.GetDictionaryValue("SignIn")</a></li>
+                }
+            }
+
+
+        </ul>
+    </div>
+    <ul class="main-nav">
+        @if (currentPage.Name.ToLower() == Umbraco.GetDictionaryValue("Home"))
+        {
+            homeActive = "active";
+
+        }
+        <li class="@homeActive"><a href="/">@Umbraco.GetDictionaryValue("Home")</a></li>
+        @foreach (var page in pages)
+        {
+            var isSelected = page.IsAncestorOrSelf(currentPage, "active");
+            var hasChildren = page.Children.Any() ? "dropdown" : string.Empty;
+
+            var hideInNavi = Convert.ToBoolean(page.GetPropertyValue("hideInNavigationWhenLoggedIn"));
+
+            //If member is logged in AND hide in navi is not true
+            if (Umbraco.MemberIsLoggedOn() && !hideInNavi)
+            {
+                @renderNaviItem(page, currentPage, isSelected, hasChildren);
+            }
+            else if (!Umbraco.MemberIsLoggedOn() && page.IsVisible())
+            {
+                @renderNaviItem(page, currentPage, isSelected, hasChildren);
+            }
+
+        }
+
+
+
+    </ul>
+    <div>
+        @if (!Umbraco.MemberIsLoggedOn() && !ViewBag.IsCanada)
+        {
+            <a class="become-customer" href="http://starbucksfs.com/Leadform">@Umbraco.GetDictionaryValue("BecomeACustomer")</a>
+        }
+
+        <ul class="external-nav">
+            @{
+                // Only display for US or DEV site
+                if (!ViewBag.IsCanada)
+                {
+                    <li><a href="http://starbucksocs.com/?kme=clicked%20navigation%20link%20from%20sbs&km_Link+Location=Menu">Office Coffee Solutions</a></li>
+                }
+            }
+            <li><a href="http://@Umbraco.GetDictionaryValue("Starbucks.com")">@Umbraco.GetDictionaryValue("Starbucks.com")</a></li>
+            <li><a href="http://www.starbuckscardb2b.com">@Umbraco.GetDictionaryValue("StarbucksCorporateCard")</a></li>
+        </ul>
+        <div class="search-wrapper">
+            <form class="navbar-form form-inline pull-right" action="/search" method="GET">
+                <label for="q">@Umbraco.GetDictionaryValue("Search")</label>
+                <input type="text" class="form-control" name="q" placeholder="@Umbraco.GetDictionaryValue("Search")" />
+                <button type="submit" class="btn btn-default "><img src="/img/search-icon.png" width="35" height="35" alt="@Umbraco.GetDictionaryValue("Search")" /></button>
+            </form>
+        </div>
+        <ul>
+            <li><a href="/@Umbraco.GetDictionaryValue("page: terms-of-use")">@Umbraco.GetDictionaryValue("TermsOfUse")</a></li>
+            <li><a href="/@Umbraco.GetDictionaryValue("page: privacy-policy")">@Umbraco.GetDictionaryValue("Privacy")</a></li>
+            <li><a href="/@Umbraco.GetDictionaryValue("page: web-accessibility")">@Umbraco.GetDictionaryValue("Accessibility")</a></li>
+            <li><a href="/@Umbraco.GetDictionaryValue("page: contact-form")">@Umbraco.GetDictionaryValue("ContactCustomerService")</a></li>
+        </ul>
+        <p class="legal">&copy; 2015 Starbucks Coffee Company</p>
+    </div>
+    @Html.Action("RenderAccountDetails", "AccountSurface")
+</nav>
+
+@helper renderNaviItem(IPublishedContent page, IPublishedContent currentPage, HtmlString isSelected, string hasChildren)
+{
+    <li class="@isSelected">
+        @if (page.Children.Any())
+        {
+
+            if (page.Name.ToLower() == Umbraco.GetDictionaryValue("Support").ToLower())
+            {
+                if (!ViewBag.IsCanada)
+                {
+                    <a href="/@Umbraco.GetDictionaryValue("page: support")" class="dropdown-toggle" data-toggle="dropdown" id="toggle-@page.Id">@page.Name <b class="caret"></b></a>
+                }
+            }
+            else
+            {
+
+                <a href="/@page.UrlName" class="dropdown-toggle" data-toggle="dropdown" id="toggle-@page.Id">@page.Name <b class="caret"></b></a>
+            }
+
+            <div class="dropdown" id="dropdown-@page.Id">
+                <ul>
+                    @if (page.Name.ToLower() == Umbraco.GetDictionaryValue("OurBrands").ToLower())
+                    {
+                        <li class="mobile-overview">
+                            <a href="/@Umbraco.GetDictionaryValue("page: our-brands")">@Umbraco.GetDictionaryValue("Overview")</a>
+                        </li>
+                    }
+                    else if (page.Name.ToLower() == Umbraco.GetDictionaryValue("YourBusiness").ToLower())
+                    {
+                        <li class="mobile-overview">
+                            <a href="/@Umbraco.GetDictionaryValue("page: your-business")">@Umbraco.GetDictionaryValue("Overview")</a>
+                        </li>
+                    }
+                    else if (page.Name.ToLower() == Umbraco.GetDictionaryValue("OurPlatforms").ToLower())
+                    {
+                        <li class="mobile-overview">
+                            <a href="/@Umbraco.GetDictionaryValue("page: our-platforms")">@Umbraco.GetDictionaryValue("Overview")</a>
+                        </li>
+                    }
+                    else if (page.Name.ToLower() == Umbraco.GetDictionaryValue("Programs").ToLower())
+                    {
+                        <li class="mobile-overview">
+                            <a href="/@Umbraco.GetDictionaryValue("page: programs")">@Umbraco.GetDictionaryValue("Overview")</a>
+                        </li>
+                    }
+                    else if (page.Name.ToLower() == Umbraco.GetDictionaryValue("Resources").ToLower())
+                    {
+                        <li class="mobile-overview">
+                            <a href="/@Umbraco.GetDictionaryValue("page: resources")">@Umbraco.GetDictionaryValue("Overview")</a>
+                        </li>
+                    }
+                    else if (page.Name.ToLower() == Umbraco.GetDictionaryValue("Products").ToLower())
+                    {
+                        <li class="mobile-overview">
+                            <a href="/@Umbraco.GetDictionaryValue("page: products")">@Umbraco.GetDictionaryValue("Overview")</a>
+                        </li>
+                    }
+                    
+                    @foreach (var child in page.Children.Where(p => p.GetPropertyValue<bool>("umbracoNaviHide") == false))
+                    {
+                        if (child.Name == "Government & Military" && ViewBag.IsCanada) { }
+                        else
+                        {
+                            var isChildSelected = child.IsAncestorOrSelf(currentPage, "active");
+
+                            <li class="@isChildSelected">
+                                <a href="/@child.Parent.UrlName/@child.UrlName">@child.Name </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        }
+        else
+        {
+            string modal = "";
+            if (page.Url.ToLower().Contains("sign-in"))
+            {
+                modal = " data-reveal-id=\"myModalTwo\" data-reveal-ajax=\"true\" ";
+            }
+
+            Uri uri3 = new Uri(Request.Url.AbsoluteUri.ToString());
+            string currentSLD3 = "";
+            string host3 = uri3.Host;
+            if (host3.Split('.').Length > 1)
+            {
+                int index = host3.IndexOf(".");
+                currentSLD3 = host3.Substring(0, index);
+            }
+
+            if (page.Name != "Register" && !ViewBag.IsCanada)
+            {
+                <a href="@page.Url" @Html.Raw(modal)>@page.Name</a>
+            }
+            else
+            {
+                if (page.Name.ToUpper() == "FAQ")
+                {
+                    <a href="/faq" @Html.Raw(modal)>@page.Name</a>
+                }
+            }
+        }
+    </li>
+}

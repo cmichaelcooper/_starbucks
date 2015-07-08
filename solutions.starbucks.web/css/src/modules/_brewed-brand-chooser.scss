@@ -1,0 +1,54 @@
+.brewed-brand-chooser { display: block; padding: 40px 0 40px 0; background-color: #f7f7f7; -moz-background-size: cover; background-size: cover; text-align: center;
+    -webkit-transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    
+    @include media($mobile) { -moz-background-size: 600%; background-size: 600%; }
+    @include media($big-mobile) { padding-top: 40px; }
+    @include media($small-mobile) { padding-top: 50px; }
+
+    h3 { font-size: 37px;
+
+        @include media($mobile) { font-size: 30px; margin-bottom: 20px; }
+    }
+
+    p {
+
+        @include media($mobile) { @include blockcenter; width: 80%; }
+    }
+
+    ul { @include clearfix; @include collapse-spacing; @include blockcenter; width: 600px; list-style: none;
+
+        @include media($mobile) { width: 100%; }
+        @include media($big-mobile) { margin-top: 20px; }
+        @include media($small-mobile) { margin-top: 0; }
+
+        li { @include float(left); width: 300px;
+
+            &:before { content: none; }
+
+            @include media($sub-desktop) { width: 50%; }
+            @include media($small-mobile) { @include blockcenter; float: none; width: 100%; margin-top: 40px; }
+
+            h3 { margin-top: 10px; font-size: 1.17em; }
+
+            &.sbc {
+
+                img { margin-left: 70px; }
+            }
+
+            img { @include blockcenter; width: 53%; }
+
+            a.brands-btn { @include light-button; @include blockcenter; margin-top: 20px; padding: 7px 14px 6px 14px; width: 170px; font-size: .8em; letter-spacing: .2em;
+
+                @include media($mobile) { margin-top: 8px; }
+            }
+        }
+
+        p { @include blockcenter; margin-top: 14px; margin-bottom: 30px; width: 70%;
+
+            a { font-size: .9em; text-decoration: none; }
+        }
+    }
+}

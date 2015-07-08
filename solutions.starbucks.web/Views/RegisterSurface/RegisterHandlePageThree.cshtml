@@ -1,0 +1,117 @@
+﻿@using System.Web.Mvc.Html
+@using Umbraco.Web
+@using solutions.starbucks.web.Controllers
+@using solutions.starbucks.Model
+@model RegisterPageThreeViewModel
+
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+
+    bool partnerEmail = false;
+    if (Model.EmailAddress.ToString().Contains("@starbucks.com"))
+    {
+        partnerEmail = true;       
+    }
+
+    bool track = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableGoogleAnalyticsTracking"]) ? true : false;
+}
+
+@*<h1>Create Your Profile</h1>*@
+<div class="step-wrapper">
+    @if (partnerEmail)
+    {
+        <h2> Step 2: </h2>
+    }
+    else 
+    {
+        <h2>Step 3:</h2>
+    }
+    <h3>Create a Password</h3>
+    <h5 class="requirements">Password must be at least 8 characters, contain one uppercase letter, one lowercase letter and a number.</h5>
+        <span class="validationMessages">
+        
+  @*  @if (Session["AccountValidCount"] != null || Model.Attempts >= 3)
+     {
+         if ( Model.Attempts >= 3)
+         {
+                                   <p class="incorrect-notice">You have either entered an invalid Starbucks account number or an incorrect zip code for your account. For security purposes, only three failed attempts are allowed during signup. If you need help retrieving your account number, you can skip this step for now. We will help you access your information after you create your Starbucks Branded Solutions profile.</p>
+         }
+       
+     }*@
+    </span>
+</div>
+<div class="form-wrapper">
+
+    @using (Html.BeginUmbracoForm<RegisterSurfaceController>("ProcessRegistration", null, new { id = "registrationForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <fieldset>
+
+                <div class="grouping email reg-three">
+                    <label for="Email">Email*</label>
+                    @Html.TextBoxFor(model => model.EmailAddress, new{ @class = "form-control", placeholder = "Email Address" })
+                    @*@Html.ValidationMessageFor(model => model.EmailAddress, string.Empty, new { @class= "help-block" })*@
+                </div>
+                @if ((!partnerEmail && Model.Attempts < 3) && Model.SkipStep != "1")
+                {
+                    <div class="grouping accountnumber reg-three">
+                        <label for="AccountNumber"><span class="field-validation">Your Starbucks Account Number*</span>@Html.ValidationMessageFor(model => model.AccountNumber, string.Empty, new { @class= "field-error" })</label>
+                        @*@Html.LabelFor(model => model.AccountNumber, new { @class = "control-label"})*@
+                        <input name="AccountNumber" id="AccountNumber" type="tel" pattern="[0-9]*" placeholder="Account Number" class="form-control" value="@Model.AccountNumber"/>
+                        
+                    </div>
+
+                    <div class="grouping zip reg-three">
+                        <label for="Zip"><span class="field-validation">Your Zip Code*</span>@Html.ValidationMessageFor(model => model.Zip, string.Empty, new { @class= "field-error" })</label>
+                        @*@Html.LabelFor(model => model.Zip, new { @class = "control-label"})*@
+                        <input name="Zip" id="Zip" type="tel" pattern="[0-9]*" placeholder="Zip code" class="form-control" value="@Model.Zip" />
+                        @*@Html.ValidationMessageFor(model => model.Zip, string.Empty, new { @class= "field-error" })*@
+                    </div>
+                }
+           
+                
+                
+                 <div class="grouping passwordcreate reg-three">
+                    <label for="Password"><span class="field-label">Create A Password*</span>@Html.ValidationMessageFor(model => model.Password, string.Empty, new { @class= "field-error" })</label>
+                    @*@Html.LabelFor(model => model.Password, new { @class = "control-label"})*@
+                    @Html.PasswordFor(model => model.Password, new{ @class = "form-control", placeholder = "Password", Value = !String.IsNullOrEmpty(Model.Password) ? Model.Password : "" })
+                     <div id="strengthIndicator"></div>
+                </div>
+        
+                <div class="grouping passwordconfirm reg-three">
+                    <label for="ConfirmPassword"><span class="field-label">Re-type Password*</span>@Html.ValidationMessageFor(model => model.ConfirmPassword, string.Empty, new { @class= "field-error", id="confirmation-error" })</label>
+                    @*@Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label"})*@
+                    @Html.PasswordFor(model => model.ConfirmPassword, new{ @class = "form-control", placeholder = "Confirm Password", Value = !String.IsNullOrEmpty(Model.Password) ? Model.Password : "" })
+                    @**@
+                </div>
+           
+            @Html.HiddenFor(model => model.NextPage)
+            @Html.HiddenFor(model => model.PreviousPage)
+            @Html.HiddenFor(model => model.Attempts)
+            @Html.HiddenFor(model => model.SkipStep)
+
+            <div class="required-notice">*Indicates Required Field</div>
+            <div class="register-buttons">
+                <button type="submit" class="btn btn-default">Continue</button>
+                <span class="loading">
+                    @* <i class="fa fa-circle-o-notch fa-spin"></i>  *@
+                    <img src="/img/form-icons/loading.gif" width="16" height="16" /> <span class="text">Loading...</span>
+                </span>
+                @*<a class="btn btn-back" href="/Register?page=two">Back</a>*@
+            </div>
+
+        </fieldset>
+    
+
+    }
+
+</div>
+ @if ((!partnerEmail && Model.Attempts < 3) && Model.SkipStep != "1" && track)
+ {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                _kmq.push(['record', 'Completed Step 2', {'zip code':'@(Model.Zip)', 'account number':'@(Model.AccountNumber)'}])
+            });
+        </script>
+ }

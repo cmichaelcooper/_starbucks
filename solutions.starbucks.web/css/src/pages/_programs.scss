@@ -1,0 +1,41 @@
+#programs #site-wrapper #content {
+
+	.body-content {
+
+		article { background-color: $med-gray;
+
+			section { padding: 90px 530px 90px 20px; background-image: url(../img/seasonal_programs_counter_cards_desktop.png); background-repeat: no-repeat; background-position: right center;
+
+				@include media($tablet) { padding-right: 420px; background-image: url(../img/seasonal_programs_counter_cards_tablet.png); }
+				@include media($tablet-portrait) { background-position: 380px center; }
+				@include media($tablet-landscape) { background-position: 640px center; }
+				@include media($big-mobile) { padding: 20px 20px 300px 20px;  background-image: url(../img/seasonal_programs_counter_cards_mobile.png); background-position: center bottom; }
+				@include media($small-mobile) { padding: 20px 20px 170px 20px; background-image: url(../img/seasonal_programs_counter_cards_mobile-portrait.png); background-position: center bottom; }
+			}
+		}
+	}
+
+	.support-content {
+
+		.revitalize-summer { background-image: url(../img/backgrounds/programs-support-bg.jpg); background-repeat: no-repeat; background-position: center center;
+
+			@include media($tablet) { background-image: url(../img/backgrounds/programs-support-bg-tablet.jpg); background-repeat: no-repeat; background-position: left center; }
+			@include media($big-mobile) { background-image: url(../img/backgrounds/programs-support-bg-mobile-landscape.jpg); background-repeat: no-repeat; background-position: center center; }
+			@include media($small-mobile) { background-image: url(../img/backgrounds/programs-support-bg-mobile-portrait.jpg); background-repeat: no-repeat; background-position: center bottom; }
+
+			section { padding-top: 130px; padding-right: 565px; padding-bottom: 130px;
+
+				@include media($tablet-landscape) { padding-right: 630px; }
+				@include media($tablet-portrait) { padding-right: 370px; }
+				@include media($big-mobile) { padding: 20px 20px 210px 20px; }
+				@include media($small-mobile) { padding: 20px 20px 320px 20px; }
+
+				.btn { float: right;
+
+					@include media($big-mobile) { float: none; width: 220px; }
+					@include media($small-mobile) { width: 100%; }
+				}
+			}
+		}
+	}
+}

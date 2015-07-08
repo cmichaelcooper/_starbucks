@@ -1,0 +1,85 @@
+#brewed #site-wrapper #content {
+
+	.body-content {
+
+		article {
+
+			section { padding-top: 120px; padding-left: 390px; height: 400px; background: rgb(225,235,237) url(../img/brewed-main-body.png) no-repeat; background-position: left center;
+			
+				@include media($tablet) { padding-top: 55px; padding-left: 310px !important; background-position: -80px center; }
+				@include media($mobile) { height: auto; padding: 20px 20px 30% 20px; background-image: url(../img/brewed-main-body-mobile.png); background-position: center bottom; background-size: 100%; }
+			}
+		}
+	}
+	.support-content { background: #fff;
+
+		article {
+
+			h3 {
+
+				@include media($mobile) { margin-top: 20px; }
+			}
+		}
+
+		.signature { background: #000;
+
+			section { padding: 40px 400px 40px 20px; background-image: url(../img/backgrounds/brewed-support-bg.jpg); background-repeat: no-repeat; background-position: right bottom; color: #fff;
+
+				@include media($sub-desktop) { width: 100%; padding-top: 20px; }
+				@include media($tablet) { padding-right: 200px; }
+				@include media($mobile) { padding-right: 20px; background-size: 170%; background-position: 90% bottom; }
+				@include media($big-mobile) { padding-bottom: 67%; }
+				@include media($small-mobile) {	padding-bottom: 200px; }
+			}
+		}
+
+		.core { background: rgb(255, 255, 255);
+
+			section { padding: 40px 20px 20px 20px; color: #000;
+
+				@include media($sub-desktop) { width: 100%; padding-top: 20px; }
+				@include media($tablet) { background-size: 270px; background-position: left 20px; }
+				@include media($mobile) { background: none; }
+			}
+		}
+
+		.tazo { background: #bab0a5;
+
+			section { padding-left: 420px; background: url(../img/tazo-body.png) no-repeat; background-position: left center; background-size: 400px;
+
+				@include media($mobile) { padding-left: 20px; background-image: url(../img/tazo-body.png); background-size: 300px; }
+				@include media($big-mobile) { padding-bottom: 18%; background-position: center 240px; }
+				@include media($small-mobile) {	padding-bottom: 25%; background-position: center 300px; }
+			}
+		}
+
+		.fontana { background: #f7f7f7;
+
+			section { padding-right: 220px; height: 370px; background: url(../img/fontana-chevron.png) no-repeat; background-position: top center; background-size: 100%;
+				
+				@include media($sub-desktop) { padding-right: 20px; padding-bottom: 40% !important; }
+				@include media($tablet) { padding-top: 20px; height: 340px; }
+				@include media($big-mobile) { height: 310px; }
+				@include media($small-mobile) { height: 390px; }
+
+				p { line-height: 1.5em;
+
+					@include media($tablet) { width: 50%; }
+					@include media($big-mobile) { width: 65%; }
+				}
+				a { @include float(right);
+
+					@include media($sub-desktop) { @include float(left); }
+				}
+			}
+		}
+
+		.bottom-edger { height: 133px; background-image: url(../img/coffee-bottom-edger.png); background-repeat: no-repeat; background-size: 600px; background-position: center bottom;
+
+			@include media($tablet) { background-size: 480px; }
+			@include media($mobile) { background-size: 300px; }
+			@include media($big-mobile) { height: 95px; }
+			@include media($small-mobile) { height: 62px; }
+		}
+	}
+}

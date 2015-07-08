@@ -1,0 +1,75 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "~/Views/Master.cshtml";
+}
+
+
+<section id="recipes">
+    <header class="abspos-header">
+        <h1 class="abspos-header__title light">RECIPES</h1>
+        <p class="light">Start serving customers the premium beverages they love.</p>
+    </header>
+    <div class="catalog-back">
+        <a class="dotted-link alt" href="/resources/">« Back to Resources</a>
+    </div>
+    <div class="featured-recipe-bg">
+        <div class="body-content">
+            <article>
+                <section>
+                    <h2>The possibilities are endless. And delicious.</h2>
+                    <p>Expand your menu with a cool, refreshing treat, wonderfully unique tea or an irresistible handcrafted specialty beverage.</p>
+                    <p><strong>Start exploring over 180 Starbucks® recipes below.</strong></p>
+                </section>
+            </article>
+        </div>
+        <div class="product-details-top">
+            <div class="inner-container featured-recipe">
+                <div class="product-details-left">
+                    <img src="/img/recipes/almond-latte-in-ceramic-mug.jpg" />
+                </div>
+                <div class="product-details-right">
+                    <div class="product-details-strong"><strong>Featured Recipe</strong></div>
+                    <div class="product-details-title">Almond Latte</div>
+                    <p>Our classic rich, full-bodied Starbucks® espresso in steamed milk lightly topped with foam and complemented by your customers’ favorite Fontana flavors.</p>
+                    <a class="btn btn-white" href="/resources/recipes/details/SBX_almond_flavored_latte">VIEW RECIPE</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="support-content">
+        <ul class="module-kid-grid channels">
+            <li>
+                <div class="inner-wrapper">
+                    <div class="logo-wrapper platforms platforms-icons-sprite platforms-icons-brewed"><a href="#">&nbsp;</a></div>
+                    <div class="description-wrapper">
+                        <h3>Hot Beverages</h3>
+                        <p>Offer customers their favorite Lattes, Mochas, Coffees, Teas and more.</p>
+                    </div>
+                    <a href="/resources/recipes/catalog/Hot_Beverages">Learn More</a>
+                </div>
+            </li>
+            <li>
+                <div class="inner-wrapper">
+                    <div class="logo-wrapper platforms platforms-icons-sprite platforms-icons-coldbeverages"><a href="#">&nbsp;</a></div>
+                    <div class="description-wrapper">
+                        <h3>Cold Beverages</h3>
+                        <p>Explore Iced Lattes, Iced Mochas, Iced Coffee, Iced Tea and more.</p>
+                    </div>
+                    <a href="/resources/recipes/catalog/Cold_Beverages">Learn More</a>
+                </div>
+            </li>
+            <li>
+                <div class="inner-wrapper">
+                    <div class="logo-wrapper platforms platforms-icons-sprite platforms-icons-blended"><a href="#">&nbsp;</a></div>
+                    <div class="description-wrapper">
+                        <h3>Frozen Blended/Smoothies</h3>
+                        <p>Delight customers with creamy Smoothie Beverages or rich Frozen Blended Beverages.</p>
+                    </div>
+                    <a href="/resources/recipes/catalog/Frozen_Blended_Smoothies">Learn More</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    @Html.Partial("~/Views/Partials/_LoggedInFooter.cshtml")
+</section>

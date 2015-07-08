@@ -1,0 +1,151 @@
+/* On-site Navigation */
+#site-navigation {
+
+	@include transition-fix(all, $anim-dur, linear);
+	-webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -ms-backface-visibility: hidden; backface-visibility: hidden;
+   	-webkit-perspective: 1000; -moz-perspective: 1000;-ms-perspective: 1000;	
+   	z-index: 999; position: fixed; top: 0; right: -260px; padding: 0; width: 260px; min-height: 100%; bottom: 0; overflow-y: hidden;  overflow-x: hidden; -webkit-transform: translateZ(0); -webkit-overflow-scrolling: touch;
+	background: #222;
+
+	@include media($big-mobile) { position: absolute; display: none; }
+	@include media($small-mobile) { position: absolute; display: none; }
+
+	&.is-open { @include transition-fix(all, $anim-dur, linear); display: block; position: absolute; right: 0; padding: 0 20px; overflow-y: auto; overflow-x: hidden;
+ 			-webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -ms-backface-visibility: hidden;	backface-visibility: hidden;
+   			-webkit-perspective: 1000; -moz-perspective: 1000; -ms-perspective: 1000;
+	
+		@include media($tablet) { width: 300px; }
+		@include media($small-mobile){ width: 78%; }
+	}
+
+	.dropdown {display:none; }
+
+	.nav-toggle { cursor: pointer; }
+	
+	.menu-closer { position: relative; display: block; position: absolute; right: 15px; top: 15px; margin-top: 0; width: 30px; height: 30px; cursor: pointer;
+
+		@include media($tablet) { top: 24px; }
+
+		.menu-closer-icon { position: absolute; right: 0; top: 0; width: 15px; height: 15px; cursor: pointer;
+
+			@include media($tablet) { width: 18px; height: 18px; }
+		}
+	}
+
+	#login-welcome-mobile { display: none; margin-top: 47px;
+		
+		@include media($tablet){ display: block; margin-top: 60px; }
+		@include media($big-mobile){ display: block; }
+		@include media($small-mobile){ display: block; }
+
+		ul {
+
+			li { color: #fff; }
+		}
+	}
+	ul { margin: 0; padding: 0;
+
+		&.main-nav { margin-top: 80px;
+
+			@include media($sub-desktop) { margin-top: 20px; }
+
+			li { text-transform: uppercase;	height:auto;
+
+				&:before { content: none; }
+			}
+		}
+
+		li { margin: 10px 0; font-size: 13px; line-height: 1.25em; letter-spacing: 1px;
+
+			&:before { content: none; }
+
+			&.mobile-overview { display: none;
+
+				@include media($sub-desktop){ display: block; }
+			}
+
+			ul { margin: 0 0 0 14px; padding: 0;
+
+				li { font-size: 13px; }
+			}
+		}
+	}
+
+	a:link, a:visited { color: #ccc; @include fonts-med; text-decoration: none;
+		
+		&:hover { color: #fff; }
+	}
+
+	li.active > a { color: #fff; @include fonts-med; }
+
+	> div { margin-top: 20px;
+
+		@include media($small-mobile){ margin-top: 20px; }
+
+		> .become-customer { @include transition-fix(all, $anim-dur, linear); @include dark-button; padding: 10px 0; width: 220px; @include fonts-med; font-size: .8em;
+
+			@include media($mobile) { width: 210px; letter-spacing: .1em; }
+		}
+		ul { margin-top: 20px;
+
+			&.external-nav {
+
+				li {
+
+					a { text-transform: none; }
+				}
+			}
+		}
+		.search-wrapper { @include transition-fix(all, $anim-dur, linear); width: 220px;
+
+			@include media($small-mobile) { width: 210px; }
+		}
+		form { @include clearfix; float: none; margin-top: 20px;
+
+			::-webkit-input-placeholder { color: rgba(255, 255, 255, .25); }
+
+			:-moz-placeholder { /* Firefox 18- */ color: rgba(255, 255, 255, .25); }
+
+			::-moz-placeholder {  /* Firefox 19+ */ color: rgba(255, 255, 255, .25); }
+
+			:-ms-input-placeholder { color: rgba(255, 255, 255, .25); }
+
+			label { display: block; margin-bottom: 6px; color: rgb(204,204,204); @include fonts-heavy; font-size: 14px; text-transform: uppercase; }
+
+			input[type="text"] { @include dark-button; @include float(left); padding: 7px 7px 7px 12px; width: 82%; color: #fff; @include fonts-med; text-align: left; letter-spacing: .075em; text-transform: none;
+
+				@include media($small-mobile) { width: 170px; }
+			}
+
+			button[type="submit"] { display: inline; @include float(right); padding: 0; border: 0; background: transparent; }
+		}
+
+		.legal { color: #ccc; font-size: 10px; }
+	}
+}
+
+
+body {
+
+	&.menu-open {
+
+		@include media($mobile) { position: fixed; }
+
+		#content { overflow: auto; }
+
+		#site-switcher {
+
+			@include media($sub-desktop) { position: fixed; }
+		}
+
+		#site-navigation {
+
+			@include media($sub-desktop) { padding-bottom: 80px; }
+		}
+
+		#content {
+
+			@include media($sub-desktop) { position: fixed; overflow: hidden; }
+		}
+	}
+}

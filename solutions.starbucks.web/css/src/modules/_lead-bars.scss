@@ -1,0 +1,277 @@
+/* "Become A Customer" Bars */
+.lead-bar {
+    @include clearfix; position: relative; padding: 34px 0 34px 0; background: #222222;
+
+    @include media($tablet) { padding: 36px 0; }
+    @include media($big-mobile) { padding: 19px 0 18px 0; }
+    @include media($small-mobile) { padding: 14px 0; }
+
+    .lead-bar-messaging { 
+
+        @include media($desktop) { position: absolute; right: 20px; top: 15px; width: 60%; text-align: right; }
+        @include media($sub-desktop) { @include clearfix; width: 100%; text-align: center; }
+        @include media($tablet) { width: 80%; margin: 0 auto; }
+
+        .question { color: #fff;
+
+            @include media($desktop) { float: right; }
+            @include media($sub-desktop) { float: none; margin-top: 10px; }
+        }
+
+        a { padding: 10px 11px 9px 11px; color: #fff; font-size: .8em;
+
+            &.ocs-leadform {
+                display: none;
+            }
+
+            &.btn { @include dark-button;
+
+                @include media($desktop) { margin-left: 10px; }
+                @include media($tablet) { margin-left: 10px; }
+                @include media($mobile) { display: block; width: 220px; margin: 20px auto 0 auto; }
+
+                &.logged-out {
+
+                    @include media($sub-desktop) { float: none; display: block; width: 220px; margin: 0 auto; }
+                }
+            }
+        }
+
+        &.training {
+
+            a.btn {
+
+                // @include media($desktop) { float: right; }
+            }
+        }
+    }
+    .lead-bar-logo {
+
+        @include media($desktop) { position: absolute; top: 22px; left: 20px; width: 40%; }
+        @include media($sub-desktop) { @include clearfix; width: 100%; }
+        @include media($tablet) { padding: 20px 0 0 0; }
+        @include media($mobile) { padding: 0 0 20px 0; }
+
+        > img { 
+
+            @include media($sub-desktop) { display: block; margin: 0 auto; }
+            @include media($mobile) { margin: 20px auto 0 auto; }
+            @include media($small-mobile) { width: 80%; max-width: 275px; }
+        }
+    }
+}
+    // &.footer-lead {
+
+    //     &.signed-in {
+
+    //         @include media($tablet) { padding: 20px 0 1px 0; }
+
+    //         img {
+
+    //             @include media($tablet) { @include clearfix; margin: 20px auto; }
+    //         }
+    //     }
+
+    //     .signed-in-footer { @include clearfix;
+
+    //         span.question {
+    //             float: right;
+    //             margin-right: 250px;
+    //             color: #fff;
+    //             @include fonts-light;
+    //             font-size: 16px;
+
+    //             @include media($tablet) {
+    //                 float: left;
+    //                 margin-top: 8px;
+    //                 margin-right: 0;
+    //             }
+
+    //             @include media($mobile) {
+    //                 float: none;
+    //                 display: block;
+    //                 width: 90%;
+    //                 text-align: center;
+    //             }
+
+    //             @include media($big-mobile) {
+    //                 margin: 0 auto 20px auto;
+    //             }
+
+    //             @include media($small-mobile) {
+    //                 margin: 0 auto 10px auto;
+    //             }
+    //         }
+    //     }
+
+    //     &.footer-training {
+    //         @include clearfix;
+
+    //         .signed-in-footer {
+
+    //             @include media($small-mobile) {
+    //                 margin-bottom: 50px;
+    //             }
+    //         }
+    //     }
+
+    //     img {
+
+    //         @include media($mobile) {
+    //             @include blockcenter;
+    //             left: 0;
+    //             width: 230px;
+    //             margin-top: 10px;
+    //             margin-bottom: 10px;
+    //         }
+
+    //         @include media($big-mobile) {
+    //             margin-left: 20px;
+    //         }
+    //     }
+
+        
+
+        
+    // }
+
+    // img {
+    //     display: block;
+    //     position: relative;
+    //     left: 80px;
+
+    //     @include media($sub-desktop) {
+    //         position: relative;
+    //         left: 20px;
+    //     }
+
+    //     @include media($mobile) {
+    //         @include clearfix;
+    //         margin-top: 20px;
+    //     }
+    // }
+
+    // a {
+    //     position: absolute;
+    //     right: 80px;
+    //     top: 22px;
+    //     padding: 10px 11px 9px 11px;
+    //     color: #fff;
+    //     font-size: .8em;
+
+    //     @include media($tablet) {
+    //         position: absolute;
+    //         right: 20px;
+    //         top: 26px;
+    //     }
+
+    //     @include media($big-mobile) {
+    //         top: 16px;
+    //         right: 20px;
+    //     }
+
+    //     @include media($small-mobile) {
+    //         float: none;
+    //         position: relative;
+    //         left: auto;
+    //         right: auto;
+    //         top: 0;
+    //         @include blockcenter;
+    //         width: 220px;
+    //         font-size: .8em;
+    //     }
+
+    //     &.ocs-leadform {
+    //         display: none;
+    //     }
+
+    //     &.btn {
+    //         @include dark-button;
+
+    //         @include media($small-mobile) {
+    //             display: block;
+    //             width: 220px;
+    //         }
+    //     }
+
+    //     &.contact {
+    //         padding: 10px 30px;
+    //         line-height: 1;
+    //     }
+
+    //     &.next {
+    //         width: 130px;
+    //         padding: 6px 30px 7px 30px;
+
+    //         @include media($small-mobile) {
+    //             float: right;
+    //             margin-right: 30px;
+    //         }
+    //     }
+    // }
+
+    // .training-footer-link {
+    //     @include dotted-link;
+    //     position: absolute;
+    //     top: 36px;
+    //     right: 240px;
+    //     padding: 0;
+
+    //     @include media($tablet) {
+    //         top: 40px;
+    //         right: 170px;
+    //     }
+
+    //     @include media($big-mobile) {
+    //         top: 30px;
+    //         right: 170px;
+    //     }
+
+    //     @include media($small-mobile) {
+    //         float: left;
+    //         position: relative;
+    //         top: auto;
+    //         right: auto;
+    //         width: auto;
+    //         margin-top: 15px;
+    //         margin-left: 30px;
+    //     }
+
+    //     &.left, &.right {
+    //     }
+
+    //     &.left {
+
+    //         &:before {
+    //             content: "\00AB";
+    //             margin-right: 4px;
+    //             @include fonts-med;
+    //             font-size: 14px;
+    //         }
+    //     }
+
+    //     &.right {
+
+    //         &:after {
+    //             content: "\00BB";
+    //             margin-left: 4px;
+    //             @include fonts-med;
+    //             font-size: 14px;
+    //         }
+    //     }
+    // }
+
+
+.short-page {
+
+    .lead-bar {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+#welcome-video #site-wrapper #content .lead-bar {
+    display: none;
+}

@@ -1,0 +1,95 @@
+.iced-coffee-program-header { background-image: url(/img/programs/year-round/year-round-header-iced.jpg);
+
+	@include media($tablet) { background-image: url(/img/programs/year-round/iced-coffee-header-tablet.jpg); }
+	@include media($big-mobile) {  }
+	@include media($small-mobile) { background-image: url(/img/programs/year-round/iced-coffee-header-small-mobile.jpg); }
+}
+
+.blended-beverages-program-header { background-image: url(/img/programs/year-round/year-round-header-fontana.jpg);
+
+	@include media($tablet) { background-image: url(/img/programs/year-round/blended_header_tablet.jpg); }
+	@include media($big-mobile) {  }
+	@include media($small-mobile) { background-image: url(/img/programs/year-round/blended_header_small-mobile.jpg); }
+}
+
+.frappuccino-blended-beverages-program-header { background-image: url(/img/programs/year-round/year-round-header-frap.jpg);
+
+	@include media($tablet) { background-image: url(/img/programs/year-round/year-round-header-frap-tablet.jpg); }
+	@include media($big-mobile) { background-image: url(/img/programs/year-round/year-round-header-frap-big-mobile.jpg); }
+	@include media($small-mobile) { background-image: url(/img/programs/year-round/year-round-header-frap-small-mobile.jpg); }
+
+	> p {
+
+		@include media($big-mobile) { width: 430px !important; }
+	}
+}
+
+.tazo-tea-program-header { background-image: url(/img/programs/year-round/year-round-header-tazo.jpg);
+
+	@include media($tablet) { background-image: url(/img/programs/year-round/year-round-header-tazo-tablet.jpg); background-position: left center; }
+	@include media($big-mobile) { background-image: url(/img/programs/year-round/year-round-header-tazo-big-mobile.jpg); background-position: center center; }
+	@include media($small-mobile) { background-image: url(/img/programs/year-round/year-round-header-tazo-small-mobile.jpg); background-position: center bottom; }
+
+	> p {
+
+		@include media($big-mobile) { width: 410px !important; }
+	}
+}
+
+.support-products-title { @include custom-title(heavy, 20px, $not-quite-black, 30px); }
+
+#yearroundicedcoffee #site-wrapper #content {
+
+	.body-content { 
+
+		article { //background-color: rgb(255,255,255);
+
+			section { width: 960px; margin: 0 auto;
+			
+				@include media($sub-desktop) { width: 100%; }
+				@include media($tablet-landscape) { padding-right: 20px; }
+				@include media($tablet-portrait) { background-position: top left; padding-left: 380px;
+
+					> .overview-title { width: 350px; }
+				}
+			}
+		}
+	}
+}
+
+#yearroundicedcoffee #site-wrapper #content,
+#yearroundblendedbeverages #site-wrapper #content,
+#yearroundfrappuccinoblendedbeverages #site-wrapper #content,
+#yearroundtazotea #site-wrapper #content, {
+
+	.program-next { display: block; }
+}
+
+// .marketing.iced-coffee-starter-kit { background-color: $super-light-gray; }
+// .marketing.blended-beverages-starter-kit { background-color: $super-light-gray; }
+// .marketing.frappuccino-coffee-kit { background-color: $super-light-gray; }
+// .marketing.frappuccino-coffee-creme-kit { background-color: $super-light-gray; }
+// .marketing.tazo-brewed-iced-tea-kit { background-color: $super-light-gray; }
+// .marketing.tazo-concentrates-kit { background-color: $super-light-gray; }
+// .marketing.fontana-smoothies { background-color: $super-light-gray; }
+// .marketing.tazo-chai-concentrate-kit { background-color: $super-light-gray; }
+
+#yearroundicedcoffee,
+#yearroundblendedbeverages,
+#yearroundfrappuccinoblendedbeverages,
+#yearroundtazotea {
+
+	.your-menu .menu-gray { margin-bottom: 0; }
+	.recipe, .marketing, .module-expander { background-color: transparent; }
+	.recipe-calc-wrapper {
+
+		// > section.active {
+
+		// 	&:nth-child(odd) { background-color: #fff; }
+		// 	&:nth-child(even) { background-color: $super-light-gray; }
+		// }
+	}
+	.program-continue { background-color: #fff; }
+}
+
+.program-na { position: absolute; bottom: 20px; right: 20px; background-color: #fff; border: 2px solid #245557; border-radius: 5px; padding: 7px 20px 5px; }

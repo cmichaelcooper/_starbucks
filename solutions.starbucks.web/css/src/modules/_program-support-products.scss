@@ -1,0 +1,49 @@
+.program-support-products { width: 100%;
+
+	.inner-wrapper { position: relative; width: 960px; margin: 0 auto;
+
+		@include media($sub-desktop) { width: 100%; }
+
+		.products-inner { position: relative; width: 960px; margin: 0 auto;
+
+	        @include media($tablet) {
+	            width: 100%; max-width: 960px;
+	        }
+	        @include media($big-mobile) {
+	            width: 100%; max-width: 767px;
+	        }
+	        @include media($small-mobile) {
+	            width: 100%; max-width: 479px;
+	        }
+
+			.products-column { position: relative; display: inline-block; vertical-align: top;
+
+				&.img { width: 180px; height: 220px; }
+				&.details { width: 530px;
+
+					@include media($mobile) { width: 100%; }
+
+					.account-msg { margin-top: 30px; line-height: 1.25em;
+
+						a, a:link, a:visited { color: #245557; }
+					}
+				}
+			}
+		}
+	}
+}
+
+.program-support-products-select { @include clearfix; margin-bottom: 14px;
+
+	.product-type-select { float: left; }
+	.quantity { float: right; width: 90px; padding-left: 10px; border: none; border-radius: 5px; background-color: $not-quite-white; line-height: 38px;
+		
+		@include media($mobile) { float: left; width: 60px; margin-left: 10px; padding-left: 0; text-align: center; }
+
+		&:focus, &:active { border: none; outline: none; }
+		&::-webkit-input-placeholder { @include placeholder-style; }
+		&:-moz-placeholder { @include placeholder-style; } /* Firefox 18- */
+		&::-moz-placeholder { @include placeholder-style; } /* Firefox 19+ */
+		&:-ms-input-placeholder { @include placeholder-style; }
+	}
+}

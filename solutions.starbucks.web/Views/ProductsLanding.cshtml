@@ -1,0 +1,85 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "~/Views/Master.cshtml";
+}
+
+
+<header>
+    <h1>PRODUCTS</h1>
+    <p>Explore our complete portfolio of products and find the perfect fit for your operation.</p>
+</header>
+<div class="body-content">
+    <section>
+        <article>
+            <h2>New Tazo® Iced Tea Concentrates</h2>
+            <p>Offer uniquely refreshing iced tea creations your customers will love. We’ve made it easy to serve up invigoration by the glass or by the pitcher. </p>
+            <a href="/programs/tazo-tea">Learn More</a>
+        </article>
+        <div class="clear"></div>
+    </section>
+</div>
+<div class="support-content">
+    <ul class="module-kid-grid channels">
+        <li>
+            <div class="inner-wrapper">
+                <div class="logo-wrapper iProduct product-icons-sprite product-icons-coffee"><a href="/products/coffee">&nbsp;</a></div>
+                <div class="description-wrapper">
+                    <h3>Coffee</h3>
+                    <p>Sourced, blended and roasted with care and craft.</p>
+                </div>
+                <a href="/products/coffee">Learn More</a>
+            </div>
+        </li>
+        <li>
+            <div class="inner-wrapper">
+                <div class="logo-wrapper iProduct product-icons-sprite product-icons-tazo"><a href="/products/tazo">&nbsp;</a></div>
+                <div class="description-wrapper">
+                    <h3>Tazo® Tea</h3>
+                    <p>Artful, imaginative blends of fine leaves and botanicals.</p>
+                </div>
+                <a href="/products/tazo">Learn More</a>
+            </div>
+        </li>
+        <li>
+            <div class="inner-wrapper">
+                <div class="logo-wrapper iProduct product-icons-sprite product-icons-fontana"><a href="/products/fontana">&nbsp;</a></div>
+                <div class="description-wrapper">
+                    <h3>Fontana™ Syrups and Sauces</h3>
+                    <p>Transform beverages into specialty offerings and extend your menu.</p>
+                </div>
+                <a href="/products/fontana">Learn More</a>
+            </div>
+        </li>
+        <li>
+            <div class="inner-wrapper">
+                <div class="logo-wrapper iProduct product-icons-sprite product-icons-frap"><a href="/products/frappuccino">&nbsp;</a></div>
+                <div class="description-wrapper">
+                    <h3>Frappuccino® Blended Beverages</h3>
+                    <p>Rich, creamy indulgence in a variety of incredibly popular flavors.</p>
+                </div>
+                <a href="/products/frappuccino">Learn More</a>
+            </div>
+        </li>
+        <li>
+            <div class="inner-wrapper">
+                <div class="logo-wrapper iProduct product-icons-sprite product-icons-supplies"><a href="/products/supplies">&nbsp;</a></div>
+                <div class="description-wrapper">
+                    <h3>Supplies</h3>
+                    <p>A variety of products to help you deliver a premium experience in your operation.</p>
+                </div>
+                <a href="/products/supplies">Learn More</a>
+            </div>
+        </li>
+        <li>
+            <div class="inner-wrapper">
+                <div class="logo-wrapper iProduct product-icons-sprite product-icons-misc"><a href="/products/miscellaneous">&nbsp;</a></div>
+                <div class="description-wrapper">
+                    <h3>Miscellaneous</h3>
+                    <p>Browse our wide assortment of ingredients, merchandise and products.</p>
+                </div>
+                <a href="/products/miscellaneous">Learn More</a>
+            </div>
+        </li>
+    </ul>
+</div>
+@Html.Partial("~/Views/Partials/_LoggedInFooter.cshtml")

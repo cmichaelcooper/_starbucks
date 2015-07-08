@@ -1,0 +1,44 @@
+$base-font-size: 16px;
+// $base-line-height is 24px while $base-font-size is 16px
+$base-line-height: 150% !default;
+
+// This is the default html and body font-size for the base em value.
+$em-base: 16px !default;
+
+/* Responsive Breakpoints */
+$mobile: min-width 320px max-width 767px;
+$small-mobile: min-width 320px max-width 479px;
+$big-mobile: min-width 480px max-width 767px;
+$tablet: min-width 768px max-width 1100px;
+$tablet-portrait: min-width 768px max-width 1023px;
+$tablet-landscape: min-width 1024px max-width 1100px;
+$desktop: min-width 1100px;
+$sub-desktop: max-width 1100px;
+$sub-tablet: max-width 767px;
+
+/* Colors */
+$super-light-gray: rgb(246, 247, 247);
+$light-gray: rgb(188, 183, 176);
+$big-link-gray: rgb(153,150,147);
+$med-gray: rgb(56,54,53);
+$dark-gray: rgb(35,33,32);
+$tan: rgb(247,240,211);
+$error: rgb(255, 0, 0);
+$odd-band: rgb(242,242,242);
+$btn-hover-gray: rgb(237,237,237);
+$training-green: rgb(109,149,62);
+$training-red: rgb(170,30,51);
+$not-quite-black: rgb(61,57,53);
+$not-quite-white: rgb(239,241,240);
+$green-btn-hover: rgb(165,183,181);
+
+$anim-dur: .3875s;
+$menu-anim-dur: .3875s;
+
+// Frequently used icon codes
+$right-carat: "\f054";
+$plus-sign: "\f067";
+$error-bang: "\f12a";
+
+$right: "\00BB";
+$left: "\00AB";

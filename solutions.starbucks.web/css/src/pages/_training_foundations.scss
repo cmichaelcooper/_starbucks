@@ -1,0 +1,704 @@
+a.training-link { color: #245557; @include fonts-heavy;
+
+    &:hover { color: #bcb7b0; }
+    &.light { color: #cd7429; }
+    &.download-link { white-space: nowrap;
+
+        &:before { content: "\f019"; margin-right: 6px; font-family: FontAwesome; }
+    }
+}
+
+a.training-link-underlined { color: #245557; @include fonts-heavy; border-bottom: 1px dotted #245557;
+
+    &:hover { color: #bcb7b0; border-bottom: 1px dotted #bcb7b0; }
+}
+
+.training-foundation-video-wrapper { position: relative; width: 960px; height: 0; margin: 0 auto 20px 0; padding-bottom: 56.5%;
+
+    @include media($tablet-portrait) { width: 100%; height: 100%; }
+    @include media($mobile) { width: 100%; height: 100%; }
+
+    iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+}
+
+.large-overview-title.quiz { display: block; width: 960px; height: 65px; margin: 0 auto 20px auto; padding-top: 8px; padding-left: 100px; background-image: url(../img/quiz-header-icon.png); background-repeat: no-repeat; background-position: left center;
+
+    @include media($sub-desktop) { width: 100%; padding-left: 120px; background-position: left 20px center; }
+    @include media($tablet) {  }
+    @include media($mobile) { padding-top: 15px; }
+}
+
+.quiz-question-text { display: block; @include fonts-heavy;
+
+    @include media($sub-desktop) { width: 100%; padding-left: 10px; }
+}
+
+.answer-wrapper { padding: 10px 0;
+
+    &.correct_answer { background-color: #6d953e;
+
+        .quiz-question {
+
+            &:before { content: "\f164"; }
+        }
+    }
+    &.incorrect_answer {
+
+        .quiz-question {
+
+            &:before { content: "\f165"; }
+        }
+    }
+
+    .quiz-question { position: relative; @include blockcenter; width: 1050px;
+
+        @include media($sub-desktop) { width: 100%; }
+
+        &:before { position: absolute; left: 10px; top: 50%; display: block; float: left; width: 30px; height: 30px; margin-top: -12px; background-position: left center; color: #fff; font-family: FontAwesome; font-size: 30px; }
+
+        label.quiz-answer-label { display: inline; margin-bottom: 0; margin-left: 45px; color: #fff; @include fonts-med; font-size: 16px; font-weight: normal; line-height: 18px; text-transform: none;
+
+            @include media($mobile) { margin-left: 0; padding-left: 45px; font-size: 14px; }
+        }
+        input {
+
+            &.quiz-answer-radio { display: none;
+
+                &[type="radio"] + label { @include inline-block; vertical-align: middle; }
+
+                &[type="radio"] + label span { display: inline-block; vertical-align: bottom; @include get-sprite($formIcons, radio-training-noselect); cursor: pointer; }
+
+                &[type="radio"]:checked + label span { @include get-sprite($formIcons, radio-training-select); }
+                
+                &[checked="radio"] + label span { @include get-sprite($formIcons, radio-training-select);}
+            }
+        }
+    }
+}
+
+.header__foundations, .header__training {
+
+    .inner-wrapper { position: relative;
+
+        a.trainee-back-header { position: absolute; bottom: 20px; right: 0; color: #000; @include fonts-med; @include dotted-link; border-color: #000;
+
+            @include media($tablet) { right: 20px; }
+            @include media($mobile) { left: 50%; right: auto; }
+
+            &.operator {
+
+                @include media($mobile) { margin-left: -65px; }
+            }
+            &.trainee {
+
+                @include media($mobile) { margin-left: -110px; }
+            }
+        }
+    }
+}
+
+.header__foundations {
+
+    .inner-wrapper { position: relative; height: 200px; padding-top: 75px; padding-left: 120px; background-repeat: no-repeat; background-position: left center;
+
+        @include media($tablet) { padding-left: 200px; background-position: left 80px center; }
+        @include media($mobile) { height: 100%; padding-left: 20px; text-align: center; }
+        @include media($big-mobile) { padding-top: 170px; padding-bottom: 60px; background-position: center top 80px; }
+        @include media($small-mobile) { padding-top: 220px; background-position: center top 80px; }
+    }
+
+    &.brand {
+
+        .inner-wrapper { background-image: url(../img/foundations_brand_icon_desktop.png);
+
+            @include media($tablet) { padding-top: 50px; }
+
+            h1 { letter-spacing: -.02em;
+
+                @include media($tablet) { letter-spacing: -.04em; }
+            }
+        }
+    }
+
+    &.brewed {
+
+        .inner-wrapper { background-image: url(../img/foundations_brewed_icon_desktop.png); }
+    }
+
+    &.espresso {
+
+        .inner-wrapper { background-image: url(../img/foundations_espresso_icon_desktop.png); background-position: left top 10px;
+
+            @include media($tablet) { padding-left: 200px; background-position: left 80px top 10px; }
+            @include media($mobile) { height: 100%; padding-left: 20px; text-align: center; }
+            @include media($big-mobile) { padding-top: 200px; background-position: center top 40px; }
+            @include media($small-mobile) { padding-top: 220px; background-position: center top 40px; }
+        }
+    }
+
+    &.blended {
+
+        .inner-wrapper { background-image: url(../img/foundations_frappuccino_icon_desktop.png); background-position: left top 10px;
+
+            @include media($tablet) { padding-left: 200px; background-position: left 80px top 10px; }
+            @include media($mobile) { height: 100%; padding-left: 20px; text-align: center; }
+            @include media($big-mobile) { padding-top: 200px; background-position: center top 20px; }
+            @include media($small-mobile) { padding-top: 220px; background-position: center top 40px; }
+        }
+    }
+
+    &.tazo {
+
+        .inner-wrapper { background-image: url(../img/foundations-tazo-icon.png); background-position: left center;
+
+            @include media($tablet) { padding-left: 200px; background-position: left 80px center; }
+            @include media($mobile) { height: 100%; padding-left: 20px; text-align: center; }
+            @include media($big-mobile) { padding-top: 170px; padding-bottom: 60px; background-position: center top 50px; }
+            @include media($small-mobile) { padding-top: 220px; background-position: center top 90px; }
+        }
+    }
+
+    &.frappuccino {
+
+        .inner-wrapper { background-image: url(../img/foundations_frappuccino_icon_desktop.png); background-position: left top 10px;
+
+            @include media($tablet) { padding-left: 200px; background-position: left 80px top 10px; }
+            @include media($mobile) { height: 100%; padding-left: 20px; text-align: center; }
+            @include media($big-mobile) { padding-top: 200px; background-position: center top 20px; }
+            @include media($small-mobile) { padding-top: 220px; background-position: center top 40px; }
+
+            h1 { letter-spacing: -.03em; }
+        }
+    }
+}
+
+.our-heritage {
+
+    .inner-wrapper { height: 340px; padding-top: 110px;
+
+        @include media($tablet) { padding-left: 200px; }
+        @include media($big-mobile) { padding-top: 20px; }
+        @include media($small-mobile) { height: 370px; }
+    }
+}
+
+.starbucks-brands { @include clearfix;
+
+    .inner-wrapper { 
+
+        @include media($small-mobile) { padding-left: 0; padding-right: 0; }
+    }
+}
+
+.training-brands-table { @include clearfix; display: block; margin: 40px auto; padding: 0; width: 880px; border-left: 1px solid #BCB7B0; border-right: 1px solid #BCB7B0;
+
+    @include media($tablet-portrait) { width: 690px; }
+    @include media($mobile) { width: 100%; }
+    @include media($small-mobile) { border: none; margin-bottom: 0; }
+
+    li { float: left; position: relative; display: block; vertical-align: middle; width: 219px; height: 130px; margin: 0; padding: 20px 0;
+
+        @include media($tablet-portrait) { width: 229px; }
+        @include media($big-mobile) { width: 50%; }
+        @include media($small-mobile) { width: 100%; height: 250px; border-top: 1px solid #BCB7B0; }
+
+        &:nth-child(1) { border-right: 1px solid #BCB7B0;
+
+            @include media($small-mobile) { border-right: none; }
+        }
+        &:nth-child(2) { border-right: 1px solid #BCB7B0;
+
+            @include media($big-mobile) { border-right: none; }
+            @include media($small-mobile) { border-right: none; }
+        }
+        &:nth-child(3) { border-right: 1px solid #BCB7B0;
+
+            @include media($tablet-portrait) { border-right: none; }
+            @include media($small-mobile) { border-right: none; }
+        }
+        &:nth-child(4) { border-right: none;
+
+            @include media($tablet-portrait) { border-right: 1px solid #BCB7B0; }
+            @include media($big-mobile) { border-right: none; }
+            @include media($small-mobile) { border-right: none; }
+        }
+        &:nth-child(5) { border-right: 1px solid #BCB7B0;
+
+            @include media($small-mobile) { border-right: none; }
+        }
+        &:nth-child(6) { border-right: 1px solid #BCB7B0;
+
+            @include media($tablet-portrait) { border-right: none; }
+            @include media($big-mobile) { border-right: none; }
+            @include media($small-mobile) { border-right: none; }
+        }
+        &:nth-child(7) { border-right: 1px solid #BCB7B0;
+
+            @include media($small-mobile) { border-right: none; }
+        }
+        &:nth-child(8) { border-right: none;
+
+            @include media($tablet-portrait) { border-right: 1px solid #BCB7B0; }
+            @include media($big-mobile) { border-right: none; }
+            @include media($small-mobile) { display: none; }
+        }
+        
+        img { display: block; position: absolute; top: 50%; left: 50%; margin: 0 auto;
+
+            &.sbux { margin-top: -48px; margin-left: -47px; }
+            &.sbc { margin-top: -29px; margin-left: -92px; }
+            &.tazo { margin-top: -18px; margin-left: -65px; }
+            &.laboulange { margin-top: -46px; margin-left: -92px; }
+            &.teavana { margin-top: -50px; margin-left: -42px; }
+            &.torrefaz { margin-top: -52px; margin-left: -52px; }
+            &.evol-fresh { margin-top: -38px; margin-left: -90px; }
+        }
+    }
+}
+
+.header-break {
+
+    @include media($small-mobile) { display: block; }
+}
+
+.our-mission {
+
+    @include media($small-mobile) { height: 370px; }
+
+    .inner-wrapper { height: 340px; padding: 130px 0 60px 350px;
+
+        @include media($mobile) { padding-top: 20px; padding-left: 20px; }
+        @include media($small-mobile) { height: 370px; }
+    }
+}
+
+.starbucks-trivia {
+
+    .inner-wrapper { padding-left: 100px; background-image: url(../img/questionable.png); background-repeat: no-repeat; background-position: left center;
+
+        @include media($tablet) { padding-left: 120px; background-position: left 20px center; }
+        @include media($mobile) { background-position: left 20px center; }
+    }
+}
+
+.starbucks-brands {
+
+    .inner-wrapper {
+
+        h2 {
+
+            @include media($mobile) { margin-left: 20px; }
+        }
+    }
+}
+
+.brewing-tasting-downloads {
+
+    @include media($mobile) { padding-left: 0; }
+
+    li { position: relative; padding-left: 60px;
+
+        @include media($mobile) { padding-left: 70px; }
+
+        .icon { position: absolute; top: 0; left: 0; width: 50px; margin-right: 20px;
+
+            @include media($mobile) { width: 55px; }
+
+            img { width: 100%; }
+        }
+        h3 { color: #245557; @include small-title;
+
+            > a { color: #245557; }
+        }
+        p { margin-top: 8px; }
+    }
+}
+
+.brewed-hold-times {
+
+    .inner-wrapper { padding-left: 140px; background-image: url(../img/brewing-clock.png); background-repeat: no-repeat; background-position: left center;
+
+        @include media($tablet) { padding-left: 160px; background-position: left 20px center; }
+        @include media($mobile) { padding-top: 160px; padding-left: 20px; background-position: center top 20px; }
+    }
+}
+
+.brewing-equipment-standards {
+
+    .inner-wrapper { height: 510px; padding-top: 120px; padding-left: 400px; background-image: url(../img/backgrounds/bunn_brewer.jpg); background-repeat: no-repeat; background-position: left center;
+
+        @include media($tablet) { background-position: left 20px center; }
+        @include media($mobile) { padding-top: 20px; padding-left: 20px; background-position: center bottom 30px; background-size: 270px; }
+        @include media($big-mobile) { height: 550px; }
+        @include media($small-mobile) { height: 650px; }
+    }
+}
+
+.water-filtration-program {
+
+    .inner-wrapper { padding-left: 140px; background-image: url(../img/icon-water-filtration.png); background-repeat: no-repeat; background-position: left top 65px;
+
+        @include media($tablet) { padding-left: 160px; background-position: left 20px top 45px; }
+        @include media($mobile) { padding-top: 170px; padding-left: 20px; background-position: center top 20px; }
+    }
+}
+
+.what-is-espresso {
+
+    .inner-wrapper { height: 440px;
+
+        @include media($small-mobile) { height: 700px; padding-top: 30px; }
+    }
+
+    p { width: 740px;
+
+        @include media($tablet) { width: 440px; }
+        @include media($mobile) { width: auto; }
+    }
+}
+
+.the-perfect-espresso-shot {
+
+    .inner-wrapper { height: 440px; padding-top: 50px; padding-left: 370px; background-image: url(../img/perfect-espresso-shot-circle.png); background-repeat: no-repeat; background-position: left center;
+
+        @include media($tablet) { padding-left: 400px; background-position: left 30px center; }
+        @include media($tablet-portrait) { height: 500px; }
+        @include media($big-mobile) { height: 460px; padding-top: 30px; padding-left: 280px; background-position: left 20px top 30px; background-size: 240px; }
+        @include media($small-mobile) { height: 730px; padding-top: 30px; padding-left: 20px; background-position: center bottom 30px; background-size: 240px; }
+
+        p { margin: 8px 0 20px 0; }
+    }
+}
+
+.beverage-calling-cup-marking {
+
+    .inner-wrapper { background-image: url(../img/backgrounds/cup-marking.jpg); background-repeat: no-repeat; background-position: right bottom;
+
+        @include media($tablet-portrait) { background-position: right -120px bottom; }
+        @include media($big-mobile) { background-position: right -80px top 40px; padding-right: 210px; }
+        @include media($small-mobile) { padding-top: 340px; background-position: center top 20px; background-size: 220px; }
+
+        .ndash-list { width: 600px;
+
+            @include media($mobile) { width: 100%; }
+        }
+    }
+}
+
+.espresso-equipment-overview {
+
+    .inner-wrapper { height: 600px; background-image: url(../img/fancy-espresso-machine.jpg); background-repeat: no-repeat; background-position: left bottom;
+
+        @include media($tablet-portrait) { height: 660px; }
+        @include media($mobile) { height: auto; padding-top: 370px; background-position: center top 20px; background-size: 290px; }
+
+        .content-group { margin-left: 355px;
+
+            @include media($mobile) { margin-left: 0; }
+
+            small { display: block; font-size: 10px; line-height: 1.2em; }
+        }
+        .espresso-machine-info-desktop { width: 500px;
+
+            @include media($tablet-portrait) { width: 370px; }
+            @include media($mobile) { display: none; }
+
+            td { padding: 4px 0; border-bottom: 1px solid #000; }
+        }
+        .espresso-machine-info-mobile { display: none;
+
+            @include media($mobile) { display: block; margin-left: 25px; }
+
+            .info-row { padding: 6px 0; border-bottom: 1px solid #000; }
+        }
+    }
+}
+
+.frappuccino-blended-beverages { 
+
+    @include media($tablet-landscape) { background-position: right -190px center; }
+    @include media($tablet-portrait) { background-position: right -390px center; }
+    @include media($big-mobile) { height: auto; padding-right: 20px; }
+    @include media($small-mobile) { height: auto; padding-right: 20px; }
+
+    .inner-wrapper { height: 500px; padding-right: 530px; background-image: url(../img/backgrounds/frappuccino_drink_group_cc_vert.jpg); background-repeat: no-repeat; background-position: right center;
+
+        @include media($tablet-landscape) { padding-right: 580px; }
+        @include media($tablet-portrait) { padding-right: 420px; }
+        @include media($big-mobile) { height: auto; padding-top: 40px; padding-right: 20px; padding-bottom: 290px; background-position: center bottom; background-size: 250px; background-position: center bottom 30px; }
+        @include media($small-mobile) { height: auto; padding-top: 40px; padding-right: 20px; padding-bottom: 290px; background-position: center bottom; background-size: 250px; background-position: center bottom 30px; }
+    }
+}
+
+.frappuccino-basics {
+
+    .inner-wrapper {
+
+        .overview-title { letter-spacing: -.02em; }
+    }
+}
+
+.fontana-beverage-base {
+
+    .inner-wrapper {
+
+        @include media($big-mobile) { padding-top: 40px; padding-bottom: 300px; }
+        @include media($small-mobile) { padding-top: 40px; padding-bottom: 330px; }
+
+        h2 {
+
+            @include media($mobile) { text-align: center; }
+
+            img {
+
+                @include media($mobile) { display: block; margin: 0 auto 10px auto; }
+            }
+        }
+    }
+}
+
+.what-is-tea { height: 550px;
+
+    @include media($big-mobile) { height: 370px; }
+
+    .inner-wrapper {
+
+        .overview-desc { width: 520px;
+
+            @include media($mobile) { width: auto; }
+        }
+    }
+}
+
+.three-fundamentals-of-tea {
+
+    @include media($small-mobile) { height: 625px; }
+
+    .inner-wrapper { height: 480px; padding-left: 400px;
+
+        @include media($tablet) { padding-left: 250px; }
+        @include media($mobile) { padding-left: 20px; }
+        @include media($big-mobile) { height: 630px; }
+
+        h2 {
+
+            @include media($mobile) { letter-spacing: -.03em; }
+        }
+
+        p {
+
+            @include media($mobile) { font-size: 14px; line-height: 1.2em; }
+        }
+    }
+}
+
+.iced-tea {
+
+    .inner-wrapper { height: 690px; background-image: url(../img/iced-tea-cup.jpg); background-repeat: no-repeat; background-position: right center;
+
+        @include media($tablet-portrait) { height: 720px; background-position: right -70px bottom; }
+        @include media($mobile) { background-image: url(../img/iced-tea-cup-mobile-portrait.jpg); background-position: center bottom; }
+        @include media($big-mobile) { height: auto; padding-bottom: 190px; }
+        @include media($small-mobile) { height: auto; padding-bottom: 190px; }
+
+        .iced-tea-desc { width: 575px;
+
+            @include media($mobile) { width: 100%; }
+        }
+        .iced-tea-table { width: 575px;
+
+            @include media($tablet-landscape) { width: 585px; }
+            @include media($tablet-portrait) { width: 435px; }
+            @include media($mobile) { width: 100%; font-size: 14px; }
+
+            tr { border-bottom: 1px solid #3D3935; }
+            td { vertical-align: top; }
+            .col1 { width: 190px;
+
+                @include media($mobile) { width: 50%; }
+            }
+            .table-head { @include fonts-heavy;
+
+                @include media($mobile) { padding-bottom: 4px; }
+            }
+        }
+    }
+}
+
+.tazo-tea-lattes {
+
+    .inner-wrapper { height: 520px; padding-left: 410px; padding-right: 80px; background-image: url(../img/tazo-lattes-bg.jpg); background-repeat: no-repeat; background-position: left top;
+
+        @include media($tablet) { background-image: url(../img/tazo-lattes-bg.jpg); }
+        @include media($tablet-portrait) { background-image: url(../img/tazo-lattes-tablet-portrait-bg.jpg); padding-left: 220px; padding-right: 20px; background-position: left -190px top; }
+        @include media($mobile) { height: auto; padding-top: 290px; padding-left: 20px; padding-right: 20px; background-image: url(../img/tazo-lattes-tablet-portrait-bg.jpg); background-position: center top 15px; background-size: 240px; }
+    }
+}
+
+.shelf-life-standard-ratio {
+
+    .inner-wrapper { background-image: url(../img/foundation-blended-syrup.jpg); background-repeat: no-repeat; background-position: right center;
+
+        @include media($tablet-landscape) { background-position: right 80px center; }
+        @include media($big-mobile) { padding-top: 420px; background-position: center top 40px; background-size: 250px; }
+        @include media($small-mobile) { padding-top: 450px; background-position: center top 40px; background-size: 250px; }
+
+        .shelf-life-table, .standard-ratio-table {
+
+            @include media($tablet-portrait) { width: 380px; }
+            @include media($mobile) { font-size: 14px; }
+            @include media($big-mobile) { width: 100%; }
+        }
+        .shelf-life-table {
+
+            .col1 { width: 200px;
+
+                @include media($tablet-portrait) { width: 52%; }
+                @include media($big-mobile) { width: 40%; }
+                @include media($small-mobile) { width: 43%; }
+            }
+            .col2 { width: 377px;
+
+                @include media($tablet-portrait) { width: 48%; }
+                @include media($big-mobile) { width: 60%; }
+                @include media($small-mobile) { width: 57%; }
+            }
+        }
+
+        .standard-ratio-table {
+
+            .col1 { width: 200px;
+
+                @include media($tablet-portrait) { width: 52%; }
+                @include media($big-mobile) { width: 40%; }
+                @include media($small-mobile) { width: 43%; }
+            }
+            .col2 { width: 130px;
+
+                @include media($tablet-portrait) { width: 16%; }
+                @include media($big-mobile) { width: 20%; }
+                @include media($small-mobile) { width: 19%; }
+            }
+            .col3 { width: 140px;
+
+                @include media($tablet-portrait) { width: 16%; }
+                @include media($big-mobile) { width: 20%; }
+                @include media($small-mobile) { width: 19%; }
+            }
+            .col4 { width: 106px;
+
+                @include media($tablet-portrait) { width: 16%; }
+                @include media($big-mobile) { width: 20%; }
+                @include media($small-mobile) { width: 19%; }
+            }
+        }
+        .table-head { padding-bottom: 4px; border-bottom: 1px solid #3d3935; @include fonts-heavy; font-size: 16px;
+
+            @include media($mobile) { font-size: 14px; }
+        }
+        .table-content { border-bottom: 1px solid #3d3935; }
+        .upper { text-transform: uppercase; }
+        
+        
+        
+        .w575 { width: 575px;
+
+            @include media($mobile) { width: auto; }
+        }
+    }
+}
+
+.responsive-img-wrapper { width: 100%;
+
+    img { display: block; width: 100%; margin: 0 auto; }
+
+    &.coffee-roasts { margin-top: 40px; margin-bottom: 40px;
+
+        .coffee-roasts-desktop {
+
+            @include media($mobile) { display: none; }
+        }
+        .coffee-roasts-mobile { display: none;
+
+            @include media($mobile) { display: block; width: 175px; }
+        }
+    }    
+}
+
+.desktop-foundation-jump {
+
+    @include media($mobile) { display: none; }
+}
+
+.mobile-foundation-jump { display: none;
+
+    @include media($mobile) { display: block; }
+
+    .module-expander { width: 100%; margin: 0; padding: 0;
+
+        .expander { width: 280px; margin: 0 auto; }
+    }
+
+    .module-expander .collapser ul li h2 { @include fonts-heavy; font-size: 16px;
+
+        a { color: $med-gray;
+
+            &:hover { color: $light-gray; }
+        }
+    }
+}
+
+
+// SET BACKGROUND IMAGES / COLORS
+
+.starbucks-trivia, .preparing-chai-tea-lattes  { @include background-marble-light; }
+.buying-coffee, .brewed-hold-times, .preparing-frappuccino-soluble, .tea-assortment-preparation, .sbx-iced-brewed-coffee { @include background-marble-dark; }
+.our-heritage { background-image: url(../img/backgrounds/brand_overview_pike_place_store_background.jpg); background-repeat: no-repeat; background-position: center center;
+
+    @include media($tablet) { background-image: url(../img/backgrounds/brand_overview_pike_place_store_bg_tablet.jpg); background-position: left center; }
+    @include media($big-mobile) { background-image: url(../img/backgrounds/brand_overview_pike_place_store_bg_mobile_landscape.jpg); }
+    @include media($small-mobile) { background-image: url(../img/backgrounds/brand_overview_pike_place_store_bg_mobile_portrait.jpg); }
+}
+.our-mission { background-image: url(../img/backgrounds/brand_overview_our_mission_background.jpg); background-repeat: no-repeat; background-position: center center;
+
+    @include media($tablet) { background-image: url(../img/backgrounds/brand_overview_our_mission_bg_tablet.jpg); background-position: left center; }
+    @include media($big-mobile) { background-image: url(../img/backgrounds/brand_overview_our_mission_bg_mobile_landscape.jpg); }
+    @include media($small-mobile) { background-image: url(../img/backgrounds/brand_overview_our_mission_bg_mobile_portrait.jpg); }
+}
+.what-is-espresso { background-image: url(../img/backgrounds/what_is_espresso_background.jpg); background-repeat: no-repeat; background-position: center center;
+
+    @include media($tablet) { background-image: url(../img/backgrounds/what_is_espresso_shots_tablet.jpg); background-position: left center; }
+    @include media($big-mobile) { background-image: url(../img/backgrounds/what_is_espresso_shots_mobile_landscape.jpg); }
+    @include media($small-mobile) { background-image: url(../img/backgrounds/what_is_espresso_shots_mobile_portrait.jpg); }   
+}
+.fontana-beverage-base { background-image: url(../img/backgrounds/fontana_overview_background.jpg); background-repeat: no-repeat; background-position: center center;
+
+    @include media($tablet) { background-image: url(../img/backgrounds/fontana_overview_bg_tablet.jpg); background-position: left center; }
+    @include media($big-mobile) { background-image: url(../img/backgrounds/fontana_overview_bg_mobile_landscape.jpg); }
+    @include media($small-mobile) { background-image: url(../img/backgrounds/fontana_overview_bg_mobile_portrait.jpg); }
+}
+.what-is-tea { background-image: url(../img/backgrounds/desktop/textpage-header-ourbrands-tazo.jpg); background-repeat: no-repeat; background-position: center center;
+
+    @include media($tablet) { background-image: url(../img/backgrounds/tazo_overview_background_tablet.jpg); background-position: left center; }
+    @include media($big-mobile) { background-image: url(../img/backgrounds/tazo_overview_background_mobile_landscape.jpg); }
+    @include media($small-mobile) { background-image: url(../img/backgrounds/tazo_overview_background_mobile_portrait.jpg); }
+}
+.three-fundamentals-of-tea { background-image: url(../img/backgrounds/tazo-body.png); background-repeat: no-repeat; background-position: center center;
+
+    @include media($tablet) { background-image: url(../img/backgrounds/tazo_fundamentals_background_tablet.jpg); background-position: left -70px center; }
+    @include media($big-mobile) { background-image: url(../img/backgrounds/tazo_fundamentals_background_mobile_landscape.jpg); }
+    @include media($small-mobile) { background-image: url(../img/backgrounds/tazo_fundamentals_background_mobile_portrait.jpg); }
+}
+.conservation-intl, .beverage-basics, .how-brew-iced-tea { background-color: #D3DCCC; }
+.starbucks-brands, .coffee-growing-regions, .roasting-coffee, .brewing-equipment-standards, .the-perfect-espresso-shot, .beverage-calling-cup-marking { background-color: #fff; }
+.frappuccino-basics, .iced-tea  { background-color: #E8E9E3; }
+.shelf-life-standard-ratio { background-color: #CCDCDA; }
+.engaging-customers, .water-filtration-program, .espresso-equipment-overview { background-color: #CDDDDB; }
+.frappuccino-blended-beverages { background-color: #F6EFD3; }
+.how-to-make-iced-coffee, .preparing-espresso-beverages-video { background-color: #E5EAF0; }
+.steaming-the-perfect-milk { background-color: #3D3934; }
+.espresso-best-practices, .frappuccino-quality-standards, .tazo-iced-tea-concentrates { background-color: #F6F6F6; }
+.in-the-beginning, .growing-harvesting-processing, .experience-coffee-passion, .the-perfect-shot { background-color: #E9EAE4; }
+.brewing-tasting-coffee { background-color: #F2F2F2; }
+.preparing-espresso-beverages { background-color: #f7f7f7; }
+.tazo-tea-lattes { background-color: #ded5d0; }

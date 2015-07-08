@@ -1,0 +1,285 @@
+#register, #reset-password, #forgot-account, #contact-form, #verifyuser, #forgotaccount {
+	#site-wrapper {
+		#site-switcher {
+			#menu-button {
+
+				.fa-bars { color: #ccc; }
+			}
+		}
+		#content { padding-top: 150px; background: #000 url(../img/backgrounds/home-bg-cover.jpg) no-repeat; background-size: cover;
+
+			@include media($mobile){ padding-top: 0; }
+
+			#play-button { width: 31px;	height: 31px; border: 0; }
+
+			.register-content-wrapper { position: relative; padding-bottom: 40px; background: rgb(255, 255, 255);
+
+				@include media($mobile){ padding-bottom: 0; background-color: transparent; }
+
+				a { color: rgb(34, 34, 34); @include fonts-heavy;
+
+					&:hover { color: $light-gray; @include fonts-heavy; }
+				}
+
+				.close-button { z-index: 99; position: absolute; top: 8px; right: 12px; left: auto; color: #AAA; @include fonts-black; font-size: 30px; line-height: 1; text-decoration: none; cursor: pointer;
+
+					@include media($mobile) { top: 0; }
+
+					&:hover { @include fonts-black; }
+				}
+
+				.register-content { position: relative; @include clearfix; @include blockcenter; padding: 40px;
+
+					@include media($sub-desktop) { width: 100%; }
+					@include media($tablet){ padding: 40px 20px 60px 20px; }
+					@include media($mobile){ padding: 20px 20px 80px 20px; background: #fff; }
+
+					h1 { margin-bottom: 20px;
+
+						@include media($small-mobile) { padding-bottom: 7px; margin-top: 10px; }
+					}
+
+					.register-learn-link { position: absolute; left: 40px; bottom: 40px; margin: 0;
+
+						@include media($mobile) { left: 20px; }
+						@include media($small-mobile) { bottom: 20px; }
+					}
+
+					.alert-success {
+
+						.pass-reset-done { @include float(right); margin-top: 30px; }
+					}
+
+					.alert-danger { margin-bottom: 20px;
+
+						ul { padding-left: 0; }
+					}
+
+					.grouping { @include w-50;
+
+						@include media($mobile) { @include w-100; }
+
+						&:first-child { margin-top: 0; }
+					}
+
+					.recaptcha_is_showing_audio {
+
+						> #recaptcha_image { margin-bottom: 25px\9;}
+					}
+
+					label { display: block; margin-bottom: 6px; @include fonts-heavy; font-size: 13px; text-transform: uppercase; }
+
+					input { display: block; @include border-radius(5px); padding: 10px; width: 100%; border: 1px solid #BCB7B0; font-size: .8em;
+
+						&:focus { border-color: #006240; }
+						&.recaptcha-response-field { margin-bottom: 20px; }
+					}
+
+					textarea { width: 100%; @include border-radius(5px); font-size: .8em; }
+
+					::-webkit-input-placeholder { @include fonts-med; font-size: 1em; text-transform: uppercase; }
+					:-moz-placeholder { /* Firefox 18- */ @include fonts-med; text-transform: uppercase; }
+					::-moz-placeholder {  /* Firefox 19+ */ @include fonts-med; text-transform: uppercase; }
+					:-ms-input-placeholder { @include fonts-med; text-transform: uppercase; }
+					.btn-default { @include reset-button-continue; @include float(right); width: 170px; text-align: center;
+
+						@include media($mobile){ @include float(right); margin-top: 10px; width: 200px; }
+
+						&.message-home { @include float(right); margin-top: 20px; }
+					}
+				}
+			}
+
+			.lead-bar { @include w-100;
+
+				@include media($tablet) { @include w-100; }
+				@include media($mobile){ display: none;	}
+			}
+
+			#background { z-index: -1; position: absolute; left: 0; top: 0; min-width: 100%; height: 100%; background: #000 url(../img/backgrounds/home-bg-cover.jpg) no-repeat; background-size: cover;
+				-webkit-transition: margin-left .25s; -moz-transition: margin-left .25s; -o-transition: margin-left .25s; transition: margin-left .25s;
+
+				@include media($sub-desktop) { background-position: 50% 0%; }
+				@include media($small-mobile){ background-size: 350%; }
+			}
+		}
+	}
+}		
+			
+#register, #forgot-account, #contact-form, #verifyuser, #forgotaccount {
+
+	#site-wrapper {
+
+		#site-switcher {
+
+			#menu-button {
+
+				.fa-bars { color: #ccc; }
+			}
+		}
+		#content { min-height: 100%; overflow: auto; background: #000 url(../img/backgrounds/home-bg-cover.jpg) no-repeat; background-size: cover; -ms-behavior: url(/backgroundsize.min.htc);
+
+			@include media($mobile){ padding-top: 0; height: auto; }
+
+			a { color: rgb(34, 34, 34); @include fonts-heavy;
+
+				&:hover { color: $light-gray; @include fonts-heavy; }
+			}
+		}
+			
+		.lead-bar { display: none; @include w-100;
+
+			@include media($tablet){ @include w-100; }
+			@include media($mobile){ display: none; }
+		}
+	}
+}
+
+
+#register, #forgot-account, #reset-password, #contact-form, #verifyuser, #forgotaccount {
+	#site-wrapper #content { padding-top: 150px;
+
+		@include media($mobile) { padding-top: 100px; }
+
+		> section { @include clearfix; @include blockcenter; width: 960px; background: #fff;
+
+			@include media($sub-desktop) { width: 100%; }
+			@include media($tablet) { max-width: 960px; }
+			@include media($mobile) { height: 100%; }
+		}
+
+		.incorrect-notice { @include fonts-med; font-size: .9em; line-height: 1.5em; margin-bottom: 40px;
+
+			&:before { @include fa-icon("\f12a", 1.6em, #fff); float: left; @include inline-block; @include border-radius(4px); margin-right: 10px; padding: 4px 16px 0px 16px; background-color: red; line-height: 1.5em; text-align: center; }
+		}
+
+		h1 { margin-bottom: 30px; padding-bottom: 8px; border-bottom: 1px solid #bcb7b0; color: rgb(60, 56, 52); @include fonts-light; font-size: 40px; line-height: 1em;
+
+			@include media($mobile){ padding-bottom: 7px; font-size: 2em; }
+
+			.hideable {
+
+				@include media($mobile){ display: none; }
+			}
+		}
+
+		.step-wrapper { float:left;  padding-right: 30px; width: 40%;
+
+			@include media($tablet) { @include w-30; }
+			@include media($mobile){ float: none; padding: 0; width: 100%; }
+
+			.validation-summary-valid { margin-top: .625em; color: red; @include fonts-heavy; }
+
+			h2 {
+
+				@include media($mobile){ @include fonts-heavy; font-size: 1.3em; }
+			}
+			h3 { margin-top: .625em; line-height: 1.3em;
+
+				@include media($mobile) { font-size: .9em; }
+
+				&#watch-demo { margin-top: 0;}
+			}
+
+			.requirements { margin-top: 3px; @include fonts-light; font-size: 16px; font-weight: normal; }
+
+			.forgotten-pass { margin-top: 20px; }
+		}
+		.form-wrapper { float:left;  width: 60%;
+
+			@include media($tablet) { @include w-70L; margin-left: 0; }
+			@include media($mobile){ float: none; margin-top: 20px; width: 100%; }
+
+			fieldset { padding: 0;
+				
+				& > div { @include clearfix; }
+			}
+			.grouping { float:left;  margin-bottom: 20px;
+
+				@include media($small-mobile) { float: none; }
+
+				&.email { display: block; float: none; @include w-100; }
+				&.accountnumber { @include w-70; }
+				&.zip { @include w-30L; }
+				&.passwordcreate { position: relative; @include w-50;
+
+					#strengthIndicator { display: block; overflow: hidden; position: absolute; bottom: 8px; right: 10px; width: 26px; height: 20px; color: white; text-indent: -1000px;
+
+						&.weak, &.good, &.strong { background-repeat: no-repeat; }
+						&.weak { background-image: url(../img/password-strength-weak.png); }
+						&.good { background-image: url(../img/password-strength-good.png); }
+						&.strong { background-image: url(../img/password-strength-strong.png); }
+					}
+				}
+
+				&.passwordconfirm { @include w-50L;
+
+					&.valid {
+
+						input { background: url(../img/password-match.png) right center no-repeat; }
+					}
+				}
+
+				&.namefirst { @include w-50; }
+				&.namelast { @include w-50L; }
+				&.title { @include w-100; }
+				&.companyname { @include w-100; }
+				&.city { @include w-70; }
+				&.state { @include w-30L; }
+				&.phonenumber { @include w-50; }
+				&.phone-option { @include w-100; }
+				&.mobilephone { @include w-50L; }
+
+				&.passwordcreate, &.passwordconfirm, &.namefirst, &.namelast, &.title, &.companyname, &.city, &.state, &.phonenumber, &.mobilephone, &.accountnumber, &.zip {
+
+					@include media($mobile) { @include w-100; }
+				}
+			}
+			
+			.register-buttons { width: 100%; margin-top: 30px;
+
+				@include media($tablet){ @include float(right); width: auto; }
+				@include media($big-mobile){ @include float(right); width: auto; }
+				
+				.btn-default { @include register-button-continue; @include float(right); width: 170px;
+
+					@include media($tablet) { @include float(right); width: 154px; }
+					@include media($mobile) { width: 180px; }
+				}
+
+				.btn-skip { @include register-button-skip; float:left;  display: block; margin-left: 170px; color: $med-gray !important; text-align: center;
+
+					@include media($sub-desktop) { width: 180px; }
+					@include media($tablet) { margin-left: 0; margin-right: 10px; margin-bottom: 10px; }
+					@include media($mobile) { margin-bottom: 10px; }
+					@include media($big-mobile) { margin-top: 10px; margin-left: 0; margin-right: 10px;  }
+					@include media($small-mobile) { margin-left: 100px; margin-right: 0; }
+				}
+
+				.loading { display: none; }
+
+				&.active {
+
+					button { display: none; }
+
+					.loading { display: block; @include float(right); @include button; padding: 9px 20px 6px 20px; width: 170px; border: 1px solid $med-gray; background: #fff;
+
+                        i { @include inline-block; color: 333; font-size: 14px; }
+                        .text { @include inline-block; @include fonts-light; font-size: 14px; font-weight: normal; letter-spacing: 1px; }
+                    }
+				}
+			}
+		}
+	}
+}
+
+#forgot-account #site-wrapper #content .form-wrapper { width: 100%;
+
+	.grouping { float: none; }
+	.required-notice { @include pie-clearfix; margin-bottom: 20px; }
+}
+
+
+#forgot-account, #contact-form, #forgotaccount {
+	label { margin-top: 10px; margin-bottom:0 !important;}
+}

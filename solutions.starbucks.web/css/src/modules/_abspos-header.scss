@@ -1,0 +1,141 @@
+.abspos-header {
+    padding: 150px 0 0 120px;
+    width: 100%;
+    height: 550px;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+
+    @include media($tablet) {
+        padding-left: 20px;
+        background-position: left center;
+    }
+
+    @include media($mobile) {
+        padding-left: 0;
+    }
+
+    @include media($big-mobile) {
+        height: 320px;
+        padding-top: 100px;
+    }
+
+    @include media($small-mobile) {
+        height: 568px;
+        padding-top: 120px;
+    }
+
+    h1, h3 {
+        color: #fff;
+
+        @include media($mobile) {
+            @include blockcenter;
+            text-align: center;
+        }
+    }
+
+    h3, p {
+        @include fonts-light;
+    }
+
+    p {
+        margin: 10px 0 0 0;
+        width: 400px;
+        color: #fff;
+        font-size: 1.3em;
+        line-height: 1.3em;
+
+        @include media($tablet) {
+            width: 350px;
+        }
+
+        @include media($mobile) {
+            @include blockcenter;
+            text-align: center;
+        }
+
+        @include media($big-mobile) {
+            width: 360px;
+            font-size: 1.15em;
+        }
+
+        @include media($small-mobile) {
+            width: 256px;
+            font-size: 1.1em;
+            line-height: 1.3em;
+        }
+    }
+
+    .abspos-header__title {
+        @include content-page-title();
+        padding: 8px 0 0 0;
+        width: 650px;
+
+        @include media($tablet) {
+            width: 50%;
+            font-size: 3em;
+            padding-top: 8px;
+        }
+
+        @include media($mobile) {
+            margin-bottom: 6px;
+            padding-left: 0;
+        }
+
+        @include media($big-mobile) {
+            width: 480px;
+            font-size: 3em;
+        }
+
+        @include media($small-mobile) {
+            width: 320px;
+            font-size: 2em;
+        }
+
+        sup {
+            top: -9px;
+            font-size: .3em;
+            vertical-align: super;
+
+            @include media($mobile) {
+                top: -5px;
+            }
+        }
+    }
+
+    .abspos-header__desc {
+        margin: 10px 0 0 0;
+        width: 400px;
+        font-size: 1.3em;
+        line-height: 1.3em;
+
+        @include media($tablet) {
+            width: 350px;
+        }
+
+        @include media($mobile) {
+            @include blockcenter;
+            text-align: center;
+        }
+
+        @include media($big-mobile) {
+            width: 360px;
+            font-size: 1.15em;
+        }
+
+        @include media($small-mobile) {
+            width: 256px;
+            font-size: 1.1em;
+            line-height: 1.3em;
+        }
+    }
+
+    .light {
+        color: #fff;
+    }
+
+    .dark {
+        color: $med-gray;
+    }
+}

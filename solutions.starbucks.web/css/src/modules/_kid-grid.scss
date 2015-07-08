@@ -1,0 +1,407 @@
+.module-kid-grid {
+    @include collapse-spacing;
+    list-style: none;
+
+    @include media($desktop) {
+        @include blockcenter;
+        width: 100%;
+    }
+
+    &.brands li .inner-wrapper p,
+    &.channels li .inner-wrapper p,
+    &.platforms li .inner-wrapper p {
+
+        @include media($big-mobile) {
+            max-width: 450px;
+        }
+
+        @include media($small-mobile) {
+            width: 90%;
+        }
+    }
+
+    li {
+        @include clearfix;
+        padding: 40px 20px;
+        width: 100%;
+
+        &:before {
+            content: none;
+        }
+
+        &:nth-child(2n) {
+            background-color: $odd-band;
+        }
+
+        .inner-wrapper {
+            @include blockcenter;
+            max-width: 960px;
+            font-size: 0;
+
+            .logo-wrapper {
+                @include inline-block;
+                vertical-align: middle;
+                margin-right: 20px;
+
+                @include media($tablet) {
+                    @include inline-block;
+                    vertical-align: middle;
+                    margin-right: 20px;
+                    width: 240px;
+                    height: 100px;
+                }
+
+                @include media($big-mobile) {
+                    float: none;
+                    @include blockcenter;
+                    width: 100%;
+                }
+
+                @include media($small-mobile) {
+                    float: none;
+                    @include blockcenter;
+                    width: 100%;
+                }
+
+                &.brands {
+                    width: 250px;
+                    height: 100px;
+
+                    &.brands-icons-wps {
+                        @include get-sprite($brandsIcons, wps);
+                    }
+
+                    &.brands-icons-wps-bilingual {
+                        @include get-sprite($brandsIcons, wps-bilingual);
+                    }
+
+                    &.brands-icons-sbc {
+                        @include get-sprite($brandsIcons, sbc);
+                    }
+
+                    &.brands-icons-sbc-bilingual {
+                        @include get-sprite($brandsIcons, sbc-bilingual);
+                    }
+
+                    &.brands-icons-tazo {
+                        @include get-sprite($brandsIcons, tazo);
+                    }
+
+                    &.brands-icons-fontana {
+                        @include get-sprite($brandsIcons, fontana);
+                    }
+                }
+
+                &.channels {
+                    width: 110px;
+                    height: 60px;
+
+                    &.channel-icons-bni {
+                        @include get-sprite($channelIcons, bni);
+                    }
+
+                    &.channel-icons-cni {
+                        @include get-sprite($channelIcons, cni);
+                    }
+
+                    &.channel-icons-cnu {
+                        @include get-sprite($channelIcons, cnu);
+                    }
+
+                    &.channel-icons-fd {
+                        @include get-sprite($channelIcons, fd);
+                    }
+
+                    &.channel-icons-rg {
+                        @include get-sprite($channelIcons, rg);
+                    }
+
+                    &.channel-icons-gnm {
+                        @include get-sprite($channelIcons, gnm);
+                    }
+
+                    &.channel-icons-hc {
+                        @include get-sprite($channelIcons, hc);
+                    }
+
+                    &.channel-icons-s {
+                        @include get-sprite($channelIcons, s);
+                    }
+
+                    &.channel-icons-hnl {
+                        @include get-sprite($channelIcons, hnl);
+                    }
+
+                    &.channel-icons-h {
+                        @include get-sprite($channelIcons, h);
+                    }
+
+                    &.channel-icons-oc {
+                        @include get-sprite($channelIcons, oc);
+                    }
+
+                    &.channel-icons-cb {
+                        @include get-sprite($channelIcons, cb);
+                    }
+
+                    &.channel-icons-tnr {
+                        @include get-sprite($channelIcons, tnr);
+                    }
+
+                    &.channel-icons-vnl {
+                        @include get-sprite($channelIcons, vnl);
+                    }
+                }
+
+                &.programs {
+                    width: 110px;
+                    height: 179px;
+                    background-size: cover;
+
+                    &.programs-icons-seasonal {
+                        @include get-sprite($programsIcons, seasonal);
+                    }
+
+                    &.programs-icons-iced {
+                        @include get-sprite($programsIcons, iced);
+                    }
+
+                    &.programs-icons-tazo {
+                        @include get-sprite($programsIcons, tazo);
+                    }
+
+                    &.programs-icons-blended {
+                        @include get-sprite($programsIcons, blended);
+                    }
+
+                    &.programs-icons-frapp {
+                        @include get-sprite($programsIcons, frapp);
+                    }
+                }
+
+                &.program {
+                    width: 98px;
+                    height: 140px;
+                    background-size: cover;
+
+                    &.program-icons-licensedstores {
+                        @include get-sprite($platformsIcons, licensedstores);
+                    }
+
+                    &.program-icons-espresso {
+                        @include get-sprite($platformsIcons, espresso);
+                    }
+
+                    &.program-icons-brewed {
+                        @include get-sprite($platformsIcons, brewed);
+                    }
+
+                    &.program-icons-blended {
+                        @include get-sprite($platformsIcons, blended);
+                    }
+
+                    &.program-icons-selfserve {
+                        @include get-sprite($platformsIcons, selfserve);
+                    }
+
+                    &.program-icons-onthego {
+                        @include get-sprite($platformsIcons, onthego);
+                    }
+
+                    &.program-icons-icedcoffee {
+                        @include get-sprite($platformsIcons, icedcoffee);
+                    }
+
+                    &.program-icons-programs {
+                        @include get-sprite($platformsIcons, programs);
+                    }
+
+                    &.program-icons-frozenblended {
+                        @include get-sprite($platformsIcons, frozenblended);
+                    }
+
+                    &.program-icons-coldbeverages {
+                        @include get-sprite($platformsIcons, coldbeverages);
+                    }
+
+                    &.program-icons-training {
+                        @include get-sprite($platformsIcons, training);
+                    }
+
+                    &.program-icons-equipment {
+                        @include get-sprite($platformsIcons, equipment);
+                    }
+                }
+
+                &.platforms {
+                    width: 98px;
+                    height: 140px;
+                    background-size: cover;
+
+                    &.platforms-icons-licensedstores {
+                        @include get-sprite($platformsIcons, licensedstores);
+                    }
+
+                    &.platforms-icons-espresso {
+                        @include get-sprite($platformsIcons, espresso);
+                    }
+
+                    &.platforms-icons-brewed {
+                        @include get-sprite($platformsIcons, brewed);
+                    }
+
+                    &.platforms-icons-blended {
+                        @include get-sprite($platformsIcons, blended);
+                    }
+
+                    &.platforms-icons-selfserve {
+                        @include get-sprite($platformsIcons, selfserve);
+                    }
+
+                    &.platforms-icons-onthego {
+                        @include get-sprite($platformsIcons, onthego);
+                    }
+
+                    &.platforms-icons-icedcoffee {
+                        @include get-sprite($platformsIcons, icedcoffee);
+                    }
+
+                    &.platforms-icons-programs {
+                        @include get-sprite($platformsIcons, programs);
+                    }
+
+                    &.platforms-icons-frozenblended {
+                        @include get-sprite($platformsIcons, frozenblended);
+                    }
+
+                    &.platforms-icons-coldbeverages {
+                        @include get-sprite($platformsIcons, coldbeverages);
+                    }
+
+                    &.platforms-icons-training {
+                        @include get-sprite($platformsIcons, training);
+                    }
+
+                    &.platforms-icons-equipment {
+                        @include get-sprite($platformsIcons, equipment);
+                    }
+                }
+
+                &.iProduct {
+                    width: 90px;
+                    height: 131px;
+
+                    &.product-icons-coffee {
+                        @include get-sprite($productsIcons, coffee);
+                    }
+
+                    &.product-icons-tazo {
+                        @include get-sprite($productsIcons, tazo);
+                    }
+
+                    &.product-icons-fontana {
+                        @include get-sprite($productsIcons, fontana);
+                    }
+
+                    &.product-icons-frap {
+                        @include get-sprite($productsIcons, frap);
+                    }
+
+                    &.product-icons-supplies {
+                        @include get-sprite($productsIcons, supplies);
+                    }
+
+                    &.product-icons-misc {
+                        @include get-sprite($productsIcons, misc);
+                    }
+                }
+
+                > a {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    background-color: transparent;
+                    text-decoration: none;
+
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+
+            .description-wrapper {
+                @include inline-block;
+                vertical-align: middle;
+
+                @include media($mobile) {
+                    @include blockcenter;
+                }
+
+                h3 {
+                    font-size: 19px;
+                    line-height: 24px;
+
+                    @include media($tablet) {
+                        text-align: left;
+                    }
+
+                    @include media($mobile) {
+                        text-align: center;
+                    }
+
+                    @include media($big-mobile) {
+                        margin-top: 20px;
+                    }
+
+                    @include media($small-mobile) {
+                        margin-top: 10px;
+                        line-height: 40px;
+                    }
+                }
+
+                p {
+                    margin: 0;
+                    padding-right: 20px;
+                    font-size: 16px;
+                    text-align: left;
+
+                    @include media($tablet) {
+                        text-align: left;
+                    }
+
+                    @include media($mobile) {
+                        @include blockcenter;
+                        float: none;
+                        margin: 10px auto;
+                        padding-right: 0;
+                        text-align: center;
+                    }
+                }
+            }
+
+            a {
+                @include light-button;
+                @include inline-block;
+                vertical-align: middle;
+                padding: 8px 9px 6px;
+                font-size: 13px;
+
+                @include media($tablet) {
+                    @include inline-block;
+                    vertical-align: middle;
+                }
+
+                @include media($mobile) {
+                    float: none;
+                    @include blockcenter;
+                    width: 150px;
+                }
+
+                @include media($big-mobile) {
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+}

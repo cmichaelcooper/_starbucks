@@ -1,0 +1,17 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = null;
+}
+<a class="close-reveal-modal">&#215;</a>
+<header>
+	@Html.Raw(Model.Content.GetPropertyValue("introText"))
+</header>
+<div class="existing-customer">
+	@Html.Raw(Model.Content.GetPropertyValue("bodyText"))
+</div>
+
+<div class="future-customer">
+	@Html.Raw(Model.Content.GetPropertyValue("supportContent"))
+</div>
+
+

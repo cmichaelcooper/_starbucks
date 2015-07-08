@@ -1,0 +1,104 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using solutions.starbucks.web.Controllers
+@using System.Web.Mvc.Html
+@using Umbraco.Web
+@{
+    Layout = "~/Views/Master.cshtml";
+}
+
+<header class="abspos-header">
+    <h1 class="abspos-header__title light">Fontana®</h1>
+    <p class="light">Add irresistible versatility to your menu.</p>
+</header>
+<div class="catalog-back">
+    <a class="dotted-link" href="/products">« Back to Products</a>
+</div>
+<div ng-app="product_lookup" ng-controller="fontanaCatalogController">
+    <div class="filters">
+        <div class="inner-container">
+            <div id="filter-toggle">
+                Show Filters
+            </div>
+            <div id="filters-holder">
+                <div class="filters-holder">
+                    <div class="filter">
+                        <h6>TYPE</h6>
+                        <div ng-repeat="item in filters | isInFilterCategory:'type'">
+                            <strong><input type='checkbox' ng-model="item.isSelected" id="{{item.category}}_{{item.value}}" /><label for="{{item.category}}_{{item.value}}">{{item.label}}</label></strong>
+                        </div>
+                    </div>
+                    <div class="filter">
+                        <h6>FLAVOR</h6>
+                        <div ng-repeat="item in filters | isInFilterCategory:'flavor'">
+                            <strong><input type='checkbox' ng-model="item.isSelected" id="{{item.category}}_{{item.value}}" /><label for="{{item.category}}_{{item.value}}">{{item.label}}</label></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="filter-summary">
+        <div class="inner-container">
+            <div id="filter-summary">There are <span ng-bind="(Products | isInSelectedFilters:filters).length"></span> items that match your selection</div>
+            <div class="filter-tag-list">
+                <span ng-repeat="filter in filters | isSelected" ng-click="removeFilter(filter)">{{filter.label}}</span>
+                <div ng-click="resetFilters()" id="reset-filters">Reset</div>
+            </div>
+        </div>
+    </div>
+    <div class="product-list-v2">
+        <div class="inner-container">
+            <section>
+                <div class="product-v2" ng-repeat="Product in Products | isInSelectedFilters:filters">
+                    <div>
+                        <a href="/products/details/{{Product.ProductID}}">
+                            <img ng-src="/img/Products/200/{{Product.ProductID}}.jpg" alt="{{Product.ProductInformation.Name}}" />
+                        </a>
+                        <div class="product-list-desc">
+                            <a href="/products/details/{{Product.ProductID}}" class="h3" ng-bind-html="Product.ProductInformation.Name">Loading...</a>
+                            <p ng-bind-html="Product.ProductInformation.ShortDescription"></p>
+                        </div>
+                        <div class="quick-add" ng-click="select(Product)">
+                            Quick Add
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </section>
+        </div>
+    </div>
+    <div class="quick-add-dialog">
+        <div class="inner-container">
+            <div class="quick-add-image" style="background-image: url(/img/Products/640/{{selected.ProductID}}.jpg)">
+                <img ng-src="/img/Products/640/{{selected.ProductID}}.jpg" />
+            </div>
+            <div class="quick-add-details">
+                <h2>{{selected.ProductInformation.Name}}</h2>
+                <div id="skuSelect" class="product-dropdown" data-default="choose size">
+                    <span>choose size</span>
+                    <select ng-model="selected.selectedItem1.selectedItem"
+                            ng-options="item as item.Value + ' — ' + item.UOM + ' — SKU# ' + item.SKUNumber for item in selected.SkuInformation | unique: 'Value' track by item.Value + ' — ' + item.UOM + ' — SKU# ' + item.SKUNumber"></select>
+                </div>
+                <p ng-bind-html="selected.ProductInformation.Description"></p>
+                <p ng-if="selected.sugarfreeVersion"><a href="/products/details/{{selected.sugarfreeVersion}}" class="product-decaffeinated">Sugar-Free Also Available</a></p>
+                <div class="add-to-bag clear" ng-if="selected.isOrderable">
+                    <input type="hidden" name="sku" value="{{selected.selectedItem1.selectedItem.SKUNumber}}" />
+                    <input name="siteId" type="hidden" value="{{selected.SiteId}}" />
+                    <input name="qty" type="text" id="{{selected.selectedItem1.selectedItem.SKUNumber}}-qty" placeholder="Quantity" pattern="[0-9]*" />
+                    <button type="submit" class="btn btn-green" id="{{selected.selectedItem1.selectedItem.SKUNumber}}" data-action="@Url.Action("QuickAdd", "BagSurface")">ADD TO BAG</button>
+                </div>
+                <div class="add-to-bag na" ng-if="!selected.isOrderable">
+                    Not available for your program. Please contact your Starbucks representative.
+                </div>
+                <div id="forgotError" class="add-to-bag hide bold"></div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Views/Partials/_LoggedInFooter.cshtml")
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        SBS.ProductList();
+    </script>
+}

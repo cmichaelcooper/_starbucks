@@ -1,0 +1,37 @@
+#sbc-blended #site-wrapper #content {
+
+	.body-content {
+
+		article {
+
+			&.blended-fontana { background-color: #ffffff;
+
+				section { padding-left: 160px; background: url(../img/blended-body.png) no-repeat; background-position: left center;
+	
+					@include media($tablet) {
+						padding-left: 210px; background-position: 48px center;
+					}
+					@include media($big-mobile) {
+						padding-left: 20px; background-image: none;
+					}
+					@include media($small-mobile) {
+						padding-left: 20px; background-image: none;
+					}
+				}
+			}
+		}
+
+		.bottom-edger { height: 20%; min-height: 120px; max-height: 500px; background: #fff url(../img/blended-bottom-edger.png) no-repeat; background-size: 600px; background-position: center bottom;
+
+			@include media($tablet){
+				height: 120px; min-height: 0; max-height: none; background-size: 600px;
+			}
+			@include media($big-mobile){
+				height: 55px; min-height: 0; max-height: none; background-color: #fff; background-size: 300px;
+			}
+			@include media($small-mobile){
+				height: 70px; min-height: 0; max-height: none; background-color: #fff; background-size: 100%;
+			}
+		}
+	}
+}

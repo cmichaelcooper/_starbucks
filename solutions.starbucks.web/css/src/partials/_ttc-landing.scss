@@ -1,0 +1,127 @@
+#tazo-tea-concentrates #site-wrapper #content, #tazo-tea-autoship-thank-you #site-wrapper #content {
+
+	.ttc-highlight { color: #E47A3C; @include fonts-black; font-style: italic; }
+
+	header { background-image: url(../img/ttc/ttc-header.jpg); background-position: center center;
+		
+		@include media($tablet){}
+		@include media($big-mobile){ padding-top: 100px; width: 100%; height: 320px; background: #000 url(../img/ttc/ttc-header-mobile-landscape.jpg) no-repeat; background-position: center center; background-size: cover; }
+		@include media($small-mobile) { padding-top: 120px; height: 568px; background: #000 url(../img/ttc/ttc-header-mobile-portrait.jpg) no-repeat; background-position: center bottom; background-size: cover; }
+
+		h1 { color: #3D3935;
+
+			@include media($tablet) { width: 650px; }
+		}
+		p { width: 460px; color: #3D3935; letter-spacing: -.01em;
+
+			@include media($tablet) { width: 350px; letter-spacing: .05em; }
+			@include media($big-mobile) { width: 470px; }
+			@include media($small-mobile) { width: 80%; }
+		}
+	}
+
+	.body-content {
+
+		.tiny { font-size: 8px; }
+
+		.ttc-prebody { background-color: #fff;
+
+			section { height: 250px; padding-left: 440px; background-image: url(../img/ttc/ttc-3bottles.png); background-repeat: no-repeat; background-position: left bottom;
+
+				@include media($tablet-landscape) { padding-left: 460px; background-position: 20px bottom; }
+				@include media($tablet-portrait) { height: 440px; padding-left: 20px; background-position: center bottom; text-align: center; }
+				@include media($big-mobile) { height: 380px; padding-left: 20px; text-align: center; background-position: center bottom; background-size: 55%; }
+				@include media($small-mobile) { height: 440px; padding-left: 20px; text-align: center; background-position: center bottom; background-size: 90%; }
+			}
+		}
+
+		.ttc-body { position: relative; background-color: #f9f9f9;
+
+			.orange-shim { position: absolute; top: 0; left: 0; width: 50%; height: 100%; background-color: #E47A3C; }
+			section { position: relative; height: 417px; padding-top: 32px; padding-left: 90px; background-color: #f9f9f9; background-image: url(../img/ttc/ttc-curly-doodad.png); background-repeat: no-repeat; background-position: left center;
+
+				@include media($tablet) { height: 556px; background-image: url(../img/ttc/ttc-curly-doodad-tablet.png); }
+				@include media($mobile) { height: auto; padding-left: 20px; background-image: none; }
+				@include media($big-mobile) { padding-bottom: 150px; }
+				@include media($small-mobile) { padding-bottom: 110px; }
+
+				.ttc-body-content { z-index: 99; position: relative; width: 410px;
+
+					@include media($tablet) { width: 100%; }
+					@include media($mobile) { width: 100%; }
+
+					h2 { margin-bottom: 20px; }
+					ul { padding-left: 0; }
+					li { margin-bottom: 2px;
+
+						@include media($mobile) { letter-spacing: .02em; }
+
+						&.ls-neg { letter-spacing: -.02em;
+
+							@include media($mobile) { letter-spacing: .02em; }
+						}
+					}
+				}
+				.peach-topdown { z-index: 1; position: absolute; top: 0; right: -120px; width: 625px; height: 417px; background-image: url(../img/ttc/ttc-peach-topdown.jpg); background-repeat: no-repeat; background-position: right top;
+
+					@include media($sub-desktop) { display: none; }
+				}
+				.peach-topdown-tablet { display: none;
+
+					@include media($tablet) { z-index: 1; display: block; position: absolute; left: 0; bottom: 0; width: 100%; height: 213px; background-image: url(../img/ttc/ttc-peach-topdown.jpg); background-repeat: no-repeat; background-position: center top; }
+					@include media($big-mobile) { z-index: 1; display: block; position: absolute; left: 0; bottom: 0; width: 100%; height: 193px; background-image: url(../img/ttc/ttc-peach-topdown.jpg); background-repeat: no-repeat; background-position: 25px top; background-size: 100%; }
+					@include media($small-mobile) { z-index: 1; display: block; position: absolute; left: 0; bottom: 0; width: 100%; height: 133px; background-image: url(../img/ttc/ttc-peach-topdown.jpg); background-repeat: no-repeat; background-position: -25px top; background-size: 127%; }
+				}
+			}
+		}
+	}
+
+	.support-content {
+
+		.form-wrapper { width: 720px; margin: 0 auto;
+
+			@include media($mobile) { width: 100%; }
+
+			.grouping-wrapper { @include clearfix; }
+			.phonenumber { @include w-50; float: left;
+
+				@include media($mobile) { @include w-100; float: none; }
+			}
+			.accountnumber { @include w-50L; float: left;
+
+				@include media($mobile) { @include w-100; float: none; }
+			}
+			.choose-segment { @include w-50; float: left;
+
+				@include media($mobile) { @include w-100; float: none; }
+			}
+			.number-kits { @include w-50L; float: left;
+
+				@include media($mobile) { @include w-100; float: none; }
+			}
+		}
+
+		.legal { @include w-60; float: left;
+
+			@include media($mobile) { @include w-100; float: none; padding-top: 30px; }
+
+			p { margin: 0; }
+		}
+		.submit { @include w-40L; float: right; padding-top: 10px;
+
+			@include media($mobile) { @include w-100; float: none; }
+
+			.btn { @include basic-button; float: right;
+
+				@include media($mobile) { @include w-100; }
+			}
+		}
+
+		.ttc-after-form { width: 575px; margin: 40px auto 0 auto; text-align: center;
+
+			@include media($mobile) { @include w-100; }
+		}
+
+		.ttc-form-thankyou { display: none; }
+	}
+}

@@ -1,0 +1,148 @@
+﻿@using solutions.starbucks.Model
+@using System.Web.Mvc.Html
+@using solutions.starbucks.web.Controllers
+@using solutions.starbucks.Model
+@using solutions.starbucks.Model.Pocos
+@using Umbraco.Web
+@model TextPageModel
+
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var becomeCustomerLink = "";
+    var currentUrl = Request.RawUrl.Replace("/", "");
+}
+
+@section Styles {
+
+    <style>
+            
+            @@media screen and (min-width: 1100px) {
+
+                .textpage #site-wrapper section#content header { background-image: url(@Model.DesktopHeaderImage); }
+
+            }
+            
+            @@media screen and (max-width: 1099px) and (min-width: 768px) {
+
+                .textpage #site-wrapper section#content header { background-image: url(@Model.TabletHeaderImage); }
+
+            }
+
+            @@media screen and (max-width: 767px) and (min-width: 480px) {
+
+                .textpage #site-wrapper section#content header { background-image: url(@Model.BigMobileHeaderImage); }
+
+            }
+
+            @@media screen and (max-width: 479px) and (min-width: 320px) {
+
+                .textpage #site-wrapper section#content header { background-image: url(@Model.SmallMobileHeaderImage); }
+
+            }
+
+        </style>
+
+}
+
+<section id="content" class="body-nav-height">
+
+	<header>
+		@Html.Raw(Model.IntroText)
+	</header>
+	<div class="body-content">
+		@Html.Raw(Model.BodyText)
+	</div>
+	<div class="support-content">
+		@Html.Raw(Model.SupportContent)
+        @{
+
+            if (currentUrl.Contains("tazo-tea-concentrate"))
+            {
+                if (Request.Cookies["TazoTeaSignUp"] != null)
+                {
+                    Response.Cookies["TazoTeaSignUp"].Expires = DateTime.Now.AddDays(-1);  
+                    Response.Redirect("/tazo-tea-autoship-thank-you");
+                }
+                else
+                {
+                    @Html.Action("RenderSignUpEmailForm", "SignUpSurface", new { formName = "TazoTeaSignUp" });
+                    if (Request.Cookies["TazoTeaSignUp"] != null)
+                    {
+                        Response.Cookies["TazoTeaSignUp"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Redirect("/tazo-tea-autoship-thank-you");
+                    }
+                }        
+            }
+        }
+	</div>
+
+
+    <footer class="lead-bar">
+        <div class="lead-bar-messaging">
+        @if (!User.Identity.IsAuthenticated)
+        {
+
+            becomeCustomerLink = Model.BecomeACustomerLinkFooter != null && !String.IsNullOrEmpty(Model.BecomeACustomerLinkFooter.ToString()) ? Model.BecomeACustomerLinkFooter : "http://starbucksfs.com/Leadform/Begin/Default";
+            <a class="btn std-leadform logged-out" href="@becomeCustomerLink"  onclick="SBS.TrackEvent('@(currentUrl)_page', 'Click', 'Become_A_Customer_Footer_Button_Non_Logged_In')">@Model.BecomeACustomerText</a>
+
+        }
+        else {
+
+            <span class="question">Interested in participating in a program? Have questions? <a class="btn std-leadform contact" href="/contact-form/">Contact Us</a></span>
+
+        }
+        </div>
+        <div class="lead-bar-logo">
+        @if (Request.Url.Host.Split('.').First().ToUpper() == "FR")
+        {
+            <img src="/img/sbs-footer-ca-fr.png" />
+        }
+        else
+        {
+            <img src="/img/sbs-footer.png" />
+        }
+        </div>
+    </footer>
+
+
+
+
+    @* @if (!User.Identity.IsAuthenticated)
+    {
+        becomeCustomerLink = Model.BecomeACustomerLinkFooter != null && !String.IsNullOrEmpty(Model.BecomeACustomerLinkFooter.ToString()) ? Model.BecomeACustomerLinkFooter : "http://starbucksfs.com/Leadform/Begin/Default";
+            
+        <div class="lead-bar footer-lead">
+            <a class="btn std-leadform" href="@becomeCustomerLink"  onclick="SBS.TrackEvent('@(currentUrl)_page', 'Click', 'Become_A_Customer_Footer_Button_Non_Logged_In')">@Model.BecomeACustomerText</a>
+            
+            @if (Request.Url.Host.Split('.').First().ToUpper() == "FR") // && Request.Url.Host.Split('.').Last().ToUpper() == "CA")
+            {
+                <img src="/img/sbs-footer-ca-fr.png" />
+            }
+            else
+            {
+                <img src="/img/sbs-footer.png" />
+            }
+
+        </div>
+    } else {
+            
+        <div class="lead-bar footer-lead signed-in">
+            <div class="signed-in-footer">
+                <span class="question">Interested in participating in a program? Have questions?</span>
+                <a class="btn std-leadform contact" href="/contact-form/">Contact Us</a>
+            </div>
+
+            @if (Request.Url.Host.Split('.').First().ToUpper() == "FR") // && Request.Url.Host.Split('.').Last().ToUpper() == "CA")
+            {
+                <img src="/img/sbs-footer-ca-fr.png" />
+            }
+            else
+            {
+                <img src="/img/sbs-footer.png" />
+            }
+             
+        </div>
+    } *@
+</section>

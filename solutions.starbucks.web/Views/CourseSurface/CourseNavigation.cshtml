@@ -1,0 +1,201 @@
+﻿@using solutions.starbucks.web.Classes
+@using solutions.starbucks.web.Controllers
+@model solutions.starbucks.Model.Training.CourseContent
+@{
+    ViewBag.Title = "CourseNavigation";
+    
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+
+    var questionIndex = 1;
+    string homeUrl = Url.Content("~/resources/training/my-training/") + (Model.Invite != null ? "?" + Utilities.Training.AccessToken(Model.Invite) : string.Empty);
+
+    string nextUrlForOperator = "";
+    if ((Model.NextSubject != null && Model.NextSubject.SortOrder == 0 && Model.CourseCompleted) // Next subject is first in list and Course is complete
+            || Model.InviteSubject != null && Model.NextSubject.SubjectID == Model.InviteSubject.SubjectID // Next subject is current subject
+        )
+    {
+        nextUrlForOperator = Url.Content("~/resources/training/");
+    }
+    else if (Model.NextSubject != null)
+    {
+        nextUrlForOperator = Url.Content("~/" + Model.NextSubject.Url) + (Model.Invite != null ? "?" + Utilities.Training.AccessToken(Model.Invite) : string.Empty);
+    }
+    
+}
+
+<script type="text/javascript">
+
+    function ShowSuccess(data) {
+
+    }
+    function ShowError(error) {
+
+    }
+
+    $(document).ready(function () {
+
+        jQuery('.home').click(function () {
+            window.location.href = '@homeUrl';
+            //return false;
+        });
+
+        jQuery('.continue').click(function () {
+            window.location.href = jQuery('.continueUrl').val();
+            //return false;
+        });
+
+    });
+
+
+    var subjectQuizModule = angular.module("subjectQuizModule", []);
+    subjectQuizModule.controller("SubjectQuizController", function ($scope, $window) {
+              
+        $scope.selection = [@(Model.SubjectQuiz != null && Model.SubjectQuiz.HasResponses() ? String.Join(", ", Model.SubjectQuiz.Responses().Select(r => r.Value)) : string.Empty)];
+
+        $scope.quizInvalid = function (e) {
+            //alert($scope.selection);
+            if ($scope.selection.length != @((Model.SubjectQuiz != null ? Model.SubjectQuiz.Questions.Count().ToString() : "-1")) || $scope.hasResponses == true) {
+                return true;
+            }
+            else { return false; }
+        };
+
+        // account for response in order to validate the form
+        $scope.toggleSelection = function toggleSelection(questionId) {
+            var idx = $scope.selection.indexOf(questionId);
+            // has not responded
+            if (!(idx > -1)) {
+                $scope.selection.push(questionId);
+            }            
+        };
+
+    });
+
+
+
+
+</script>
+
+@if (Model.Invite != null) { // Trainee is viewing (not Operator)
+    
+    <section class="content-band quiz-wrapper @(Model.RenderQuiz && Model.SubjectQuiz != null ? "has-quiz" : string.Empty)">
+
+        <div ng-app="subjectQuizModule" ng-controller="SubjectQuizController">
+        
+            @*<div>@(Model.Console != null ? Model.Console : String.Empty)</div>*@
+            <div id="target">
+                @using (Ajax.BeginForm("ProcessCourseNavigation", "CourseSurface",
+                    new { inviteId = Model.Invite != null ? Model.Invite.InviteID : -1, subjectId = Model.SubjectQuiz != null ? Model.SubjectQuiz.SubjectID : -1 },
+                    new AjaxOptions
+                        {
+                            HttpMethod = "POST",
+                            InsertionMode = System.Web.Mvc.Ajax.InsertionMode.Replace,
+                            UpdateTargetId = "target",
+                            OnFailure = "ShowError(error)",
+                            OnSuccess = "ShowSuccess(data)"
+                        }, new { id = "quizForm", name = "quizForm", novalidate = "novalidate" }))
+                {
+                    <input type="hidden" ng-model="hasResponses" ng-init="hasResponses = @(Model.SubjectQuiz != null ? Model.SubjectQuiz.HasResponses().ToString().ToLower() : "false")" />
+
+                    if (Model.RenderQuiz && Model.SubjectQuiz != null)
+                    {
+                
+                        <div class="inner-wrapper">
+                            <h1 class="large-overview-title quiz light">Quiz</h1>
+                        </div>
+            
+                
+            
+                        foreach (var question in Model.SubjectQuiz.Questions)
+                        {
+                            <div class="inner-wrapper-1024">
+                                <span class="quiz-question-text light">@questionIndex: @question.QuestionText</span>
+                            </div>
+
+                            foreach (var answer in question.Answers)
+                            {
+                                var answerClass = Model.SubjectQuiz.Graded && question.Response != null && Convert.ToInt32(question.Response.Value) == answer.AnswerID && !answer.IsCorrect ? "incorrect_answer" : String.Empty;
+                                <div class="answer-wrapper @(Model.SubjectQuiz.Graded && answer.IsCorrect ? "correct_answer" : answerClass)">
+                                    <span class="quiz-question light">
+                                        <input class="quiz-answer-radio" type="radio" id="@answer.AnswerID" name="@question.QuestionID.ToString()" ng-click="toggleSelection(@question.QuestionID)" value="@answer.AnswerID" @(question.Response != null && Convert.ToInt32(question.Response.Value) == answer.AnswerID ? "checked='checked'" : String.Empty) @(Model.SubjectQuiz.Graded ? /*"disabled='disabled'"*/ String.Empty : String.Empty) />
+                                        <label class="quiz-answer-label light" for="@answer.AnswerID"><span class="custom-radio"></span> @answer.AnswerText</label>
+                                    </span>
+                                </div>
+                            }
+                            questionIndex++;
+                        }
+                    
+                    }
+
+
+                    string nextText = "";
+                    string nextUrl = "";
+                    if ((Model.NextSubject != null && Model.NextSubject.SortOrder == 0 && Model.CourseCompleted) // Next subject is first in list and Course is complete
+                            || Model.InviteSubject != null && Model.NextSubject.SubjectID == Model.InviteSubject.SubjectID // Next subject is current subject
+                        )
+                    {
+                        nextText = "Finish";
+                        nextUrl = homeUrl;
+                    }
+                    else if (Model.NextSubject != null)
+                    {
+                        nextText = "Continue to " + Model.NextSubject.Title;
+                        nextUrl = Url.Content("~/" + Model.NextSubject.Url) + (Model.Invite != null ? "?" + Utilities.Training.AccessToken(Model.Invite) : string.Empty);
+                    }
+
+                    bool showContinue = !Model.RenderQuiz || !(Model.RenderQuiz && (Model.SubjectQuiz != null && !Model.SubjectQuiz.HasResponses())) ? true : false;
+                    
+
+                    if (Model.RenderQuiz && Model.SubjectQuiz != null && !Model.SubjectQuiz.HasResponses())
+                    {
+                        <div class="inner-wrapper">
+                            <input class="btn quiz-submit" type="submit" value="Submit" ng-disabled="quizInvalid()" @(Model.SubjectQuiz.HasResponses() ? "disabled" : string.Empty) />
+                            <a href="@homeUrl" class="trainee-back">&laquo; Back to Solutions University</a>
+                        </div>
+                    }
+
+                    if (showContinue)
+                    {
+                        <div class="inner-wrapper">
+                            <input type="button" class="btn continue" value="@nextText" />
+                            <a href="@homeUrl" class="trainee-back">&laquo; Back to Solutions University</a>
+                        </div>
+                    }
+                    <input type="hidden" class="continueUrl" value="@nextUrl" />
+
+                }
+            </div>
+
+    
+        </div>
+
+    </section>
+
+}
+
+@if (Model.Invite == null) { // Operator is viewing training
+
+    string nextText = "";
+    string nextUrl = "";
+    if ((Model.NextSubject != null && Model.NextSubject.SortOrder == 0 && Model.CourseCompleted) // Next subject is first in list and Course is complete
+            || Model.InviteSubject != null && Model.NextSubject.SubjectID == Model.InviteSubject.SubjectID // Next subject is current subject
+        )
+    {
+        nextText = "Done";
+        nextUrl = homeUrl;
+    }
+    else if (Model.NextSubject != null)
+    {
+        nextText = "Next";
+        nextUrl = Url.Content("~/" + Model.NextSubject.Url) + (Model.Invite != null ? "?" + Utilities.Training.AccessToken(Model.Invite) : string.Empty);
+    }
+    
+    <div class="lead-bar footer-lead footer-training">
+        <div class="signed-in-footer">
+            <a class="training-footer-link left" href="~/resources/training">Back to Training</a>
+            <a class="btn std-leadform next" href="@nextUrlForOperator">@nextText</a>
+        </div>
+        <img src="/img/sbs-footer.png" />
+    </div>
+}

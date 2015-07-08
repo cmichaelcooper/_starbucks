@@ -1,0 +1,125 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "~/Views/Master.cshtml";
+}
+<div class="product-details" ng-app="product_lookup" ng-controller="productDetailsController">
+    <div class="back-link inner-container">
+        <a class="dotted-link" href="/products/fontana" ng-if="product.isFontana">« Back to Fontana</a>
+        <a class="dotted-link" href="/products/frappuccino" ng-if="product.isFrapp">« Back to Frappuccino</a>
+        <a class="dotted-link" href="/products/miscellaneous" ng-if="product.isMiscellaneous">« Back to Miscellaneous</a>
+        <a class="dotted-link" href="/products/supplies" ng-if="product.isSupplies">« Back to Supplies</a>
+        <a class="dotted-link" href="/products/tazo" ng-if="product.isTazo">« Back to Tazo</a>
+    </div>
+    <div class="product-details-bg" ng-class="product.isFontana ? 'pdp-bg-fontana' : product.isTazo ? 'pdp-bg-tazo' : product.isSBC ? 'pdp-bg-sbc' : ''">
+        <div class="product-details-top">
+            <div class="inner-container">
+                <div class="product-details-left">
+                    <img ng-src="/img/Products/640/{{product.ProductInformation.ProductID}}.jpg" id="product-details-img" />
+                </div>
+                <div class="product-details-right">
+                    <div class="product-details-title" ng-if="product.ProductInformation.Name">{{product.ProductInformation.Name}}</div>
+                    <div class="product-details-strong" ng-if="product.coffeeType.Value"><strong>{{product.coffeeType.Value}}</strong></div>
+
+                    <div class="product-dropdown" data-default="choose size" ng-if="!product.isCoffee&&!product.isTazo">
+                        <span>choose size</span>
+                        <select id="productSize" ng-model="product.selectedItem1.selectedItem"
+                                ng-options="item as item.Value + ' — ' + item.UOM + ' — SKU# ' + item.SKUNumber for item in product.items1 track by item.Value + ' — ' + item.UOM + ' — SKU# ' + item.SKUNumber"></select>
+                    </div>
+
+                    <div class="product-dropdown" id="ddl-choose-form" data-default="choose form" ng-if="product.isCoffee||product.isTazo">
+                        <span>choose Form</span>
+                        <select ng-model="product.selectedItem1.selectedItem"
+                                ng-options="skuInfo as skuInfo.Value for skuInfo in product.items1 | unique: 'Value' track by skuInfo.Value" required></select>
+                    </div>
+                    <div class="product-dropdown" data-default="choose size" ng-if="product.isCoffee">
+                        <span>choose size</span>
+                        <select ng-model="product.selectedItem1.selectedItem2"
+                                ng-options="item as item.Value for item in product.selectedItem1.items2 track by item.Value"></select>
+                    </div>
+                    <div class="product-dropdown" data-default="choose size" ng-if="product.isTazo">
+                        <span>choose size</span>
+                        <select ng-model="product.selectedItem1.selectedItem2"
+                                ng-options="item as item.Value  + ' — ' + item.UOM for item in product.selectedItem1.items2 track by item.Value  + ' — ' + item.UOM"></select>
+                    </div>
+                    <p ng-if="product.ProductInformation.ShortDescription">{{product.ProductInformation.ShortDescription}}</p>
+                    <p ng-if="product.sugarfreeVersion"><a href="{{product.sugarfreeVersion}}" class="product-decaffeinated">Sugar-Free Also Avaliable</a></p>
+                    <p ng-if="product.decafVersion"><a ng-if="product.decafVersion" href="{{product.decafVersion}}" class="product-decaffeinated">Also in Decaffeinated</a></p>
+                    <div class="add-to-bag clear" ng-if="product.isOrderable">
+                        <input name="sku" type="hidden" value="{{product.selectedItem1.selectedItem.SKUNumber}}|{{product.selectedItem1.selectedItem2.SKUNumber}}" />
+                        <input name="siteId" type="hidden" value="{{product.SiteId}}" />
+                        <input name="qty" type="text" id="quantity" placeholder="Quantity" pattern="[0-9]*" />
+                        <button type="submit" class="btn btn-green" data-action="@Url.Action("QuickAdd", "BagSurface")">ADD TO BAG</button>
+                    </div>
+                    <div class="add-to-bag na" ng-if="!product.isOrderable">
+                        Not available for your program. Please contact your Starbucks representative.
+                    </div>
+                    <div id="forgotError" class="add-to-bag hide bold"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="product-details-mid">
+            <div class="inner-container">
+                <div class="product-details-desc-title" ng-if="product.ProductInformation.Title">
+                    {{product.ProductInformation.Title}}
+                </div>
+                <p ng-if="product.ProductInformation.Description">{{product.ProductInformation.Description}}</p>
+                @*<div ng-if="product.recommendation">
+                    <p><strong>Recommendations:</strong> <br />{{product.recommendation}}</p>
+                </div>*@
+                <div class="related-info">
+                    <span class="fa fa-arrow-down"></span>
+                    Related Information:
+                    <a ng-if="product.isFilterbag&&product.isTazo" href="/resources/pdf/Tazo_Filterbag_Tea_Product_Card.pdf" target="_blank">Tazo&reg; Hot Tea Product Card</a>
+                    <a ng-if="product.isBulkIcedTea&&product.isTazo" href="/resources/pdf/Tazo_Lodging_SS.pdf" target="_blank">Tazo&reg; Lodging Sell Sheet</a>
+                    <a ng-if="product.isBulkIcedTea&&product.isTazo" href="/resources/pdf/Tazo_General_SS.pdf" target="_blank">Tazo&reg; General Sell Sheet</a>
+                    <a ng-if="product.isBulkIcedTea&&product.isTazo" href="/resources/pdf/HowToBrewIcedTea.pdf" target="_blank">How To Brew Iced Tea</a>
+                    @*<span ng-if="product.isIced">
+                        <a href="/resources/pdf/SFS-007-WPS-PCD-00569.pdf">Iced Coffee Product Card</a>
+                        <a href="/resources/pdf/SFS-007-WPS-SS1-00567.pdf">Iced Coffee General Sell Sheet</a>
+                        <a href="/resources/pdf/SFS-007-WPB-SS1-00226.pdf">Iced Coffee Lodging Sell Sheet</a>
+                    </span>*@
+                </div>
+                <div class="product-details-ads">
+                    <div>
+                        <a href="/programs" target="_blank">
+                            <img src="~/img/coffee/popular_programs_promo_box_programs.jpg" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="/resources/training" target="_blank">
+                            <img src="~/img/coffee/popular_programs_promo_box_training.jpg" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("~/Views/Partials/_LoggedInFooter.cshtml")
+
+<script>
+    $(function () {
+        $("#productdetails").on("click", ".product-dropdown", function () {
+            $(this).next("select").trigger("click");
+        }).on("change", ".product-dropdown select", function () {
+            var el = $(this);
+            el.parent().find("span").text(el.val());
+
+            if (/ddl-choose-form/.test(el.parent().attr("id"))) {
+                $("#ddl-choose-form ~ .product-dropdown").each(function () {
+                    var ddl = $(this);
+                    ddl.find("span").text(ddl.data("default"));
+                });
+            }
+        }).on("change", "#quantity", function () {
+            var el = $(this);
+            if (el.val() != "")
+                el.css("color", "#000")
+        }).on("click", ".add-to-bag .btn", function () {
+            SBS.AddItemToBag($(this));
+        });
+    });
+
+
+</script>

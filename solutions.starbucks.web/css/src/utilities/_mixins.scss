@@ -1,0 +1,652 @@
+// -------------------------------------------------------------------------------------
+//
+// Font-Family
+//
+// -------------------------------------------------------------------------------------
+$fallback-fonts: helvetica, arial, sans-serif;
+
+@mixin fonts-light {
+    font-family: AvenirLT-Light, $fallback-fonts;
+    font-weight: normal;
+}
+
+@mixin fonts-med {
+    font-family: AvenirLTStd-Medium, $fallback-fonts;
+    font-weight: normal;
+}
+
+@mixin fonts-heavy {
+    font-family: AvenirLTStd-Heavy, $fallback-fonts;
+    font-weight: normal;
+}
+
+@mixin fonts-black {
+    font-family: AvenirLTStd-Black, $fallback-fonts;
+    font-weight: normal;
+}
+
+@mixin fonts-book {
+    font-family: AvenirLTStd-Book, $fallback-fonts;
+    font-weight: normal;
+}
+
+@mixin fonts-lightobl {
+    font-family: AvenirLTStd-LightOblique, $fallback-fonts;
+    font-weight: normal;
+}
+
+// -------------------------------------------------------------------------------------
+//
+// Standardized Type Treatments
+//
+// -------------------------------------------------------------------------------------
+@mixin content-page-pre-title {
+    @include fonts-light;
+    font-size: 28px;
+}
+
+@mixin content-page-title {
+    @include fonts-black;
+    font-size: 64px;
+    line-height: 1em;
+    text-transform: uppercase;
+    @include media($tablet) {
+        width: 50%;
+        font-size: 48px;
+    }
+
+    @include media($mobile) {
+        margin-bottom: 6px;
+    }
+
+    @include media($big-mobile) {
+        width: 480px;
+        font-size: 48px;
+    }
+
+    @include media($small-mobile) {
+        width: 320px;
+        font-size: 32px;
+    }
+}
+
+@mixin large-overview-title {
+    @include fonts-light;
+    font-size: 58px;
+    line-height: .9em;
+    @include media($mobile) {
+        font-size: 46px;
+        line-height: 1em;
+    }
+}
+
+@mixin overview-title {
+    @include fonts-light;
+    font-size: 48px;
+    line-height: .9em;
+    @include media($tablet) {
+        font-size: 40px;
+    }
+
+    @include media($mobile) {
+        font-size: 32px;
+        line-height: 1em;
+    }
+}
+
+@mixin support-title {
+    font-size: 37px;
+    line-height: 1em;
+    @include media($mobile) {
+        font-size: 23px;
+        line-height: 1.2em;
+    }
+}
+
+@mixin custom-title($weight, $size, $color, $line-height) {
+    @if $weight == light {
+        @include fonts-light;
+    }
+    @if $weight == medium {
+        @include fonts-med;
+    }
+    @if $weight == heavy {
+        @include fonts-heavy;
+    }
+    @if $weight == black {
+        @include fonts-book;
+    }
+    @if $weight == book {
+        @include fonts-book;
+    }
+    @if $weight == lightobl {
+        @include fonts-lightobl;
+    }
+    font-size: $size;
+    color: $color;
+    line-height: $line-height;
+}
+
+@mixin small-title {
+    @include fonts-heavy;
+    font-size: 19px;
+}
+
+@mixin content-title {
+    @include fonts-heavy;
+    font-size: 1em;
+}
+
+@mixin ndash-bullets {
+    padding-left: 16px;
+    background: url(../img/list-ndash.gif) left 10px no-repeat;
+}
+
+@mixin ndash-bullets-reverse {
+    padding-left: 16px;
+    background: url(../img/list-ndash-white.gif) left 10px no-repeat;
+}
+
+@mixin dotted-link {
+    border-bottom: 1px dotted #fff;
+    &:hover {
+        border-bottom: 0;
+    }
+}
+
+// -------------------------------------------------------------------------------------
+//
+// Utility
+//
+// -------------------------------------------------------------------------------------
+@mixin blockcenter {
+    display: block;
+    margin: 0 auto;
+}
+
+// Get rid of list spacing
+@mixin collapse-spacing {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@mixin transition-fix($property, $duration, $effect) {
+    -webkit-transition: $property $duration $effect;
+    -moz-transition: $property $duration $effect;
+    -o-transition: $property $duration $effect;
+    transition: $property $duration $effect;
+}
+
+@mixin translate($x, $y, $z) {
+    -webkit-transform: translate3d($x, $y, $z);
+    transform: translate3d($x, $y, $z);
+    -moz-transform: translate3d($x, $y, $z);
+}
+
+@mixin backface-visibility($visibility) {
+    -webkit-backface-visibility: $visibility;
+    -moz-backface-visibility: $visibility;
+    -ms-backface-visibility: $visibility;
+    backface-visibility: $visibility;
+}
+
+@mixin perspective($value) {
+    -webkit-perspective: $value;
+    -moz-perspective: $value;
+    -ms-perspective: $value;
+    perspective: $value;
+}
+
+// Set a fontawesome icon
+@mixin fa-icon($icon-code, $size, $color) {
+    content: $icon-code;
+    color: $color;
+    font-family: FontAwesome;
+    font-size: $size;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+}
+
+// -------------------------------------------------------------------------------------
+//
+// Buttons
+//
+// -------------------------------------------------------------------------------------
+
+// The following button mixins are the most basic styles for buttons and should be added to other mixins that include more specific styling
+
+// Use this mixin to set icons on a button
+// See _config.scss for frequently used icon codes
+@mixin btn-icon($icon-code, $size) {
+    content: $icon-code;
+    font-family: FontAwesome;
+    font-size: $size;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+}
+
+@mixin button {
+    @include transition-fix(all, $anim-dur, linear);
+    display: inline-block;
+    width: auto;
+    padding: 8px 10px 8px 10px;
+    @include border-radius(5px);
+    border-width: 1px;
+    border-style: solid;
+    @include fonts-med;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+@mixin dark-button {
+    @include button;
+    border-color: #fff;
+    background-color: $dark-gray;
+    color: #fff;
+    font-size: 14px;
+}
+
+@mixin light-button {
+    @include button;
+    border-color: $med-gray;
+    background-color: #fff;
+    color: $med-gray;
+    font-size: 14px;
+    &:hover {
+        background-color: $btn-hover-gray;
+    }
+}
+
+// The following button mixins are for specific button style implementations
+
+@mixin register-button-continue {
+    @include light-button;
+    padding: 10px 0;
+    width: 180px;
+    font-size: .9em;
+    text-align: right;
+    &:after {
+        @include btn-icon($right-carat, 1em);
+        margin-left: 20px;
+        margin-right: 10px;
+        padding-right: 0.5em;
+        color: rgb(110, 110, 110);
+        @include media($sub-desktop) {
+            margin-right: 0;
+        }
+    }
+}
+
+@mixin training-invite-btn {
+    @include dark-button;
+    width: 150px;
+    padding: 10px;
+    background-color: #5c223f;
+    font-size: 13px;
+    &:hover {
+        background-color: #8E6681;
+    }
+}
+
+@mixin dashboard-button {
+    @include light-button;
+    padding: 10px 0;
+    width: 180px;
+    font-size: .9em;
+    text-align: right;
+    &:after {
+        @include btn-icon($right-carat, 1em);
+        margin-left: 20px;
+        margin-right: 10px;
+        padding-right: 0.5em;
+        color: $med-gray;
+    }
+}
+
+@mixin dashboard-button-dark {
+    @include button;
+    @include blockcenter;
+    padding: 12px 20px 10px 20px;
+    width: 290px;
+    border: 1px solid $light-gray;
+    background: transparent;
+    color: $light-gray;
+    font-size: 14px;
+    @include media($small-mobile) {
+        width: 273px;
+    }
+
+    &:after {
+        @include btn-icon($right-carat, 1em);
+        margin-left: 10px;
+        color: $light-gray;
+    }
+    &:hover {
+        background-color: rgb(45, 37, 28);
+    }
+}
+
+@mixin reset-button-continue {
+    @include light-button;
+    padding: 10px 0;
+    width: 180px;
+    text-align: right;
+}
+
+@mixin register-button-skip {
+    @include light-button;
+    padding: 9px 0 8px 0;
+    width: 180px;
+    text-align: left;
+}
+
+@mixin profile-button {
+    @include light-button;
+}
+
+@mixin profile-button-confirm {
+    @include button;
+    border: none;
+    background: #006341;
+    color: #fff;
+    font-size: .9em;
+}
+
+@mixin program-button {
+    @include button;
+    width: 180px;
+    height: 36px;
+    border: 1px solid #979797;
+    background: #f6f7f7;
+    color: #393736;
+    font-size: 13px;
+    &:hover {
+        background: $btn-hover-gray;
+    }
+}
+
+@mixin program-button-cartadd {
+    @include button;
+    width: 180px;
+    height: 36px;
+    border: 1px solid #979797;
+    background: #245559;
+    color: #fff;
+    font-size: 13px;
+
+    @include media($mobile) { display: block; }
+
+    &:hover {
+        background: $green-btn-hover;
+    }
+}
+
+@mixin program-button-plus {
+    &:before {
+        @include btn-icon($plus-sign, 1em);
+        margin-right: 10px;
+        color: rgb(110, 110, 110);
+    }
+}
+
+@mixin program-button-next {
+    width: 170px;
+    padding-left: 10px;
+
+    @include media($mobile) { display: block; }
+
+    &:after {
+        @include btn-icon($right-carat, 1em);
+        margin-left: 10px;
+        margin-right: 0;
+        padding-right: 10px;
+        color: rgb(110, 110, 110);
+        @include media($sub-desktop) {
+            margin-right: 0;
+        }
+    }
+}
+
+@mixin basic-button {
+    @include button;
+    padding: 10px 0;
+    width: 180px;
+    border: 1px solid $med-gray;
+    background: #fff;
+    color: $med-gray;
+    font-size: 14px;
+    &:hover {
+        background: rgb(237, 237, 237);
+    }
+}
+
+@mixin home-button {
+    @include dark-button;
+    display: inline-block;
+    background: transparent;
+    &:hover {
+        background-color: #8E6681;
+    }
+}
+
+// -------------------------------------------------------------------------------------
+//
+// Forms
+//
+// -------------------------------------------------------------------------------------
+@mixin form-fundamental {
+    display: block;
+    @include border-radius(5px);
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #BCB7B0;
+    font-size: 13px;
+    &:focus,
+    &:active {
+        border: 1px solid #006240;
+        outline: none;
+    }
+    &::-webkit-input-placeholder {
+        @include placeholder-style;
+    }
+    &:-moz-placeholder {
+        @include placeholder-style;
+    }
+    /* Firefox 18- */
+    &::-moz-placeholder {
+        @include placeholder-style;
+    }
+    /* Firefox 19+ */
+    &:-ms-input-placeholder {
+        @include placeholder-style;
+    }
+}
+
+// -------------------------------------------------------------------------------------
+//
+// Misc
+//
+// -------------------------------------------------------------------------------------
+@mixin mobile-modal {
+    left: 0;
+    top: 0;
+    margin-left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@mixin mobile-modal-closer {
+    padding: 0 0 20px 20px;
+}
+
+@mixin placeholder-style {
+    @include fonts-med;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+@mixin placeholder-error {
+    color: red;
+    @include fonts-med;
+    font-size: 1em;
+    text-transform: uppercase;
+    &:before {
+        @include btn-icon($error-bang, 0.8em);
+        float: left;
+        @include inline-block;
+        @include border-radius(4px);
+        margin-right: 6px;
+        padding: 3px 6px 1px 6px;
+        background-color: red;
+        color: #fff;
+        line-height: 1em;
+        text-align: center;
+    }
+}
+
+@mixin background-marble-light {
+    background-image: url(../img/backgrounds/background-marble-light.jpg);
+    background-repeat: repeat-x;
+}
+
+@mixin background-marble-dark {
+    background-image: url(../img/backgrounds/background-marble-dark.jpg);
+    background-repeat: repeat-x;
+}
+
+// -------------------------------------------------------------------------------------
+//
+// Sprites
+//
+// -------------------------------------------------------------------------------------
+// http://compass-style.org/reference/compass/helpers/sprites/
+@mixin get-sprite($map, $sprite, $repeat: no-repeat, $height: true, $width: true) {
+    //http: //compass-style.org/reference/compass/helpers/sprites/#sprite-file
+    $sprite-image: sprite-file($map, $sprite);
+    // http: //compass-style.org/reference/compass/helpers/sprites/#sprite-url
+    $sprite-map: sprite-url($map);
+    // http: //compass-style.org/reference/compass/helpers/sprites/#sprite-position
+    $sprite-position: sprite-position($map, $sprite);
+    // Returns background
+    background: $sprite-map $sprite-position $repeat;
+    // http://compass-style.org/reference/compass/helpers/image-dimensions/
+    // Checks to see if the user wants height returned
+    @if $height == true {
+        // Gets the height of the sprite-image
+        $sprite-height: image-height($sprite-image);
+        // Returns the height
+        height: $sprite-height;
+    }
+    // http://compass-style.org/reference/compass/helpers/image-dimensions/
+    // Checks to see if the user wants height returned
+    @if $width == true {
+        // Gets the width of the sprite-image
+        $sprite-width: image-width($sprite-image);
+        // Returns the width
+        width: $sprite-width;
+    }
+}
+
+// -------------------------------------------------------------------------------------
+//
+// Simple Grid for Consistent Form Layout
+//
+// -------------------------------------------------------------------------------------
+@mixin w-100 {
+    @include clearfix;
+    margin-left: 0;
+    width: 100%;
+}
+
+@mixin w-90 {
+    width: 90%;
+}
+
+@mixin w-90L {
+    margin-left: 3%;
+    width: 87%;
+}
+
+@mixin w-80 {
+    width: 80%;
+}
+
+@mixin w-80L {
+    margin-left: 3%;
+    width: 77%;
+}
+
+@mixin w-70 {
+    width: 70%;
+}
+
+@mixin w-70L {
+    margin-left: 3%;
+    width: 67%;
+}
+
+@mixin w-60 {
+    width: 60%;
+}
+
+@mixin w-60L {
+    margin-left: 3%;
+    width: 57%;
+}
+
+@mixin w-50 {
+    width: 50%;
+}
+
+@mixin w-50L {
+    margin-left: 3%;
+    width: 47%;
+}
+
+@mixin w-40 {
+    width: 40%;
+}
+
+@mixin w-40L {
+    margin-left: 3%;
+    width: 37%;
+}
+
+@mixin w-30 {
+    width: 30%;
+}
+
+@mixin w-30L {
+    margin-left: 3%;
+    width: 27%;
+}
+
+@mixin w-20 {
+    width: 20%;
+}
+
+@mixin w-20L {
+    margin-left: 3%;
+    width: 17%;
+}
+
+@mixin w-10 {
+    width: 10%;
+}
+
+@mixin w-10L {
+    margin-left: 3%;
+    width: 7%;
+}

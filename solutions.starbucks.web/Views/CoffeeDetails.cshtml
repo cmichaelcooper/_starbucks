@@ -1,0 +1,208 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "~/Views/Master.cshtml";
+}
+<div class="product-details" ng-app="product_lookup" ng-controller="coffeeDetailsController">
+    <div class="back-link inner-container">
+        <a class="dotted-link" href="/products/coffee">« Back to Coffee</a>
+    </div>
+    <div id="coffee-details">
+        <div class="product-details-top">
+            <div class="inner-container">
+                <div class="product-details-left">
+                    <img ng-src="/img/Products/640/{{product.ProductInformation.ProductID}}.jpg" id="product-details-img" />
+                </div>
+                <div class="product-details-right">
+                    <div class="product-details-title" ng-if="product.ProductInformation.Name">{{product.ProductInformation.Name}}</div>
+                    <div class="product-details-strong" ng-if="product.coffeeType.Value"><strong>{{product.coffeeType.Value}}</strong></div>
+                    <div class="product-dropdown" id="ddl-choose-form" data-default="choose form">
+                        <span>choose Form</span>
+                        <select ng-model="product.selectedItem1.selectedItem"
+                                ng-options="skuInfo as skuInfo.Value for skuInfo in product.items1 | unique: 'Value' track by skuInfo.Value" required></select>
+                    </div>
+                    <div class="product-dropdown" data-default="choose size">
+                        <span>choose size</span>
+                        <select ng-model="product.selectedItem1.selectedItem2"
+                                ng-options="item as item.SKUNumber + ' — ' + product.selectedItem1.Size + ' — ' + item.UOM for item in product.selectedItem1.items2 track by item.SKUNumber + ' — ' + product.selectedItem1.Size + ' — ' +  item.UOM"></select>
+                    </div>
+                    <div class="product-dropdown" data-default="brewer info" ng-if="!product.isInstant">
+                        <span>Compatible Brewers</span>
+                        <select ng-model="product.selectedItem1.selectedItem2.selectedItem3"
+                                ng-options="brewer as brewer.Value for brewer in product.selectedItem1.selectedItem2.items3 track by brewer.Value"></select>
+                    </div>
+                    @*<p>Well-rounded with subtle notes of cocoa and toasted nuts balancing the smooth mouthfeel.</p>*@
+                    <p ng-if="product.ProductInformation.ShortDescription">{{product.ProductInformation.ShortDescription}}</p>
+                    <p><a ng-if="product.decafVersion" href="products/details/{{product.decafVersion}}" class="product-decaffeinated">Also in Decaffeinated.</a></p>
+
+                    <div class="add-to-bag clear" ng-if="product.isOrderable">
+                        <input name="sku" type="hidden" value="{{product.selectedItem1.selectedItem2.SKUNumber}}" />
+                        <input name="siteId" type="hidden" value="{{product.SiteId}}" />
+                        <input name="qty" type="text" id="quantity" placeholder="Quantity" pattern="[0-9]*" />
+                        <button type="submit" class="btn btn-green" data-action="@Url.Action("QuickAdd", "BagSurface")">ADD TO BAG</button>
+                    </div>
+                    <div class="add-to-bag na" ng-if="!product.isOrderable">
+                        Not available for your program. Please contact your Starbucks representative.
+                    </div>
+                    <div id="forgotError" class="add-to-bag hide bold"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="product-details-mid">
+            <div class="inner-container">
+                <div class="product-details-left">
+                    <div class="product-details-desc-title" ng-if="product.ProductInformation.Title">
+                        {{product.ProductInformation.Title}}
+                    </div>
+                    <p ng-if="product.ProductInformation.Description" ng-bind-html="product.ProductInformation.Description"></p>
+                    @*<p><a href="#" id="product-details-show-more"><strong>Show More [+]</strong></a></p>*@
+                    <div ng-if="product.recommendation">
+                        <p><strong>Recommendations:</strong> <br />{{product.recommendation}}</p>
+                    </div>
+                    <div class="related-info">
+                        <span class="fa fa-arrow-down"></span>
+                        Related Information:
+                        <!-- <a href="#">Nutrition Information</a> -->
+                        <a ng-if="product.isDrip" href="/resources/pdf/drip_coffee_product_card.pdf" target="_blank">Drip Coffee Product Card</a>
+                        <span ng-if="product.isIced">
+                            <a href="/resources/pdf/SFS-007-WPS-PCD-00569.pdf" target="_blank">Iced Coffee Product Card</a>
+                            <a href="/resources/pdf/SFS-007-WPS-SS1-00567.pdf" target="_blank">Iced Coffee General Sell Sheet</a>
+                            <a href="http://starbucksfs.com/resources/pdf/Iced_Coffee_Lodging_SS.pdf" target="_blank">Iced Coffee Lodging Sell Sheet</a>
+                        </span>
+                        <a ng-if="product.isInstant" href="/resources/pdf/VIA_Product_Overview.pdf" target="_blank">VIA Product Overview</a>
+                        @*<a href="#">Order Marketing Materials</a>*@
+                    </div>
+                    <div class="product-details-ads">
+                        <div>
+                            <a href="/programs" target="_blank">
+                                <img src="~/img/coffee/popular_programs_promo_box_programs.jpg" />
+                            </a>
+                        </div>
+                        <div>
+                            <a href="/resources/training" target="_blank">
+                                <img src="~/img/coffee/popular_programs_promo_box_training.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-details-right" id="product-details-meta">
+                    <div ng-if="product.roastProfile" class="product-sidebox product-details-roast">
+                        <div class="product-sidebox-label">Roast:</div>
+                        <div class="roast-slider">
+                            <span class="circle {{product.roastProfile}}"></span>
+                            <span class="dot-mid-left"></span>
+                            <span class="dot-mid-right"></span>
+                        </div>
+                        <span class="roast-value mild">Blonde</span>
+                        <span class="roast-value medium">Medium</span>
+                        <span class="roast-value dark">Dark</span>
+                        @*<p><strong>Full-Bodied &amp; Bold</strong></p>*@
+                    </div>
+                    <div ng-if="product.tastingNotes" class="product-sidebox product-details-taste">
+                        <div class="product-sidebox-label">TASTING NOTES:</div>
+                        <strong>{{product.tastingNotes}}</strong>
+                    </div>
+                    <div ng-if="product.pairsWith" class="product-sidebox">
+                        <div class="product-sidebox-label">PAIRS WELL WITH:</div>
+                        <strong>{{product.pairsWith}}</strong>
+                    </div>
+                    <div ng-if="product.region" class="product-sidebox">
+                        <div class="product-sidebox-label">REGION:</div>
+                        <strong>{{product.region}}</strong>
+                        <div class="region-map" ng-class="product.region == 'Multi-Region Blend' ? 'multi-region' : ''">
+                            <img class="latin-america" src="~/img/coffee-detail-selected-dot.png" ng-show="product.region == 'Latin America'" />
+                            <img class="asia-pacific" src="~/img/coffee-detail-selected-dot.png" ng-show="product.region == 'Asia/Pacific'" />
+                            <img class="africa-arabia" src="~/img/coffee-detail-selected-dot.png" ng-show="product.region == 'East Africa'" />
+                        </div>
+                    </div>
+                    <div class="product-logos">
+                        <img ng-if="product.organic" src="~/img/logo-usda.png" /> <img ng-if="fairtrade" src="~/img/logo-fairtrade.png" />
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        @*<div class="product-line">
+                <div class="product-list-v2 inner-container">
+                    <div class="product-line-title">MORE LIKE THIS ITEM</div>
+                    <section>
+                        <div class="product-v2" ng-repeat="Prod in relatedProducts | limitTo:4 ">
+                            <div>
+                                <img ng-src="/img/products/200/{{Prod.ProductID}}.jpg" />
+                                <div class="product-list-desc">
+                                    <h3>{{Prod.ProductInformation.Name}}</h3>
+                                    <p>{{Prod.ProductInformation.ShortDescription}}</p>
+                                    @*<h3>Starbucks® Caffé Verona® Decaf</h3>
+                                        <p>Full-bodied with a smooth mouthfeel and lingering herbal flavors. Amazing with savory foods.</p>
+                                    <a href="/products/details/{{Prod.ProductID}}" class="btn">Product Details</a>
+                                    <a class="add-to-favorite" href="#"><span class="fa fa-heart"></span> ADD TO FAVORITES</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </section>
+                </div>
+            </div>*@
+    </div>
+</div>
+@Html.Partial("~/Views/Partials/_LoggedInFooter.cshtml")
+
+<script>
+    $(function () {
+        var blend = location.href.split("/details/")[1].toLowerCase();
+        var img = "/img/coffee/";
+        if (/breakfast_blend/.test(blend)) {
+            img += "pdp_bg_breakfast_blend";
+        }
+        else if (/estima/.test(blend)) {
+            img += "pdp_bg_cafe_estima";
+        }
+        else if (/caffe_verona/.test(blend)) {
+            img += "pdp_bg_caffe_verona";
+        }
+        else if (/espresso_roast/.test(blend)) {
+            img += "pdp_bg_espresso_roast";
+        }
+        else if (/french_roast/.test(blend)) {
+            img += "pdp_bg_french_roast";
+        }
+        else if (/italian_roast/.test(blend)) {
+            img += "pdp_bg_italian_roast";
+        }
+        else if (/pike_place/.test(blend)) {
+            img += "pdp_bg_pike_place_roast";
+        }
+        else if (/veranda_blend/.test(blend)) {
+            img += "pdp_bg_veranda_blend";
+        }
+        else if (/serena_blend/.test(blend)) {
+            img += "pdp_bg_serena_blend";
+        }
+        else if (/via|starbucks|fair_trade|kopelani/.test(blend)) {
+            img += "sirenBkgrnd";
+        }
+        else {
+            img += "sbc_products";
+        }
+
+        $('#coffee-details').css('background-image', 'url(' + img + '.jpg)').on("click", ".product-dropdown", function () {
+            $(this).next("select").trigger("click");
+        }).on("change", ".product-dropdown select", function () {
+            var el = $(this);
+            el.parent().find("span").text(el.val());
+
+            if (/ddl-choose-form/.test(el.parent().attr("id"))) {
+                $("#ddl-choose-form ~ .product-dropdown").each(function () {
+                    var ddl = $(this);
+                    ddl.find("span").text(ddl.data("default"));
+                });
+            }
+        }).on("change", "#quantity", function () {
+            var el = $(this);
+            if (el.val() != "")
+                el.css("color", "#000")
+        }).on("click", ".add-to-bag .btn", function () {
+            SBS.AddItemToBag($(this));
+        });
+    });
+</script>

@@ -1,0 +1,79 @@
+﻿@using solutions.starbucks.web.Classes
+@using solutions.starbucks.Model
+@using umbraco.NodeFactory;
+@using solutions.starbucks.web.Controllers
+@model FundamentalsModel
+@{
+    Layout = "~/Views/Shared/_LayoutTraining.cshtml";
+    var node = Node.GetCurrent();
+
+    string homeUrl = Url.Content("~/resources/training/my-training/") + (Model.Invite != null ? "?" + Utilities.Training.AccessToken(Model.Invite) : string.Empty);
+}
+
+
+<section id="content">
+
+    <section class="content-band header__foundations @Model.BodyId">
+
+        <div class="inner-wrapper">
+
+            <h1 class="large-overview-title dark">@Html.Raw(Model.HeaderContent)</h1>
+            @if (Model.Invite != null)
+            {
+              
+            <a href="@homeUrl" class="trainee-back-header trainee">&laquo; Back to Solutions University</a>
+                
+            }
+
+            @if (Model.Invite == null)
+            { // Operator is viewing training
+                
+            <a href="/resources/training" class="trainee-back-header operator">&laquo; Back to Training</a>
+            
+            }
+
+        </div>
+
+    </section>
+
+     @{
+        if (Model.ContentBlocks != null)
+        {
+            foreach (var contentBlock in Model.ContentBlocks)
+            {
+                <section class="content-band @contentBlock.CssClass">
+
+                    <div class="inner-wrapper">
+
+                        @Html.Raw(contentBlock.ContentBox)
+
+                    </div> 
+                    
+                </section>
+            }
+        }
+
+        
+
+        @Html.Action("RenderCourseNavigation", "CourseSurface", new { inviteId = Model.Invite != null ? Model.Invite.InviteID : 0, subjectId = node.Id })
+
+        if (Model.Invite != null)
+        {
+            <div class="lead-bar footer-lead signed-in">
+                <img src="/img/sbs-footer.png" />
+            </div>
+        }
+
+}
+
+
+
+</section>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SBS.TrainingFunctionality();
+        });
+    </script>
+}

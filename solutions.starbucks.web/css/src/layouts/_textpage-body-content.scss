@@ -1,0 +1,84 @@
+.textpage #site-wrapper #content,
+#yearroundicedcoffee #site-wrapper #content,
+#yearroundblendedbeverages #site-wrapper #content,
+#yearroundfrappuccinoblendedbeverages #site-wrapper #content,
+#yearroundtazotea #site-wrapper #content {
+
+    .body-content { background: #e1ebed;
+
+        article {
+
+            section {
+                @include blockcenter; position: relative; width: 960px; padding: 60px 20px;
+
+                @include media($sub-desktop) { width: 100%; }
+                @include media($mobile) { padding: 20px; }
+
+                &.circle-img { @include clearfix; padding: 100px 20px 100px 320px; background-position: left center; background-repeat: no-repeat;
+
+                    @include media($tablet){ padding-left: 340px; }
+                    @include media($mobile) { padding-top: 20px; padding-bottom: 220px; padding-left: 20px; background-position: center bottom; background-size: 220px; }
+                    @include media($big-mobile) { padding-bottom: 220px; }
+                }
+
+                h2 { @include fonts-light; font-size: 48px; line-height: .9em;
+
+                    @include media($tablet) { font-size: 2.5em; }
+                    @include media($mobile) { font-size: 2em; line-height: 1em; }
+                }
+
+                h3 { font-size: 1em; font-weight: 400; margin-top: 20px;
+
+                    &:first-child { margin-top: 0; }
+                }
+
+                ul { list-style: none; @include collapse-spacing; margin-top: 10px; padding-left: 20px;
+
+                    li { margin-bottom: 10px; line-height: 1.5em; }
+                }
+
+                a { color: rgb(34, 34, 34); @include fonts-heavy;
+
+                    &:hover { color: $light-gray; @include fonts-heavy; }
+                }
+            }
+        }
+
+        .ul-left { @include inline-block; vertical-align: top; margin-right: 40px; width: 45%;
+
+            &:last-child { margin-right: 0; }
+
+            @include media($sub-desktop) { width: 44%; vertical-align: top; }
+            @include media($small-mobile) { width: 100%; margin-top: 10px; margin-right:0; }
+
+            h3 { margin-top: 20px; @include fonts-heavy; font-size: 1em;
+
+                @include media($mobile) { margin-bottom: .5em; }
+
+                &:first-child { margin-top: 0; }
+            }
+
+            ul { list-style: none; @include collapse-spacing; margin-top: 10px; padding-left: 20px;
+
+                li { line-height: 1.5em; margin-bottom: 10px; }
+            }
+        }
+
+        .body-list-two-column { @include clearfix; width: 500px;
+
+            @include media($sub-desktop) { float: none; @include w-100; }
+
+            li { float: left; @include w-50;
+
+                @include media($tablet) { float: left; @include w-50; }
+                @include media($mobile) { float: none; @include w-100; }
+
+                &:nth-child(2n) { @include w-50L;
+
+                    @include media($tablet) { float: left; @include w-50L; }
+                    @include media($mobile) { float: none; @include w-100; }
+                }
+            }
+        }
+    }
+}

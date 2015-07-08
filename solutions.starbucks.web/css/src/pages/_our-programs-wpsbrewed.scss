@@ -1,0 +1,70 @@
+#wps-brewed #site-wrapper #content {
+
+	.body-content {
+
+		article {
+
+			section { background-image: url(../img/brewed-body.png); }
+		}
+	}
+	.support-content { background: #fff;
+
+		article {
+
+			h3 {
+
+				@include media($big-mobile) {
+					margin-top: 20px;
+				}
+				@include media($small-mobile) {
+					margin-top: 20px;
+				}
+			}
+		}
+
+		.signature { background: #000;
+
+			section { padding: 40px 400px 40px 20px; background: url(../img/backgrounds/brewed-support-bg.jpg) no-repeat; background-position: right bottom; color: #fff;
+
+				@include media($tablet) {
+					padding: 20px 200px 40px 20px; width: 100%;
+				}
+				@include media($big-mobile) {
+					padding-top: 20px; padding-right: 20px; padding-bottom: 67%; width: 100%; background: url(../img/backgrounds/brewed-support-bg.jpg) no-repeat; background-size: 170%; background-position: 90% bottom;
+				}
+				@include media($small-mobile) {
+					padding-top: 20px; padding-right: 20px; padding-bottom: 200px; width: 100%; background: url(../img/backgrounds/brewed-support-bg.jpg) no-repeat; background-size: 170%; background-position: 90% bottom;
+				}
+			}
+		}
+
+		.core { background: rgb(255, 255, 255);
+
+			section { padding: 40px 20px 20px 20px; color: #000;
+
+				@include media($tablet) {
+					padding: 20px 20px 20px 20px; width: 100%; background-size: 270px; background-position: left 20px;
+				}
+				@include media($big-mobile) {
+					padding: 20px !important; width: 100%; background: none;
+				}
+				@include media($small-mobile) {
+					padding: 20px !important; width: 100%; background: none;
+				}
+			}
+		}
+
+		.bottom-edger { height: 133px; background-image: url(../img/coffee-bottom-edger.png); background-repeat: no-repeat; background-size: 600px; background-position: center bottom;
+
+			@include media($tablet){
+				background-size: 480px;
+			}
+			@include media($big-mobile){
+				height: 95px; background-size: 300px;
+			}
+			@include media($small-mobile){
+				height: 62px; background-size: 300px;
+			}
+		}
+	}
+}

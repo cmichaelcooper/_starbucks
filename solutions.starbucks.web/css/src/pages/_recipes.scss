@@ -1,0 +1,532 @@
+﻿#recipedetails .product-details-top, #recipedetails .recipe-nutrition {
+    background: none;
+}
+
+#recipeslanding {
+    header {
+        background-image: url(../img/recipes/header.jpg);
+
+        @include media($tablet-portrait) {
+            background-image: url(../img/recipes/header-1100.jpg);
+        }
+
+        @include media($big_mobile) {
+            background-image: url(../img/recipes/header-767.jpg);
+        }
+
+        @include media($small-mobile) {
+            background-image: url(../img/recipes/header-479.jpg);
+        }
+    }
+
+    .body-content {
+        background: rgba(210, 201, 183, 0.5);
+
+        article {
+            background: url(../img/recipes/article.png) no-repeat center right;
+            display: block;
+            height: 480px;
+            margin: 0 auto;
+            padding: 80px 0;
+            position: relative;
+            max-width: 960px;
+
+            @include media($mobile) {
+                background-image: url(../img/recipes/article-mobile.png);
+                background-position: 100% -15%;
+            }
+
+            @include media($small-mobile) {
+                background-position: right 43px;
+                height: auto;
+                padding: 40px 0;
+            }
+        }
+
+        section {
+            display: block;
+            padding-left: 50px;
+            width: 69%;
+
+            @include media($big-mobile) {
+                width: 75%;
+                padding-left: 25px;
+            }
+
+            @include media($small-mobile) {
+                padding-left: 15px;
+            }
+
+            p {
+                width: 90%;
+            }
+
+            h2 {
+                @include fonts-light;
+                font-size: 48px;
+                font-weight: normal;
+                line-height: 1em;
+
+                @include media($tablet-portrait) {
+                    font-size: 2.5em;
+                    width: 75%;
+                }
+
+                @include media($mobile) {
+                    font-size: 2em;
+                }
+            }
+
+            ul {
+                padding-left: 16px;
+
+                li {
+                    line-height: 1.5em;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+
+    .featured-recipe-bg {
+        background: url(../img/coffee/sirenBkgrnd.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    .featured-recipe {
+        @include media($big-mobile) {
+            max-width: 479px;
+        }
+
+        .product-details-title {
+            margin: 35px 0 0;
+
+            @include media($mobile) {
+                margin-top: 15px;
+            }
+        }
+
+        .product-details-strong {
+            font-size: 28px;
+            margin: 35px 0 0;
+        }
+
+        .btn {
+            @include fonts-med;
+            background: #FFF;
+            border-radius: 5px;
+            border: 1px solid #3F4042;
+            color: #3F4042;
+            font-size: 14px;
+            font-weight: normal;
+            letter-spacing: 1px;
+            margin: 15px auto;
+            padding: 7px 10px 6px;
+            text-align: center;
+            text-transform: uppercase;
+            width: 220px;
+            -moz-transition: all 0.3875s linear 0s;
+            -webkit-transition: all 0.3875s linear 0s;
+            transition: all 0.3875s linear 0s;
+
+            @include media($mobile) {
+                display: block;
+            }
+        }
+
+        .add-to-favorite {
+            @include media($mobile) {
+                text-align: center;
+            }
+        }
+    }
+
+    .support-content {
+        background: #FFF;
+    }
+}
+
+#recipecatalog {
+    background: #F4F4F4;
+
+    header {
+        &.cold-beverages {
+            background-image: url(../img/recipes/cold-beverages/header.jpg);
+
+            @include media($tablet-portrait) {
+                background-image: url(../img/recipes/cold-beverages/header-1100.jpg);
+            }
+
+            @include media($big_mobile) {
+                background-image: url(../img/recipes/cold-beverages/header-767.jpg);
+            }
+
+            @include media($small-mobile) {
+                background-image: url(../img/recipes/cold-beverages/header-479.jpg);
+            }
+        }
+
+        &.frozen-blended-smoothies {
+            background-image: url(../img/recipes/frozen-blended-smoothies/header.jpg);
+
+            @include media($tablet-portrait) {
+                background-image: url(../img/recipes/frozen-blended-smoothies/header-1100.jpg);
+            }
+
+            @include media($big_mobile) {
+                background-image: url(../img/recipes/frozen-blended-smoothies/header-767.jpg);
+            }
+
+            @include media($small-mobile) {
+                background-image: url(../img/recipes/frozen-blended-smoothies/header-479.jpg);
+            }
+        }
+
+        &.hot-beverages {
+            background-image: url(../img/recipes/hot-beverages/header.jpg);
+
+            @include media($tablet-portrait) {
+                background-image: url(../img/recipes/hot-beverages/header-1100.jpg);
+            }
+
+            @include media($big_mobile) {
+                background-image: url(../img/recipes/hot-beverages/header-767.jpg);
+            }
+
+            @include media($small-mobile) {
+                background-image: url(../img/recipes/hot-beverages/header-479.jpg);
+            }
+        }
+    }
+}
+
+.recipedetails {
+    .recipe-details-col1 {
+        float: left;
+        width: 50%;
+
+        .dotted-link {
+            display: inline;
+        }
+    }
+
+    .recipe-details-col2 {
+        float: right;
+        width: 45%;
+    }
+
+    .product-details-title {
+        margin-bottom: 0;
+    }
+
+    .x28 {
+        font-size: 28px;
+    }
+
+    .recipe-ingredient-bar {
+        background: rgba(0, 0, 0, 0.05);
+        padding: 25px 0 15px;
+
+        .x28 {
+            line-height: 32px;
+        }
+
+        strong {
+            line-height: 36px;
+        }
+    }
+
+    .product-dropdown {
+        background: #FFF url(../img/expander-caret.png) no-repeat 90% center;
+        color: #3f4042;
+        display: inline-block;
+        margin: 0 0 0 10px;
+        text-align: left;
+        width: 140px;
+    }
+}
+
+.recipe-diagram {
+    @include media($mobile) {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+#desktop-size-dropdown {
+    float: right;
+    text-align: right;
+
+    @include media($mobile) {
+        display: none;
+    }
+}
+
+#mobile-size-dropdown {
+    background-position: 95% center;
+    border: 1px solid #231F20;
+    display: none;
+    float: none;
+    margin: 15px 0;
+    width: 100%;
+
+    @include media($mobile) {
+        display: block;
+        margin: 0 auto;
+        width: 220px;
+    }
+}
+
+.recipe-ingredients {
+    background: #FFF;
+    padding: 25px 0;
+
+    a.dotted-link {
+        border-bottom: 1px dotted #3D3935;
+        color: #3D3935;
+        text-decoration: none;
+
+        @include fonts-med;
+
+        &:hover {
+            border-color: #bcb7b0;
+            color: #bcb7b0;
+        }
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .btn-white {
+        color: #232120 !important;
+        display: inline-block;
+        float: right;
+
+        @include media($mobile) {
+            width: 220px;
+        }
+    }
+}
+
+.recipe-ingredients-table {
+    margin-bottom: 25px;
+
+    .row {
+        display: table;
+        padding: 20px 25px;
+        width: 100%;
+
+        &:after {
+            clear: both;
+        }
+
+        &.dark {
+            background: #F6F6F6;
+        }
+    }
+}
+
+#atb-panel {
+    display: none;
+
+    .product-dropdown {
+        border: 1px solid #ECECEC;
+        background-color: #ECECEC;
+        background-position: 95% center;
+        display: block;
+        margin: 0 15px 10px 0;
+        width: 100%;
+    }
+
+    .atb-table {
+        display: table;
+        margin: 10px auto 30px;
+        table-layout: fixed;
+        width: 100%;
+
+        & > div {
+            display: table-cell;
+
+            @include media($small-mobile) {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+
+    .atb-left {
+        width: 50%;
+    }
+
+    .atb-btn-holder {
+        width: 50%;
+        vertical-align: bottom;
+    }
+
+    input {
+        @include fonts-med;
+        background: #ECECEC;
+        border-radius: 5px;
+        border: 1px solid #ECECEC;
+        color: #3f4042;
+        float: left;
+        letter-spacing: 0.075em;
+        margin: 0 15px 10px;
+        padding: 10px 15px 6px;
+        width: 35%;
+        -webkit-appearance: none;
+
+        @include media($small-mobile) {
+            margin-left: 0;
+        }
+    }
+
+    .btn-green {
+        color: #FFF;
+        float: right;
+        padding: 9px 15px;
+        width: 55%;
+
+        @include media($tablet) {
+            width: 50%;
+        }
+
+        @include media($big-mobile) {
+            width: 50%;
+        }
+
+        @include media($small-mobile) {
+            width: 60%;
+        }
+    }
+
+    .btn-red {
+        background: #5C223F;
+        color: #FFF;
+        float: right;
+        width: 28%;
+
+        &:hover {
+            background: #8E6681;
+        }
+
+        @include media($tablet) {
+            width: 25%;
+        }
+
+        @include media($big-mobile) {
+            width: 25%;
+        }
+
+        @include media($small-mobile) {
+            float: none;
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+.recipe-preparation {
+    border-top: 1px solid #494949;
+    border-bottom: 1px solid #494949;
+    list-style: none;
+    margin: 10px 0 25px;
+    padding: 20px 0;
+
+    li {
+        margin: 0 0 5px 25px;
+        line-height: 1.5em;
+    }
+}
+
+.recipe-nutrition {
+    background: #D4D0C4;
+    padding: 25px 0;
+}
+
+.recipe-nutrition-dropdowns {
+    display: table;
+    margin: 15px 0 35px;
+    width: 100%;
+
+    @include media($mobile) {
+        margin: 0;
+    }
+
+    .recipe-nutrition-dropdowns-inner {
+        margin-left: -15px;
+        margin-right: -15px;
+
+        &:after {
+            clear: both;
+        }
+
+        & > div {
+            float: left;
+            width: 33.3333%;
+            padding: 0 15px;
+
+            @include media($mobile) {
+                float: none;
+                margin: 15px 0;
+                width: 100%;
+            }
+        }
+
+        .product-dropdown {
+            background-position: 95% center;
+            float: none;
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+.nutrition {
+    color: #3D3935;
+    line-height: 1.42857;
+    width: 100%;
+
+    @include fonts-med;
+
+    caption {
+        border-bottom: 4px solid #88827F;
+        font-size: 20px;
+        @include fonts-heavy;
+    }
+
+    .col1 {
+        width: 35%;
+    }
+
+    .col2 {
+        width: 28%;
+    }
+
+    tr {
+        border-bottom: 1px solid #88827F;
+    }
+
+    td, th {
+        line-height: 1.42857;
+        padding: 5px 8px;
+        vertical-align: top;
+    }
+
+    .indent {
+        padding-left: 25px;
+
+        span {
+            width: 10%;
+        }
+    }
+
+    .minerals {
+        .fa {
+            font-size: 55%;
+            margin: 0 15px;
+            vertical-align: middle;
+        }
+    }
+}

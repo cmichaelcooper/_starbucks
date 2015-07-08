@@ -1,0 +1,93 @@
+﻿@using System.Web.Mvc.Html
+@using Umbraco.Web
+@using solutions.starbucks.web.Controllers
+@using solutions.starbucks.Model
+@model RegisterPageTwoViewModel
+
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+    bool track = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableGoogleAnalyticsTracking"]) ? true : false;
+}
+
+@*<h1>Create Your Profile</h1>*@
+<div class="step-wrapper">
+    <h2>Step 2:</h2>
+    <h3>Enter Your Account Information</h3>
+    <h5 class="requirements">Enter your Starbucks Account Number and the shipping ZIP Code associated with that account number.</h3>
+
+    <span class="validationMessages">
+        
+    @if (Session["AccountValidCount"] != null || Model.Attempts >= 3)
+     {
+         if ( Model.Attempts >= 3)
+         {
+                        <p>You have entered an invalid account/zip combination three times. Please contact your representative to determine your valid account number and zip associated with your account. <a href="/register?page=three&skip=1">Click here to skip this step (you will have to verify your account before full access is granted).</a> Or call Starbucks Customer Service at (555)555-5555 or <a href="/customer-service-contact/">click here</a> to send them an email. </p>
+         }
+         else 
+         {
+                 <p class="incorrect-notice">You have either entered an invalid Starbucks account number or an incorrect zip code for your account. For security purposes, only three failed attempts are allowed during signup.</p>
+         }
+     }
+    </span>
+</div>
+<div class="form-wrapper">
+
+        @using (Html.BeginUmbracoForm<RegisterSurfaceController>("ProcessRegistration", null, new { id = "registrationForm"}))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <fieldset>
+                    <div class="grouping email reg-two">
+                        <label for="EmailAddress"><span class="field-label">Email*</span>@Html.ValidationMessageFor(model => model.EmailAddress, string.Empty, new { @class= "help-block" })</label>
+                        @Html.TextBoxFor(model => model.EmailAddress, new{ @class = "form-control full-width", placeholder = "Email Address" })
+                        
+                    </div>
+                        @if ( Model.Attempts < 3)
+                        {
+                            <div class="grouping accountnumber reg-two">
+                                <label for="AccountNumber"><span class="field-label">Your Starbucks Account Number*</span>@Html.ValidationMessageFor(model => model.AccountNumber, string.Empty, new { @class= "field-error" })</label>
+                                @*@Html.LabelFor(model => model.AccountNumber, new { @class = "control-label"})*@
+                                <!-- @Html.TextBoxFor(model => model.AccountNumber, new{ @class = "form-control", placeholder = "Account Number" }) -->
+                                <input name="AccountNumber" type="tel" pattern="[0-9]*" placeholder="Account Number" class="form-control" />
+                                
+                            </div>
+                            <div class="grouping zip reg-two">
+                                <label for="Zip"><span class="field-label">Your Zip Code*</span>@Html.ValidationMessageFor(model => model.Zip, string.Empty, new { @class= "field-error" })</label>
+                                @*@Html.LabelFor(model => model.Zip, new { @class = "control-label"})*@
+                                <!-- @Html.TextBoxFor(model => model.Zip, new{ @class = "form-control", placeholder = "Zip code" }) -->
+                                <input name="Zip" type="tel" pattern="[0-9]*" placeholder="Zip code" class="form-control" />
+                                
+                            </div>
+                        }
+                   
+                    
+                    @Html.HiddenFor(model => model.NextPage)
+                    @Html.HiddenFor(model => model.PreviousPage)
+                    @Html.HiddenFor(model => model.Attempts)
+
+                <div class="required-notice">*Indicates Required Field</div>
+                <div class="register-buttons">
+                    <a href="/register?page=three&skip=1" class="btn-skip">Skip this step</a>
+                        <button type="submit" class="btn btn-default">Continue</button>
+                        <span class="loading">
+                            @* <i class="fa fa-circle-o-notch fa-spin"></i>  *@
+                            <img src="/img/form-icons/loading.gif" width="16" height="16" /> <span class="text">Loading...</span>
+                        </span>
+                    @*<a class="btn btn-back" href="/Register?page=begin">Back</a>*@
+                </div>
+            </fieldset>
+        
+
+        }
+</div>
+
+<p class="register-learn-link">Not a current customer? <a href="/our-brands/">Learn about our brands &raquo;</a></p>
+@if(track)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+             _kmq.push(['record', 'Completed Step 1']);
+        });
+    </script>
+}

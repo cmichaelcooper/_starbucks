@@ -1,0 +1,56 @@
+.program-tiles {
+
+	.recipe-toggle {  }
+	.program-banner {  }
+	.col4 { width: 960px; height: auto;
+		
+		@include media($tablet-portrait) { width: 100%; }
+		@include media($mobile) { width: 100%; }
+	}
+	.col2 { width: 480px; height: auto;
+
+		@include media($tablet-portrait) { width: 50%; height: auto; }
+	}
+	.col1 { width: 240px; height: auto; }
+	.col2, .col1 {
+
+		@include media($sub-tablet) { width: 100%; }
+	}
+	.tile-content { display: block; position: absolute; width: 100%; }
+	.tile-content, .tile-elements {
+
+		.tile-title { text-align: center; line-height: 24px; }
+		.tile-desc {  }
+		.tile-list { padding-left: 10px;
+
+			@include media($mobile) { padding-left: 0; }
+
+			li { margin-bottom: 8px; }
+		}
+		.program-tile-btn {
+
+			&.green { background-color: #245559; color: #fff;
+
+				&:hover { background-color: $green-btn-hover; }
+				&:before { color: #fff; }
+			}
+		}
+		.recipe-btn {  }
+	}
+}
+
+///////////////////////////////////////////
+// Element-specific Styles and Overrides //
+///////////////////////////////////////////
+
+.program-tiles {
+
+	.tile-content {
+
+		&.iced-coffee-starter-kit { width: 60%;
+
+			@include media($small-mobile) { width: 100%; }
+		}
+	}
+}
+

@@ -1,0 +1,73 @@
+.grid-tabs { @include clearfix; width: 100%; background-color: #383735;
+
+	ul { @include clearfix; display: table; width: 960px; margin: 0 auto; padding-left: 0;
+
+		@include media($sub-desktop) { width: 100%; }
+		@include media($mobile) {  }
+
+		li { cursor: pointer; display: table-cell; vertical-align: middle; width: 25%; height: 50px; border-right: 2px solid #383735; background-color: #989898; color: #444; @include fonts-heavy; font-size: 14px; text-align: center; text-transform: uppercase;
+
+			@include media($mobile) { @include clearfix; display: inline-block; height: auto; padding: 20px; width: 100%; border-right: none; border-bottom: 1px solid #383735; background-color: #f2f2f2; background-image: url(../img/expander-caret.png); background-repeat: no-repeat; background-position: right 20px center; font-size: 16px; text-align: left; }
+
+			&:hover { background-color: #D0CFCF; }
+			&.active { background-color: #f2f2f2; color: #444;
+
+				@include media($mobile) { background-image: url(../img/expander-caret-active.png); }
+			}
+			&.mobile-hide { display: none; }
+		}
+	}
+}
+
+.training-modules { background-color: #f2f2f2; }
+
+.catalog-grid { margin-bottom: 15px; margin-top: 15px; }
+
+#products section { display: block; position: relative; margin-left: -15px; margin-right: -15px; }
+
+.catalog-grid__item { float: left; padding: 10px; width: 25%;
+
+    @include media($tablet) { width: 33%; }
+    @include media($mobile) { padding: 15px; }
+    @include media($big-mobile) { width: 50%; }
+    @include media($small-mobile) { width: 100%; }
+}
+
+.catalog-grid__item .inner-wrapper { position: relative; width: 100%; background: #FFF; padding-top: 15px; text-align: center; }
+
+.catalog-grid__item > .inner-wrapper.active { margin-bottom: 390px; }
+
+.catalog-item__desc { padding: 0 15px;
+
+	.catalog-item__short-desc { height: 70px; font-size: 14px; line-height: 1.1em;
+
+		p { margin: 0; }
+	}
+}
+
+.catalog-item__title { padding-top: 15px; font-size: 1.17em; height: 85px; }
+
+.catalog-item__buttons { padding: 0 15px;
+
+	@include media($mobile) { padding: 0; }
+
+	.btn { width: 100%; @include light-button;
+
+		&.desktop-video-thumb { border-width: 0; }
+	}
+	a.download-pdf-text { display: inline-block; margin-top: 10px; border-bottom: 1px dotted #000; color: #000; @include fonts-med; font-size: 12px; }
+	.training-add-btn { @include light-button; width: 100%; }
+	a.desktop-video-link {
+
+		@include media($sub-desktop) { display: none; }
+	}
+	.mobile-video-link { display: none;
+
+		@include media($sub-desktop) { display: inline-block; }
+	}
+}
+
+#training-modules, .training-select-expander, .topics-selector {
+
+	.catalog-grid__item .inner-wrapper { height: 430px; padding: 20px; }
+}

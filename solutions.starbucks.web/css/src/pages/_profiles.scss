@@ -1,0 +1,282 @@
+#profileedit.profileedit {
+    #site-wrapper {
+        #content { padding-top: 150px; background: #000 url(../img/coffee/pdp-header.jpg) no-repeat top center;
+
+            @include media($mobile){ padding-top: 100px; }
+
+            .profile-wrapper { margin: 0 auto 0 auto; padding-top: 40px; background: rgb(255, 255, 255);
+
+                @include media($tablet){ padding: 40px 20px 20px 20px; }
+                @include media($mobile){ padding: 20px; width: 100%; }
+
+                .inner-wrapper { @include blockcenter; max-width: 960px; }
+            }
+
+            h1.profile-title { @include clearfix; float: left; display: inline-block; width: 88%; margin-bottom: 30px; padding-bottom: 8px; border-bottom: 1px solid #bcb7b0; color: rgb(60, 56, 52); @include fonts-light; font-size: 40px; line-height: 1em;
+
+                @include media($mobile) { margin-bottom: 4px; padding-bottom: 7px; font-size: 2em; }
+                @include media($big-mobile){ position: relative; height: 63px; }
+                @include media($small-mobile){ float: none; width: 100%; height: 95px; font-size: 32px; }
+
+
+                
+
+                span { margin-top: 9px; @include fonts-med; font-size: 16px;
+
+                    @include media($mobile) { float: none; display: block; margin-top: 0; }
+
+                    a.dotted-link { float: none; margin-top: 0; color: #000; @include fonts-heavy;
+
+                        &:hover { color: #bcb7b0; }
+                    }
+                }
+            }
+            a.profile-title-link { float: right; color: #000;
+
+                    @include media($desktop) { margin-top: 28px; }
+                    @include media($small-mobile) { float: left; }
+                }
+            h2 { padding-bottom: 8px; border-bottom: 1px solid rgb(188, 183, 176); @include fonts-light; font-size: 40px; line-height: 40px;
+
+                @include media($sub-desktop) { margin-top: 0; border-bottom: 1px solid rgb(188, 183, 176); }
+                @include media($tablet) { padding-bottom: 17px; }
+                @include media($mobile) { padding-bottom: 7px; font-size: 2em; line-height: 1em; }
+            }
+
+            form {
+
+                fieldset {
+
+                    > section { @include clearfix; margin-top: 7px; padding: 30px 0; width: 100%; border-bottom: 1px solid rgb(188, 183, 176);
+
+                        &.last { border-bottom: 0;
+
+                            @include media($sub-desktop) { border-bottom: none; padding-top: 0; }
+                        }
+
+                        @include media($mobile) { margin-top: 20px; padding: 30px 0 0 0; }
+
+                        .grouping {
+
+                            @include media($mobile){ margin-top: 0; margin-bottom: 10px; }
+
+                            &:last-child {
+
+                                @include media($mobile) { margin-bottom: 5px; }
+                            }
+                            
+                            &.password { position: relative;
+
+                                &.valid {
+
+                                    input#ConfirmPassword, input#Password { background: url(../img/password-match.png) right center no-repeat; }
+                                }
+
+                                #strengthIndicator { display: block; overflow: hidden; position: absolute; bottom: 8px; right: 10px; width: 26px; height: 20px; color: white; text-indent: -1000px;
+
+                                    &.weak, &.good, &.strong { background-repeat: no-repeat; }
+                                    &.weak { background-image: url(../img/password-strength-weak.png); }
+                                    &.good { background-image: url(../img/password-strength-good.png); }
+                                    &.strong { background-image: url(../img/password-strength-strong.png); }
+                                }
+                            }
+
+                            &.has-error {
+
+                                label {
+
+                                    .control-label { display: none; }
+                                }
+                            }
+
+                            // span { @include fonts-med; font-size: 14px; text-transform: none;
+
+                            //     &.field-label { @include fonts-heavy; text-transform: uppercase; }
+                            // }
+                            a {color: #000;}
+
+                            label, h5 { display: block; @include fonts-heavy; font-size: 14px; text-transform: uppercase; }
+                            
+                            input {
+
+                                @include media($mobile) { font-size: 1em; }
+                            }
+                        }
+
+                        &.profile-details {
+
+                            .grouping {
+
+                                span { display: block; }
+                            }
+                        }
+
+                        header { @include float(left); @include w-30;
+
+                            @include media($tablet) { @include w-40; }
+                            @include media($mobile){ float: none; @include w-100; }
+
+                            h2, h3 { @include fonts-heavy; font-size: 24px; line-height: 20px; }
+
+                            h4 { margin-top: 25px; @include fonts-light; font-size: 16px; line-height: 10px; }
+
+                            .account-warning { margin: 20px 0; color: red;
+
+                                &:before { content: "\f12a"; @include float(left); @include inline-block; @include border-radius(4px); margin-right: 10px; padding: 4px 16px 0px 16px; background-color: red; color: #fff; font-family: FontAwesome; font-size: 1.6em; font-style: normal; font-weight: normal; line-height: 1.5em; text-decoration: inherit; text-align: center; }
+
+                                a, a:visited { color: #000; border-bottom: 1px dotted #000; }
+                            }
+                            .contact { font-size: 16px; line-height: 2.5em; @include fonts-light;
+
+                                @include media($big-mobile) { display: block; }
+
+                                a { color: rgb(34, 34, 34); @include fonts-heavy;
+
+                                    &:hover { color: $light-gray; @include fonts-heavy; }
+
+                                    &.dotted-link {
+                                        @include fonts-light;
+                                        color: #222;
+                                        border-bottom: 1px dotted #222;
+                                        &:hover { color: #000;}
+                                    }
+                                }
+                            }
+                            .btn { 
+
+                                &.btn-default { width: 220px; cursor: pointer; @include profile-button; padding: 9px 14px;
+
+                                    @include media($sub-desktop) { margin: 10px 0 18px 0; }
+                                    @include media($big-mobile) { @include float(right); clear: both; width: 220px; }
+                                    @include media($small-mobile) { width: 100%; }
+
+                                    &.inactive {display: none;}
+                                    &.active { @include profile-button-confirm; display: block; margin-bottom: 10px; padding: 10px; }
+                                 }
+                                
+                            }
+
+                            .cancel { color: #000; @include fonts-heavy; font-size: 16px; cursor: pointer;
+
+                                @include media($big-mobile) { @include float(right); clear: both; }
+                                @include media($small-mobile) { @include float(right); }
+
+                                &.inactive { display: none; }
+                                &.active { display: block; }
+                                &:hover { color: $light-gray; }
+                            }
+
+                            .add-account-btn {
+
+                                &:before { @include btn-icon("\f067", 1em); margin-right: 10px; color: rgb(110, 110, 110); }
+                            }
+
+                            .add-account { margin-top: 20px; 
+
+                                @include media($big-mobile) { margin-top: 100px; }
+                                @include media($small-mobile) { margin-top: 40px; }
+
+                                &.inactive { display: none; }
+                                &.active { display: block; }
+                            }
+                            
+                        }
+                        #change-pass-section {
+
+                            &.inactive { display: none;}
+                            &.active { display: block; }
+                        }
+
+                        > div {
+
+                            @include media($mobile){ margin-top: 10px; }
+                            
+                            h3 { font-size: 1.75em; }
+
+                            .profile-two-column {
+
+                                .grouping { @include float(left); @include w-50;
+
+                                    @include media($mobile) { @include w-100; }
+    
+                                    &:nth-child(2n) { @include w-50L;
+
+                                        @include media($mobile) { @include w-100; }
+                                    }
+                                }
+                            }
+                            .accountList { @include collapse-spacing; margin-bottom: 14px; padding: 0; list-style: none;
+
+                                &:last-child { border-bottom: none; }
+
+                                li { @include fonts-med; font-size: .875em;
+
+                                    @include media($tablet){ margin-top: 12px; }
+                                    @include media($mobile){ margin-top: 10px; }
+
+                                    &:before { content: none; }
+
+                                    .list-content {
+
+                                        @include media($mobile){ width: 100%; }
+                                    }
+                                }
+                            }
+                            #accountHeadings {
+
+                                li { margin-bottom: 1em;
+
+                                    @include media($tablet){ margin-bottom: 2em; }
+                                    @include media($mobile){ display: none; }
+                                }
+                            }
+
+                        }
+                        .credential-details, .profile-details, .account-details { @include float(left); @include w-70L;
+
+                            @include media($tablet) { @include w-60L; }
+                            @include media($mobile) { @include w-100; }
+                        }
+
+                        .account-details {
+
+                            .account-info { @include float(left); padding-right: 20px; @include w-30; border-right: 1px solid $light-gray;
+
+                                @include media($tablet) { @include w-50; }
+                                @include media($mobile) { @include w-100; border-right: none; }
+                            }
+                            .shipping-info { @include float(left); @include w-100;
+
+                                @include media($tablet) { @include w-50L; }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.profile-account-wrapper { @include clearfix; padding: 30px 30px; background-color: $dark-gray;
+
+    .acct-num-title { @include fonts-light; font-size: 24px; color: $light-gray; }
+    .acct-num-detail { float: right; margin-left: 10px; @include fonts-med; font-size: 24px; color: $light-gray;
+
+        @include media($small-mobile) { float: left; margin-left: 0; }
+    }
+    .acct-name-title { @include fonts-light; font-size: 16px; color: $light-gray; }
+    .acct-name-detail { float: right; margin-left: 10px; @include fonts-med; font-size: 16px; color: $light-gray;
+
+        @include media($small-mobile) { float: left; margin-top: 10px; margin-left: 0; }
+    }
+}
+
+.profile-nickname-wrapper { padding: 30px; background-color: $super-light-gray; }
+
+.edit-nickname-btn { float: left; display: block; width: 50px; margin-top: 11px; font-weight: normal; text-decoration: 1px dotted #000;
+
+    .edit-icon { float: left; display: block; width: 16px; height: 16px; margin-right: 5px; background-image: url(../img/form-icons/profile-nickname-edit.png); background-repeat: no-repeat; background-position: center center; }
+}
+
+.save-nickname-btn { display: none; border: 0; background-color: transparent; font-size: 24px; line-height: 38px; color: $training-green; }
+.cancel-nickname-btn { cursor: pointer; display: none; font-size: 24px; line-height: 38px; color: $error; }

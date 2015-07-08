@@ -1,0 +1,44 @@
+#yearroundblendedbeverages #site-wrapper #content {
+
+	
+
+	.body-content { 
+
+		article { 
+
+			&.year-round-fontana { 
+
+				section { padding: 30px 15px 100px 500px; background-image: url(/img/programs/year-round/blended-body-content.jpg); background-position: center center; background-repeat: no-repeat;
+
+					@include media($tablet-portrait) { padding-left: 380px; }
+					@include media($big-mobile) { padding-left: 280px; }
+					@include media($small-mobile) { padding: 20px 20px 180px 20px; background-image: url(/img/programs/year-round/blended-body-content-small-mobile.jpg); background-position: center bottom; }
+				}
+
+				> section {
+				
+					@include media($small-mobile) { text-align: center; }
+				}
+
+			}
+
+		}
+	
+	}
+
+}
+
+.year-round-fontana-logo { width: 190px; margin-left: 97px; margin-bottom: 20px;
+	
+	@include media($mobile) { display: block; width: 150px; }
+	@include media($big-mobile) { margin-left: 0; }
+	@include media($small-mobile) { margin: 0 auto 20px auto; }
+}
+
+.tile-content {
+
+	&.blended-beverages-starter-kit { width: 80%; top: 90px; padding: 0 390px 0 55px;
+
+		@include media($mobile) { width: 100%; padding-right: 20px; padding-left: 20px; }
+	}
+}

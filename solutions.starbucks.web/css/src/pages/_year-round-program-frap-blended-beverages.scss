@@ -1,0 +1,50 @@
+#yearroundfrappuccinoblendedbeverages #site-wrapper #content {
+
+	
+
+	.body-content { 
+
+		article { 
+
+			&.year-round-frap { background-color: transparent;
+
+				section { padding: 60px 15px 60px 430px; background-image: url(../img/programs/year-round/frapp-body-content.jpg); background-repeat: no-repeat; background-position: left center;
+
+					@include media($tablet) { background-position: center center; }
+					@include media($tablet-landscape) { padding-left: 460px; }
+					@include media($tablet-portrait) { padding-left: 340px; }
+					@include media($big-mobile) { width: 100%; padding: 20px 20px 20px 260px; background-image: url(../img/programs/year-round/frapp-body-content-big-mobile.jpg); background-position: center bottom; }
+					@include media($small-mobile) { width: 100%; padding: 20px 20px 160px 20px; background-image: url(../img/programs/year-round/frapp-body-content-small-mobile.jpg); background-position: center bottom; }
+				}
+
+			}
+
+		}
+	
+	}
+
+}
+
+.year-round-frap-logo { width: 350px;
+
+	@include media($mobile) { width: 180px; }
+}
+
+.tile-content {
+
+	&.frappuccino-coffee-kit { top: 20px; padding: 0 20px 0 20px;
+
+		@include media($tablet) { width: 100%; padding-right: 20px; }
+		@include media($mobile) { width: 100%; padding-right: 20px; }
+	}
+	&.frappuccino-creme-kit { top: 20px; padding: 0 20px 0 20px;
+
+		@include media($tablet) { width: 100%; padding-right: 20px; }
+		@include media($mobile) { width: 100%; padding-right: 20px; }
+	}
+
+	.tile-list {
+
+		@include media($sub-desktop) { display: none; }
+	}
+}

@@ -1,0 +1,65 @@
+.module-solutions-list { display: block; margin-top: -17px; padding: 40px 0 0 0; background-color: #f7f7f7; -moz-background-size: cover; background-size: cover; text-align: center;
+    -webkit-transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+
+    @include media($mobile) { padding-top: 20px; -moz-background-size: 600%; background-size: 600%; }
+
+    h3 { font-size: 37px;
+
+        @include media($mobile) { font-size: 30px; margin-bottom: 20px; }
+    }
+
+    p {
+
+        @include media($mobile) { @include blockcenter; width: 80%; }
+    }
+
+    ul { @include clearfix; @include collapse-spacing; @include blockcenter; margin-top: -30px; width: 960px; list-style: none;
+
+        @include media($sub-desktop) { width: 100%; }
+        @include media($tablet) { max-width: 960px; }
+        @include media($mobile) { margin-top: 0; }
+
+        &.two-column-centered {
+
+            li {
+
+                @include media($desktop) { width: 480px; }
+                @include media($tablet) { width: 50%; }
+            }
+        }
+
+        li { @include float(left); width: 320px; margin-top: 50px;
+
+            &:before { content: none; }
+
+            @include media($tablet) { width: 33%; }
+            @include media($big-mobile) { width: 50%; }
+            @include media($small-mobile) { @include blockcenter; float: none; margin-top: 40px; width: 100%; }
+
+            h3 { margin-top: 10px; font-size: 1.17em; }
+
+            .cup-icon { height: 140px; }
+
+            a.brands-btn { @include light-button; @include blockcenter; margin-top: 20px; padding: 7px 14px 6px 14px; width: 160px; font-size: .8em; letter-spacing: 1px;
+
+                @include media($mobile) { margin-top: 8px; }
+            }
+        }
+
+        p { @include blockcenter; margin-top: 14px; margin-bottom: 30px; width: 70%;
+
+            a { font-size: .9em; text-decoration: none; }
+        }
+    }
+
+    .bottom-edger { height: 133px; background-image: url(../img/coffee-bottom-edger.png); background-repeat: no-repeat; -moz-background-size: 600px; background-size: 600px; background-position: center bottom;
+
+        @include media($tablet) { -moz-background-size: 480px; background-size: 480px; }
+        @include media($mobile) { -moz-background-size: 300px; background-size: 300px; }
+        @include media($big-mobile) { height: 95px; }
+        @include media($small-mobile) { height: 62px; }
+    }
+}

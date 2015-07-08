@@ -1,0 +1,1468 @@
+* { text-shadow: none; }
+
+#program {
+
+    #site-switcher { height: 168px; background-color: #232120;
+
+        @include media($big-mobile) {
+            height: 100px;
+        }
+        @include media($small-mobile) {
+            height: 100px;
+        }
+    }
+}
+
+.programproducts, .program {
+    #content {
+        padding-top: 168px;
+        background-size: cover;
+        -webkit-overflow-scrolling: touch;
+
+        @include media($big-mobile) {
+            padding-top: 100px;
+        }
+        @include media($small-mobile) {
+            padding-top: 100px;
+        }
+
+        .inline-link { @include fonts-heavy; color: #000;
+    
+            &:hover { color: $light-gray; }
+            &:visited { @include fonts-heavy; color: #000;
+
+                &:hover { color: $light-gray; }
+            }
+        }
+    }
+    .help-tile { max-width: 960px; margin: 0 auto; padding: 20px 30px; background-color: #3C3835;
+
+        @include media($big-mobile) {
+            padding: 20px;
+        }
+        @include media($small-mobile) {
+            padding: 20px;
+        }
+
+        h3 { color: $light-gray; @include fonts-light; font-size: 28px; text-align: right;
+
+            @include media($small-mobile) {
+                text-align: left;
+            }
+
+            .help-title {
+
+                @include media($big-mobile) {
+
+                }
+                @include media($small-mobile) {
+                    display: inline-block; vertical-align: middle; width: 40%; text-align: left; line-height: 24px;                
+                }
+            }
+            a { @include program-button; display: inline-block; vertical-align: text-bottom; margin-left: 16px;
+
+                @include media($big-mobile) {
+
+                }
+                @include media($small-mobile) {
+                    vertical-align: middle; width: 50%; margin-left: 18px;
+                }
+            }
+        }
+    }
+    .program-tiles { max-width: 960px; max-width: 1020px \9; margin: 0 auto; }
+    .menu-wrapper, .products-wrapper { width: 100%; background-color: #fff;
+
+        .your-menu { width: 100%;
+
+            .expander { width: 280px;
+
+                @include media($big-mobile) {
+                    width: 280px;
+                }
+                @include media($small-mobile) {
+                    width: 280px;
+                }
+            }
+        }
+        .your-products {  }
+    }
+
+}
+
+.program-tiles { clear: both; height: auto; background-color: #fff;
+
+	.toggle { pointer: cursor; }
+    > p { text-align: center; }
+}
+
+.program-banner { position: relative; background-repeat: no-repeat; background-position: 0 0; float: left; overflow: hidden;
+
+    @include media($big-mobile) {
+        max-height: inherit !important;
+    }
+
+    @include media($small-mobile) {
+        max-height: inherit !important;
+    }
+
+    .tile-elements { position: absolute; max-width: 445px; right: 20px; bottom: 20px;
+
+        @include media($tablet-landscape) {
+            max-width: 405px;
+        }
+        @include media($tablet-portrait) {
+            max-width: 360px;
+        }
+        @include media($small-mobile) {
+            max-width: 300px;
+        }
+
+        h2 { display: inline-block; vertical-align: middle; width: 250px; margin-right: 10px; color: #fff; text-align: right; line-height: 26px;
+
+            @include media($tablet) {
+                width: 210px; font-size: 20px; line-height: 22px;
+            }
+            @include media($tablet-portrait) {
+                width: 185px;
+            }
+            @include media($small-mobile) {
+                width: 135px; font-size: 15px; line-height: 20px;
+            }
+        }
+        .program-tile-btn { @include program-button; display: inline-block; vertical-align: middle;
+
+            @include media($tablet-portrait) {
+                width: 160px;
+            }
+            @include media($small-mobile) {
+                width: 150px;
+            }
+        }
+        .recipe-btn { @include program-button-plus; }
+        h2, a {  }
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .img-big, .img-small {
+        display: none;
+    }
+
+    @include media($big-mobile) {
+        .img-large, .img-small {
+            display: none;
+        }
+
+        .img-big {
+            display: block;
+        }
+    }
+
+    @include media($small-mobile) {
+        .img-large, .img-big {
+            display: none;
+        }
+
+        .img-small {
+            display: block;
+        }        
+    }
+}
+.program-banner.w4h2 { width: 100%; height: auto; }
+.program-banner.w2h2 { width: 50%; height: auto;
+
+    @include media($big-mobile) {
+        width: 100%;
+    }
+    @include media($small-mobile) {
+        width: 100%;
+    }
+}
+.program-banner.w2h1 { width: 50%; height: auto; }
+.program-banner.w1h1 { width: 25%; height: auto;
+
+    @include media($big-mobile) {
+        width: 100%;
+    }
+    @include media($small-mobile) {
+        width: 100%;
+    }
+}
+
+.recipe-group { display: none; position: relative;
+
+    &.active { display: block; }
+    &.is-visible {  }
+    &.is-removed { display: none; }
+}
+
+.add-on-text { display: none; }
+
+.recipe, .marketing { display: none; }
+.product { display: table; }
+.recipe {
+
+    &:nth-child(odd) { background-color: #F6F7F7; }
+
+    .recipe-inner { position: relative; width: 960px; margin: 0 auto;
+
+        @include media($tablet) {
+            width: 100%; max-width: 960px;
+        }
+        @include media($big-mobile) {
+            width: 100%; max-width: 767px;
+        }
+        @include media($small-mobile) {
+            width: 100%; max-width: 479px;
+        }
+    }
+}
+.marketing {
+
+    .marketing-inner { position: relative; display: table; width: 960px; margin: 0 auto;
+
+        @include media($tablet) {
+            width: 100%;
+        }
+        @include media($big-mobile) {
+            width: 100%;
+        }
+        @include media($small-mobile) {
+            width: 100%;
+        }
+
+        .marketing-list {
+
+            li {
+
+                .legal { @include fonts-heavy;
+    
+                    @include media($desktop) {
+                        position: absolute; right: 0; top: 160px;
+                    }
+                    @include media($tablet) {
+                        position: absolute; right: 0; top: 160px;
+                    }
+                }
+            }
+        }
+    }
+}
+.recipe, .marketing { position: relative; width: 100%; margin: 0; padding: 30px; background-color: #fff;
+
+    @include media($small-mobile) {
+        width: 100%; padding: 20px;
+    }
+
+	&:before, &:after { content: ""; }
+	// &:nth-child(odd) { background-color: #e0e0e0; }
+
+    &.in-menu { display: block; opacity: 0; }
+    &.visible { @include transition-fix(all, .125s, linear); opacity: 1; }
+    &.transparent { @include transition-fix(all, .125s, linear); visibility: hidden; opacity: 0; }
+    &.is-removed { display: none; }
+    &.collapsed { height: 0; }
+    // &.in-menu { display: table; }
+
+    .remover { z-index: 97; display: block; position: absolute; top: 0; right: 0; cursor: pointer;
+
+        @include media($tablet-portrait) {
+            right: 20px;
+        }
+        @include media($big-mobile) {
+            top: 6px;
+        }
+@include media($small-mobile) {
+            right: 10px;
+        }
+
+        .remover-text { margin-right: 6px; @include fonts-heavy; font-size: 14px; border-bottom: 1px dotted #3D3935; color: #3D3935;
+
+            @include media($big-mobile) {
+                display: none;
+            }
+            @include media($small-mobile) {
+                display: none;
+            }
+        }
+    }
+
+    .recipe-column, .marketing-column, .product-column { position: relative; display: inline-block; vertical-align: top;
+
+        // &.img, &.addbtn { width: 200px; }
+        &.img {
+
+            @include media($small-mobile) {
+                // width: 125px;
+            }
+
+            .title { display: none; margin-bottom: 20px; @include fonts-heavy; font-size: 28px;
+
+                @include media($big-mobile) {
+                    display: block; font-size: 20px;
+                }
+                @include media($small-mobile) {
+                    display: inline-block; vertical-align: text-bottom; font-size: 20px;
+                }
+            }
+        }
+        .recipe-image, .marketing-image { width: 180px; height: auto;
+
+            @include media($big-mobile) {
+                width: 125px; height: auto;
+            }
+            @include media($small-mobile) {
+                display: inline-block; vertical-align: text-bottom; width: 90px; height: auto;
+            }
+        }
+    }
+    .marketing-column {
+
+        &.img {
+
+            .marketing-image {
+
+                .img-large { width: 180px; height: 220px; }
+                .img-big { width: 125px; height: 153px; }
+                .img-small { width: 90px; height: 110px; }
+
+                .img-big, .img-small {
+                    display: none;
+                }
+
+                @include media($big-mobile) {
+                    .img-large, .img-small {
+                        display: none;
+                    }
+
+                    .img-big {
+                        display: block;
+                    }
+                }
+
+                @include media($small-mobile) {
+                    .img-large, .img-big {
+                        display: none;
+                    }
+
+                    .img-small {
+                        display: block;
+                    }        
+                }
+            }
+            .title {
+
+                @include media($big-mobile) {
+                    display: none;
+                }
+                @include media($small-mobile) {
+                    width: 180px; margin-bottom: 0; padding-left: 10px;
+                }   
+            }
+        }
+
+        &.details { width: 770px;
+
+            @include media($tablet-portrait) {
+                width: 510px;
+            }
+            @include media($big-mobile) {
+                width: 295px; padding-left: 10px;
+            }
+            @include media($small-mobile) {
+                width: 100%; padding-top: 0;
+            }
+
+            > .title { display: block; margin-bottom: 20px; @include fonts-heavy; font-size: 25px; line-height: 30px;
+
+                @include media($big-mobile) {
+                    font-size: 20px;
+                }
+                @include media($small-mobile) {
+                    display: none;
+                }
+            }
+        }
+
+        ul { margin-top: 8px; padding-left: 0;
+
+            &.marketing-list {
+
+                li { display: block; float: left; width: 33.33%;
+
+                    @include media($big-mobile) {
+                        @include clearfix; float: none; width: 100%; padding-top: 10px; padding-bottom: 10px; border-top: 1px solid #000;
+                    }
+                    @include media($small-mobile) {
+                        @include clearfix; float: none; width: 100%; padding-top: 10px; padding-bottom: 10px; border-top: 1px solid #000;
+                    }
+                }
+            }
+
+            li { 
+
+                @include media($small-mobile) {
+                    border-top: 1px solid #000;
+                }
+
+                &:first-child {
+
+                    label { 
+
+                        // span { text-align: left; }
+                    }
+                }
+
+                &:last-child {
+
+                    label {
+
+                        // span { text-align: right; }
+                    }
+                }
+
+                input { display: none;
+
+                    &[type="checkbox"] + label { @include inline-block; vertical-align: middle;
+
+                        @include media($tablet) {
+                            padding: 10px 0;
+                        }
+                        @include media($big-mobile) {
+                            padding: 10px 0;
+                        }
+                        @include media($small-mobile) {
+                            padding: 10px 0;
+                        }
+                    }
+
+                    &[type="checkbox"] + label span.checkbox {
+                        display: block; vertical-align: bottom; margin: 10px auto 0 auto; 
+                        @include get-sprite($formIcons, check-unchecked);
+                        cursor: pointer;
+
+                        @include media($big-mobile) {
+                            display: inline-block; vertical-align: middle; margin-top: 0;
+                        }
+                        @include media($small-mobile) {
+                            display: inline-block; vertical-align: middle; margin: 0 auto 0 auto;
+                        }
+                    }
+
+                    &[type="checkbox"]:checked + label span.checkbox, &[type="checkbox"].checked + label span.checkbox { @include get-sprite($formIcons, check-checked); }
+                    &[checked="checked"] + label span.checkbox { @include get-sprite($formIcons, check-checked);}
+                }
+    
+                label { display: block; width: 100%;
+
+                    span.title { display: block; width: 100%; padding: 4px 0; border-top: 1px solid #000; border-bottom: 1px solid #000; @include fonts-heavy; font-size: 14px; text-align: center;
+
+                        @include media($big-mobile) {
+                            display: inline-block; vertical-align: middle; width: 75%; margin-top: 10px; padding: 0; border: none; text-align: left;
+                        }
+                        @include media($small-mobile) {
+                            display: inline-block; vertical-align: middle; width: 75%; margin-top: 10px; padding: 0; border: none; text-align: left;
+                        }
+                    }
+                }
+            }
+        }
+    }
+	.recipe-column {
+
+        @include media($small-mobile) {
+            display: block;
+        }
+
+        &.img {
+
+            .recipe-image, .title {
+
+                @include media($big-mobile) {
+                    display: inline-block; vertical-align: text-bottom;
+                }
+                @include media($small-mobile) {
+                    display: inline-block; vertical-align: text-bottom;
+                }
+            }
+            .recipe-image {
+                
+                .img-large { width: 180px; height: 220px; }
+                .img-big { width: 125px; height: 153px; }
+                .img-small { width: 90px; height: 110px; }
+
+                .img-big, .img-small {
+                    display: none;
+                }
+
+                @include media($big-mobile) {
+                    .img-large, .img-small {
+                        display: none;
+                    }
+
+                    .img-big {
+                        display: block;
+                    }
+                }
+
+                @include media($small-mobile) {
+                    .img-large, .img-big {
+                        display: none;
+                    }
+
+                    .img-small {
+                        display: block;
+                    }        
+                }
+            }
+            .title {
+
+                @include media($big-mobile) {
+                    display: none;
+                }
+                @include media($small-mobile) {
+                    width: calc(100% - 100px); margin-bottom: 0; padding-left: 10px; line-height: 24px;
+                }   
+            }
+        }
+
+		&.details { width: 530px;
+
+            @include media($tablet-portrait) {
+                width: 520px;
+            }
+            @include media($big-mobile) {
+                width: 285px;
+            }
+            @include media($small-mobile) {
+                width: 100%; padding-top: 20px;
+            }
+
+            .title { display: block; margin-bottom: 20px; @include fonts-heavy; font-size: 25px; line-height: 30px;
+
+                @include media($tablet-portrait) {
+                    width: 65%;
+                }
+                @include media($big-mobile) {
+                    font-size: 20px;
+                }
+                @include media($small-mobile) {
+                    display: none;
+                }
+            }
+
+            .help-link { @include clearfix; width: 500px; margin-bottom: 4px;
+
+                @include media($big-mobile) {
+                    width: 100%;
+                }
+                @include media($small-mobile) {
+                    width: 100%;
+                }
+
+                .link-text { display: block; float: right; border-bottom: 1px dotted #3D3935; color: #3D3935; @include fonts-heavy; font-size: 14px; text-align: right; }
+            }
+        }
+
+		&.addbtn button { position: absolute; bottom: 0; @include profile-button; width: 100%; }
+
+        .recipe-slider { @include clearfix;
+
+            .how-many { float: left; width: 220px; margin: 0;
+
+                @include media($big-mobile) {
+                    float: none; width: 100%;
+                }
+                @include media($small-mobile) {
+                    float: none; width: 100%;
+                }
+            }
+
+            .slider-wrapper { @include clearfix; position: relative; float: left; width: 220px; margin-left: 55px;
+
+                @include media($big-mobile) {
+                    float: none; width: 100%; margin-left: 0; margin-top: 25px;
+                }
+                @include media($small-mobile) {
+                    float: none; width: 100%; margin-left: 0; margin-top: 30px;
+                }
+
+                &.manually-edited {
+
+                    .slider-nil, .slider-max, .ui-slider { opacity: .5; }
+
+                }
+
+                .slider-nil { position: absolute; top: -20px; left: 14px; @include fonts-heavy; font-size: 12px;
+
+                    @include media($big-mobile) {
+                        left: 0;
+                    }
+                    @include media($small-mobile) {
+                        left: 0;
+                    }
+                }
+                .slider-max { position: absolute; top: -20px; right: -8px; @include fonts-heavy; font-size: 12px;
+
+                    @include media($big-mobile) {
+                        right: 0;
+                    }
+                    @include media($small-mobile) {
+                        right: 0;
+                    }
+                }
+                .range-label { display: none; }
+
+                .ui-slider { position: relative;
+
+                    .recipe-qty { position: absolute; top: -20px; margin-left: -7px; border: none; background-color: transparent; box-shadow: none; @include fonts-heavy; font-size: 12px; text-align: center; -moz-appearance:textfield;
+
+                        @include media($big-mobile) {
+                            margin-left: -21px;
+                        }
+                        @include media($small-mobile) {
+                            margin-left: -19px;
+                        }
+
+                        &.visible { display: block; }
+                        &.ui-slider-input { font-weight: normal; }
+                    }
+                    .ui-slider-track { position: relative; top: 13px; width: 200px; height: 3px; margin: 0 0 0 20px; border: none; background-color: $light-gray; box-shadow: none;
+
+                        @include media($big-mobile) {
+                            width: 272px; margin-left: 6px;
+                        }
+                        @include media($small-mobile) {
+                            width: 265px; margin-left: 8px;
+                        }
+
+                        &:before { content: ""; position: absolute; top: -2px; left: -7px; display: block; width: 7px; height: 7px; border-radius: 5px; border: none; background-color: $light-gray; }
+                        &:after { content: ""; position: absolute; top: -2px; right: -7px; display: block; width: 7px; height: 7px; border-radius: 5px; border: none; background-color: $light-gray; }
+
+                        a.ui-btn { background-color: #3d3935;
+
+                            &:focus { border: none; box-shadow: none; }
+                            &.ui-slider-handle { width: 24px; height: 24px; margin-top: -13px; }
+                        }
+                    }
+                }
+            }
+        }
+		ul { width: 500px; margin: 0; padding: 0;
+
+            @include media($big-mobile) {
+                width: 100%;
+            }
+            @include media($small-mobile) {
+                width: 100%;
+            }
+
+			li { display: table; width: 100%; padding: 5px 0; border-bottom: 1px solid #89837F;
+
+                &:last-child { padding-bottom: 0; border-bottom: none; }
+
+				span { display: table-cell; }
+				.prod-name { width: calc(100% - 82px); @include fonts-light;
+
+                    @include media($big-mobile) {
+                        padding-right: 10px; font-size: 14px;
+                    }
+                    @include media($small-mobile) {
+                        padding-right: 10px; font-size: 14px;
+                    }
+                }
+				.prod-qty { width: 82px; text-align: right; font-size: 14px;
+
+                    @include media($tablet) {
+                        width: 98px;
+                    }
+                    @include media($big-mobile) {
+                        width: 98px;
+                    }
+                    @include media($small-mobile) {
+                        width: 98px;
+                    }
+
+                    // &.calculated { visibility: visible; }
+                }
+				.qty-input { width: 31px; height: 31px; border: 1px solid #979797; @include border-radius(5px); @include fonts-black; font-size: 18px; text-align: center; -moz-appearance:textfield;
+
+                    @include media($tablet) {
+                        width: 53px; padding-top: 8px;
+                    }
+                    @include media($tablet) {
+                        width: 53px; padding-top: 8px;
+                    }
+                    @include media($small-mobile) {
+                        width: 53px; padding-top: 8px;
+                    }
+                }
+			}
+		}
+
+        .slider-nil { width: 25px; }
+		.slider { float: left; width: 210px; height: 50px;
+
+            @include media($small-mobile) {
+                width: 100px;
+            }
+        }
+		.output { float: left; width: 75px; margin-top: 15px; margin-left: 17px; }
+	}
+}
+
+.your-menu {
+
+    .menu-gray { margin-bottom: 40px; padding: 40px 0 10px 0; background-color: #F6F7F7;
+
+        h3 { text-align: center; }
+        > p { text-align: center;
+            > .inline-link { border-bottom: 1px dotted #000; }
+        }
+    }
+}
+
+.your-products { padding-top: 40px; padding-bottom: 100px; background-color: #fff;
+
+    section { @include transition-fix(all, $anim-dur, linear); margin-top: 50px;
+
+        @include media($small-mobile) {
+            margin-top: 40px;
+        }
+    }
+}
+
+.your-menu-recipes { margin-top: 20px; }
+
+.your-menu > p, .your-products > p { text-align: center;
+
+    @include media($small-mobile) {
+        padding: 0 20px;
+    }
+}
+
+
+
+.your-menu h3 { width: 100%; max-width: 960px; height: auto; margin: 0 auto; @include fonts-light; font-size: 32px; line-height: 36px; text-align: left;
+
+    @include media($tablet-portrait) {
+        max-width: 768px; margin-left: 0; padding: 0 20px;
+    }
+    @include media($big-mobile) {
+        margin-left: 0; padding: 0 20px; font-size: 28px; line-height: 28px;
+    }
+    @include media($small-mobile) {
+        margin-left: 0; padding: 0 20px; font-size: 28px; line-height: 28px;
+    }
+}
+
+.your-menu > h3, .your-products > h3 { @include fonts-heavy; font-size: 37px; text-align: center; line-height: 37px;
+
+    @include media($tablet) {
+        // margin-left: 0;
+    }
+    @include media($big-mobile) {
+        width: 70%; margin: 0 auto; padding: 0 20px; font-size: 30px; line-height: 36px;
+    }
+    @include media($small-mobile) {
+        margin-left: 0; padding: 0 20px; font-size: 30px; line-height: 36px;
+    }
+}
+
+.your-products > h3 + p { padding: 0 20px; }
+
+.empty-menu { width: 100%; margin: 40px auto; padding: 40px 0; background: #fff; text-align: center;
+
+    @include media($small-mobile) {
+        padding: 10px;
+    }
+}
+
+.module-expander { background: #fff; padding-bottom: 40px;
+
+    .expander { margin-bottom: 0; }
+}
+
+.add-more-recipes { margin: 40px 0; padding: 30px; }
+.add-more-recipes select { display: block; width: 200px; margin: 0 auto; }
+.add-more-recipes select option { text-align: center; }
+
+.recipe-toggle { }
+
+.recipe-ingredient {
+
+    span { vertical-align: middle; }
+}
+
+.ui-slider-handle { border-radius: 14px !important; }
+
+
+// Products
+
+.your-products h2 { text-align: center; line-height: 28px;
+
+    @include media($big-mobile) {
+        line-height: 20px;
+    }
+    @include media($small-mobile) {
+        line-height: 20px;
+    }
+}
+.product { position: relative; width: 100%; margin: 35px 0;
+
+    @include media($big-mobile) {
+        padding: 0; background-color: #F6F7F7;
+    }
+    @include media($small-mobile) {
+        padding: 0; background-color: #F6F7F7;
+    }
+
+    &:first-child { margin-top: 40px; }
+
+    &:nth-child(even) {
+
+        .product-inner {
+
+            .details { background-color: #F6F7F7; }
+        }
+    }
+    
+    &.gray-bars { background-color: #F6F7F7; }
+
+    &.seasonal {
+
+        .product-inner { opacity: .5;
+
+            .product-info { padding-top: 20px; }
+            .prod-qty { display: none !important; }
+        }
+    }
+    
+    #out-of-stock-overlay { z-index: 99; display: none; position: absolute; width: 100%; height: 100%; margin: 0 auto;
+
+        &.active { display: block;
+
+            .overlay-inner { position: relative; width: 100%; max-width: 960px; height: 100%; margin: 0 auto;
+
+                p { position: absolute; left: 230px; top: 22px; margin: 0; color: $error; @include fonts-heavy; font-size: 14px; text-transform: uppercase;
+
+                    @include media($tablet-portrait) { left: 222px; }
+                    @include media($big-mobile) { left: 0; top: 270px; width: 100%; text-align: center; }
+                    @include media($small-mobile) { left: 20px; top: 240px; }
+                }
+            }
+        }
+    }
+
+    .product-inner { @include clearfix; width: 100%; max-width: 960px; margin: 0 auto; }
+
+    .product-column { float: left;
+
+        &.img { display: table; width: 180px; background-color: #fff;
+
+            @include media($big-mobile) {
+                @include clearfix; float: none; width: 100%;
+            }
+            @include media($small-mobile) {
+                @include clearfix; float: none; width: 100%;
+            }
+
+            .img-wrapper { display: table-cell; padding-top: 10px; }
+
+            .product-image { display: block; width: auto; height: 175px; margin: 0 auto;
+
+                @include media($big-mobile){
+                    width: 150px; height: auto;
+                }
+                @include media($small-mobile){
+                    width: 130px; height: auto;
+                }
+            }
+        }
+        &.details { width: 760px; margin-left: 20px; padding: 20px 0;
+
+            @include media($tablet-portrait) {
+                width: 560px;
+            }
+            @include media($big-mobile) {
+                @include clearfix; float: none; width: 100%; margin-left: 0; background-color: transparent;
+            }
+            @include media($small-mobile) {
+                @include clearfix; float: none; width: 100%; margin-left: 0; background-color: transparent;
+            }
+        }
+        .product-info { float: left; width: 439px; margin-left: 30px; padding-right: 30px;
+
+            @include media($tablet-portrait) {
+                width: 299px; margin-left: 20px;
+            }
+            @include media($big-mobile) {
+                float: none; width: 80%; margin: 0 auto; padding: 0 20px; border-right: none;
+            }
+            @include media($small-mobile) {
+                width: 100%; margin-left: 0; padding: 0 20px; border-right: none;
+            }
+
+            .title { font-size: 24px; text-align: left;
+
+                @include media($big-mobile) {
+                    font-size: 16px; text-align: left;
+                }
+                @include media($small-mobile) {
+                    font-size: 16px;
+                }
+            }
+            > p { font-size: 16px; line-height: 20px;
+
+                @include media($big-mobile) {
+                    display: none;
+                }
+                @include media($small-mobile) {
+                    display: none;
+                }
+            }
+        }
+        .product-skus { float: left; width: 280px; padding-left: 30px; border-left: 1px solid #000;
+
+            @include media($tablet-portrait) {
+                width: 200px;
+            }
+            @include media($big-mobile) {
+                float: none; width: 80%; margin: 0 auto; padding: 0 20px; border: none;
+            }
+            @include media($small-mobile) {
+                float: none; width: 100%; padding: 0 20px; border: none;
+            }
+
+            .product-sku-list, .product-sku-list ul { margin-top: 10px; padding-left: 0; }
+
+            .product-sku-list {
+
+                @include media($big-mobile) {
+                    display: table; width: 100%; padding-left: 0;
+                }
+                @include media($small-mobile) {
+                    display: table; width: 100%; padding-left: 0;
+                }
+            }
+            .product-sku-list {
+
+                .product-sku-group {
+
+                    &:first-child { padding-bottom: 20px }
+
+                    ul { display: table; width: 100%;
+
+                        .product-sku { @include clearfix; padding-bottom: 10px;
+
+                            @include media($big-mobile) {
+                                display: table-cell; width: 75%; padding-bottom: 0;
+                            }
+                            @include media($small-mobile) {
+                                display: table-cell; width: 75%; padding-bottom: 0;
+                            }
+
+                            ul li { margin-bottom: 0; }
+                        }
+                    }
+                }
+            } 
+            .product-sku-list ul {
+
+                li { @include clearfix;
+
+                    .key { float: left; display: block; width: 70px; @include fonts-black; font-size: 13px; text-transform: uppercase; }
+                    .value { float: left; display: block; font-size: 13px; }
+                }
+            }
+            .product-sku-list .product-order-qty { @include clearfix;
+
+                @include media($big-mobile) {
+                    display: table-cell; width: 25%; padding-left: 20px; vertical-align: top;
+                }
+                @include media($small-mobile) {
+                    display: table-cell; width: 25%; padding-left: 20px; vertical-align: top;
+                }
+            }
+            .product-sku-list .prod-qty { float: right; display: block; width: 40px;
+
+                @include media($tablet) {
+                    float: left; margin-top: 10px;
+                }
+                @include media($big-mobile) {
+                    float: right; margin-top: 10px;
+                }
+                @include media($small-mobile) {
+                    float: left; margin-top: 10px;
+                }
+
+                label { display: block; margin-bottom: 6px; @include fonts-black; font-size: 13px; text-transform: uppercase;
+
+                    @include media($small-mobile) {
+                        margin-bottom: 2px;
+                    }
+                }
+                input { width: 31px; height: 31px; border: 1px solid #979797; @include border-radius(5px); @include fonts-black; font-size: 18px; text-align: center; -moz-appearance:textfield;
+
+                    @include media($tablet) {
+                        width: 35px; padding-top: 8px;
+                    }
+                    @include media($big-mobile) {
+                        width: 35px; padding-top: 8px;
+                    }
+                    @include media($small-mobile) {
+                        width: 35px; padding-top: 8px;
+                    }
+
+                    &:focus { border-color: #006240; }
+                }
+            }
+        }
+    }
+}
+
+
+.program-continue { @include clearfix; padding: 40px 0; background-color: #F6F7F7;
+
+    .inner-wrapper { width: 100%; max-width: 960px; margin: 0 auto;
+
+        .program-next { @include program-button; @include program-button-next; float: right; border-color: #383635;
+
+            @include media($tablet-portrait) {
+                margin-right: 20px;
+            }
+            @include media($big-mobile) {
+                float: none; width: 280px; margin: 0 auto;
+            }
+            @include media($small-mobile) {
+                float: none; width: 280px; margin: 0 auto;
+            }
+        }
+    }
+}
+
+.recipe-help-modal {
+
+    .recipe-help-list { @include clearfix; margin-left: 0; padding-left: 0;
+    
+        li { @include clearfix; margin-bottom: 10px;
+
+            .key { float: left; width: 40%; }
+            .value { float: left; width: 25%; }
+        }
+    }    
+}
+
+
+.products-add-to-bag {
+
+    @include media($big-mobile) {
+        margin-top: 20px;
+    }
+    @include media($small-mobile) {
+        margin-top: 20px !important;
+    }
+
+    .inner-wrapper { width: 100%; max-width: 960px; margin: 0 auto;
+
+        .products-add { @include program-button; float: right;
+
+            @include media($tablet-portrait) {
+                margin-right: 20px;
+            }
+            @include media($big-mobile) {
+                float: none; margin: 0 auto;
+            }
+            @include media($small-mobile) {
+                float: none; margin: 0 auto;
+            }
+        }
+    }
+}
+
+/* hides the spin-button for chrome*/
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Help Layer Styles */
+
+#help-launcher { z-index: 105; position: relative; }
+.program-help-overlay { display: none; z-index: 102; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; opacity: .5; filter:Alpha(Opacity=5); }
+// #program-tour { display: none; z-index: 103; position: relative; }
+.joyride-tip-guide { z-index: 103; width: 280px; margin-top: -20px; background-color: #fff; background: rgba(255,255,255,1);
+    
+    @include media($small-mobile) {
+        margin-top: 20px;
+    }
+}
+.joyride-tip-guide a:focus { outline: none; }
+.joyride-tip-guide span.joyride-nub { left: 10px;
+
+    @include media($small-mobile) {
+        left: auto; right: 50px;
+    }
+}
+.joyride-tip-guide span.joyride-nub.top {
+  /*
+  IE7/IE8 Don't support rgba so we set the fallback
+  border color here. However, IE7/IE8 are also buggy
+  in that the fallback color doesn't work for
+  border-bottom-color so here we set the border-color
+  and override the top,left,right colors below.
+  */
+  border-color: #fff; border-color: rgba(255,255,255,1); border-top-color: transparent !important; border-left-color: transparent !important; border-right-color: transparent !important; border-top-width: 0; top: -14px; bottom: none;
+}
+.joyride-tip-guide span.joyride-nub.bottom {
+      /*
+      IE7/IE8 Don't support rgba so we set the fallback
+      border color here. However, IE7/IE8 are also buggy
+      in that the fallback color doesn't work for
+      border-top-color so here we set the border-color
+      and override the bottom,left,right colors below.
+      */
+      border-color: #fff; border-color: rgba(255, 255, 255, 1) !important; border-bottom-color: transparent !important; border-left-color: transparent !important; border-right-color: transparent !important; border-bottom-width: 0; bottom: -14px; bottom: none;
+}
+.joyride-tip-guide span.joyride-nub.right {
+    border-color: #fff; border-color: rgba(255, 255, 255, 1) !important; border-top-color: transparent !important; border-right-color: transparent !important; border-bottom-color: transparent !important; border-right-width: 0; top: 22px; bottom: none; left: auto; right: -14px;
+}
+
+.joyride-tip-guide span.joyride-nub.left {
+    border-color: #fff; border-color: rgba(255, 255, 255, 1) !important; border-top-color: transparent !important; border-left-color: transparent !important; border-bottom-color: transparent !important; border-left-width: 0; top: 22px; left: -14px; right: auto; bottom: none;
+}
+
+.joyride-content-wrapper { @include clearfix;
+
+    p { color: #000; @include fonts-med; font-size: 18px; line-height: 22px;
+
+        @include media($desktop) {
+            width: 230px;
+        }
+        @include media($big-mobile) {
+             width: 90%;
+        }
+        @include media($small-mobile) {
+             width: 80%;
+        }
+    }
+    .joyride-next-tip { @include program-button; padding: 0; text-shadow: none; box-shadow: none;
+
+        @include media($desktop) { float: right; }
+        @include media($tablet) { float: right; }
+        @include media($big-mobile) {
+            margin: 0 auto;
+        }
+        @include media($small-mobile) {
+            margin: 0 auto;
+        }
+
+        &:hover { color: #393736; text-shadow: none; text-decoration: none; }
+    }
+    .joyride-close-tip { overflow: hidden; width: 16px; height: 16px; background-image: url(/img/svg/fallback/recipe-remover.png); background-repeat: no-repeat; text-indent: -50px; }
+}
+
+// Responsive Nub Placement
+
+.joyride-tip-guide {
+
+    @include media($big-mobile) {
+        width: 280px;
+    }
+    @include media($small-mobile) {
+        width: 75%;
+    }
+
+    &[data-index="0"] {
+
+        @include media($tablet){
+            width: 310px;
+        }
+        @include media($big-mobile){
+            left: auto; right: 20px;
+        }
+        @include media($small-mobile){
+            left: auto; right: 20px;
+        }
+        
+        .joyride-nub {
+
+            @include media($big-mobile) {
+                left: auto; right: 123px;
+            }
+            @include media($small-mobile) {
+                right: 120px;
+            }
+        }
+    }
+    &[data-index="1"] {
+
+        @include media($big-mobile) {
+            left: 80px;
+        }
+        @include media($small-mobile) {
+            left: 40px;
+        }
+        
+        .joyride-nub {
+
+            @include media($big-mobile) {
+                left: 20px;
+            }
+            @include media($small-mobile) {
+                left: 20px;
+            }
+        }
+    }
+    &[data-index="2"] {
+
+        @include media($tablet){
+            width: 310px;
+        }
+        @include media($big-mobile) {
+            left: 160px;
+        }
+        @include media($small-mobile) {
+            left: 20px;
+        }
+        
+        .joyride-nub {
+
+            @include media($big-mobile) {
+                left: 20px;
+            }
+            @include media($small-mobile) {
+                left: 20px;
+            }
+        }
+    }
+    &[data-index="3"] {
+
+        @include media($tablet){
+            width: 310px;
+        }
+        @include media($big-mobile) {
+            left: 120px;
+        }
+        @include media($small-mobile) {
+            left: 30px;
+        }
+        
+        .joyride-nub {
+
+            @include media($big-mobile) {
+                left: auto; right: 20px;
+            }
+        }
+    }
+    &[data-index="4"] {
+
+        @include media($desktop){
+            margin-left: -20px;
+        }
+        @include media($tablet){
+            width: 310px;
+        }
+        @include media($big-mobile) {
+            left: auto; right: 20px;
+        }
+        @include media($small-mobile) {
+            left: 65px;
+        }
+        
+        .joyride-nub {
+
+            @include media($big-mobile) {
+                left: auto; right: 35px;
+            }
+            @include media($small-mobile) {
+                right: 37px;
+            }
+        }
+    }
+    &[data-index="5"] {
+
+        @include media($tablet){
+            width: 310px;
+        }
+        @include media($big-mobile) {
+            left: 170px;
+        }
+        @include media($small-mobile) {
+            left: 60px;
+        }
+        
+        .joyride-nub {
+
+            @include media($big-mobile) {
+                left: auto; right: 20px;
+            }
+            @include media($small-mobile) {
+                right: 20px;
+            }
+        }
+    }
+    &[data-index="6"] {
+
+        @include media($tablet){
+            width: 280px;
+        }
+        @include media($big-mobile) {
+            left: 50%; margin-left: -140px;
+        }
+        @include media($small-mobile) {
+            left: 20px;
+        }
+        
+        .joyride-nub {
+
+            @include media($big-mobile) {
+                left: auto; right: 33%;
+            }
+            @include media($small-mobile) {
+                left: 20px;
+            }
+        }
+    }
+    &[data-index="7"] {
+
+        @include media($tablet){
+            width: 430px;
+        }
+        @include media($big-mobile) {
+            left: 50%; margin-left: -140px;
+        }
+        @include media($small-mobile) {
+            left: 20px;
+        }
+        
+        .joyride-nub {
+
+            @include media($big-mobile) {
+                left: 20px;
+            }
+            @include media($small-mobile) {
+                left: 20px;
+            }
+        }
+    }
+
+       
+}
+
+
+
+
+
+// -------------------------------------------------------------------------------------
+//
+// Override Styles for Program Pages
+//
+// -------------------------------------------------------------------------------------
+
+// Holiday 2014 Overrides
+#sbc-holiday-program, .program-sbc  {
+
+    #holiday-trio, #sbc-holiday-trio {
+
+        .tile-elements {
+
+            h2 { display: none; }
+        }
+    }
+    #holiday-duo, #sbc-holiday-duo {
+
+        .tile-elements {
+
+            h2 { display: none; }
+        }
+    }
+    #view-all-holiday-products, #individual-products {
+
+        .tile-elements {
+
+            h2 { color: #D03238; }
+        }
+    }
+    .module-expander { display: none; }
+}
+#wps-spring-program {
+    .program-tiles {
+        h2 {
+            display:none;
+        }
+    }
+}
+
+// .mkt-dtl-2 {
+//     > .title { visibility: hidden; }
+// }
+
+// Winter Overrides 2014
+
+// Hide the more beverages expander
+#wps-winter-program, #brewed-winter-program, #sbc-winter-program {
+
+    .module-expander { display: none; }
+}
+
+#sbc-winter-program {
+
+    .program-tiles {
+
+        #signature-blend-3-plus-sugar-free-vanilla-syrup {
+
+            .tile-elements { max-width: 475px;
+
+                h2 { width: 280px; color: #d5313a;
+
+                    @include media($big-mobile) { display: none; }
+                    @include media($small-mobile) { display: none; }
+                }
+            }
+        }
+    }
+}
+
+#wps-winter-program, #brewed-winter-program {
+
+    .program-tiles {
+
+        #sugar-free-trio {
+
+            .tile-elements h2 { display: none; }
+        }
+
+        #caffe-verona-with-sugar-free-vanilla-syrup {
+
+            .tile-elements h2 { display: none; }
+        }
+    }
+}
+
+#brewed-winter-program, #sbc-winter-program {
+
+    .program-tiles {
+
+        #view-all-winter-products {
+
+            .tile-elements h2 { display: none; }
+        }
+    }
+}
+
+#wps-winter-products, #brewed-winter-products {
+
+    #product-Caffe_Verona {
+
+        .img-wrapper {
+
+            // .product-image { width: 180px; height: auto; }
+        }
+    }
+}

@@ -1,0 +1,180 @@
+﻿@using solutions.starbucks.Model
+@using System.Web.Mvc.Html
+@using solutions.starbucks.web.Controllers
+@using solutions.starbucks.Model
+@using solutions.starbucks.Model.Pocos
+@using Umbraco.Web
+@model DashboardModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool isPartner = Model.isPartner;
+    bool isDualAccount = Model.CustomerBrand.ToLower() == "dual" ? true : false;
+    int i = 0;
+}
+
+<section id="content">
+    <section class="wrapper">
+        <div class="dashboard-content">
+            @if (Model.NumberOfAccounts > 1 || Model.isPartner) 
+            {
+                <div class="customer-account-access">
+                    <h2>
+                        @if (Convert.ToBoolean(TempData["IncorrectAccountNumber"]) || string.IsNullOrWhiteSpace(Model.CurrentAccount)) {
+                            @String.Format("{0} Account Access", Model.isPartner ? "Customer" : "")
+                        }
+                        else {
+                            @Html.Raw(String.Format("Viewing Account: <span>{0}</span>", Model.CurrentAccount + " " +  Model.CurrentAccountName))
+                        }
+                    </h2>
+                    @Html.Action("RenderAccountAccess", "AccountSurface", new { currentAccount = Model.CurrentAccount })
+                    <div class="clear"></div>
+                    @if (Convert.ToBoolean(TempData["IncorrectAccountNumber"])) {
+                        <p class="error"><i class="fa fa-exclamation-circle"></i> Account Number Not Found: Enter an active account number.</p>
+                        <!-- <p class="error">Account Number Not Found: Please enter the account number of the active Starbucks Account you would like to view.</p> -->
+                    }
+                </div>
+            }
+            @if (Convert.ToBoolean(TempData["IncorrectAccountNumber"]) || (Model.isPartner && string.IsNullOrWhiteSpace(Model.CurrentAccount))) 
+            {
+                <div class="w-50">safsdf
+                    <div class="dashboard-banner dashboard-banner-w1h1">@Model.PartnerImage</div>
+                    <div class="dashboard-banner dashboard-banner-w1h1">@Model.FeaturedCoffee</div>
+                    <div class="dashboard-banner dashboard-banner-w2h2">
+                        @Model.SecondFeaturedProgram
+                    </div>
+                    
+                    
+                </div>
+                <div class="w-50">
+                    <div class="dashboard-banner dashboard-banner-w2h2">
+                        @Model.FeaturedProgram
+                    </div>
+                </div>
+                 <div class="w-50">
+                <div class="dashboard-banner dashboard-banner-w2h1">
+                        @Model.FeaturedRecipe
+                    </div>
+
+               
+                    
+                </div>
+            }
+            else {
+                <div class="w-50">
+                    <div class="dashboard-banner dashboard-banner-w1h1">@Model.BrandImage</div>
+                    @if (!isDualAccount) {
+                        <div class="dashboard-banner dashboard-banner-w1h1">@Model.FeaturedCoffee</div>
+                    }
+                    else {
+                        <div class="dashboard-banner dashboard-banner-w1h1">@Model.SecondBrandImage</div>
+                    }
+                    <div class="dashboard-banner dashboard-banner-w2h2 dashboard-order-history">
+                        <div class="page-title">Online Order History <span class="title-insert">(online orders only)</span></div>
+                        @if (Model.UserOrders != null) {
+                            if (Model.UserOrders.Count() != 0) {
+                                foreach (var orderCol in (IEnumerable<Orders>)Model.UserOrders.OrderByDescending(m => m.DateOrdered).Take(3)) {
+                                    <div class="order-history-row @(i++ % 2 == 0 ? "even" : "odd")">
+                                        <div class="order-calendar text-center">
+                                            <div class="day">@orderCol.DateOrdered.ToString("MMM")</div>
+                                            <div class="month">@orderCol.DateOrdered.ToString("dd")</div>
+                                        </div>
+                                        <div class="order-details">
+                                            <h3>
+                                                @orderCol.DateOrdered.ToString("MMM dd, yyyy")
+                                            </h3>
+                                            <p class="order-info"><span>ORDERED BY:</span> @orderCol.CustomerName</p>
+                                            <p class="order-info"><span>SHIPPED TO:</span> @orderCol.OperationName</p>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="order-acct-info">
+                                            Acct. #@orderCol.AccountNumber
+                                            <a class="view-order" href="/order-history-details?orderId=@orderCol.OrderID">View order »</a>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                }
+                            }
+                            else {
+                                <div class="order-history-row empty">
+                                    You have no previous online orders.
+                                </div>
+                            }
+                        }
+                        else {
+                            <div class="order-history-row empty">
+                                You have no previous online orders.
+                            </div>
+                        }
+                        <div class="clear"></div>
+                        <div class="order-history-search">
+                            @if (Model.UserOrders.Count() != 0)
+                            {
+                                <a href="/order-history">VIEW ALL ONLINE ORDERS</a>
+                            }
+                        </div>
+                    </div>
+                    @if (isDualAccount) {
+                        <div class="dashboard-banner dashboard-banner-w2h1">@Model.SecondFeaturedRecipe</div>
+                    }
+                </div>
+                <div class="w-50">
+                    <div class="dashboard-banner dashboard-banner-w2h2">
+                        @Model.FeaturedProgram
+                    </div>
+                    <div class="dashboard-banner dashboard-banner-w2h1">
+                        @Model.FeaturedRecipe
+                    </div>
+                    @if (isDualAccount) {
+                        <div class="dashboard-banner dashboard-banner-w1h1">@Model.FeaturedCoffee</div>
+                        <div class="dashboard-banner dashboard-banner-w1h1">@Model.SecondFeaturedCoffee</div>
+                    }
+                </div>
+            }
+            <div class="clear"></div>
+        </div>
+    </section>
+@*    @foreach (var tile in Model.DashboardTiles)
+    {
+        <h3>@tile.GetValue("featuredBox")</h3>
+    }*@
+    @foreach (var tileContent in Model.TileContents)
+    {
+        <h2>@tileContent.FeaturedBox yes</h2>
+        <h2>@tileContent.Width width</h2>
+        <h2>@tileContent.Height height</h2>
+        <h2>@tileContent.BrandSelect brand</h2>
+    }
+</section>
+@if (bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableGoogleAnalyticsTracking"]))
+{
+    @section scripts  {
+        @{ var groupToTrack = ""; }
+    <script type="text/javascript">
+        @if (isPartner) 
+        {
+            groupToTrack = "Partner";    
+        }
+        @if (isDualAccount)
+        {
+            groupToTrack = "Dual";
+        }
+        @if (Model.CustomerBrand == "sbx")
+        {
+            groupToTrack = "Starbucks";   
+        }
+        @if (Model.CustomerBrand.ToLower() == "sbc")
+        {
+            groupToTrack = "SBC";   
+        }
+
+        $("a").on('click touch', function () {
+            SBS.TrackEvent('@(groupToTrack)_dashboard', 'Click', $(this).attr('href'));
+        });
+        @{
+            var member = Membership.GetUser();
+           
+        }
+        _kmq.push(['identify', '@(member.Email)']);
+    </script>
+    }
+}

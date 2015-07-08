@@ -1,0 +1,56 @@
+﻿#search {
+	#site-switcher { height: 150px; background: #000;
+
+		@include media($mobile){ height: 100px; }
+	}
+
+	#content { padding-top: 150px; min-height: 100%; background: #fff; -webkit-overflow-scrolling: touch;
+
+		.page-title { @include fonts-light; font-size: 42px; line-height: 46px;	border-bottom: 1px solid #797674; padding-bottom:20px;
+	
+			@include media($sub-desktop) { padding: 0 10px 20px; }
+		}	
+
+		h2 { font-family: AvenirLTStd-Black,helvetica,arial,sans-serif;	font-size: 20px; line-height: 28px; }
+
+		.search-wrapper { height: 100%; background: #fff; }
+	}
+}
+
+.search-wrapper > * { max-width: 960px; margin: 20px auto 40px;
+
+	@include media($sub-desktop) { max-width: 100%; }
+}
+
+.search-pov { border-bottom: 1px solid #797674;	padding: 20px 0; position: relative; margin-bottom: 20px;
+				
+	@include media($sub-desktop) { padding: 20px 10px; }
+
+	&:before, &:after { display: table; content: " "; }
+	&:after { clear: both; }
+    & > .left { float: none; }
+}
+
+.search-box { position: absolute; bottom: 20px; right: 0; width: 270px;
+        
+	@include media($small-mobile) { display: block; position: static; margin: 20px auto 0; }
+
+	input.form-control { float: left; background: transparent; border: 1px solid #3D3935; color: #3D3935; border-radius: 5px; font-size: 11px; font-family: AvenirLTStd-Medium,helvetica,arial,sans-serif; padding: 8px 15px; width: 200px; height: 33px; letter-spacing: 0.2em; text-transform: uppercase; position: relative; }
+
+	button { float: left; background: #3D3935; border: 0 none; border-radius: 5px; color: #F6F7F7; @include fonts-med; font-size: 16px; padding: 7px 9px 6px; margin-left: 15px; height: 33px; transition: all 0.25s ease 0s; }
+}
+
+.search-row { @include fonts-med; color: #3D3935; padding: 20px 30px; position: relative;
+	
+	@include media($small-mobile) { padding: 10px 15px; }
+	
+	&:before, &:after { display: table; content: " "; }
+	&:after { clear: both; }
+	&.even { background: #F6F7F7; }	
+
+	h3 { color: #3D3935; @include fonts-heavy; font-size: 28px; line-height: 28px; margin-bottom: 10px; }
+
+	a { color: #222 !important; }
+
+	.view-details { float: right; margin-top: 10px; border-bottom: 1px dotted #222; @include fonts-heavy; font-size: 16px; }
+}

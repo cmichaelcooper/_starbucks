@@ -1,0 +1,23 @@
+#travel-recreation #site-wrapper #content {
+
+	.body-content {
+
+		article {
+			
+			section { background-image: url(../img/tnr-body.png);
+
+				&.ca-en, &.ca-fr { background-image: url(../img/tnr-body-bil.png);; }
+
+				.body-list-two-column {
+
+					li { float:left;  width: 50%;
+
+						@include media($mobile) { width: 100%; }
+
+						&:nth-child(2n) { margin-left: 0; }
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,60 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "~/Views/Master.cshtml";
+}
+
+<header class="abspos-header">
+    <h1 class="abspos-header__title light">Resources</h1>
+    <p class="light">Tools and support designed to serve your operation.</p>
+</header>
+<div class="body-content">
+    <article>
+        <h2>How can we help you?</h2>
+        <p>Our love of coffee and the business of beverages goes back more than 40 years, and it’s all at your service. Explore the sections below, filled with recipes, training and more to help you serve your customers and your business.</p>
+    </article>
+</div>
+<div class="resource-promo">
+    <article class="clear">
+        <img src="~/img/resources-training.png" />
+        <div>
+            <h3>Explore our new training support</h3>
+            <p>We've learned a lot over the decades. Now, so can you.</p>
+            <a href="/resources/training/">Get Started</a>
+        </div>
+    </article>
+</div>
+<div class="support-content">
+    <ul class="module-kid-grid channels">
+        <li>
+            <div class="inner-wrapper">
+                <div class="logo-wrapper platforms platforms-icons-sprite platforms-icons-coldbeverages"><a href="/resources/recipes/">&nbsp;</a></div>
+                <div class="description-wrapper">
+                    <h3>Recipes</h3>
+                    <p>Expand your menu with more than 180 recipes developed for your operation.</p>
+                </div>
+                <a href="/resources/recipes/">Learn More</a>
+            </div>
+        </li>
+        <li>
+            <div class="inner-wrapper">
+                <div class="logo-wrapper platforms platforms-icons-sprite platforms-icons-training"><a href="/resources/training/">&nbsp;</a></div>
+                <div class="description-wrapper">
+                    <h3>Training</h3>
+                    <p>Everything you'll want your employees to know about serving our brands.</p>
+                </div>
+                <a href="/resources/training/">Learn More</a>
+            </div>
+        </li>
+        <li>
+            <div class="inner-wrapper">
+                <div class="logo-wrapper platforms platforms-icons-sprite platforms-icons-equipment"><a href="/resources/equipment/">&nbsp;</a></div>
+                <div class="description-wrapper">
+                    <h3>Equipment</h3>
+                    <p>Explore and get support for a wide range of brewing equipment with enhanced features.</p>
+                </div>
+                <a href="/resources/equipment/">Learn More</a>
+            </div>
+        </li>
+    </ul>
+</div>
+@Html.Partial("~/Views/Partials/_LoggedInFooter.cshtml")

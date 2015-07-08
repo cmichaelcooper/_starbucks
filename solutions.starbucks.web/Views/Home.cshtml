@@ -1,0 +1,94 @@
+﻿@using solutions.starbucks.Model
+@model HomeModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var validated = "false";
+    bool track = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableGoogleAnalyticsTracking"]) ? true : false;
+}
+
+<div id="registerModal" class="reveal-modal custom-reveal-class-login " data-reveal>
+   <a class="close-reveal-modal">&#215;</a>
+    <img src="img/login-modal-logo.png" />
+    @if (Convert.ToBoolean(TempData["AccountValidated"]))
+    {
+        validated = "true";
+        
+        <h4>Thanks for registering with Starbucks Branded Solutions.</h4>
+        <p>We've sent an email to the address you provided. Please click the link in that email to complete your registration process.</p>
+    }
+    else
+    {
+        <h4>Thanks for registering with Starbucks Branded Solutions.</h4>
+        <p>We've sent an email to the address you provided. Please click the link in that email to complete your registration process.</p>
+        <p>To validate your account, provide a valid account number and ZIP code after signing in.</p>
+    }
+    <a class="register-done" href="/">OK</a>
+
+</div>
+<div id="videoModal" class="reveal-modal" data-reveal>
+      <iframe src="//player.vimeo.com/video/100911128?api=1&player_id=video-player" id="video-player" width="960" height="540" frameborder="0" class="home-video" ></iframe>
+
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+<section id="content" class="body-nav-height">
+    <section>
+
+        @Html.Raw(Model.BodyText)
+
+        <ul class="path-links">
+            <li>
+                @Html.Raw(Model.LeftPath)
+            </li>
+            <li class="middle">
+                @Html.Raw(Model.MiddlePath)
+            </li>
+            <li>
+                @Html.Raw(Model.RightPath)
+            </li>
+        </ul>
+        
+    </section>
+</section>
+@section scripts {
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        SBS.VideoModal();
+
+    });
+</script>       
+
+@if (Convert.ToBoolean(TempData["FinishedSignup"]))
+{
+    
+        <script>
+            $('#registerModal').foundation('reveal', 'open');
+            
+            @if (track)
+            {
+                <text>
+                    _kmq.push(['record', 'Signed Up', { 'Validated': '@(validated)' }]);
+                    _kmq.push(['record', 'Completed step 4', { 'State': '@(!String.IsNullOrEmpty(TempData["CustomerState"].ToString()) ? TempData["CustomerState"].ToString() : "" )', 'User Type:': '@(Convert.ToBoolean(TempData["PartnerRegistration"]) ? "partner": "operator" )' }]);
+        
+                    if (SBS.ReadCookie("register-video-play")) {
+                        SBS.TrackEvent('signup-after-registration-video', 'SignUp');
+                    }
+                    if (SBS.ReadCookie("home-video-play")) {
+                        SBS.TrackEvent('signup-after-welcome-video', 'SignUp');
+                    }
+                </text>
+            }
+        </script>
+}
+
+@if (Convert.ToBoolean(TempData["LoginRequired"]))
+{
+    var returnUrl = Request.RawUrl.ToString();
+            <script>
+                $('#myModalTwo').foundation('reveal', 'open', {
+                    url: '/sign-in@(returnUrl)'});
+
+        </script>
+    
+}
+}

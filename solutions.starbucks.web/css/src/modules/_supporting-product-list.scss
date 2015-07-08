@@ -1,0 +1,51 @@
+.supporting-product-list { width: 500px; margin: 0; padding: 0;
+
+    @include media($big-mobile) {
+        width: 100%;
+    }
+    @include media($small-mobile) {
+        width: 100%;
+    }
+
+    li { display: table; width: 100%; padding: 5px 0; border-bottom: 1px solid #89837F;
+
+        // &:last-child { padding-bottom: 0; border-bottom: none; }
+
+        span { display: table-cell; }
+        .prod-name { width: calc(100% - 82px); @include fonts-light;
+
+            @include media($big-mobile) {
+                padding-right: 10px; font-size: 14px;
+            }
+            @include media($small-mobile) {
+                padding-right: 10px; font-size: 14px;
+            }
+        }
+        .prod-qty { width: 82px; text-align: right; font-size: 14px;
+
+            @include media($tablet) {
+                width: 98px;
+            }
+            @include media($big-mobile) {
+                width: 98px;
+            }
+            @include media($small-mobile) {
+                width: 98px;
+            }
+
+            // &.calculated { visibility: visible; }
+        }
+        .qty-input { width: 31px; height: 31px; border: 1px solid #979797; @include border-radius(5px); @include fonts-black; font-size: 18px; text-align: center; -moz-appearance:textfield;
+
+            @include media($tablet) {
+                width: 53px; padding-top: 8px;
+            }
+            @include media($tablet) {
+                width: 53px; padding-top: 8px;
+            }
+            @include media($small-mobile) {
+                width: 53px; padding-top: 8px;
+            }
+        }
+    }
+}

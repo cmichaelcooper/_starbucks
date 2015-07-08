@@ -1,0 +1,1142 @@
+﻿/* Global Across Order History & Dashboard */
+.dashboard, #order-history, .orderhistorydetails {
+    #content {
+        padding-top: 150px;
+        background: #000 url(../img/backgrounds/home-bg-cover.jpg) no-repeat 0 0;
+        background-size: cover;
+        -webkit-overflow-scrolling: touch;
+
+        @include media($big-mobile) {
+            padding-top: 100px;
+        }
+        @include media($small-mobile) {
+            padding-top: 100px;
+        }
+    }
+
+    .wrapper > * {
+        max-width: 960px;
+        margin: 0 auto;
+
+        @include media($big-mobile) {
+            max-width: 100%;
+        }
+
+        @include media($small-mobile) {
+            max-width: 100%;
+        }
+    }
+
+    .dotted-link {
+        @include fonts-heavy;
+        font-size: 16px;
+        color: #222;
+        // border-bottom: 1px dotted #222;
+
+        &:hover { color: #000; }
+    }
+}
+
+#dashboard {
+
+    #content { padding-bottom: 150px;
+
+        @include media($big-mobile) {
+            padding-bottom: 0;
+        }
+        @include media($small-mobile) {
+            padding-bottom: 0;
+        }
+    }
+}
+
+#order-history, #order-history-details {
+    #content {
+        height: auto;
+        background: #000;
+    }
+
+    .wrapper {
+        min-height: 100%;
+        background: #FFF;
+        padding: 0;
+    }
+}
+
+.order-history-pov {
+    padding: 0;
+    position: relative;
+}
+
+.order-history-row {
+    font-family: AvenirLTStd-Medium,helvetica,arial,sans-serif;
+    font-size: 12px;
+    padding: 15px 15px 25px 15px;
+
+    @include media($big-mobile) {
+        padding: 15px 15px 25px 15px;
+    }
+    @include media($small-mobile) {
+        padding: 15px 15px 25px 15px;
+    }
+
+    &.odd {
+        background: $odd-band;
+    }
+
+    .order-details { padding-left: 83px;
+
+        span {
+            font-family: AvenirLTStd-Black,helvetica,arial,sans-serif;
+            float: left;
+            width: 105px;
+
+            @include media($big-mobile) {
+                width: 95px;
+            }
+            @include media($small-mobile) {
+                float: none;
+                display: block;
+            }
+
+            &.order-orderby {
+                height: 37px;
+                
+                @include media($small-mobile) {
+                    height: auto;
+                }
+            }
+        }
+        h3 {
+            margin-top: -7px;
+            @include fonts-black;
+            font-size: 20px;
+            line-height: 28px;
+            color: #222;
+
+            @include media($small-mobile) {
+                margin-top: -6px;
+            }
+        }
+    }
+
+    .order-acct {
+        border-top: 1px solid #cbc8c3;
+        margin: 10px 0 0 0;
+        padding: 22px 0 0 0;
+        position: relative;
+        @include fonts-heavy;
+        font-size: 16px;
+        a { color: rgb(34, 34, 34); @include fonts-heavy;
+
+            &:hover { color: $light-gray; @include fonts-heavy; }
+        }
+    }
+
+    .dotted-link {
+        margin-top: 0;
+        position: absolute;
+        right: 0;
+        color: #000;
+        border-bottom: 1px dotted #000;
+    }
+}
+
+#order-history, #order-history-details {
+    
+    .order-history-row .order-details span {
+
+        @include media($big-mobile) {
+            float: none;
+            display: block;
+            padding-left: 105px;
+        }
+        @include media($small-mobile) {
+            float: none;
+            display: block;
+            padding-left: 105px;
+        }
+    }
+}
+
+.order-calendar {
+    border: 1px solid #3d3935;
+    color: #3d3935;
+    float: left;
+    width: 68px;
+    padding: 12px 0 6px;
+
+    .day {
+        font-size: 14px;
+        line-height: 12px;
+        color: #222;
+        @include fonts-heavy;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .month {
+        line-height: 34px;
+        color: #222;
+        letter-spacing: -1px;
+        font-size: 30px;
+    }
+}
+
+.order-line {
+    float: left;
+    margin-top: 24px;
+    margin-left: 271px;
+    width: 70%;
+    font-size: 14px;
+    text-indent: -106px;
+@include media($tablet) {width: 50%;}
+    @include media($big-mobile) {
+        float: none;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    @include media($small-mobile) {
+        float: none;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    &:nth-of-type(1) { margin-top: -21px;
+
+        @include media($big-mobile) {
+            margin-top: 24px;
+        }
+        @include media($small-mobile) {
+            margin-top: 24px;
+        }
+    }
+}
+
+.order-shipped-to {
+    @include media($tablet) {
+        display: none;
+    }
+
+    @include media($big-mobile) {
+        display: none;
+    }
+
+    @include media($small-mobile) {
+        display: none;
+    }
+}
+
+#order-history, #order-history-details {
+    .order-history { padding: 40px;
+
+        @include media($big-mobile) {
+            padding: 20px 0;
+        }
+        @include media($small-mobile) {
+            padding: 20px 0;
+        }
+
+        h1 { margin-bottom: 30px; padding-bottom: 8px; border-bottom: 1px solid #bcb7b0; color: rgb(60, 56, 52); @include fonts-light; font-size: 40px; line-height: 1em;
+
+            @include media($big-mobile){
+                position: relative; margin-bottom: 0; margin-left: 15px; margin-right: 15px; padding-bottom: 7px; height: 63px; font-size: 2em;
+            }
+            @include media($small-mobile){
+                margin-bottom: 0; margin-left: 15px; margin-right: 15px; padding-bottom: 7px; height: 95px; font-size: 2em;
+            }
+
+            span { @include float(right); margin-top: 9px; @include fonts-med; font-size: 16px;
+
+                @include media($big-mobile) {
+                    float: none; display: block; margin-top: 0;
+                }
+                @include media($small-mobile) {
+                    float: none; display: block; margin-top: 0;
+                }
+
+                a.dotted-link { float: none; margin-top: 19px; }
+            }
+        }
+        h2 {
+            // margin-left: 15px;
+            @include float(left); @include reset-float;
+            width: 40%;
+            @include fonts-heavy;
+            font-size: 22px;
+            color: #222;
+            @include clearfix;
+
+            @include media($big-mobile) {
+                margin-left: 0; margin-bottom: 10px; width: 100%; font-size: 18px; line-height: 24px;
+            }
+            @include media($small-mobile) {
+                margin-left: 0; margin-bottom: 10px; width: 100%; font-size: 18px; line-height: 24px;
+            }
+        }
+
+        h3 {
+            margin-top: -1px;
+            @include fonts-black;
+            font-size: 20px;
+            line-height: 20px;
+            color: #222;
+        }
+
+        .dotted-link {
+            margin: 0;
+            float: right;
+            line-height: 20px;
+            @include fonts-heavy;
+            color: #000;
+
+            &:hover { color: #bcb7b0; }
+
+            @include media($small-mobile) {
+                float: left; position: relative; bottom: auto; right: auto;
+            }
+        }
+    }
+}
+
+
+/* Order Details */
+.order-details-row {
+    @include fonts-med;
+    position: relative;
+    padding: 15px 15px 25px 15px;
+    background: $odd-band;
+    @include clearfix;
+
+    @include media($big-mobile) {
+        padding: 15px 15px 25px 15px;
+    }
+
+    @include media($small-mobile) {
+        padding: 15px 15px 25px 15px;
+    }
+
+    &.odd {
+        background: #fff;
+    }
+
+    .prod-img-column { @include float(left); @include reset-float;
+
+        @include media($small-mobile) {
+            @include float(left); @include reset-float; margin-right: 15px;
+        }
+    }
+
+    .prod-detail-column { padding-left: 95px;
+
+        @include media($small-mobile) {
+            @include float(left); @include reset-float; padding-left: 0; width: 65%;
+        }
+    }
+
+    h2, .order-meta, img {
+        // padding: 10px 15px;
+        float: left;
+    }
+
+    h2 {
+        width: 100%;
+
+        @include media($big-mobile) {
+            font-size: 14px;
+        }
+
+        @include media($small-mobile) {
+            font-size: 14px;
+        }
+    }
+
+    .order-meta {
+        @include float(left); @include reset-float;
+        margin-top: 47px;
+        width: 20%;
+        font-size: 14px;
+        word-wrap: break-word;
+
+        @include media($big-mobile) {
+            margin-top: 0;
+        }
+        @include media($small-mobile) {
+            margin-top: 0;
+        }
+    }
+
+    .prod-link {
+        margin-top: 20px;
+        padding-top: 22px;
+        border-top: 1px solid #CBC8C3;
+
+        @include media($big-mobile) {
+            margin-top: 0;
+        }
+        @include media($small-mobile) {
+            margin-top: 7px; padding-top: 12px;
+        }
+    }
+
+    img {
+        @include media($big-mobile) {
+            padding: 0 15px 0 0;
+        }
+
+        @include media($small-mobile) {
+            padding: 0; width: 70px;
+        }
+    }
+
+    h2, .order-meta {
+
+        @include media($big-mobile) {
+            float: left;
+            margin-right: 20px;
+            width: auto;
+            padding: 0 0 5px;
+        }
+        @include media($small-mobile) {
+            float: left;
+            width: 100%;
+            padding: 0 0 5px;
+        }
+    }
+
+    span {
+        display: block;
+        font-family: AvenirLTStd-Black,helvetica,arial,sans-serif;
+        margin: 0;
+
+        @include media($big-mobile) {
+            display: block;
+            @include float(left); @include reset-float;
+            padding-right: 10px;
+            width: auto;
+        }
+        @include media($small-mobile) {
+            display: block;
+            @include float(left); @include reset-float;
+            padding-right: 10px;
+            width: 50px;
+        }
+    }
+
+    .dotted-link {
+        // position: absolute;
+        // bottom: 10px;
+        // right: 15px;
+        border-bottom: 1px dotted #000;
+    }
+}
+
+/* Dashboard v2 */
+.dashboard-content {
+    background: #3D3935;
+
+    p { margin: 0;
+
+        &.order-info { width: 70%;
+
+            @include media($big-mobile) {
+                margin-top: 10px;
+            }
+            @include media($small-mobile) {
+                margin-top: 10px;
+            }
+
+            &:nth-child(2) {
+
+                @include media($big-mobile) {
+                    margin-top: 0;
+                }
+                @include media($small-mobile) {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+
+.dashboard-content .order-details h3 { color: $light-gray;
+
+    @include media($tablet) {
+        display: none;
+    }
+}
+
+.customer-account-access {
+    width: 100%;
+    padding: 20px;
+    background: #3C3834;
+    color: #BCB7B0;
+
+    h2 {
+        float: left;
+        font-family: AvenirLT-Light,helvetica,arial,sans-serif;
+        font-size: 28px;
+        line-height: 32px;
+
+        @include media($tablet) {
+            float: left;
+            text-align: left;
+        }
+
+        @include media($big-mobile) {
+            float: none;
+            text-align: center;
+        }
+
+        @include media($small-mobile) {
+            float: none;
+            margin: 0 auto;
+            width: 80%;
+            text-align: center;
+        }
+
+        > span { @include fonts-heavy; font-size: 20px;
+
+            @include media($tablet) {
+                display: block;
+            }
+        }
+    }
+
+    form {
+        float: right;
+
+        @include media($big-mobile) {
+            float: none;
+            width: 100%;
+        }
+
+        @include media($small-mobile) {
+            float: none;
+            width: 100%;
+        }
+    }
+
+    #SelectedAccount, .expander {
+        background: transparent;
+        border: 1px solid #BCB7B0;
+        border-radius: 5px;
+        color: #BCB7B0;
+        float: left;
+        @include fonts-med;
+        font-size: 11px;
+        height: 33px;
+        letter-spacing: 0.2em;
+        margin-right: 15px;
+        padding: 8px;
+        position: relative;
+        text-align: center;
+        text-transform: uppercase;
+        width: 250px;
+        
+        @include media($tablet) {
+            display: block;
+            margin: 0 auto;
+            width: 240px;
+            float: left;
+        }
+
+        @include media($big-mobile) {
+            margin: 10px auto;
+            display: block;
+            float: none;
+        }
+
+        @include media($big-mobile) {
+            width: 240px;
+        }
+
+        @include media($small-mobile) {
+            margin: 10px auto;
+            display: block;
+            width: 240px;
+            float: none;
+        }
+    
+        &:focus, &:active { outline: none;
+
+            &::-webkit-input-placeholder { color: rgb(90, 90, 90); }
+            &:-moz-placeholder { color: rgb(90, 90, 90); }
+            &::-moz-placeholder { color: rgb(90, 90, 90); }
+            &:-ms-input-placeholder { color: rgb(90, 90, 90); }
+        }
+    }
+
+    button {
+        background: #CFCECE;
+        border: 1px solid #383635;
+        border-radius: 5px;
+        float: left;
+        height: 33px;
+        text-transform: uppercase;
+        transition: all 0.25s ease 0s;
+
+        @include media($tablet) {
+            margin: 0 0 0 10px;
+            display: block;
+        }
+
+        @include media($big-mobile) {
+            margin: 10px auto;
+            display: block;
+            float: none;
+            width: 240px;
+        }
+
+        @include media($small-mobile) {
+            margin: 10px auto;
+            display: block;
+            float: none;
+            width: 240px;
+        }
+
+        &.dashboard-back {
+            color: #383635;
+            font-family: AvenirLTStd-Medium,helvetica,arial,sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            padding: 8px 20px 8px;
+        }
+
+        &.dashboard-submit:after {
+            color: #6E6E6E;
+            content: "\f002";
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: normal;
+            padding: 0 6px;
+            text-decoration: inherit;
+        }
+    }
+
+    .error {
+        margin-top: 10px;
+        margin-right: 51px;
+        @fonts-heavy;
+        font-size: 14px;
+        font-weight: normal;
+        text-align: right;
+
+        @include media($tablet) {
+            margin-right: 0; line-height: 12px;
+        }
+
+        @include media($small-mobile) {
+            margin: 0 auto; width: 80%; text-align: center;
+        }
+    }
+}
+
+.w-50 {
+    @include w-50;
+    float: left;
+
+    @include media($big-mobile) {
+        width: 100%;
+        float: none;
+    }
+
+    @include media($small-mobile) {
+        width: 100%;
+        float: none;
+    }
+}
+
+.dashboard-sharepoint {
+    .img-big, .img-small {
+        display: none;
+    }
+
+    @include media($big-mobile) {
+        .img-large, .img-small {
+            display: none;
+        }
+
+        .img-big {
+            display: block;
+        }
+    }
+
+    @include media($small-mobile) {
+        .img-large, .img-big {
+            display: none;
+        }
+
+        .img-small {
+            display: block;
+        }        
+    }
+}
+
+.dashboard-order-history {
+    color: #BCB7B0;
+    // min-height: 480px; // for three item order history height
+    min-height: 240px; // For single item order history height
+    min-height: 220px\9; // IE8 hack
+    padding: 10px 20px;
+    padding-top: 8px\9; // IE8 hack
+    
+    @media screen and (orientation: portrait) {
+        // min-height: inherit; // Order history 3 item height for tablet portrait
+        min-height: 192px; // Order history 1 item height for tablet portrait
+        padding: 0px 20px 0px 20px; // Order history i item
+    }
+
+    @include media($big-mobile) {
+        min-height: inherit !important;
+    }
+
+    @include media($small-mobile) {
+        width: 100% !important;
+        min-height: inherit !important;
+        padding-top: 10px;
+    }
+
+    .order-calendar {
+        border-color: #BCB7B0;
+        color: #BCB7B0;
+
+        .day, .month {
+            color: #BCB7B0;
+        }
+    }
+
+    .order-history-row {
+        border-bottom: 1px solid rgb(121, 118, 116);
+        height: 110px;
+        padding: 20px 0;
+        position: relative;
+
+        &.odd {
+            background: none;
+        }
+
+        @include media($tablet) {
+            height: auto;
+            padding: 10px 0;
+        }
+
+        @media screen and (orientation: portrait) {
+            height: 78px;
+            padding: 6px 0; // Order history 1 item
+        }
+
+        @include media($big-mobile) {
+            height: auto;
+            padding: 10px 0;
+        }
+
+        @include media($small-mobile) {
+            height: auto;
+            padding: 10px 0;
+        }
+    }
+
+    .order-acct-info {
+        border-left: 1px solid #797674;
+        bottom: 20px;
+        padding-left: 15px;
+        position: absolute;
+        right: 0;
+        top: 20px;
+        @include fonts-heavy;
+
+        @include media($tablet) {
+            border-top: 1px solid #797674;
+            border-left: 0 none;
+            position: static;
+            margin:5px 0 0 83px;
+            padding:2px 0 0 0;
+        }
+
+        @media screen and (orientation: portrait) {
+            // bottom: 10px; // Order history 3 item
+            bottom: 4px; // Order history 1 item
+            top: auto;
+            position: absolute;
+            width: 70%;
+        }
+
+        @include media($big-mobile) {
+            border-top: 1px solid #797674;
+            border-left: 0 none;
+            position: static;
+            margin:5px 0 0 83px;
+            padding: 18px 0 12px 0;
+        }
+
+        @include media($small-mobile) {
+            border-top: 1px solid #797674;
+            border-left: 0 none;
+            position: static;
+            margin:5px 0 0 83px;
+            padding: 18px 0 12px 0;
+        }
+
+        a {
+            color: #BCB7B0;
+            border-bottom: 1px dotted #BCB7B0;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size: 14px;
+
+            @include media($tablet) {
+                position: static;
+                float: right;
+            }
+
+            @include media($big-mobile) {
+                position: static;
+                float: right;
+            }
+
+            @include media($small-mobile) {
+                position: static;
+                float: right;
+            }
+        }
+    }
+
+    .page-title {
+        font-family: AvenirLT-Light,helvetica,arial,sans-serif;
+        font-size: 28px;
+        line-height: 25px;
+        border-bottom: 1px solid rgb(121, 118, 116);
+        padding: 0 !important;
+
+        .title-insert { font-size: 18px;
+
+            @include media($sub-desktop) {
+                // display: block;
+                margin-top: -20px;
+            }
+            @include media($tablet) {
+                line-height: 38px;
+            }
+            @include media($tablet-portrait) {
+                line-height: 18px;
+            }
+        }
+    }
+
+    .order-history-search {
+        // padding: 22px; // For three item order history height
+        padding: 14px 22px 3px 22px; // For single item order history height
+
+        @include media($tablet) {
+            padding: 5px;
+        }
+        
+        @media screen and (orientation: portrait) {
+            padding: 3px;
+        }
+
+        a:link, a:visited {
+            @include dashboard-button-dark;
+        
+            @media screen and (orientation: portrait) {
+                // margin: 15px auto 5px auto; // Order history 3 item
+                margin: 5px auto 5px auto; // Order history 1 item
+            }
+        }
+    }
+}
+
+.dashboard-banner {
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    float: left;
+    overflow: hidden;
+
+    @include media($big-mobile) {
+        max-height: inherit !important;
+    }
+
+    @include media($small-mobile) {
+        max-height: inherit !important;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .img-big, .img-small {
+        display: none;
+    }
+
+    @include media($big-mobile) {
+        .img-large, .img-small {
+            display: none;
+        }
+
+        .img-big {
+            display: block;
+        }
+    }
+
+    @include media($small-mobile) {
+        .img-large, .img-big {
+            display: none;
+        }
+
+        .img-small {
+            display: block;
+        }        
+    }
+}
+
+.dashboard-banner-w1h1 {
+    width: 25%;
+    max-height: 240px;
+
+    @include media($big-mobile) {
+        width: 100%;
+    }
+
+    @include media($small-mobile) {
+        width: 100%;
+    }
+}
+
+.dashboard-banner-w2h2 {
+    width: 50%;
+    max-height: 480px;
+    @include media($big-mobile) {
+        width: 100%;
+    }
+
+    @include media($small-mobile) {
+        width: 100%;
+    }
+}
+
+.dashboard-banner-w2h1 {
+    width: 50%;
+    max-height: 240px;
+
+    @include media($tablet-portrait) {
+        max-height: 192px;
+    }
+    @include media($big-mobile) {
+        width: 100%;
+    }
+    @include media($small-mobile) {
+        width: 100%;
+    }
+}
+
+.dashboard-banner-w3h1 {
+    width: 75%;
+    max-height: 240px;
+}
+.dashboard-banner-w3h2 {
+    width: 75%;
+    max-height: 480px;
+}
+
+.dashboard-banner-w4h1 {
+    width: 100%;
+    max-height: 240px;
+}
+.dashboard-banner-w4h2 {
+    width: 100%;
+    max-height: 480px;
+}
+.dashboard-banner-w4h3 {
+    width: 100%;
+    max-height: 720px;
+}
+.dashboard-banner-w4h4 {
+    width: 100%;
+    max-height: 960px;
+}
+/* The following will be global styled for all pages inc. order, order history, dashboard, member list */
+#content.page {
+    padding-top: 150px;
+    background: #000;
+    -webkit-overflow-scrolling: touch;
+
+    .page-contents {
+        padding-top: 40px;
+        background: #FFF;
+        overflow: hidden;
+    }
+
+    .wrapper {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+}
+
+.page-title {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #797674;
+    @include fonts-light;
+    font-size: 40px;
+    line-height: 1em;
+    
+    @include media($tablet) {
+        padding: 0 10px;
+        margin-top: 6px;
+    }
+    
+    @include media($big-mobile) {
+        padding: 0 10px;
+    }
+
+    @include media($small-mobile) {
+        padding: 0 10px;
+    }
+}
+
+.table-header {
+    margin: 20px 0;
+    @include fonts-heavy;
+    font-size: 24px;
+    line-height: 20px;
+}
+
+.table {
+    border-spacing: 0;
+    border-collapse: separate;
+    border-top: 0 none;
+    width: 100%;
+}
+
+.table tr {
+    &.even {
+        background: $odd-band;
+    }
+}
+
+.table th {
+    @include fonts-heavy;
+    text-align: left;
+    line-height: 1.42857;
+    padding: 5px 8px;
+}
+
+.table td {
+    padding: 5px 0 5px 8px;
+    vertical-align: top;
+    font-size: 14px;
+}
+
+.member-list td, .partner td {
+    line-height: 40px;
+    white-space: nowrap;
+}
+
+.page {
+    .btn.btn-default {
+        @include reset-button-continue;
+        @include float(right);
+        text-align: center;
+        // background: none repeat scroll 0 0 #CFCECE;
+        // border: 1px solid #383635;
+        // border-radius: 5px;
+        // color: #383635;
+        // display: inline;
+        // font-family: AvenirLTStd-Medium,helvetica,arial,sans-serif;
+        // font-size: 0.9em;
+        // letter-spacing: 0.2em;
+        // padding: 10px;
+        // text-transform: uppercase;
+        // transition: all 0.25s ease 0s;
+
+        @include media($sub-desktop) {
+            float: none;
+        }
+    }
+}
+
+.order-now { position: relative; padding: 20px; width: 240px; height: 240px; background-color: #f7f7f7;
+
+    @media screen and (orientation: portrait) {
+        height: 192px;
+    }
+    @include media($sub-desktop) {
+        width: 100%;
+    }
+
+    img { @include blockcenter; position: absolute; top: 50%; left: 50%; }
+
+    &.wps-featured {
+
+        img { margin-top: -80px;  margin-left: -50px; width: 100px; height: 100px;
+
+            @include media($tablet) {
+                margin-top: -80px; margin-left: -50px; width: 100px; height: 100px;
+            }
+            @include media($big-mobile) {
+                margin-top: -90px; margin-left: -60px; width: 120px; height: 120px;
+            }
+        }
+    }
+    &.sbc-featured {
+
+        img { margin-top: -60px; margin-left: -90px; width: 180px; height: 64px;
+
+            @include media($tablet) {
+                margin-top: -45px; margin-left: -70px; width: 140px; height: 50px;
+            }
+            @include media($big-mobile) {
+                margin-top: -60px; margin-left: -100px; width: 200px; height: 64px;
+            }
+        }
+    }
+    
+    a.btn { @include dashboard-button; position: absolute; bottom: 20px; left: 50%; margin-left: -90px; color: $med-gray;
+
+        @include media($tablet) {
+            padding-left: 10px; margin-left: -70px; width: 140px; font-size: 12px;
+        }
+
+        &:visited { color: $med-gray; }
+        &:hover { background: rgb(237, 237, 237); color: $med-gray !important; }
+        &:after { margin-left: 10px; padding-right: .75em; }
+    }
+}
+
+#member-list #site-wrapper #content .page-contents .wrapper { width: 98%; max-width: 98%;
+
+    @include media($sub-desktop) {
+        width: 100%;
+    }   
+}
+
+#inactiveMembers { width: 100%; }
+.table.member-list, .table.partner { min-width: 960px; table-layout: fixed; overflow: hidden; white-space: nowrap;
+
+    .column-email { table-layout: fixed; overflow: hidden; white-space: nowrap; }
+    .column-accounts { table-layout: fixed; white-space: wrap; }
+    .column-name { table-layout: fixed; overflow: hidden; white-space: nowrap; }
+    .column-last-logged { table-layout: fixed; overflow: hidden; white-space: nowrap; }
+    .column-status { table-layout: fixed; overflow: hidden; white-space: nowrap; }
+    .column-buttons { width: 250px;
+
+        button { display: inline; padding: 0; border: none; border-bottom: 1px dotted #000; background-color: transparent; font-size: 14px; @include fonts-heavy;
+
+            &:hover { color: #bcb7b0; }
+
+        }
+    }
+    .column-resend {  }
+    .column-activate {  }
+    .column-twobuttons {  }
+}
+
+.admin-filter { margin-left: 10px; }
+.admin-search { padding: 10px; @include border-radius(5px); border: 1px solid #383635; background-image: url(../img/icon-search-admin.png); background-repeat: no-repeat; background-position: 190px center; }
+
+.notification-overlay__admin {
+
+    .notification-body__admin { display: block; margin: 40px 0; @include fonts-heavy; font-size: 14px; text-transform: uppercase; }
+}

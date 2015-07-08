@@ -1,0 +1,92 @@
+.legaltextpage {
+	#site-wrapper {
+		#content { padding-top: 150px; background: #000 url(../img/coffee/pdp-header.jpg) no-repeat top center; -webkit-overflow-scrolling: touch;
+
+			@include media($mobile) { padding-top: 100px; }
+
+			.inner-wrapper { display: block; margin: 0 auto; position: relative; max-width: 960px;
+
+				a { color: rgb(34, 34, 34); @include fonts-heavy; word-wrap: break-word;
+
+					&:hover { color: $light-gray; @include fonts-heavy; }
+				}
+
+				.btn-light { @include light-button; width: 220px; height: 36px; margin: 0 auto; @include fonts-light;
+	
+					&:hover { color: #000; @include fonts-light; }
+				}
+			}
+
+			.legal-intro { padding: 40px 20px 20px 20px; background: #fff;
+
+				h1 { @include fonts-light; font-size: 40px; line-height: 1em; padding-bottom: 8px; border-bottom: 1px solid #89837f; }
+
+				h6 { color: #3d3a35; font-size:10px; margin-top:10px; }
+			}
+
+			.legal-topic { background: #f7f8f8; color: #3d3a35; font-size: 14px;
+
+				@include media($sub-desktop) { text-align: center; }
+
+				.inner-wrapper { padding: 20px 10px;
+
+					&:before, &:after { display: table;	content: " "; }
+
+					&:after { clear: both; }
+				}
+
+				.fl { float: left; width: 75%;
+
+					h2 { font-size: 28px; line-height: 30px; }
+
+					p {	margin: 0; }
+
+					@include media($sub-desktop) { float: none; width: 100%; }
+				}
+
+				.expander { background: url("../img/expander-caret.png") no-repeat scroll 94% center / 7% auto #F6F6F6;	border-color: #383635; border-radius: 5px; border-style: solid; border-width: 1px; color: #383635; display: block; float: right; @include fonts-med; font-size: 14.4px; letter-spacing: 0.2em; margin: 8px auto; padding: 8px 14px; position: relative; text-align: left; text-transform: uppercase; width: 225px;
+
+					@include media($sub-desktop) { float: none; }
+				}
+			}
+
+			.legal-content { padding: 0 20px; background: #fff;
+
+				.inner-wrapper { padding-bottom: 100px; }
+
+				.row { border-bottom: 1px solid #89837f; padding: 35px 0 55px;
+
+					&:before, &:after { display: table; content: " "; }
+					&:after { clear: both; }
+					&:first-child { padding-top: 20px; }
+					&:last-child { border-bottom: 0 none; padding-bottom:10px; }
+
+					h3 { color: #3d3a35; @include fonts-heavy; font-size: 19px; font-weight: normal; line-height: 24px; float: left; width: 22%;
+
+						@include media($sub-desktop) { float: none; width: 100%; }
+					}
+
+					.fr { float: right; margin-top: 3px; width: 76%;
+
+						@include media($sub-desktop) { float: none; width: 100%; }
+	
+						p {	margin: 0 0 1em; }
+
+						li { list-style-type: none; margin-bottom: 1em; }
+					}
+				}
+			}			
+		}
+	}
+}
+
+/* FAQ specific styles */
+
+#faq .legal-topic { display: none; }
+
+/* Partner Video Page styles */
+
+#video-list {
+
+	.legal-topic { display: none; }
+}

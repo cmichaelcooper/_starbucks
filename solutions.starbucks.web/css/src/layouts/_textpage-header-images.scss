@@ -1,0 +1,367 @@
+$desktop-bg-path: "../img/backgrounds/desktop/";
+$tablet-bg-path: "../img/backgrounds/tablet/";
+$mobilelandscape-bg-path: "../img/backgrounds/mobile-landscape/";
+$mobileportrait-bg-path: "../img/backgrounds/mobile-portrait/";
+
+$placeholdit: "http://placehold.it/";
+$moport-size: "479x568";
+$moland-size: "767x320";
+
+// ==========================================================================
+// .com/our-brands
+// ==========================================================================
+#our-brands #site-wrapper #content {
+
+	$our-brands: "textpage-header-ourbrands.jpg";
+	header { background-image: url(#{$desktop-bg-path+$our-brands});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$our-brands}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-brands/starbucks
+// ==========================================================================
+#starbucks #site-wrapper #content {
+
+	$starbucks: "textpage-header-ourbrands-starbucks.jpg";
+	header { background-image: url(#{$desktop-bg-path+$starbucks});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$starbucks}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-brands/seattles-best-coffee
+// ==========================================================================
+
+#seattles-best-coffee #site-wrapper #content {
+
+	$sbc: "textpage-header-ourbrands-sbc.jpg";
+	header { background-image: url(#{$desktop-bg-path+$sbc});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$sbc}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-brands/tazo
+// ==========================================================================
+
+#tazo #site-wrapper #content {
+
+	$tazo: "textpage-header-ourbrands-tazo.jpg";
+	header { background-image: url(#{$desktop-bg-path+$tazo});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$tazo}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-brands/fontana
+// ==========================================================================
+
+#fontana #site-wrapper #content {
+
+	$fontana: "textpage-header-ourbrands-fontana.jpg";
+	header { background-image: url(#{$desktop-bg-path+$fontana});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$fontana}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-programs
+// ==========================================================================
+
+#our-programs #site-wrapper #content {
+
+	$our-programs: "textpage-header-ourprograms.jpg";
+	header { background-image: url(#{$desktop-bg-path+$our-programs});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$our-programs}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-programs/licensed-stores
+// ==========================================================================
+
+#licensed-stores #site-wrapper #content {
+
+	$licensed-stores: "textpage-header-ourprograms-licensedstores.jpg";
+	header { background-image: url(#{$desktop-bg-path+$licensed-stores});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$licensed-stores}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-programs/espresso
+// ==========================================================================
+
+
+#espresso #site-wrapper #content {
+
+	$espresso: "textpage-header-ourprograms-espresso.jpg";
+	header { background-image: url(#{$desktop-bg-path+$espresso});
+
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-programs/brewed
+// ==========================================================================
+
+
+#brewed #site-wrapper #content {
+
+	$brewed: "textpage-header-ourprograms-brewed.jpg";
+	header { background-image: url(#{$desktop-bg-path+$brewed});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$brewed}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-programs/brewed/wps-brewed
+// ==========================================================================
+
+#wps-brewed #site-wrapper #content {
+
+	$wps-brewed: "textpage-header-ourprograms-wps.jpg";
+	header { background-image: url(#{$desktop-bg-path+$wps-brewed});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$wps-brewed}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-programs/brewed/sbc-brewed
+// ==========================================================================
+
+#sbc-brewed #site-wrapper #content {
+
+	$sbc-brewed: "textpage-header-ourprograms-sbc.jpg";
+	header { background-image: url(#{$desktop-bg-path+$sbc-brewed});
+
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$sbc-brewed}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-programs/premium-self-serve
+// ==========================================================================
+
+#premium-self-serve #site-wrapper #content {
+	
+	$self-serve: "textpage-header-ourprograms-selfserve.jpg";
+	header { background-image: url(#{$desktop-bg-path+$self-serve});
+
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$self-serve}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-programs/blended
+// ==========================================================================
+
+#blended #site-wrapper #content, #sbc-blended #site-wrapper #content {
+
+	$blended: "textpage-header-ourprograms-blended.jpg";
+	header { background-image: url(#{$desktop-bg-path+$blended});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$blended}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-programs/on-the-go
+// ==========================================================================
+
+#on-the-go #site-wrapper #content {
+
+	$on-the-go: "textpage-header-ourprograms-onthego.jpg";
+	header { background-image: url(#{$desktop-bg-path+$on-the-go});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$on-the-go}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/our-programs/premium-self-serve/seattles-best-coffee-digital-brewer
+// ==========================================================================
+
+#seattles-best-coffee-digital-brewer #site-wrapper #content {
+
+	$sbc-digi-brewer: "textpage-header-ourprograms-selfserve-sbcdigitalbrewer.jpg";
+	header { background-image: url(#{$desktop-bg-path+$sbc-digi-brewer});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$sbc-digi-brewer}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/your-business
+// ==========================================================================
+
+#your-business #site-wrapper #content { -webkit-overflow-scrolling: touch;
+	
+	$your-business: "textpage-header-yourbusiness.jpg";
+	header { background-image: url(#{$desktop-bg-path+$your-business});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$your-business}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/your-business/business-industry
+// ==========================================================================
+
+#business-industry #site-wrapper #content {
+
+	$business-industry: "textpage-header-yourbusiness-businessindustry.jpg";
+	header { background-image: url(#{$desktop-bg-path+$business-industry});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$business-industry}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/your-business/college-university
+// ==========================================================================
+
+#college-university #site-wrapper #content {
+
+	$college-university: "textpage-header-yourbusiness-collegeuniversity.jpg";
+	header { background-image: url(#{$desktop-bg-path+$college-university});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$college-university}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/your-business/fine-dining
+// ==========================================================================
+
+#fine-dining #site-wrapper #content {
+
+	$fine-dining: "textpage-header-yourbusiness-finedining.jpg";
+	header { background-image: url(#{$desktop-bg-path+$fine-dining});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$fine-dining}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/your-business/government-military
+// ==========================================================================
+
+#government-military #site-wrapper #content {
+
+	$gov-military: "textpage-header-yourbusiness-governmentmilitary.jpg";
+	header { background-image: url(#{$desktop-bg-path+$gov-military});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$gov-military}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/your-business/healthcare
+// ==========================================================================
+
+#healthcare #site-wrapper #content {
+	
+	$healthcare: "textpage-header-yourbusiness-healthcare.jpg";
+	header { background-image: url(#{$desktop-bg-path+$healthcare});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$healthcare}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/your-business/hotel-lodging
+// ==========================================================================
+
+#hotel-lodging #site-wrapper #content {
+
+	$hotel-lodging: "textpage-header-yourbusiness-hotellodging.jpg";
+	header { background-image: url(#{$desktop-bg-path+$hotel-lodging});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$hotel-lodging}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/your-business/office-coffee
+// ==========================================================================
+
+#office-coffee #site-wrapper #content {
+	
+	$office-coffee: "textpage-header-yourbusiness-officecoffee.jpg";
+	header { background-image: url(#{$desktop-bg-path+$office-coffee});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$office-coffee}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}
+
+// ==========================================================================
+// .com/your-business/travel-recreation
+// ==========================================================================
+
+#travel-recreation #site-wrapper #content {
+
+	$travel-recreation: "textpage-header-yourbusiness-travelrecreation.jpg";
+	header { background-image: url(#{$desktop-bg-path+$travel-recreation});
+		
+		@include media($tablet){ background-image: url(#{$tablet-bg-path+$travel-recreation}); }
+		@include media($big-mobile){ background-image: url(#{$placeholdit+$moland-size}); }
+		@include media($small-mobile) { background-image: url(#{$placeholdit+$moport-size}); }
+	}
+}

@@ -1,0 +1,28 @@
+#yearroundicedcoffee #site-wrapper #content {
+
+	.body-content { 
+
+		article { //background-color: rgb(255,255,255);
+
+			&.year-round-iced { 
+
+				section {
+					width: 960px; margin: 0 auto; padding: 156px 0 156px 423px; background-image: url(../img/programs/year-round/year-round-iced.jpg); background-repeat: no-repeat; background-position: top center; min-height: 547px;
+				
+					@include media($sub-desktop) { width: 100%; }
+					@include media($tablet-landscape) { padding-right: 20px; }
+					@include media($tablet-portrait) { background-position: top left; padding-left: 380px;
+
+						> .overview-title { width: 350px; }
+					}
+					@include media($big-mobile) { padding: 20px 140px 280px 20px; background-image: url(../img/programs/year-round/year-round-iced-big-mobile.jpg); background-position: bottom center; min-height: 320px; }
+					@include media($small-mobile) { padding: 20px; background-image: url(../img/programs/year-round/year-round-iced-small-mobile.jpg); background-position: bottom center; min-height: 450px; }
+				}
+			}
+
+		}
+	
+	}
+
+	.program-continue { background-color: #fff; }
+}

@@ -1,0 +1,401 @@
+﻿@using solutions.starbucks.Model.Training;
+@using solutions.starbucks.Model.Pocos;
+@model CourseBuilderModel
+@{
+    Layout = "~/Views/Shared/_LayoutTraining.cshtml";
+    var validated = "false";
+    bool track = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableGoogleAnalyticsTracking"]) ? true : false;
+
+}
+
+@section ScriptInHead {
+    <script src="~/js/Training/courseBuilder-module.js"></script>
+    <script src="~/js/Training/courseBuilder-controller.js"></script>
+    <script src="~/js/Training/invites-repository.js"></script>
+    <script src="~/js/Training/invitesSubjects-repository.js"></script>
+
+    <script type="text/javascript">
+
+        courseBuilderModule.factory('operatorUserId', function operatorUserIdFactory() {
+            return @Model.OperatorUmbracoUserID;
+        });
+
+        courseBuilderModule.factory('subjectIds', function subjectIdsFactory() {
+            return @Html.Raw("[" + string.Join(", ", Model.Subjects.Select(s => "'" + s.SubjectID + "'")) + "]")
+        });
+
+
+        courseBuilderModule.config(['$httpProvider', function ($httpProvider) {
+            // This bit of code is added to ensure that IsAjaxRequest() is true for the AntiForgery implementation
+            $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+            $httpProvider.defaults.headers.common["RequestVerificationToken"] = '@GetAntiForgeryToken()';
+        }]);
+
+    </script>
+
+}
+
+@functions{
+
+    public string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+
+}
+
+<section id="content">
+
+    <section class="content-band header__training">
+
+        <div class="inner-wrapper">
+
+            <h1 class="large-overview-title dark">Solutions University</h1>
+            <a href="/resources/training" class="trainee-back-header">&laquo; Back to Training</a>
+
+        </div>
+
+    </section>
+
+    <section class="content-band overview__training">
+
+        <div class="inner-wrapper">
+
+            <h2 class="overview-title training light">Content crafted just for you</h2>
+            <p class="overview-desc__training light">Customize your employees' training experience based on your operation's individual needs.</p>
+
+        </div>
+
+    </section>
+
+    <section class="content-band topics-selector">
+
+        <div ng-app="courseBuilderModule" ng-controller="InvitesController" class="inner-wrapper-1024">
+
+            <h2 class="support-title light ts-content-shim">Course Builder</h2>
+            <p class="light ts-content-shim">Build a training course for your employees. Select the content you’d like them to learn from the training materials below, send them an invitation to complete their training, then track their progress.</p>
+            
+            <form name="inviteForm" novalidate>
+
+            <h3 class="title__coursebuilder-step accordion-trigger" ng-click="toggleCourseBuilderSection($event)">Step 1: Select Core Curriculum</h3>
+
+            <div class="training-select-expander accordion-expander">
+
+                <div class="catalog-grid inner-container">
+
+                    @foreach (var subject in Model.Subjects)
+                    {
+                        <label class="catalog-grid__item">
+
+                            <input class="topic-check" type="checkbox" name="selectedSubjects[]" value="@subject.SubjectID" ng-checked="selection.indexOf(@subject.SubjectID) > -1" ng-click="toggleSelection(@subject.SubjectID)" />
+                            
+                            <div class="inner-wrapper">
+
+                                <span class="check-overlay">
+                                    <span class="custom-check"></span>
+                                </span>
+
+                                <img src='@subject.FundamentalIcon' alt='Training Topic' />
+
+                                <div class="catalog-item__desc">
+
+                                    <div class="catalog-item__title">
+
+                                        <h3>@Html.Raw(subject.Title.Trim())</h3>
+
+                                    </div>
+                                    
+                                    <div class="catalog-item__short-desc">
+
+                                        <p>@subject.ShortDescription</p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="catalog-item__buttons">
+
+                                    <span class="btn training-add-btn">Add Training</span>
+
+                                </div>
+
+                            </div>
+
+                        </label>
+                    }
+                    <div class="clear"></div>
+                    <input style="display: none;" type="number" name="selectedSubjects" ng-model="selection.length" min="1" required>
+
+                </div>
+
+            </div>            
+
+            <h3 class="title__coursebuilder-step accordion-trigger" ng-click="toggleCourseBuilderSection($event)">Step 2: Invite Trainee</h3>
+
+            <div class="training-select-expander accordion-expander">
+
+                <section class="training-invites">
+
+                    <span class="message success" ng-show="sendingInvite"><img src="~/img/select2-spinner.gif" /> Sending invitation...</span>
+                    <span class="message success" ng-show="inviteSent">Invitation successfully sent</span>
+                    <span class="message error" ng-show="inviteSendError">Error sending invitation email</span>
+                    <span class="message error" ng-show="errorLoadingInvites">Error loading invitations</span>
+                    <span class="message error" ng-show="error">An error occurred sending the invitation</span>
+                    <span class="message error" ng-show="submitted==true && inviteForm.traineeName.$error.required">Please enter a name</span>
+                    <span class="message error" ng-show="submitted==true && inviteForm.traineeEmail.$error.required">Please enter an email</span>
+                    <span class="message error" ng-show="submitted==true && inviteForm.traineeEmail.$invalid && inviteForm.traineeEmail.$dirty">Invalid email</span>
+                    <span class="message error" ng-show="submitted==true && inviteForm.selectedSubjects.$invalid">Please select at least one item of content</span>
+                    
+                                       
+                    <input type="hidden" ng-model="invite.operatorUmbracoUserID" ng-init="invite.operatorUmbracoUserID = @Model.OperatorUmbracoUserID" />
+                    <ul class="trainee-invite-form">
+                        <li class="trainee-invite-group name">
+                            <label class="form-label">Trainee Name:</label>
+                            <input class="form-input" type="text" name="traineeName" ng-keypress="resetSubmitted()" ng-model="invite.traineeName" placeholder="Enter Trainee's Name" required />
+                        </li>
+                        <li class="trainee-invite-group email">
+                            <label class="form-label">Trainee Email:</label>
+                            <input class="form-input" type="email" name="traineeEmail" autocapitalize="off" ng-keypress="resetSubmitted()" ng-model="invite.traineeEmail" required placeholder="Enter Trainee's Email Address" ng-pattern="@Html.Raw("/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$/")" />
+                        </li>
+                        <li class="trainee-invite-group submit">
+                            <input class="btn form-submit wine" type="button" ng-click="save(invite)" value="INVITE" />
+                        </li>
+                    </ul>
+
+                </section>
+
+            </div>
+
+            </form>
+
+            <h3 class="title__coursebuilder-step accordion-trigger" ng-click="toggleCourseBuilderSection($event)">Step 3: Monitor Trainee Progress</h3>
+
+            <div class="training-select-expander accordion-expander">
+
+                <section class="training-progress desktop-tablet">
+
+                    <div class="training-invites">
+
+                        <div class="invite-loading-messages">
+                            <div style="color: green; " ng-show="loadingInvites"><img src="~/img/select2-spinner.gif" /> Loading invitations...</div>
+                            <div style="color: red; " ng-show="errorLoadingInvites">Error loading invitations</div>
+                        </div>
+                        
+                        <div class="training-invites-report">
+
+                            <div class="training-invites-labels">
+                                <div class="training-invites-labels-accordion-toggle">&nbsp;</div>
+                                <div class="training-invites-labels-name">Name</div>
+                                <div class="training-invites-labels-email">Email</div>
+                                <div class="training-invites-labels-access">Access</div>
+                                <div class="training-invites-labels-progress">Progress</div>
+                                <div class="training-invites-labels-buttons"></div>
+                            </div>
+
+                            <div class="training-invites-report-record" ng-repeat="inviteSent in invites">
+                                <div class="training-invites-report-record-wrapper">
+
+                                    <div class="training-invites-accordion-toggle">
+                                        <div class="training-drawer-open" ng-hide="inviteSent.DetailsOpen" ng-click="toggleDrawer(inviteSent, true, $index, $event)"></div>
+                                        <div class="training-drawer-close" ng-show="inviteSent.DetailsOpen" ng-click="toggleDrawer(inviteSent, false, $index, $event)"></div>
+                                    </div>
+                                    <div class="training-invites-name">
+                                        {{inviteSent.TraineeName}}
+                                    </div>
+                                    <div class="training-invites-email">
+                                        {{inviteSent.TraineeEmail}}
+                                    </div>
+                                    <div class="training-invites-access">
+                                        <span ng-switch="inviteSent.AccessState">
+                                            <span ng-switch-when="@((int)Invites.AccessStates.Invited)">{{inviteSent.DateInvited | date:'shortDate'}}</span>
+                                            <span ng-switch-when="@((int)Invites.AccessStates.Active)">@(Invites.AccessStates.Active)</span>
+                                            <span ng-switch-when="@((int)Invites.AccessStates.Idle)">@(Invites.AccessStates.Active)</span>
+                                            <span ng-switch-when="@((int)Invites.AccessStates.Expired)">@(Invites.AccessStates.Expired)</span>
+                                        </span>
+                                    </div>
+                                    <div class="training-invites-progress-bar">
+                                        <div class="trainee-progress-bar">
+                                            <div class="trainee-progress-bar-fill" ng-init="myStyle={'width':inviteSent.PercentComplete*100+'%'}" ng-style="myStyle"><!-- --></div>
+                                            @*<div class="trainee-progress-bar-fill" style="width: 40px;"><!-- --></div>*@
+                                        </div>
+                                    </div>
+                                    <div class="training-invites-buttons">
+                                        <input class="training-invites-reinvite" type="button" ng-disabled="inviteSent.Resending" ng-click="resend(inviteSent, $index)" value="RE-INVITE" />
+                                        <input class="training-invites-delete" type="button" ng-disabled="inviteSent.Resending" ng-click="confirmDelete(inviteSent)" value="" />
+                                        <div class="training-invites-resend" ng-show="inviteSent.Resending == true">
+                                            <div class="invite-resend-message"><i class="fa fa-circle-o-notch fa-spin"></i> Resending invite...</div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="trainee-delete" ng-show="inviteSent.AreYouSure">
+                                        <div class="trainee-delete-message">Delete Trainee?</div>
+                                        <input class="trainee-delete-confirm" type="button" ng-click="delete(inviteSent, $index)" value="Delete" />
+                                        <input class="trainee-delete-cancel" type="button" ng-click="cancelDelete(inviteSent)" value="Cancel" />                                                                         
+                                    </div>
+
+
+                                </div>
+                                <div class="training-invites-report-record-drawer" style="display: none;">
+                                    <ul class="training-progress-report">
+                                        <li class="training-topic" ng-repeat="inviteSubject in inviteSent.InviteSubjects">
+                                            <div class="training-topic-name">{{inviteSubject.Subject.Title}}</div>
+                                            <div class="training-topic-quiz-report">
+
+                                                <div class="quiz-report-inner-wrapper">
+                                                    <div class="quiz-report-title" ng-show="(!inviteSubject.Completed && inviteSubject.DateAccessed != null) || inviteSubject.DateAccessed == null">Incomplete</div>
+                                                    <div class="quiz-report-title" ng-show="inviteSubject.Completed && inviteSubject.Subject.Quiz != null">
+
+                                                        <ul class="training-topic-quiz-report-list">
+                                                            <li class="quiz-report-title" ng-show="inviteSubject.Subject.Quiz != null">Quiz Results:</li>
+                                                            <li class="training-topic-quiz-question" ng-repeat="question in inviteSubject.Subject.Quiz.Questions">
+                                                                <span class="question-number">Q{{question.SortOrder + 1}}.</span>
+                                                                <i class="fa fa-thumbs-up quiz-question-correct" ng-if="question.CorrectAnswer.AnswerID == question.Responses[0].Value"></i>
+                                                                <i class="fa fa-thumbs-down quiz-question-incorrect" ng-if="question.Responses != null && question.CorrectAnswer.AnswerID != question.Responses[0].Value"></i>
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                    <div class="quiz-report-title" ng-show="inviteSubject.DateAccessed != null && inviteSubject.Subject.Quiz == null">Viewed</div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="training-progress mobile">
+
+                    <div class="training-invites">
+
+                        <span style="color: green; " ng-show="loadingInvites"><img src="~/img/select2-spinner.gif" /> Loading invitations...</span>
+                                    
+                        <ul class="training-invites-report">
+                            <li class="training-invites-report-record" ng-repeat="inviteSent in invites">
+                                <div class="training-invites-report-record-wrapper">
+
+                                    <div class="training-invites-accordion-toggle">
+                                        <div class="training-drawer-open" ng-hide="inviteSent.DetailsOpen" ng-click="toggleDrawer(inviteSent, true, $index, $event)"></div>
+                                        <div class="training-drawer-close" ng-show="inviteSent.DetailsOpen" ng-click="toggleDrawer(inviteSent, false, $index, $event)"></div>
+                                    </div>
+                                    <div class="training-invites-name">
+                                        {{inviteSent.TraineeName}}
+                                    </div>
+                                    <div class="training-invite-delete">
+                                        <input class="training-invites-delete" type="button" ng-disabled="inviteSent.Resending" ng-click="confirmDelete(inviteSent)" value="" />
+                                    </div>
+                                    <div class="trainee-delete" ng-show="inviteSent.AreYouSure">
+                                        <div class="trainee-delete-message">Delete Trainee?</div>
+                                        <input class="trainee-delete-confirm" type="button" ng-click="delete(inviteSent, $index)" value="Delete" />
+                                        <input class="trainee-delete-cancel" type="button" ng-click="cancelDelete(inviteSent)" value="Cancel" />                                                                         
+                                    </div>
+
+                                </div>
+                                <div class="training-invites-report-record-drawer" style="display: none;">
+                                    <div class="training-invite-detail email">
+                                        <div class="label">Email</div>
+                                        <div class="value heavy">{{inviteSent.TraineeEmail}}</div>
+                                    </div>
+                                    <div class="training-invite-detail access">
+                                        <div class="label">Access</div>
+                                        <div class="value" ng-switch="inviteSent.AccessState">
+                                            <span ng-switch-when="@((int)Invites.AccessStates.Invited)">{{inviteSent.DateInvited | date:'shortDate'}}</span>
+                                            <span ng-switch-when="@((int)Invites.AccessStates.Active)">@(Invites.AccessStates.Active)</span>
+                                            <span ng-switch-when="@((int)Invites.AccessStates.Idle)">@(Invites.AccessStates.Active)</span>
+                                            <span ng-switch-when="@((int)Invites.AccessStates.Expired)">@(Invites.AccessStates.Expired)</span>
+                                        </div>
+                                    </div>
+                                    <div class="training-invite-detail progress">
+                                        <div class="drawer-toggle">
+                                            <div class="progress-drawer-open" ng-hide="inviteSent.ProgressOpen" ng-click="toggleProgressDrawer(true, $index, $event)"></div>
+                                            <div class="progress-drawer-close" ng-show="inviteSent.ProgressOpen" ng-click="toggleProgressDrawer(false, $index, $event)"></div>
+                                        </div>
+                                        <div class="label progress">Progress</div>
+                                        <div class="value">
+                                            <div class="trainee-progress-bar">
+                                                <div class="trainee-progress-bar-fill" ng-init="myStyle={'width':inviteSent.PercentComplete*100+'%'}" ng-style="myStyle"><!-- --></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="training-progress-report" style="display: none;">
+                                        <li class="training-topic" ng-repeat="inviteSubject in inviteSent.InviteSubjects">
+                                                <div class="training-report-header"><span class="topic-name">{{inviteSubject.Subject.Title}}</span> <span class="quiz-results">Quiz Results:</span></div>
+                                            <div class="training-topic-quiz-report">
+                                                <div class="quiz-report-inner-wrapper">
+                                                    <div class="quiz-report-title" ng-show="(!inviteSubject.Completed && inviteSubject.DateAccessed != null) || inviteSubject.DateAccessed == null">Incomplete</div>
+                                                    <div class="quiz-report-title" ng-show="inviteSubject.Completed && inviteSubject.Subject.Quiz != null">
+                                                        <ul class="training-topic-quiz-report-list">
+                                                            <li class="training-topic-quiz-question" ng-repeat="question in inviteSubject.Subject.Quiz.Questions">
+                                                                <span class="question-number">Q{{question.SortOrder + 1}}.</span>
+                                                                <i class="fa fa-thumbs-up quiz-question-correct" ng-if="question.CorrectAnswer.AnswerID == question.Responses[0].Value"></i>
+                                                                <i class="fa fa-thumbs-down quiz-question-incorrect" ng-if="question.Responses != null && question.CorrectAnswer.AnswerID != question.Responses[0].Value"></i>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="quiz-report-title" ng-show="inviteSubject.DateAccessed != null && inviteSubject.Subject.Quiz == null">Viewed</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="training-invites-buttons">
+                                        <input class="training-invites-reinvite" type="button" ng-disabled="inviteSent.Resending" ng-click="resend(inviteSent, $index)" value="RE-INVITE" />
+
+                                        <div class="training-invites-resend" ng-show="inviteSent.Resending == true">
+                                            <div class="invite-resend-message"><i class="fa fa-circle-o-notch fa-spin"></i> Resending invite...</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </section>
+
+                <h3 class="title__coursebuilder-modules">Supplemental Training</h3>
+                <p class="light">Use these additional training tools and resources to support your daily operation.</p>
+
+            </div>
+
+            
+
+        </div>
+
+    </section>
+
+    @Html.Action("RenderSupplementalCategories", "CourseSurface")
+
+    <footer class="lead-bar">
+        <div class="lead-bar-messaging training">
+        
+            <a class="btn std-leadform contact" href="/contact-form/">Have Questions?</a>
+
+        </div>
+        <div class="lead-bar-logo">
+        @if (Request.Url.Host.Split('.').First().ToUpper() == "FR")
+        {
+            <img src="/img/sbs-footer-ca-fr.png" />
+        }
+        else
+        {
+            <img src="/img/sbs-footer.png" />
+        }
+        </div>
+    </footer>
+
+</section>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SBS.TrainingFunctionality();
+        });
+    </script>
+}

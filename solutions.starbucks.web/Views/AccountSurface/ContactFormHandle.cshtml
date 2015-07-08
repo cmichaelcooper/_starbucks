@@ -1,0 +1,150 @@
+﻿@using System.Web.Mvc.Html
+@using Umbraco.Web
+@using solutions.starbucks.web.Controllers
+@using solutions.starbucks.Model
+@model ContactViewModel
+
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+    var currentUrl = Request.RawUrl;
+    var captchaFontColor = "black";
+    bool captchaError = false;
+    
+}
+
+<div>
+
+@if (Convert.ToBoolean(TempData["Success"]))
+{
+    <div class="success">
+        <p>You have successfully sent your request. A representative will contact you soon. </p>
+    </div>
+}
+else
+{
+     foreach (ModelState modelState in ViewData.ModelState.Values)
+        {
+            var errors = modelState.Errors;
+
+            if (errors.Any())
+            {
+
+                <ul>
+                    @foreach (ModelError error in errors)
+                    {
+                        if (error.ErrorMessage == "SpamBot")
+                        {
+                            captchaFontColor = "red";
+                            captchaError = true;
+                            
+                        }
+
+                    }
+                </ul>
+            }
+        }
+     using (Html.BeginUmbracoForm<AccountSurfaceController>("ProcessContactForm"))
+     {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            
+                <div class="grouping email reg-one">
+                    <label><span class="field-label">Email*</span> @Html.ValidationMessageFor(model => model.EmailAddress, string.Empty, new { @class = "help-block" })</label>
+                    @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control", placeholder = "Email Address" })
+                    
+                </div>
+                <div class="grouping email reg-one">
+                    <label><span class="field-label">Name*</span> @Html.ValidationMessageFor(model => model.Name, string.Empty, new { @class = "help-block" })</label>
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Name" })
+                    
+                </div>
+                <div class="grouping email reg-one">
+                    <label><span class="field-label">Business Name*</span> @Html.ValidationMessageFor(model => model.BusinessName, string.Empty, new { @class = "help-block" })</label>
+                    @Html.TextBoxFor(model => model.BusinessName, new { @class = "form-control", placeholder = "Business Name" })
+                    
+                </div>
+                <div class="grouping email reg-one">
+                    <label><span class="field-label">Phone*</span> @Html.ValidationMessageFor(model => model.Phone, string.Empty, new { @class = "help-block" })</label>
+                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "Phone Number" })
+                     @Html.HiddenFor(model => model.CurrentForm)
+                    
+                </div>
+                <div class="grouping email reg-one">
+                    <label><span class="field-label">How can we help?*</span> @Html.ValidationMessageFor(model => model.Message, string.Empty, new { @class = "help-block" }) </label>
+                    @Html.TextAreaFor(model => model.Message, new { @class = "form-control", placeholder = "Briefly describe the problem you are experiencing" })
+                </div>
+            @if (!currentUrl.Contains("forgot-account"))
+            {
+
+                 <div class="grouping email reg-one">
+                    <label><span class="field-label">Account Number</span> @Html.ValidationMessageFor(model => model.AccountNumber, string.Empty, new { @class = "help-block" })</label>
+                    @Html.TextBoxFor(model => model.AccountNumber, new { @class = "form-control", placeholder = "Account Number" })
+                    
+                   
+                </div>
+            }
+                <div class="grouping email reg-one @( captchaError ? "has-error" : "")">
+                    <script type="text/javascript">
+                        var RecaptchaOptions = {
+                            theme: 'custom',
+                            custom_theme_widget: 'recaptcha_widget',
+                            custom_translations: {
+                                cant_hear_this: "Audio not playing? Download as mp3.",
+                            },
+                        };
+                      </script>
+                      <div id="recaptcha_widget" style="display:none">
+                              <div id="recaptcha_image"></div>
+                              
+                              @if (!captchaError)
+                              {   
+                              
+                                 <label>
+                                    <span class="field-label recaptcha_only_if_image">Please enter the words from above:</span>
+                                </label>
+                                <label>
+                                    <span class="field-label recaptcha_only_if_audio">Please enter the numbers you hear:</span>
+                                </label>
+                              }
+                              else
+                              {
+                                <label>
+                                    <span class="field-label"></span>
+                                    <span class="help-block field-validation-error" ><span for="recaptcha" generated="true" class="">Incorrect please try again</span></span>
+                                </label>
+                              }
+                           <input type="text" id="recaptcha_response_field" class="recaptcha-response-field" name="recaptcha_response_field" />
+
+                           <div><a href="javascript:Recaptcha.reload()">Can't see the image above? Click here to refresh.</a></div>
+                           <div class="recaptcha_only_if_image"><a href="javascript:Recaptcha.switch_type('audio')">Can't read the message? Click here for audio.</a></div>
+                           <div class="recaptcha_only_if_audio"><a href="javascript:Recaptcha.switch_type('image')">Can't hear the message? Click here for text.</a></div>
+
+                    </div>
+
+                    <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LeTl_gSAAAAAP_hYK46d1IjY8cLyFGC6nzb6T3J"></script>
+                    <noscript>
+                       <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LeTl_gSAAAAAP_hYK46d1IjY8cLyFGC6nzb6T3J" height="300" width="500" frameborder="0"></iframe><br>
+                       <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                       <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+                    </noscript>
+                </div>
+
+            <div class="required-notice">*Indicates Required Field</div>
+            <button type="submit" class="btn btn-default">Submit</button>
+
+        </fieldset>
+    
+
+    }      
+
+}
+</div>
+
+@section scripts {
+
+
+}
+    

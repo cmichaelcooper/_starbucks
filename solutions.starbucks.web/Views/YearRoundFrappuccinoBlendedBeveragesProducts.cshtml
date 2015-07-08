@@ -1,0 +1,1372 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+}
+
+@{
+    var inputValue = 0;
+    var currentUrl = Request.RawUrl;
+    if (currentUrl.Contains("program"))
+    {
+    <script src="/js/libs/jquery-mobile/jquery.mobile.custom.js"></script>
+    <script src="/js/libs/joyride/jquery.joyride-2.1.js"></script>
+    <script src="/js/libs/select2.js"></script>
+    }
+}
+
+
+<section id="content">
+    <section class="wrapper">
+        <div class="products-wrapper">
+			<div class="your-products">
+
+                <h3>Browse all of our Program Products</h3>
+                <p><a class="inline-link" href="#products-submit" data-role="none">Or continue your order below</a>. Any recipes added in the previous step will be reflected on this page.</p>
+
+                <form id="programItemsForm" method="post">
+                    <article id="product-Frappuccino_Roast_Soluble_Coffee" class="product Frappuccino_Roast_Soluble_Coffee available">
+                        <div id="out-of-stock-overlay">
+                            <div class="overlay-inner">
+                                <p>Out of stock for the season</p>
+                            </div>
+                        </div>
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/products/200/java_chip_frappuccino__.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">Frappuccino® Roast Soluble Coffee</h2>
+                                    @* <p>For summer months or year-round, this is an approachable, balanced, caramelly-smooth blend of Latin American and African beans with a hint of citrus and sweetness.</p> *@
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">2 oz</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">11032158</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">24 pouches/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-11032158"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-11032158"]);
+                                                            TempData.Remove("SKU-11032158");
+
+                                                        }
+                                                        @Html.TextBox("SKU-11032158", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="product-Frappuccino_Syrup_Coffee_Base" class="product Frappuccino_Syrup_Coffee_Base available">
+                        <div id="out-of-stock-overlay">
+                            <div class="overlay-inner">
+                                <p>Out of stock for the season</p>
+                            </div>
+                        </div>
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/products/200/frappuccino__syrup_coffee_base.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">Frappuccino® Syrup Coffee Base</h2>
+                                    @* <p>The perfect foundation for a wide variety of specialty beverages. A must-have for your operation.</p> *@
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">63 oz</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">11028550</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">4/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-11028550"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-11028550"]);
+                                                            TempData.Remove("SKU-11028550");
+
+                                                        }
+                                                        @Html.TextBox("SKU-11028550", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="product-Fontana_Bittersweet_Chocolate_Mocha_Sauce" class="product Fontana_Bittersweet_Chocolate_Mocha_Sauce available">
+                        <div id="out-of-stock-overlay">
+                            <div class="overlay-inner">
+                                <p>Out of stock for the season</p>
+                            </div>
+                        </div>
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/products/200/Bittersweet_Chocolate_Sauce.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">Fontana™ Bittersweet Chocolate Mocha Sauce</h2>
+                                    <p>Created with a higher cocoa content than standard chocolate that adds complex and indulgent chocolate flavor to any beverage.</p>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">63 oz</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">998019</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">4/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-998019"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-998019"]);
+                                                            TempData.Remove("SKU-998019");
+
+                                                        }
+                                                        @Html.TextBox("SKU-998019", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="product-Fontana_Caramel_Syrup" class="product Fontana_Caramel_Syrup available">
+                        <div id="out-of-stock-overlay">
+                            <div class="overlay-inner">
+                                <p>Out of stock for the season</p>
+                            </div>
+                        </div>
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/products/200/Caramel_Syrup.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">Fontana® Caramel Syrup</h2>
+                                    @* <p>The perfect foundation for a wide variety of specialty beverages. A must-have for your operation.</p> *@
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">1 liter</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">11041374</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">4/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-11041374"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-11041374"]);
+                                                            TempData.Remove("SKU-11041374");
+
+                                                        }
+                                                        @Html.TextBox("SKU-11041374", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="product-Fontana_Caramel_Sauce" class="product Fontana_Caramel_Sauce available">
+                        <div id="out-of-stock-overlay">
+                            <div class="overlay-inner">
+                                <p>Out of stock for the season</p>
+                            </div>
+                        </div>
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/products/200/Caramel_Sauce.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">Fontana™ Caramel Sauce</h2>
+                                    <p>Great for adding warmth and caramelly indulgence to beverages. Also handy for garnishing.</p>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">63 oz</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">188039</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">4/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-188039"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-188039"]);
+                                                            TempData.Remove("SKU-188039");
+
+                                                        }
+                                                        @Html.TextBox("SKU-188039", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="product-Crème_Frappuccino_Syrup_Base" class="product Crème_Frappuccino_Syrup_Base available">
+                        <div id="out-of-stock-overlay">
+                            <div class="overlay-inner">
+                                <p>Out of stock for the season</p>
+                            </div>
+                        </div>
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/products/200/frappuccino__cr_me_syrup.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">Frappuccino® Syrup Crème Base</h2>
+                                    <p>Frappuccino® Crème Syrup is the key ingredient in making the smooth creamy texture of the Starbucks® Crème Frappuccino® blended beverage. Use this syrup with Vanilla Bean and Strawberry for the perfect Starbucks® Crème Blended Beverages.</p>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">63 oz</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">11028747</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">4/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-11028747"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-11028747"]);
+                                                            TempData.Remove("SKU-11028747");
+
+                                                        }
+                                                        @Html.TextBox("SKU-11028747", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="product-Strawberry_Juice" class="product Strawberry_Juice available">
+                        <div id="out-of-stock-overlay">
+                            <div class="overlay-inner">
+                                <p>Out of stock for the season</p>
+                            </div>
+                        </div>
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/Products/200/strawberry_flavored_fruit_blend.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">Strawberry Flavored Fruit Blend</h2>
+                                    <p>Made with real strawberry puree this is a key ingredient in Starbucks® Strawberries &amp; Crème Frappuccino® blended beverages.</p>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">63 oz</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">11023435</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">4/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-11023435"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-11023435"]);
+                                                            TempData.Remove("SKU-11023435");
+
+                                                        }
+                                                        @Html.TextBox("SKU-11023435", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="product-Fontana_Classic_Syrup" class="product Fontana_Classic_Syrup available">
+                        <div id="out-of-stock-overlay">
+                            <div class="overlay-inner">
+                                <p>Out of stock for the season</p>
+                            </div>
+                        </div>
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/products/200/Classic_Syrup.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">Fontana® Classic Syrup</h2>
+                                    <p>The perfect foundation for a wide variety of specialty beverages. A must-have for your operation.</p>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">1 liter</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">11041386</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">4/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-11041386"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-11041386"]);
+                                                            TempData.Remove("SKU-11041386");
+
+                                                        }
+                                                        @Html.TextBox("SKU-11041386", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="product-Vanilla_Bean_Powder" class="product Vanilla_Bean_Powder available">
+                        <div id="out-of-stock-overlay">
+                            <div class="overlay-inner">
+                                <p>Out of stock for the season</p>
+                            </div>
+                        </div>
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/Products/200/vanilla_bean_powder.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">Vanilla Bean Powder</h2>
+                                    <p>Made with real vanilla beans for a delicious vanilla blended beverage, Starbucks Vanilla Bean Powder is a key ingredient in Starbucks Vanilla Bean Frappuccino® blended beverage.</p>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">1 liter</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">181892</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">4/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-181892"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-181892"]);
+                                                            TempData.Remove("SKU-181892");
+
+                                                        }
+                                                        @Html.TextBox("SKU-181892", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!--
+
+                            Begin Supporting Products
+
+                    -->
+
+                    <article data-sku="1237520" id="product-PP_Cold_Cups" class="product PP_Cold_Cups available">
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/products/200/Cold_Cups.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">PP Cold Cups</h2>
+                                    <p>"We Proudly Serve" branded polyporpylene cups are recyclable and use 15% less plastic than PET cups and emit 45% less greenhouse gasses during their production.</p>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">16 oz</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">1237520</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">1000/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-1237520"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-1237520"]);
+                                                            TempData.Remove("SKU-1237520");
+
+                                                        }
+                                                        @Html.TextBox("SKU-1237520", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article data-sku="1237505" id="product-PP_Cold_Cup_Lids" class="product PP_Cold_Cup_Lids available">
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/programs/year-round/cold-flat-lids.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">PP Cold Cup Lids</h2>
+                                    <p>Flat Lids for cold cups</p>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">16/24 oz</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">1237505</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">1000/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-1237505"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-1237505"]);
+                                                            TempData.Remove("SKU-1237505");
+
+                                                        }
+                                                        @Html.TextBox("SKU-1237505", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article data-sku="1237504" id="product-PP_Cold_Cup_Lids" class="product PP_Cold_Cup_Lids available">
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/programs/year-round/cold-domed-lids.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">PP Cold Cup Lids</h2>
+                                    <p>Domed Lids for cold cups</p>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">16/24 oz</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">1237504</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">1000/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-1237504"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-1237504"]);
+                                                            TempData.Remove("SKU-1237504");
+
+                                                        }
+                                                        @Html.TextBox("SKU-1237504", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article data-sku="11007879" id="product-Green_Straws" class="product Green_Straws available">
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/products/200/Green_Straws.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">Green Straws</h2>
+                                    <p>Green straws for Starbucks 12, 16 and 24 oz. iced beverages.</p>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">12/16 oz</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">11007879</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">1000/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-11007879"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-11007879"]);
+                                                            TempData.Remove("SKU-11007879");
+
+                                                        }
+                                                        @Html.TextBox("SKU-11007879", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article data-sku="11009969" id="product-40%_PCF_Napkins" class="product 40%_PCF_Napkins available">
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/products/200/SBX_Napkins.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">40% PCF Napkins</h2>
+                                    <p>Complete your branded service with We Proudly Serve napkins.</p>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">6 3/8&#34; x 4 3/4&#34; folded</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">11009969</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">6000/case</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-11009969"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-11009969"]);
+                                                            TempData.Remove("SKU-11009969");
+
+                                                        }
+                                                        @Html.TextBox("SKU-11009969", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article data-sku="177803" id="product-Whipped_Cream_Dispenser" class="product Whipped_Cream_Dispenser available">
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/products/200/Whipped_Cream_Dispenser.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">Whipped Cream Dispenser</h2>
+                                    <p>Stainless-steel whipped cream dispenser manufactured by ISI. Comes with decorating tip, charger holder and cleaning brush.</p>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">N/A</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">177803</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">1/each</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-177803"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-177803"]);
+                                                            TempData.Remove("SKU-177803");
+
+                                                        }
+                                                        @Html.TextBox("SKU-177803", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article data-sku="11009969" id="product-Decorating_Tip" class="product Decorating_Tip available">
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/products/200/Decorating_Tip.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">Decorating Tip</h2>
+                                    <p>Decorating tip for ISI whipped cream dispenser.</p>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">N/A</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">177806</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">10/bag</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-177806"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-177806"]);
+                                                            TempData.Remove("SKU-177806");
+
+                                                        }
+                                                        @Html.TextBox("SKU-177806", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article data-sku="150998" id="product-1_Teaspoon_Scoop" class="product 1_Teaspoon_Scoop available">
+                        <div class="product-inner">
+                            <div class="product-column img">
+                                <div class="img-wrapper">
+                                    <img class="product-image" src="/img/products/200/1_teaspoon_scoop.jpg" />
+                                </div>
+                            </div>
+                            <div class="product-column details">
+                                <div class="product-info">
+                                    <h2 class="title">1 Teaspoon Scoop</h2>
+                                </div>
+                                <div class="product-skus">
+                                    <ul class="product-sku-list">
+                                        <li class="product-sku-group">
+                                            <ul>
+                                                <li class="product-sku">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="key">Size </span>
+                                                            <span class="value">N/A</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">SKU</span>
+                                                            <span class="value">150998</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="key">Pack</span>
+                                                            <span class="value">1/each</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="product-order-qty">
+                                                    <span class="prod-qty">
+                                                        <label>Qty</label>
+                                                        @if (TempData.ContainsKey("SKU-150998"))
+                                                        {
+                                                            inputValue = Convert.ToInt32(TempData["SKU-150998"]);
+                                                            TempData.Remove("SKU-150998");
+
+                                                        }
+                                                        @Html.TextBox("SKU-150998", inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                        @{ inputValue = 0; }
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!--    End Supporting Products -->
+
+                    <!--    Begin Marketing -->
+                    @if (TempData.ContainsKey("MKT-SFS-007-WPS-CC1-00864-P"))
+                    {
+                        <article data-sku="MKT-SFS-007-WPS-CC1-00864-P" class="product">
+                            <div class="product-inner">
+                                <div class="product-column img">
+                                    <div class="img-wrapper">
+                                        <img class="product-image" src="/img/programs/year-round/iced-coffee-starter-kit-marketing.png" />
+                                    </div>
+                                </div>
+                                <div class="product-column details">
+                                    <div class="product-info">
+                                        <h2 class="title">Frappuccino Coffee Marketing Materials</h2>
+                                        <p>Counter Card</p>
+                                    </div>
+                                    <div class="product-skus">
+                                        <ul class="product-sku-list">
+                                            <li class="product-sku-group">
+                                                <ul>
+                                                    <li class="product-sku">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="key">Size</span>
+                                                                <span class="value">8.5&#34; x 11&#34;</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="key">SKU</span>
+                                                                <span class="value">SFS-007-WPS-CC1-00864-P</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="key">Pack</span>
+                                                                <span class="value">1</span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="product-order-qty">
+                                                        <span class="prod-qty">
+                                                            <label>Qty</label>
+                                                            @{
+                                                                inputValue = Convert.ToInt32(TempData["MKT-SFS-007-WPS-CC1-00864-P"]);
+                                                                TempData.Remove("MKT-SFS-007-WPS-CC1-00864-P");
+                                                            }
+                                                            @Html.TextBox("MKT-SFS-007-WPS-CC1-00864-P", inputValue, new { @type = "number", @class = "qty-input", @min = "0", @readonly="true" })
+                                                            @{
+                                                                inputValue = 0;
+                                                            }
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    }
+
+                    @if (TempData.ContainsKey("MKT-SFS-007-WPS-TT1-00898-P"))
+                    {
+                        <article data-sku="MKT-SFS-007-WPS-TT1-00898-P" class="product">
+                            <div class="product-inner">
+                                <div class="product-column img">
+                                    <div class="img-wrapper">
+                                        <img class="product-image" src="/img/programs/year-round/iced-coffee-starter-kit-marketing.png" />
+                                    </div>
+                                </div>
+                                <div class="product-column details">
+                                    <div class="product-info">
+                                        <h2 class="title">Frappuccino Coffee Marketing Materials</h2>
+                                        <p>Table Tent</p>
+                                    </div>
+                                    <div class="product-skus">
+                                        <ul class="product-sku-list">
+                                            <li class="product-sku-group">
+                                                <ul>
+                                                    <li class="product-sku">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="key">Size</span>
+                                                                <span class="value">5&#34; x 7&#34;</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="key">SKU</span>
+                                                                <span class="value">SFS-007-WPS-TT1-00898-P</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="key">Pack</span>
+                                                                <span class="value">1</span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="product-order-qty">
+                                                        <span class="prod-qty">
+                                                            <label>Qty</label>
+                                                            @{
+                                                                inputValue = Convert.ToInt32(TempData["MKT-SFS-007-WPS-TT1-00898-P"]);
+                                                                TempData.Remove("MKT-SFS-007-WPS-TT1-00898-P");
+                                                            }
+                                                            @Html.TextBox("MKT-SFS-007-WPS-TT1-00898-P", inputValue, new { @type = "number", @class = "qty-input", @min = "0", @readonly="true" })
+                                                            @{
+                                                                inputValue = 0;
+                                                            }
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    }
+
+                    @if (TempData.ContainsKey("MKT-SFS-007-WPS-PST-00863-28"))
+                    {
+                        <article data-sku="MKT-SFS-007-WPS-PST-00863-28" class="product">
+                            <div class="product-inner">
+                                <div class="product-column img">
+                                    <div class="img-wrapper">
+                                        <img class="product-image" src="/img/programs/year-round/iced-coffee-starter-kit-marketing.png" />
+                                    </div>
+                                </div>
+                                <div class="product-column details">
+                                    <div class="product-info">
+                                        <h2 class="title">Frappuccino Coffee Marketing Materials</h2>
+                                        <p>Poster</p>
+                                    </div>
+                                    <div class="product-skus">
+                                        <ul class="product-sku-list">
+                                            <li class="product-sku-group">
+                                                <ul>
+                                                    <li class="product-sku">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="key">Size</span>
+                                                                <span class="value">22&quot; x 28&quot;</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="key">SKU</span>
+                                                                <span class="value">SFS-007-WPS-PST-00863-28</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="key">Pack</span>
+                                                                <span class="value">1</span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="product-order-qty">
+                                                        <span class="prod-qty">
+                                                            <label>Qty</label>
+                                                            @{
+                                                                inputValue = Convert.ToInt32(TempData["MKT-SFS-007-WPS-PST-00863-28"]);
+                                                                TempData.Remove("MKT-SFS-007-WPS-PST-00863-28");
+                                                                }
+                                                            @Html.TextBox("MKT-SFS-007-WPS-PST-00863-28", inputValue, new { @type = "number", @class = "qty-input", @min = "0", @readonly="true" })
+                                                            @{
+                                                                inputValue = 0;
+                                                            }
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    }
+
+                    @if (TempData.ContainsKey("MKT-SFS-007-WPS-CC1-00861"))
+                    {
+                        <article data-sku="MKT-SFS-007-WPS-CC1-00861" class="product">
+                            <div class="product-inner">
+                                <div class="product-column img">
+                                    <div class="img-wrapper">
+                                        <img class="product-image" src="/img/programs/year-round/frappuccino-coffee-creme-kit-marketing.jpg" />
+                                    </div>
+                                </div>
+                                <div class="product-column details">
+                                    <div class="product-info">
+                                        <h2 class="title">Frappuccino Full Program Marketing Materials</h2>
+                                        <p>Counter Card</p>
+                                    </div>
+                                    <div class="product-skus">
+                                        <ul class="product-sku-list">
+                                            <li class="product-sku-group">
+                                                <ul>
+                                                    <li class="product-sku">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="key">Size</span>
+                                                                <span class="value">8.5&#34; x 11&#34;</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="key">SKU</span>
+                                                                <span class="value">SFS-007-WPS-CC1-00861</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="key">Pack</span>
+                                                                <span class="value">1</span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="product-order-qty">
+                                                        <span class="prod-qty">
+                                                            <label>Qty</label>
+                                                            @{
+                                                                inputValue = Convert.ToInt32(TempData["MKT-SFS-007-WPS-CC1-00861"]);
+                                                                TempData.Remove("MKT-SFS-007-WPS-CC1-00861");
+                                                            }
+                                                            @Html.TextBox("MKT-SFS-007-WPS-CC1-00861", inputValue, new { @type = "number", @class = "qty-input", @min = "0", @readonly="true" })
+                                                            @{
+                                                                inputValue = 0;
+                                                            }
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    }
+
+                    @if (TempData.ContainsKey("MKT-SFS-007-WPS-TT1-00867"))
+                    {
+                        <article data-sku="MKT-SFS-007-WPS-TT1-00867" class="product">
+                            <div class="product-inner">
+                                <div class="product-column img">
+                                    <div class="img-wrapper">
+                                        <img class="product-image" src="/img/programs/year-round/frappuccino-coffee-creme-kit-marketing.jpg" />
+                                    </div>
+                                </div>
+                                <div class="product-column details">
+                                    <div class="product-info">
+                                        <h2 class="title">Frappuccino Full Program Marketing Materials</h2>
+                                        <p>Table Tent</p>
+                                    </div>
+                                    <div class="product-skus">
+                                        <ul class="product-sku-list">
+                                            <li class="product-sku-group">
+                                                <ul>
+                                                    <li class="product-sku">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="key">Size</span>
+                                                                <span class="value">5&#34; x 7&#34;</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="key">SKU</span>
+                                                                <span class="value">SFS-007-WPS-TT1-00867</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="key">Pack</span>
+                                                                <span class="value">1</span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="product-order-qty">
+                                                        <span class="prod-qty">
+                                                            <label>Qty</label>
+                                                            @{
+                                                                inputValue = Convert.ToInt32(TempData["MKT-SFS-007-WPS-TT1-00867"]);
+                                                                TempData.Remove("MKT-SFS-007-WPS-TT1-00867");
+                                                            }
+                                                            @Html.TextBox("MKT-SFS-007-WPS-TT1-00867", inputValue, new { @type = "number", @class = "qty-input", @min = "0", @readonly="true" })
+                                                            @{
+                                                                inputValue = 0;
+                                                            }
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    }
+
+                    @if (TempData.ContainsKey("MKT-SFS-007-WPS-PST-00860-28"))
+                    {
+                        <article data-sku="MKT-SFS-007-WPS-PST-00860-28" class="product">
+                            <div class="product-inner">
+                                <div class="product-column img">
+                                    <div class="img-wrapper">
+                                        <img class="product-image" src="/img/programs/year-round/frappuccino-coffee-creme-kit-marketing.jpg" />
+                                    </div>
+                                </div>
+                                <div class="product-column details">
+                                    <div class="product-info">
+                                        <h2 class="title">Frappuccino Full Program Marketing Materials</h2>
+                                        <p>Poster</p>
+                                    </div>
+                                    <div class="product-skus">
+                                        <ul class="product-sku-list">
+                                            <li class="product-sku-group">
+                                                <ul>
+                                                    <li class="product-sku">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="key">Size</span>
+                                                                <span class="value">22&quot; x 28&quot;</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="key">SKU</span>
+                                                                <span class="value">SFS-007-WPS-PST-00860-28</span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="key">Pack</span>
+                                                                <span class="value">1</span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="product-order-qty">
+                                                        <span class="prod-qty">
+                                                            <label>Qty</label>
+                                                            @{
+                                                                inputValue = Convert.ToInt32(TempData["MKT-SFS-007-WPS-PST-00860-28"]);
+                                                                TempData.Remove("MKT-SFS-007-WPS-PST-00860-28");
+                                                                }
+                                                            @Html.TextBox("MKT-SFS-007-WPS-PST-00860-28", inputValue, new { @type = "number", @class = "qty-input", @min = "0", @readonly="true" })
+                                                            @{
+                                                                inputValue = 0;
+                                                            }
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    }
+
+                </form>    
+                <a name="products-submit"></a>
+                <section class="products-add-to-bag">
+                    <div class="inner-wrapper">
+                        <button class="products-add" id="finish-prog-order" data-action="@Url.Action("AddItemsToBag", "BagSurface")">Add To Bag</button>
+                    </div>
+                </section>
+	        </div>
+			<input name='ufprt' type='hidden' value='E17FB4D65D6E136B9DF3F0F383291B84C6944782DCB3E0B940EED2B844F4872FEC20571865F4C1E5A1FC37BBA846CD31450E8EEC264B9DA411B2CB84DBD4CEDBF4E9E9CD0954754BA1B88B46701B71B8A8B9547E19A2027155961F18492C7AF69560AE889FC856A399FC8B23A023E346E754FDC00284745AACDD4331B07347E592E135C80C203CE4B53B55634B5AE617ADCC72BD7D0F55FCA4C8932106794D6E8C03262E' />
+		</div>
+	</section>
+</section>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SBS.ProgramFunctionality();
+        });
+    </script>
+    <script>
+        //ie8 checkbox
+
+        $(document).ready(function () {
+            $('.checkbox').unbind('click touch').bind('click touch', function () {
+
+                var aunt = $(this).parent().prev('input');
+
+                aunt.toggleClass('checked');
+
+            });
+
+            $(".mkt-select").select2({
+                minimumResultsForSearch: -1
+            });
+
+            $(".product-type-select").select2({
+                minimumResultsForSearch: -1,
+                dropdownCssClass: 'product-type-dropdown'
+            });
+
+            $('#explore-all-sugar-free-flavors .tile-elements h2').replaceWith('<h2>Explore all<br />Sugar-Free flavors</h2>');
+
+        });
+
+
+   </script>
+
+}

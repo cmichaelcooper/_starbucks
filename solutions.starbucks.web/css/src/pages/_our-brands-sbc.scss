@@ -1,0 +1,54 @@
+#seattles-best-coffee #site-wrapper #content {
+
+	header {
+
+		@include media($big-mobile) { padding-top: 80px; }
+
+		h1, h3, p { color: $med-gray; }
+		h1 {
+	
+			@include media($tablet) { width: 50%; }
+		}
+		
+		p {
+
+			@include media($big-mobile) { width: 440px; }
+			@include media($small-mobile) { width: 81%;	}
+		}
+	}
+
+	.body-content {
+
+		article { background-image: url(../img/backgrounds/sbc_overview_background.jpg); background-repeat: no-repeat; background-position: center center;
+
+			@include media($tablet) { background-image: none; }
+			@include media($big-mobile) { background-image: none; }
+			@include media($small-mobile) { background-image: none; }
+
+			&.ca-en, &.ca-fr { background-image: url(../img/backgrounds/sbc_overview_background-bil.jpg);
+
+				@include media($tablet) { background-image: none; background-position: left center; }
+				@include media($big-mobile) { background-image: none; }
+				@include media($small-mobile) { background-image: none; }
+
+				section {
+
+					@include media($tablet) { background-image: url(../img/backgrounds/sbc_overview_background_tablet-bil.jpg); background-position: left center; }
+					@include media($big-mobile) { background-image: url(../img/backgrounds/sbc_overview_background_mobile_landscape-bil.jpg); }
+					@include media($small-mobile) { background-image: url(../img/backgrounds/sbc_overview_background_mobile_portrait-bil.jpg); }
+				}
+			}
+
+			section { height: 480px; padding: 100px 20px 100px 460px; background-repeat: no-repeat; background-position: center center;
+
+				@include media($tablet) { background-image: url(../img/backgrounds/sbc_overview_background_tablet.jpg); background-position: left center; }
+				@include media($tablet) { padding-left: 300px; }
+				@include media($mobile) { height: auto; padding: 20px; }
+				@include media($big-mobile) { padding-bottom: 410px; background-image: url(../img/backgrounds/sbc_overview_background_mobile_landscape.jpg); }
+				@include media($small-mobile) { padding-bottom: 190px; background-image: url(../img/backgrounds/sbc_overview_background_mobile_portrait.jpg); background-position: center bottom; }
+			}
+		}
+	}
+
+	.support-content { background: #fff; }
+}

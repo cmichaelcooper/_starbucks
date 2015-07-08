@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    Layout = "Master.cshtml";
+}
+<section id="content" class="page">
+    <section class="page-contents">
+        <section class="wrapper">
+            <div class="page-title">
+                Starbucks Branded Solutions User Profiles
+            </div>
+            @Html.Action("RenderMemberListSearchResults", "ProfileSurface")
+        </section>
+    </section>
+</section>

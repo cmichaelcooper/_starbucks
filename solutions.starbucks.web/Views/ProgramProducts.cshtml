@@ -1,0 +1,130 @@
+﻿@using solutions.starbucks.Model
+@using System.Web.Mvc.Html
+@using solutions.starbucks.web.Controllers
+@using solutions.starbucks.Model
+@using solutions.starbucks.Model.Pocos
+@using Umbraco.Web
+@model ProgramProductDetailsModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 0;
+    var inputValue = 0;
+    var nextPage = "";
+    var member = Membership.GetUser();
+}
+
+<section id="content">
+    <section class="wrapper">
+        <div class="products-wrapper">
+            <div class="your-products">
+
+                <h3>Browse all of our Program Products</h3>
+                <p><a class="inline-link" href="#products-submit" data-role="none">Or continue your order below</a>. Any recipes added in the previous step will be reflected on this page.</p>
+
+
+                <form id="programItemsForm" method="post">
+                    @foreach (var prod in Model.Products.GroupBy(p => new { p.ProductID, p.FileName, p.Name, p.Description }).Select(g => g.First()))
+                    {
+                        var productImage = Html.Raw("");
+                            productImage = Html.Raw("<img class=\"product-image\" src=\"/img/products/200/" + prod.ProductID + ".jpg\" />");
+                            
+                        <article id="product-@(prod.ProductID)" class="product @prod.ProductID @prod.InventoryStatus">
+                            <div id="out-of-stock-overlay">
+                                <div class="overlay-inner">
+                                    <p>Out of stock for the season</p>
+                                </div>
+                            </div>
+                            <div class="product-inner">
+                                <div class="product-column img">
+                                    <div class="img-wrapper">
+                                        @productImage
+                                    </div>
+                                </div>
+                                <div class="product-column details">
+                                    <div class="product-info">
+                                        <h2 class="title">@prod.Name</h2>
+                                        <p>@prod.Description</p>
+                                    </div>
+                                    <div class="product-skus">
+                                        <ul class="product-sku-list">
+                                            @foreach (var sku in Model.Skus.Where(p => p.ProductID == prod.ProductID).GroupBy(p => new { p.SKUNumber }).Select(g => g.First()))
+                                            {
+                                                <li class="product-sku-group">
+                                                    <ul>
+                                                        <li class="product-sku">
+                                                            <ul>
+                                                                @if (sku.Trait.ToLower() == "size")
+                                                                {
+                                                                    <li>
+                                                                        <span class="key">@sku.Trait </span>
+                                                                        <span class="value">@sku.Value</span>
+                                                                    </li>
+                                                                }
+                                                                <li>
+                                                                    <span class="key">SKU</span>
+                                                                    <span class="value">@sku.SKUNumber</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="key">Pack</span>
+                                                                    <span class="value">@sku.UOM</span>
+                                                                </li>
+
+                                                            </ul>
+                                                        </li>
+                                                        <li class="product-order-qty">
+
+                                                            <span class="prod-qty">
+                                                                <label>Qty</label>
+
+
+                                                                @if (Model.ProgramProductsDictionary != null)
+                                                                {
+                                                                    if (Model.ProgramProductsDictionary.ContainsKey(sku.SKUNumber))
+                                                                    {
+                                                                        <h3>@Model.ProgramProductsDictionary[sku.SKUNumber]</h3>
+                                                                    }
+                                                                }
+
+                                                                @if (TempData.ContainsKey("SKU-" + sku.SKUNumber))
+                                                                {
+                                                                    inputValue = Convert.ToInt32(TempData["SKU-" + sku.SKUNumber]);
+                                                                    TempData.Remove("SKU-" + sku.SKUNumber);
+
+                                                                }
+                                                                @*<input class="qty-input" type="number" size="2" value="@inputValue" name="@sku.SKUNumber" data-role="none" />   *@
+                                                                @Html.TextBox("SKU-" + @sku.SKUNumber, inputValue, new { @type = "number", @class = "qty-input", @min = "0" })
+
+                                                                @{ inputValue = 0; }
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                        </article>
+                    }
+
+                </form>
+                <a name="products-submit"></a>
+                <section class="products-add-to-bag">
+                    <div class="inner-wrapper">
+                        <button class="products-add" id="finish-prog-order" data-action="@Url.Action("AddItemsToBag", "BagSurface")">Add To Bag</button>
+                    </div>
+                </section>
+
+
+            </div>
+        </div>
+    </section>
+</section>
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SBS.ProgramFunctionality();
+        });
+    </script>
+
+}
