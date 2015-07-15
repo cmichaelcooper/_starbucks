@@ -4,8 +4,11 @@ Branded Solutions was conceived to replace multiple Starbucks business-to-busine
 
 ## Technology Stack
 
-C# .Net MVC w/ Umbraco CMS
-HTML5, CSS3(SASS), Javascript/Jquery, Angular JS
+- C# .Net MVC w/ Umbraco CMS
+- HTML5
+- CSS3(SASS)
+- Javascript/Jquery
+- Angular JS
 
 ## Personal Contributions
 
