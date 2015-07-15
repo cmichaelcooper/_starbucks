@@ -1,4 +1,10 @@
-﻿@using solutions.starbucks.Model
+﻿/*
+
+@author = Chris M. Cooper (chris@cmichaelcooper.com)
+
+*/
+
+@using solutions.starbucks.Model
 @model HomeModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,6 +12,13 @@
     bool track = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["EnableGoogleAnalyticsTracking"]) ? true : false;
 }
 
+<!--
+
+After a user registers for the site, they are redirected to the home page
+They receive a message that prompts them to check their email to complete registration
+If they did not provide a valid account when registering, they receive a message about how to validate
+
+-->
 <div id="registerModal" class="reveal-modal custom-reveal-class-login " data-reveal>
    <a class="close-reveal-modal">&#215;</a>
     <img src="img/login-modal-logo.png" />
@@ -25,16 +38,33 @@
     <a class="register-done" href="/">OK</a>
 
 </div>
+
+
+
+<!--
+
+Welcome video modal
+
+-->
 <div id="videoModal" class="reveal-modal" data-reveal>
-      <iframe src="//player.vimeo.com/video/100911128?api=1&player_id=video-player" id="video-player" width="960" height="540" frameborder="0" class="home-video" ></iframe>
+    <iframe src="//player.vimeo.com/video/100911128?api=1&player_id=video-player" id="video-player" width="960" height="540" frameborder="0" class="home-video" ></iframe>
 
   <a class="close-reveal-modal">&#215;</a>
 </div>
+
+
+
+
 <section id="content" class="body-nav-height">
     <section>
 
         @Html.Raw(Model.BodyText)
 
+        <!--
+
+        Get Homepage Content from Umbraco
+
+        -->
         <ul class="path-links">
             <li>
                 @Html.Raw(Model.LeftPath)
@@ -49,6 +79,12 @@
         
     </section>
 </section>
+
+<!--
+
+Load VideoModal function from /js/main.js
+
+-->
 @section scripts {
 <script type="text/javascript">
     $(document).ready(function () {
@@ -58,6 +94,11 @@
     });
 </script>       
 
+<!--
+
+If user has completed registration, fire Google Analytics and Kissmetrics tracking events
+
+-->
 @if (Convert.ToBoolean(TempData["FinishedSignup"]))
 {
     
@@ -81,14 +122,4 @@
         </script>
 }
 
-@if (Convert.ToBoolean(TempData["LoginRequired"]))
-{
-    var returnUrl = Request.RawUrl.ToString();
-            <script>
-                $('#myModalTwo').foundation('reveal', 'open', {
-                    url: '/sign-in@(returnUrl)'});
-
-        </script>
-    
-}
 }
