@@ -1,20 +1,115 @@
-.content-band { width: 100%; background-color: #fff;
+.band { position: relative; }
+.band__inner-960 { @include blockcenter; width: 960px; padding: 60px 20px;
 
-	.inner-wrapper { width: 960px; margin: 0 auto; padding: 60px 0;
+	@include media($sub-desktop) { width: 100%; }
+    @include media($mobile) { padding: 20px; }
+}
+.band__inner-960--circle-img { @include clearfix; padding: 100px 20px 100px 320px; background-position: left center; background-repeat: no-repeat;
 
-		@include media($sub-desktop) { width: 100%; padding: 40px 20px 20px 20px; }
-		@include media($mobile) { padding: 20px; }
+    @include media($tablet){ padding-left: 340px; }
+    @include media($mobile) { padding-top: 20px; padding-bottom: 220px; padding-left: 20px; background-position: center bottom; background-size: 220px; }
+    @include media($big-mobile) { padding-bottom: 220px; }
+}
+.band__inner-1024 { @include blockcenter; width: 1024px; }
 
-		p {
+.band__title-body { @include fonts-light; font-size: 48px; line-height: .9em;
 
-			@include media($tablet) { padding-right: 20px; }
-		}
-	}
-	.inner-wrapper-1024 { width: 1024px; margin: 0 auto; padding: 60px 0;
+    @include media($tablet) { font-size: 2.5em; }
+    @include media($mobile) { font-size: 2em; line-height: 1em; }
+}
 
-		@include media($sub-desktop) { width: 100%; padding: 40px 20px 20px 20px; }
-		@include media($mobile) { width: 100%; padding: 20px; }
+.band__subtitle-body { font-size: 1em; font-weight: 400; margin-top: 20px;
 
-		p { max-width: 768px; }
+    &:first-child { margin-top: 0; }
+}
+
+.band__title-support { font-size: 37px; line-height: 1em;
+
+    @include media($mobile) { font-size: 1.8em; line-height: 1.2em; }
+}
+
+.band__circle-img { @include clearfix; padding: 100px 20px 100px 320px; background-position: left center; background-repeat: no-repeat;
+
+    @include media($tablet){ padding-left: 340px; }
+    @include media($mobile) { padding-top: 20px; padding-bottom: 220px; padding-left: 20px; background-position: center bottom; background-size: 220px; }
+    @include media($big-mobile) { padding-bottom: 220px; }
+}
+
+.ndash-list { margin-top: 15px; padding-left: 20px;
+
+	@include media($mobile) { padding-left: 10px; }
+
+	li { @include ndash-bullets; margin-bottom: 10px; }
+}
+
+.ndash-list-reverse { margin-top: 15px; padding-left: 20px;
+
+	@include media($mobile) { padding-left: 10px; }
+
+	li { @include ndash-bullets-reverse; margin-bottom: 10px; color: #fff; }
+}
+
+.img-bullet-list { margin: 0; padding: 0;
+
+	li { @include clearfix; margin-bottom: 20px;
+
+		img { float: left; margin-right: 15px; }
 	}
 }
+
+.textpage-list-col2 { float: left; @include w-50; }
+
+.ls-img-tiles { @include clearfix; display: block; padding-left: 0; width: 830px; list-style: none;
+					
+	@include media($sub-desktop) { margin-top: 20px; width: 100%; }
+
+	li { @include float(left); margin-top: 0; margin-left: 0; background-image: none;
+
+		@include media($mobile) { display: block; float: none; margin-top: 20px; width: 100%; }
+
+		&:before { content: none !important; }
+		&:first-child { margin-left: 0;
+
+			@include media ($mobile) { margin-top: 0; }
+		}
+
+		img { width: 259px; height: 259px;
+
+			@include media($tablet) { width: 222px; height: 222px; }
+			@include media($big-mobile) { @include blockcenter;	}
+		}
+
+	}
+}
+
+.band--your-business { background-color: #d3d3ca; }
+.band__your-business-body { background-image: url(../img/yb-body.png); }
+
+.band--our-solutions { background-image: url(../img/backgrounds/our-solutions-body-bg-desktop.jpg);
+
+	@include media($tablet) { background-image: url(../img/backgrounds/our-solutions-body-bg-tablet.jpg); }
+	@include media($mobile) { background-color: #000000; background-image: url(../img/backgrounds/our-solutions-body-bg-mobile.jpg); min-height: 550px; }
+}
+
+.band__our-solutions-body { max-height: 450px; padding: 150px 0 160px 310px; 
+
+	@include media($desktop) { }
+	@include media($tablet) { padding-left: 370px; padding-right: 10px;}
+	@include media($mobile) { padding: 20px; }
+
+}
+
+
+.fwbody { background-repeat: no-repeat; background-position: center center;
+
+    @include media($tablet) { background-position: left center; }
+    @include media($mobile) { background-position: bottom center; }
+
+}
+
+
+
+
+
+
+
