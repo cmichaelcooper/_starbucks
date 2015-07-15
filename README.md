@@ -36,4 +36,4 @@ In the css folder I have included many sass files from the project in the same f
 
 ### JS
 
-In the js folder I have included the main.js file.
+In the js folder there are several js files split out by the content type they are relevant to.
