@@ -27,9 +27,9 @@ Branded Solutions was conceived to replace multiple Starbucks business-to-busine
 
 I have included 3 folders in the project which best describe the kinds of content to be found in each: views, css, and js.
 
-### Views
+### Views - Best consolidated exmples of in-context code
 
-In the views folder I have included several folders that include files related to a specific content type on Branded Solutions. These folders include HTML samples, CSS(SASS), and a folder that includes screenshots of the relevant pages in both desktop and mobile formats in order to provide context.
+The views folder is organized into sub-folders by content type, which contain folders for CSS(SASS), JS, and a folder that includes screenshots of the relevant pages in both desktop and mobile formats in order to provide context.
 
 ### CSS
 
@@ -37,4 +37,4 @@ In the css folder I have included many sass files from the project in the same f
 
 ### JS
 
-In the js folder there are several js files split out by the content type they are relevant to.
+Contains main.js, which includes code that doesn't specifically correspond to content types in the views folder.

@@ -59,28 +59,7 @@ SBS = {
             });
         }, 500);
 
-        //Masonry setup for dashboards  
-        if (viewportWidth > 640) {
-            var $container = $('.dashboard-content');
-            // initialize Masonry after all images have loaded  
-            $container.imagesLoaded(function () {
-                $container.masonry();
-                $container.masonry({
-                    itemSelector: '.dashboard-banner',
-                    columnWidth: function (containerWidth) {
-                        return containerWidth / 4;
-
-                    },
-                });
-            });
-            $('.dashboard-content').masonry({
-                itemSelector: '.dashboard-banner',
-                columnWidth: function (containerWidth) {
-                    return containerWidth / 4;
-
-                },
-            });
-        }
+        
         // Disable overscroll / viewport moving on everything but scrollable divs
         $('body').on('touchmove', function (e) {
             if (!$('.scrollable').has($(e.target)).length) e.preventDefault();
@@ -256,12 +235,6 @@ SBS = {
                 $('.fontana-left a').css({ 'float': 'left' });
             }
         }
-
-
-        // Dashboard / Profile account view switcher?
-        $('#SelectedAccount').on('change', function () {
-            $(this).parent().submit();
-        });
 
         if (viewportWidth > 1100) {
             $('#sbc-blended #site-wrapper #content .body-content .bottom-edger').css('min-height', ($(window).innerHeight() * 0.25));
