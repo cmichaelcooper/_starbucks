@@ -23,6 +23,8 @@ Branded Solutions was conceived to replace multiple Starbucks business-to-busine
 
 **Custom Javascript/Jquery** - While some plugins have been used, I have written the majority of the Javascript on Branded Solutions fresh to meet the creative and business needs of the project.
 
+**Note - While I contributed with design suggestions concerning UI/UX and development, final decisions concerning design were not mine to make. Please don't hang me for design faux pas.
+
 ## Navigating the code samples
 
 I have included 3 folders in the project which best describe the kinds of content to be found in each: views, css, and js.
