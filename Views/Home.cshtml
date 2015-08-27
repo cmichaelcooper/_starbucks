@@ -25,7 +25,7 @@ If they did not provide a valid account when registering, they receive a message
     @if (Convert.ToBoolean(TempData["AccountValidated"]))
     {
         validated = "true";
-        
+
         <h4>Thanks for registering with Starbucks Branded Solutions.</h4>
         <p>We've sent an email to the address you provided. Please click the link in that email to complete your registration process.</p>
     }
@@ -76,7 +76,8 @@ Welcome video modal
                 @Html.Raw(Model.RightPath)
             </li>
         </ul>
-        
+
+        <div class="fake-content">The goal of this project is to sell more coffee</div>
     </section>
 </section>
 
